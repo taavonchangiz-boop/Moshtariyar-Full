@@ -127,7 +127,7 @@ class InstallController extends Controller
             if (!File::exists(storage_path())) {
                 File::makeDirectory(storage_path(), 0755, true);
             }
-            File::put(storage_//path('installed.lock'), date('Y-m-d H:i:s'));
+            File::put(storage_path('installed.lock'), date('Y-m-d H:i:s'));
 
             return redirect('/')->with('status', 'سیستم با موفقیت نصب شد. خوش آمدید!');
 
