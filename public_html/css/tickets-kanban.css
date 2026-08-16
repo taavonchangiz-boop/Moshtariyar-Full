@@ -1,0 +1,445 @@
+/* ══════════════════════════════════════════════════
+   CSS کانبان تیکت‌ها — مشتری‌یار
+   طراحی‌شده برای دسکتاپ، تبلت و موبایل
+   ══════════════════════════════════════════════════ */
+
+.tk-view-btn {
+    padding: 0.45rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 0.65rem;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+    background: var(--panel2);
+    color: var(--mut);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.tk-view-btn:hover {
+    border-color: var(--acc);
+    color: var(--acc);
+}
+
+.tk-view-btn.active {
+    background: var(--acc);
+    color: #fff;
+    border-color: var(--acc);
+}
+
+.tk-kanban-board {
+    display: flex;
+    gap: 0.85rem;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding: 0.35rem 0.15rem 0.85rem;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
+    min-height: 24rem;
+}
+
+.tk-kanban-board::-webkit-scrollbar {
+    height: 6px;
+}
+
+.tk-kanban-board::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.tk-kanban-board::-webkit-scrollbar-thumb {
+    background: var(--line);
+    border-radius: 999px;
+}
+
+.tk-column {
+    flex: 0 0 19rem;
+    min-width: 17rem;
+    max-width: 25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: var(--panel2);
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    padding: 0.75rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+body.light .tk-column {
+    background: #f8fafc;
+}
+
+.tk-column:hover {
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.tk-col-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.25rem 0.55rem;
+    border-bottom: 2px solid var(--col-color, var(--line));
+}
+
+.tk-col-dot {
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 50%;
+    background: var(--col-color, var(--acc));
+    flex-shrink: 0;
+}
+
+.tk-col-title {
+    flex: 1;
+    font-weight: 900;
+    font-size: 0.85rem;
+    color: var(--txt);
+}
+
+.tk-col-count {
+    background: var(--col-color, var(--acc));
+    color: #fff;
+    padding: 0.1rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 1000;
+}
+
+.tk-col-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 3rem;
+    max-height: 52vh;
+    padding: 0.15rem 0;
+    transition: background 0.2s;
+}
+
+.tk-col-cards::-webkit-scrollbar {
+    width: 3px;
+}
+
+.tk-col-cards::-webkit-scrollbar-thumb {
+    background: var(--line);
+    border-radius: 999px;
+}
+
+.tk-col-cards.tk-drag-over {
+    background: rgba(56, 189, 248, 0.06);
+    border-radius: 0.65rem;
+}
+
+.tk-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 0.8rem;
+    padding: 0.65rem 0.7rem;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    user-select: none;
+}
+
+body.light .tk-card {
+    background: #ffffff;
+}
+
+.tk-card:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.tk-card.tk-dragging {
+    opacity: 0.45;
+    transform: scale(0.96);
+    border-style: dashed;
+}
+
+.tk-card.tk-unread {
+    border-right: 3px solid #f59e0b;
+}
+
+.tk-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.4rem;
+}
+
+.tk-card-subject {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.35rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.tk-card-subject b {
+    font-size: 0.8rem;
+    font-weight: 800;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.tk-unread-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: #f59e0b;
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+}
+
+.tk-card-num {
+    font-size: 0.68rem;
+    color: var(--mut);
+    font-weight: 700;
+    white-space: nowrap;
+    direction: ltr;
+}
+
+.tk-card-customer {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.tk-avatar {
+    width: 1.65rem;
+    height: 1.65rem;
+    border-radius: 0.45rem;
+    display: grid;
+    place-items: center;
+    font-weight: 1000;
+    font-size: 0.7rem;
+    flex-shrink: 0;
+}
+
+.tk-card-customer span {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--txt);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tk-card-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+
+.tk-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.1rem 0.4rem;
+    border-radius: 0.25rem;
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.tk-badge.tk-dept {
+    background: #6366f1;
+}
+
+.tk-badge.tk-replies {
+    background: rgba(37, 99, 235, 0.14);
+    color: #1d4ed8;
+}
+
+.tk-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.4rem;
+    border-top: 1px solid var(--line);
+    gap: 0.5rem;
+}
+
+.tk-sla {
+    flex: 1;
+    min-width: 0;
+}
+
+.tk-sla-text {
+    font-size: 0.68rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+.tk-sla-text.is-danger {
+    color: #ef4444;
+}
+
+.tk-sla-text.is-warn {
+    color: #f59e0b;
+}
+
+.tk-sla-bar {
+    display: block;
+    height: 3px;
+    background: var(--line);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.tk-sla-bar span {
+    display: block;
+    height: 100%;
+    width: var(--sla-p, 0%);
+    background: var(--sla-c, #10b981);
+    border-radius: 999px;
+    transition: width 0.5s ease;
+}
+
+.tk-assignee {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 0.4rem;
+    display: grid;
+    place-items: center;
+    font-weight: 1000;
+    font-size: 0.65rem;
+    flex-shrink: 0;
+}
+
+.tk-assignee.tk-unassigned {
+    background: transparent;
+    border: 1px dashed var(--line);
+    font-size: 0.7rem;
+}
+
+.tk-col-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    padding: 2rem 1rem;
+    color: var(--mut);
+    text-align: center;
+    font-size: 0.8rem;
+    flex: 1;
+    min-height: 5rem;
+}
+
+.tk-col-empty span {
+    font-size: 1.8rem;
+    opacity: 0.5;
+}
+
+.tk-toast {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.7rem 1.5rem;
+    border-radius: 2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    z-index: 300;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.tk-toast.hidden {
+    opacity: 0;
+    transform: translateX(-50%) translateY(1rem);
+    pointer-events: none;
+}
+
+.tk-toast-ok {
+    background: #065f46;
+    color: #fff;
+}
+
+.tk-toast-bad {
+    background: #991b1b;
+    color: #fff;
+}
+
+@media (max-width: 1024px) {
+    .tk-column {
+        flex: 0 0 16rem;
+        min-width: 14rem;
+        max-width: 20rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .tk-kanban-board {
+        flex-direction: column;
+        overflow-x: hidden;
+    }
+
+    .tk-column {
+        flex: 1 1 auto;
+        min-width: 0;
+        max-width: none;
+    }
+
+    .tk-col-cards {
+        max-height: none;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        overflow-y: visible;
+    }
+
+    .tk-card {
+        flex: 0 0 auto;
+        width: calc(50% - 0.25rem);
+        min-width: 14rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .tk-card {
+        width: 100%;
+        min-width: 0;
+    }
+}
+
+body.dark .tk-card {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+body.dark .tk-column {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+body.dark .tk-card:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+}
+
+body.dark .tk-card-footer {
+    border-color: #334155;
+}
+
+body.dark .tk-view-btn {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+body.dark .tk-view-btn.active {
+    background: var(--acc);
+    border-color: var(--acc);
+}

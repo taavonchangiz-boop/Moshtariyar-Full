@@ -1,0 +1,359 @@
+/* ظاهر حرفه‌ای بخش رشد باشگاه مشتریان */
+.club-growth-page {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.club-growth-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(14rem, 24rem);
+    gap: 1rem;
+    align-items: stretch;
+    padding: 1.15rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.35rem;
+    background:
+        radial-gradient(circle at top right, rgba(14, 165, 233, 0.18), transparent 36%),
+        radial-gradient(circle at left top, rgba(16, 185, 129, 0.12), transparent 32%),
+        var(--glass);
+    box-shadow: 0 1.2rem 3.4rem rgba(0, 0, 0, 0.13);
+}
+
+body.light .club-growth-hero {
+    background:
+        radial-gradient(circle at top right, rgba(14, 165, 233, 0.12), transparent 36%),
+        radial-gradient(circle at left top, rgba(16, 185, 129, 0.08), transparent 32%),
+        #ffffff;
+    box-shadow: 0 1rem 2.4rem rgba(15, 23, 42, 0.07);
+}
+
+.club-growth-eyebrow {
+    display: inline-flex;
+    width: fit-content;
+    color: #0284c7;
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    border-radius: 999px;
+    padding: 0.18rem 0.7rem;
+    font-size: 0.74rem;
+    font-weight: 1000;
+}
+
+.club-growth-hero h1 {
+    margin: 0.55rem 0 0.25rem;
+    font-size: clamp(1.35rem, 4vw, 2.25rem);
+    line-height: 1.5;
+    letter-spacing: -0.03rem;
+}
+
+.club-growth-hero p {
+    margin: 0.4rem 0 0;
+    color: var(--mut);
+    max-width: 44rem;
+}
+
+.club-growth-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+    margin-top: 1rem;
+}
+
+.club-growth-actions .btn,
+.club-growth-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.club-growth-score {
+    display: grid;
+    gap: 0.7rem;
+}
+
+.club-growth-score > div {
+    padding: 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel);
+}
+
+body.light .club-growth-score > div {
+    background: #f8fafc;
+}
+
+.club-growth-score span,
+.club-growth-score small {
+    display: block;
+    color: var(--mut);
+    font-size: 0.74rem;
+    font-weight: 800;
+}
+
+.club-growth-score b {
+    display: block;
+    margin-top: 0.15rem;
+    color: var(--acc);
+    font-size: 1.25rem;
+    font-weight: 1000;
+}
+
+.club-growth-grid,
+.club-growth-grid-3 {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.club-growth-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.club-growth-grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.club-growth-card {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    background: var(--glass);
+    box-shadow: 0 1rem 2.7rem rgba(0, 0, 0, 0.11);
+}
+
+body.light .club-growth-card {
+    background: #ffffff;
+    box-shadow: 0 0.8rem 2rem rgba(15, 23, 42, 0.06);
+}
+
+.club-growth-card.is-accent {
+    padding-right: 1.25rem;
+}
+
+.club-growth-card.is-accent:before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    bottom: 1rem;
+    right: 0.65rem;
+    width: 0.28rem;
+    border-radius: 999px;
+    background: var(--card-color, var(--acc));
+}
+
+.club-growth-card header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.8rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.club-growth-card h2,
+.club-growth-card h3 {
+    margin: 0;
+    color: var(--txt);
+    line-height: 1.55;
+}
+
+.club-growth-card p {
+    color: var(--mut);
+    margin: 0.35rem 0 0;
+}
+
+.club-growth-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.28rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(14, 165, 233, 0.12);
+    color: var(--acc);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    font-size: 0.76rem;
+    font-weight: 1000;
+    white-space: nowrap;
+}
+
+.club-growth-badge.is-ok {
+    background: rgba(16, 185, 129, 0.13);
+    border-color: rgba(16, 185, 129, 0.24);
+    color: var(--ok);
+}
+
+.club-growth-badge.is-muted {
+    background: rgba(148, 163, 184, 0.12);
+    border-color: rgba(148, 163, 184, 0.22);
+    color: var(--mut);
+}
+
+.club-growth-badge.is-warn {
+    background: rgba(245, 158, 11, 0.13);
+    border-color: rgba(245, 158, 11, 0.24);
+    color: var(--warn);
+}
+
+.club-growth-copy {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 0.6rem;
+}
+
+.club-growth-copy input {
+    direction: ltr;
+    unicode-bidi: plaintext;
+    font-weight: 900;
+}
+
+.club-growth-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.club-growth-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+    min-width: 0;
+}
+
+body.light .club-growth-row {
+    background: #f8fafc;
+}
+
+.club-growth-icon {
+    width: 3.15rem;
+    height: 3.15rem;
+    display: grid;
+    place-items: center;
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--icon-color, var(--acc)) 15%, transparent);
+    color: var(--icon-color, var(--acc));
+    font-size: 1.5rem;
+    font-weight: 1000;
+}
+
+.club-growth-row h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    overflow-wrap: anywhere;
+}
+
+.club-growth-row p,
+.club-growth-row small {
+    display: block;
+    margin: 0.12rem 0 0;
+    color: var(--mut);
+    font-size: 0.78rem;
+}
+
+.club-growth-progress {
+    height: 0.55rem;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.18);
+    overflow: hidden;
+    margin-top: 0.65rem;
+}
+
+.club-growth-progress span {
+    display: block;
+    height: 100%;
+    width: var(--progress, 0%);
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--ok), var(--acc));
+}
+
+.club-growth-rank {
+    width: 2.7rem;
+    height: 2.7rem;
+    display: grid;
+    place-items: center;
+    border-radius: 0.9rem;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--acc2), var(--vio));
+    font-weight: 1000;
+}
+
+.club-growth-code {
+    direction: ltr;
+    unicode-bidi: plaintext;
+    font-weight: 1000;
+    color: var(--txt);
+}
+
+.club-growth-empty {
+    display: grid;
+    place-items: center;
+    min-height: 8rem;
+    padding: 1rem;
+    text-align: center;
+    color: var(--mut);
+    border: 1px dashed var(--line);
+    border-radius: 1rem;
+}
+
+@media (max-width: 64rem) {
+    .club-growth-hero,
+    .club-growth-grid,
+    .club-growth-grid-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 42rem) {
+    .club-growth-hero,
+    .club-growth-card {
+        padding: 0.85rem;
+        border-radius: 1rem;
+    }
+
+    .club-growth-card.is-accent {
+        padding-right: 1.05rem;
+    }
+
+    .club-growth-card.is-accent:before {
+        right: 0.45rem;
+        top: 0.8rem;
+        bottom: 0.8rem;
+    }
+
+    .club-growth-actions .btn,
+    .club-growth-actions a {
+        width: 100%;
+    }
+
+    .club-growth-copy {
+        display: grid;
+    }
+
+    .club-growth-row {
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .club-growth-row > .club-growth-badge,
+    .club-growth-row > form,
+    .club-growth-row > a {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+
+    .club-growth-row > form .btn,
+    .club-growth-row > a.btn {
+        width: 100%;
+    }
+}

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="مشتری‌یار - MoshtariYar">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0ea5e9"/>
+      <stop offset="1" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#g)"/>
+  <path d="M18 37c3-8 10-13 18-13h10" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="24" cy="24" r="7" fill="#fff" opacity=".96"/>
+  <path d="M15 49c2-9 9-14 18-14s16 5 18 14" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+  <path d="M42 20l5 5-9 9" fill="none" stroke="#0f172a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

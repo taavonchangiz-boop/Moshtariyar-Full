@@ -1,0 +1,349 @@
+/* ══════════════════════════════════════════════════
+   CSS پرونده ۳۶۰ مشتری (بهبودیافته) — مشتری‌یار
+   طراحی‌شده برای دسکتاپ، تبلت و موبایل
+   ══════════════════════════════════════════════════ */
+
+.c360-page { display: flex; flex-direction: column; gap: 1rem; max-width: 1200px; margin: 0 auto; }
+
+/* ─── هدر پروفایل ─── */
+.c360-hero {
+    display: flex; align-items: center; gap: 1rem;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 1rem; padding: 1rem 1.25rem;
+    flex-wrap: wrap;
+}
+body.light .c360-hero { background: #ffffff; }
+.c360-avatar {
+    width: 3.5rem; height: 3.5rem; border-radius: 1rem;
+    display: grid; place-items: center; font-weight: 1000; font-size: 1.5rem; flex-shrink: 0;
+}
+.c360-hero-info { flex: 1; min-width: 200px; }
+.c360-hero-top { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem; }
+.c360-hero-top h2 { margin: 0; font-size: 1.2rem; font-weight: 900; }
+.c360-type-badge {
+    padding: 0.15rem 0.5rem; border-radius: 0.3rem; font-size: 0.65rem; font-weight: 800;
+    background: rgba(37,99,235,0.1); color: #1d4ed8;
+}
+.c360-hero-contact { display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.78rem; color: var(--mut); font-weight: 600; }
+.c360-hero-actions { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+
+/* ─── KPI cards ─── */
+.c360-kpi-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+    gap: 0.65rem;
+}
+.c360-kpi-card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 0.85rem;
+    padding: 0.75rem 0.9rem; display: flex; flex-direction: column; gap: 0.15rem;
+    position: relative; overflow: hidden;
+}
+body.light .c360-kpi-card { background: #ffffff; }
+.c360-kpi-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--k-color, var(--acc));
+}
+.c360-kpi-card:hover { border-color: var(--k-color, var(--acc)); box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+.c360-kpi-card span { font-size: 0.68rem; color: var(--mut); font-weight: 700; }
+.c360-kpi-card b { font-size: 1.15rem; font-weight: 900; color: var(--k-color, var(--txt)); }
+.c360-kpi-card small { font-size: 0.65rem; color: var(--mut); font-weight: 600; }
+
+/* ─── پیشنهاد هوشمند ─── */
+.c360-smart {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    padding: 0.85rem 1rem; border-radius: 0.85rem;
+    border: 1px solid var(--line); background: var(--panel);
+    border-right: 4px solid var(--smart-color, #2563eb);
+}
+body.light .c360-smart { background: #ffffff; }
+.c360-smart-icon { font-size: 1.5rem; flex-shrink: 0; }
+.c360-smart-body b { font-size: 0.9rem; font-weight: 900; display: block; margin-bottom: 0.2rem; }
+.c360-smart-body p { margin: 0; font-size: 0.8rem; color: var(--mut); line-height: 1.65; }
+
+/* ─── تب‌ها ─── */
+.c360-tabs {
+    display: flex; gap: 0.2rem; flex-wrap: wrap;
+    border-bottom: 2px solid var(--line); padding-bottom: 0; background: var(--panel);
+    border-radius: 0.75rem 0.75rem 0 0; border: 1px solid var(--line); border-bottom: 2px solid var(--line);
+    overflow: hidden;
+}
+body.light .c360-tabs { background: #f8fafc; }
+.c360-tab {
+    padding: 0.6rem 1rem; border: none; background: transparent;
+    font-family: inherit; font-size: 0.8rem; font-weight: 700;
+    color: var(--mut); cursor: pointer; transition: 0.2s;
+    position: relative;
+}
+.c360-tab:hover { color: var(--acc); background: rgba(37,99,235,0.04); }
+.c360-tab.active { color: var(--acc); background: var(--panel); }
+.c360-tab.active::after {
+    content: ''; position: absolute; bottom: 0; left: 0.75rem; right: 0.75rem; height: 2px; background: var(--acc);
+}
+body.light .c360-tab.active { background: #ffffff; }
+
+.c360-tab-content { padding: 1rem 0.5rem 0.5rem; }
+.c360-tab-content.active { }
+
+/* ─── جدول سفارش‌ها ─── */
+.c360-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--line); border-radius: 0.75rem;
+    background: var(--panel);
+}
+body.light .c360-table-wrap { background: #ffffff; }
+
+.c360-table {
+    width: 100%; border-collapse: collapse; font-size: 0.8rem;
+}
+.c360-table thead {
+    background: var(--panel2);
+    border-bottom: 2px solid var(--line);
+}
+body.light .c360-table thead { background: #f8fafc; }
+.c360-table th {
+    text-align: right; padding: 0.65rem 0.75rem;
+    font-weight: 800; color: var(--mut); font-size: 0.72rem; white-space: nowrap;
+}
+.c360-table td {
+    padding: 0.65rem 0.75rem; border-bottom: 1px solid #f1f5f9;
+    font-weight: 500; white-space: nowrap; vertical-align: middle;
+}
+.c360-table tbody tr { transition: background 0.15s; }
+.c360-table tbody tr:hover { background: rgba(37,99,235,0.04); }
+.c360-table tbody tr:last-child td { border-bottom: none; }
+
+.c360-status-pill {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.2rem 0.5rem; border-radius: 0.3rem;
+    font-size: 0.7rem; font-weight: 800; color: #fff;
+}
+.c360-link {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 1.75rem; height: 1.75rem; border-radius: 0.4rem;
+    background: rgba(37,99,235,0.07); color: #1d4ed8;
+    text-decoration: none; font-size: 0.8rem; transition: 0.15s;
+}
+.c360-link:hover { background: rgba(37,99,235,0.15); }
+
+/* ─── وضعیت خالی ─── */
+.c360-empty {
+    padding: 2.5rem 1.5rem; text-align: center; color: var(--mut); font-size: 0.9rem;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 0.75rem;
+}
+body.light .c360-empty { background: #ffffff; }
+.c360-empty-icon { font-size: 2rem; margin-bottom: 0.5rem; opacity: 0.4; }
+
+/* ─── فعالیت‌ها ─── */
+.c360-task-list { display: flex; flex-direction: column; gap: 0.45rem; }
+.c360-task-row {
+    display: flex; align-items: center; gap: 0.7rem;
+    padding: 0.7rem 0.85rem; border: 1px solid var(--line); border-radius: 0.7rem;
+    background: var(--panel); transition: 0.15s;
+}
+body.light .c360-task-row { background: #ffffff; }
+.c360-task-row:hover { border-color: rgba(37,99,235,0.3); box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
+.c360-task-icon {
+    width: 2.2rem; height: 2.2rem; border-radius: 0.55rem; display: grid; place-items: center;
+    background: var(--panel2); flex-shrink: 0; font-size: 1rem;
+}
+.c360-task-icon.is-overdue { background: rgba(239,68,68,0.12); }
+.c360-task-body { flex: 1; min-width: 0; }
+.c360-task-body b { font-size: 0.82rem; font-weight: 800; display: block; color: var(--txt); }
+.c360-task-body small { font-size: 0.7rem; color: var(--mut); font-weight: 600; display: block; margin-top: 0.15rem; }
+.c360-action-small {
+    padding: 0.35rem 0.65rem; border: 1px solid rgba(16,185,129,0.35); border-radius: 0.4rem;
+    background: rgba(16,185,129,0.08); color: #047857; font-family: inherit; font-size: 0.7rem;
+    font-weight: 800; cursor: pointer; white-space: nowrap; transition: 0.15s;
+}
+.c360-action-small:hover { background: rgba(16,185,129,0.18); }
+
+.c360-task-summary {
+    display: flex; gap: 1.25rem; margin-top: 0.75rem; padding: 0.6rem 0.85rem;
+    background: var(--panel2); border-radius: 0.6rem;
+    font-size: 0.75rem; color: var(--mut); font-weight: 600; flex-wrap: wrap;
+}
+body.light .c360-task-summary { background: #f8fafc; }
+
+/* ─── باشگاه ─── */
+.c360-club-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.6rem; margin-bottom: 0.75rem; }
+.c360-club-card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 0.75rem;
+    padding: 0.75rem 0.85rem; display: flex; flex-direction: column; gap: 0.2rem;
+    transition: 0.15s;
+}
+body.light .c360-club-card { background: #ffffff; }
+.c360-club-card:hover { border-color: rgba(139,92,246,0.3); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.c360-club-card span { font-size: 0.65rem; color: var(--mut); font-weight: 700; }
+.c360-club-card b { font-size: 1.05rem; font-weight: 900; color: var(--txt); }
+.c360-club-card small { font-size: 0.62rem; color: var(--mut); font-weight: 600; }
+
+.c360-progress-bar-wrap {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 0.6rem;
+    padding: 0.65rem 0.85rem; margin-bottom: 0.75rem;
+}
+body.light .c360-progress-bar-wrap { background: #ffffff; }
+.c360-progress-bar-wrap > span { font-size: 0.7rem; font-weight: 700; color: var(--mut); display: block; margin-bottom: 0.4rem; }
+.c360-progress-bar {
+    height: 8px; background: var(--line); border-radius: 999px; overflow: hidden;
+}
+.c360-progress-bar span { display: block; height: 100%; border-radius: 999px; transition: width 0.6s ease; }
+
+/* ─── محصولات محبوب ─── */
+.c360-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.c360-products-card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 0.75rem;
+    padding: 0.85rem 1rem;
+}
+body.light .c360-products-card { background: #ffffff; }
+.c360-products-card h4 { margin: 0 0 0.6rem; font-size: 0.85rem; font-weight: 900; }
+.c360-fav-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.55rem 0.65rem; border: 1px solid #f1f5f9; border-radius: 0.5rem;
+    margin-bottom: 0.35rem; font-size: 0.8rem; background: var(--panel2);
+    transition: 0.15s;
+}
+body.light .c360-fav-row { background: #f8fafc; }
+.c360-fav-row:hover { border-color: rgba(37,99,235,0.2); }
+.c360-fav-row:last-child { margin-bottom: 0; }
+.c360-fav-row b { font-weight: 700; color: var(--txt); }
+.c360-fav-row span {
+    color: var(--acc); font-size: 0.72rem; font-weight: 700;
+    background: rgba(37,99,235,0.06); padding: 0.2rem 0.5rem; border-radius: 0.3rem;
+    white-space: nowrap;
+}
+
+/* ─── خط زمانی ─── */
+.c360-timeline-wrap {
+    position: relative;
+    padding-right: 1rem;
+}
+.c360-timeline-wrap::before {
+    content: '';
+    position: absolute; top: 0; bottom: 0; right: 1.5rem; width: 2px;
+    background: linear-gradient(to bottom, var(--acc), var(--line));
+    border-radius: 999px;
+}
+.c360-timeline-v { display: flex; flex-direction: column; gap: 0; }
+.c360-tl-item {
+    display: flex; gap: 0.85rem; align-items: flex-start;
+    padding: 0.6rem 0; position: relative;
+}
+.c360-tl-marker {
+    width: 2.6rem; height: 2.6rem; border-radius: 0.65rem;
+    display: grid; place-items: center; flex-shrink: 0;
+    border: 2px solid var(--line); background: var(--panel);
+    font-size: 1rem; z-index: 1; position: relative;
+}
+body.light .c360-tl-marker { background: #ffffff; }
+.c360-tl-marker.order { border-color: #3b82f6; background: rgba(59,130,246,0.06); }
+.c360-tl-marker.loyalty { border-color: #f59e0b; background: rgba(245,158,11,0.06); }
+.c360-tl-marker.activity { border-color: #10b981; background: rgba(16,185,129,0.06); }
+
+.c360-tl-card {
+    flex: 1; min-width: 0;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 0.65rem;
+    padding: 0.65rem 0.8rem; transition: 0.15s;
+}
+body.light .c360-tl-card { background: #ffffff; }
+.c360-tl-card:hover { border-color: rgba(37,99,235,0.25); box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
+.c360-tl-card b { font-size: 0.82rem; font-weight: 800; display: block; color: var(--txt); margin-bottom: 0.15rem; }
+.c360-tl-card .c360-tl-meta {
+    display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;
+    font-size: 0.7rem; color: var(--mut);
+}
+.c360-tl-card .c360-tl-amount { font-weight: 800; color: var(--acc); }
+.c360-tl-card .c360-tl-date { font-weight: 600; }
+.c360-tl-card .c360-tl-badge {
+    display: inline-block; padding: 0.1rem 0.4rem; border-radius: 0.2rem;
+    font-size: 0.62rem; font-weight: 800;
+}
+.c360-tl-badge.completed { background: rgba(16,185,129,0.1); color: #047857; }
+.c360-tl-badge.pending { background: rgba(245,158,11,0.1); color: #b45309; }
+.c360-tl-badge.cancelled { background: rgba(239,68,68,0.1); color: #b91c1c; }
+
+/* ─── بخش‌بندی ─── */
+.c360-segments {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 0.75rem;
+    padding: 0.85rem 1rem;
+}
+body.light .c360-segments { background: #ffffff; }
+.c360-segments h4 { margin: 0 0 0.5rem; font-size: 0.85rem; font-weight: 900; }
+.c360-segment-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.c360-segment-tag {
+    padding: 0.3rem 0.65rem; border-radius: 0.4rem; font-size: 0.7rem; font-weight: 800;
+    background: rgba(37,99,235,0.08); color: #1d4ed8;
+    border: 1px solid rgba(37,99,235,0.15);
+}
+
+/* ─── بازگشت ─── */
+.c360-return-row { margin-top: 0.5rem; text-align: center; }
+
+/* ─── مودال ─── */
+.c360-modal-overlay {
+    position: fixed; inset: 0; background: rgba(15,23,42,0.45); backdrop-filter: blur(3px);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 200; padding: 1rem;
+}
+.c360-modal {
+    background: var(--panel); border-radius: 1rem; width: 100%; max-width: 460px; max-height: 85vh;
+    overflow-y: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+body.light .c360-modal { background: #ffffff; }
+.c360-modal-head {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 1.25rem; border-bottom: 1px solid var(--line);
+}
+.c360-modal-head b { font-size: 0.95rem; }
+.c360-modal-head button { background: none; border: none; font-size: 1.4rem; color: var(--mut); cursor: pointer; padding: 0; line-height: 1; }
+.c360-modal-body { padding: 1rem 1.25rem; }
+.c360-form-group { margin-bottom: 0.7rem; }
+.c360-form-group label { display: block; font-size: 0.75rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--txt); }
+.c360-form-group select,
+.c360-form-group textarea {
+    width: 100%; padding: 0.55rem 0.7rem; border: 1px solid var(--line); border-radius: 0.5rem;
+    font-family: inherit; font-size: 0.82rem; background: var(--panel2); color: var(--txt); resize: vertical;
+}
+.c360-form-group select:focus,
+.c360-form-group textarea:focus { outline: none; border-color: var(--acc); }
+.c360-modal-actions { display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 0.5rem; }
+
+/* ─── واکنش‌گرایی ─── */
+@media (max-width: 768px) {
+    .c360-hero { flex-direction: column; text-align: center; }
+    .c360-hero-info { text-align: center; }
+    .c360-hero-top { justify-content: center; }
+    .c360-hero-contact { justify-content: center; }
+    .c360-hero-actions { justify-content: center; }
+    .c360-two-col { grid-template-columns: 1fr; }
+    .c360-kpi-row { grid-template-columns: 1fr 1fr; }
+    .c360-tabs { border-radius: 0; }
+    .c360-tab { padding: 0.5rem 0.7rem; font-size: 0.73rem; }
+    .c360-timeline-wrap::before { right: 1.2rem; }
+    .c360-tl-marker { width: 2.2rem; height: 2.2rem; font-size: 0.85rem; }
+}
+@media (max-width: 400px) {
+    .c360-kpi-row { grid-template-columns: 1fr; }
+}
+
+/* ─── حالت تاریک ─── */
+body.dark .c360-hero,
+body.dark .c360-kpi-card,
+body.dark .c360-smart,
+body.dark .c360-club-card,
+body.dark .c360-task-row,
+body.dark .c360-table-wrap,
+body.dark .c360-modal,
+body.dark .c360-products-card,
+body.dark .c360-segments,
+body.dark .c360-progress-bar-wrap,
+body.dark .c360-empty,
+body.dark .c360-tl-card { background: #1e293b; border-color: #334155; }
+body.dark .c360-table thead { background: #0f172a; border-color: #334155; }
+body.dark .c360-table td { border-color: #1e293b; }
+body.dark .c360-table tbody tr:hover { background: rgba(56,189,248,0.06); }
+body.dark .c360-tabs { background: #1e293b; border-color: #334155; }
+body.dark .c360-tab.active { background: #0f172a; }
+body.dark .c360-fav-row { background: #0f172a; border-color: #1e293b; }
+body.dark .c360-task-summary { background: #0f172a; }
+body.dark .c360-tl-marker { background: #1e293b; }
+body.dark .c360-progress-bar { background: #334155; }
+body.dark .c360-form-group select,
+body.dark .c360-form-group textarea { background: #0f172a; border-color: #334155; color: #e2e8f0; }

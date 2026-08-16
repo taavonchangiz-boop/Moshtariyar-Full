@@ -1,0 +1,21 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # مسدود کردن دسترسی به فایل تنظیمات حساس برای جلوگیری از سرقت رمزها
+    <Files .env>
+        Order allow,deny
+        Deny from all
+    </Files>
+    RewriteRule ^(\.env|composer\.json|composer\.lock|package\.json)$ - [F,L]
+
+    # اینجا مشکل رو حل کردیم:
+    # قبلاً چک می‌کردیم اگه پوشه وجود داشت، واردش نشه. 
+    # حالا می‌گیم فقط اگه «فایل» واقعی نبود، همه درخواست‌ها رو بفرست به index.php
+    # اینطوری دیگه پوشه app با لینک app قاطی نمی‌شن.
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>

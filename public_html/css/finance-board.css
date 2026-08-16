@@ -1,0 +1,462 @@
+/* مرکز مالی — فاکتور، پیش‌فاکتور و پرداخت */
+
+.finance-page { width: 100%; max-width: 100%; overflow: hidden; }
+
+/* ==================== هدر اصلی (Hero) ==================== */
+.finance-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.72fr) minmax(12rem, 0.52fr);
+    gap: 0.75rem;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.35rem;
+    background:
+        radial-gradient(circle at 8% 0, rgba(16, 185, 129, 0.12), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(245, 158, 11, 0.12), transparent 34%),
+        linear-gradient(135deg, var(--panel), var(--panel2));
+    box-shadow: var(--shadow-sm);
+}
+body.light .finance-hero {
+    background:
+        radial-gradient(circle at 8% 0, rgba(16, 185, 129, 0.08), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(245, 158, 11, 0.08), transparent 34%),
+        #ffffff;
+}
+.finance-hero > div:first-child { min-width: 0; }
+
+.finance-eyebrow,
+.finance-card header span:not(.finance-link):not(.finance-badge):not(.finance-chip) {
+    display: inline-flex; width: fit-content;
+    color: #047857;
+    background: rgba(16, 185, 129, 0.14);
+    border: 1px solid rgba(16, 185, 129, 0.24);
+    border-radius: 999px;
+    padding: 0.2rem 0.72rem;
+    font-size: 0.76rem; line-height: 1.55; font-weight: 1000;
+}
+.finance-hero h2 {
+    margin: 0.55rem 0 0;
+    color: var(--txt);
+    font-size: clamp(1.15rem, 1.9vw, 1.72rem);
+    line-height: 1.65;
+    letter-spacing: -0.02rem;
+    font-weight: 1000;
+}
+.finance-hero p { margin: 0.42rem 0 0; color: var(--mut); font-size: 0.9rem; line-height: 2; max-width: 54rem; }
+.finance-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1rem; }
+
+/* شبکه امتیازات هدر */
+.finance-score { display: grid; gap: 0.42rem; }
+.finance-score > a,
+.finance-score > div {
+    min-height: 3.75rem;
+    display: grid; align-content: center; gap: 0.04rem;
+    padding: 0.42rem 0.75rem 0.42rem 0.62rem;
+    border: 1px solid var(--line); border-radius: 0.9rem;
+    background: var(--panel);
+    position: relative;
+    text-decoration: none; color: var(--txt);
+    transition: 0.2s;
+}
+body.light .finance-score > a,
+body.light .finance-score > div { background: #f8fafc; }
+.finance-score > a:hover {
+    border-color: rgba(16, 185, 129, 0.35);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-1px);
+}
+.finance-score > a:before,
+.finance-score > div:before {
+    content: ''; position: absolute;
+    top: 0.62rem; bottom: 0.62rem; right: 0.32rem;
+    width: 0.22rem; border-radius: 999px;
+    background: var(--metric-color, #10b981);
+}
+.finance-score > a.is-active {
+    background: rgba(16, 185, 129, 0.06);
+    border-color: rgba(16, 185, 129, 0.35);
+}
+body.light .finance-score > a.is-active { background: rgba(16, 185, 129, 0.05); }
+.finance-score span, .finance-score small { color: var(--mut); font-size: 0.74rem; line-height: 1.65; font-weight: 800; }
+.finance-score b { color: var(--acc); font-size: 1.08rem; line-height: 1.45; font-weight: 1000; }
+.finance-score-link.is-active b { color: #047857; }
+
+/* ==================== لایه اصلی: دو ستون ==================== */
+.finance-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: start;
+}
+
+/* کارت پایه */
+.finance-card {
+    min-width: 0; overflow: hidden;
+    padding: 1rem;
+    border: 1px solid var(--line); border-radius: 1.25rem;
+    background: var(--panel);
+    box-shadow: var(--shadow-sm);
+}
+body.light .finance-card { background: #ffffff; border-color: #e5edf7; }
+.finance-card.is-accent { position: relative; padding-right: 1.25rem; }
+.finance-card.is-accent:before {
+    content: ''; position: absolute;
+    top: 1rem; bottom: 1rem; right: 0.65rem;
+    width: 0.28rem; border-radius: 999px;
+    background: var(--finance-color, #10b981);
+}
+.finance-card header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 0.9rem; padding-bottom: 0.85rem; margin-bottom: 0.9rem;
+    border-bottom: 1px solid var(--line);
+}
+.finance-card header > div { display: grid; gap: 0.4rem; min-width: 0; }
+.finance-card h2 { margin: 0; color: var(--txt); font-weight: 1000; line-height: 1.75; font-size: 1rem; }
+.finance-card p { margin: 0.25rem 0 0; color: var(--mut); line-height: 2; font-size: 0.85rem; }
+.finance-card > .finance-list,
+.finance-card > .finance-table-wrap { margin-top: 0.5rem; }
+
+.finance-link {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.42rem 0.85rem; border-radius: 999px;
+    color: #047857; background: rgba(16, 185, 129, 0.14);
+    border: 1px solid rgba(16, 185, 129, 0.24);
+    font-size: 0.76rem; line-height: 1.6; font-weight: 1000;
+    text-decoration: none; transition: 0.2s;
+    white-space: nowrap;
+}
+.finance-link:hover { background: rgba(16, 185, 129, 0.22); }
+
+/* Chip - برچسب کوچک */
+.finance-chip {
+    display: inline-flex; align-items: center;
+    padding: 0.16rem 0.55rem;
+    border-radius: 0.35rem;
+    background: rgba(148, 163, 184, 0.18);
+    color: var(--mut);
+    font-size: 0.68rem; font-weight: 900; line-height: 1.55;
+    text-decoration: none;
+    width: fit-content;
+    margin-bottom: 0.35rem;
+}
+
+/* ==================== لیست موارد ==================== */
+.finance-list { display: grid; gap: 0.55rem; }
+
+.finance-guide-row,
+.finance-row,
+.finance-invoice-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 0.75rem;
+    align-items: center;
+    padding: 0.75rem 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 0.85rem;
+    background: var(--panel2);
+    text-align: right;
+    color: var(--txt);
+    text-decoration: none;
+    font-family: inherit;
+    position: relative;
+    transition: 0.15s;
+}
+body.light .finance-guide-row,
+body.light .finance-row,
+body.light .finance-invoice-row { background: #f8fafc; }
+.finance-guide-row:before,
+.finance-row:before,
+.finance-invoice-row:before {
+    content: '';
+    position: absolute;
+    top: 0.7rem; bottom: 0.7rem; right: 0;
+    width: 0.22rem;
+    border-radius: 999px 0 0 999px;
+    background: var(--row-color, #10b981);
+}
+.finance-clickable-row {
+    cursor: pointer;
+    border: 1px solid var(--line);
+    width: 100%;
+}
+.finance-clickable-row:hover,
+.finance-row:hover,
+.finance-invoice-row:hover {
+    border-color: var(--row-color, rgba(16, 185, 129, 0.35));
+    background: var(--panel);
+    box-shadow: 0 0.4rem 1.2rem rgba(15, 23, 42, 0.06);
+    transform: translateX(2px);
+}
+body.light .finance-clickable-row:hover,
+body.light .finance-row:hover,
+body.light .finance-invoice-row:hover { background: #ffffff; }
+
+.finance-icon {
+    flex: 0 0 auto;
+    width: 2.6rem; height: 2.6rem;
+    display: grid; place-items: center;
+    border-radius: 0.7rem;
+    background: color-mix(in srgb, var(--row-color, #10b981) 14%, transparent);
+    color: var(--row-color, #10b981);
+    font-weight: 1000; font-size: 1.1rem;
+}
+
+.finance-guide-row > div:nth-child(2),
+.finance-row > div:nth-child(2),
+.finance-invoice-row > div:nth-child(2) {
+    min-width: 0;
+    display: flex; flex-direction: column; gap: 0.15rem;
+}
+.finance-guide-row h3,
+.finance-row h3,
+.finance-invoice-row h3 {
+    margin: 0; color: var(--txt);
+    font-size: 0.9rem; font-weight: 1000; line-height: 1.55;
+}
+.finance-guide-row p,
+.finance-row p,
+.finance-invoice-row p {
+    margin: 0; color: var(--mut);
+    font-size: 0.78rem; line-height: 1.85;
+}
+.finance-guide-row small,
+.finance-row small,
+.finance-invoice-row small {
+    color: var(--mut);
+    font-size: 0.72rem;
+    line-height: 1.65;
+    font-weight: 800;
+}
+
+.finance-row-actions {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 0.4rem;
+    flex: 0 0 auto;
+}
+
+/* Badges - نشان‌های وضعیت */
+.finance-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.28rem 0.7rem;
+    border-radius: 0.5rem;
+    background: rgba(148, 163, 184, 0.15);
+    color: var(--mut);
+    font-size: 0.74rem; font-weight: 900; line-height: 1.5;
+    text-decoration: none;
+    white-space: nowrap;
+    border: 0;
+    cursor: pointer;
+    transition: 0.15s;
+    font-family: inherit;
+}
+.finance-badge:hover { background: rgba(148, 163, 184, 0.25); }
+.finance-badge.is-ok    { background: rgba(16, 185, 129, 0.15); color: #047857; }
+.finance-badge.is-warn  { background: rgba(245, 158, 11, 0.16); color: #b45309; }
+.finance-badge.is-bad   { background: rgba(239, 68, 68, 0.15); color: #b91c1c; }
+.finance-badge.is-muted { background: rgba(148, 163, 184, 0.15); color: var(--mut); }
+
+/* ==================== فرم تنظیمات ==================== */
+.finance-settings-form {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+    align-items: end;
+}
+.finance-settings-form > div { display: flex; flex-direction: column; gap: 0.35rem; }
+.finance-settings-form label { color: var(--mut); font-size: 0.76rem; font-weight: 900; margin: 0; }
+.finance-settings-form input,
+.finance-settings-form select {
+    min-height: 2.75rem;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid var(--line);
+    border-radius: 0.6rem;
+    background: var(--panel2);
+    color: var(--txt);
+    font-family: inherit;
+    font-size: 0.85rem;
+}
+body.light .finance-settings-form input,
+body.light .finance-settings-form select { background: #ffffff; }
+.finance-settings-form input:focus,
+.finance-settings-form select:focus {
+    border-color: var(--acc);
+    outline: none;
+    box-shadow: 0 0 0 0.15rem rgba(16, 185, 129, 0.15);
+}
+.finance-settings-form .btn { min-height: 2.75rem; grid-column: span 1; }
+
+/* ==================== حالت خالی ==================== */
+.finance-empty {
+    padding: 3rem 1rem;
+    text-align: center;
+    color: var(--mut);
+    background: var(--panel2);
+    border: 1px dashed var(--line);
+    border-radius: 1rem;
+    font-size: 0.85rem; line-height: 2;
+}
+body.light .finance-empty { background: #f8fafc; }
+.finance-empty h3 { color: var(--txt); font-weight: 1000; line-height: 1.8; margin: 0; font-size: 1rem; }
+
+/* ==================== جدول پرداخت‌ها ==================== */
+.finance-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 0.9rem;
+    background: var(--panel2);
+}
+body.light .finance-table-wrap { background: #f8fafc; }
+.finance-table-wrap table {
+    width: 100%;
+    min-width: 45rem;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+.finance-table-wrap thead {
+    background: var(--panel);
+    border-bottom: 1px solid var(--line);
+}
+body.light .finance-table-wrap thead { background: #ffffff; }
+.finance-table-wrap th {
+    text-align: right;
+    padding: 0.75rem 0.85rem;
+    font-size: 0.74rem;
+    font-weight: 900;
+    color: var(--mut);
+    white-space: nowrap;
+}
+.finance-table-wrap td {
+    padding: 0.65rem 0.85rem;
+    color: var(--txt);
+    border-bottom: 1px solid var(--line);
+    font-size: 0.82rem;
+    line-height: 1.75;
+    white-space: nowrap;
+}
+.finance-table-wrap tbody tr:last-child td { border-bottom: 0; }
+.finance-table-wrap tbody tr {
+    transition: 0.12s;
+}
+.finance-table-wrap tbody tr:hover { background: rgba(16, 185, 129, 0.04); }
+.finance-table-wrap .empty { text-align: center; padding: 2rem 1rem; color: var(--mut); }
+.finance-table-wrap .ltr { direction: ltr; }
+
+/* ==================== پاپ‌آپ ==================== */
+.finance-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(3px);
+    padding: 1.5rem;
+    overflow-y: auto;
+    align-items: flex-start;
+    justify-content: center;
+}
+.finance-modal.show { display: flex; }
+
+.finance-modal-card {
+    width: 100%;
+    max-width: 44rem;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    margin: auto;
+    animation: finance-modal-in 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+body.light .finance-modal-card { background: #ffffff; }
+@keyframes finance-modal-in {
+    from { transform: translateY(-1.5rem); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+}
+.finance-modal-card header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem 1.15rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--panel2);
+}
+body.light .finance-modal-card header { background: #f8fafc; }
+.finance-modal-card header > div { display: grid; gap: 0.4rem; min-width: 0; }
+.finance-modal-card h2 { margin: 0; color: var(--txt); font-weight: 1000; font-size: 1rem; }
+.finance-modal-card p { margin: 0.25rem 0 0; color: var(--mut); font-size: 0.82rem; line-height: 1.95; }
+.finance-modal-card header button {
+    background: transparent;
+    border: 0;
+    color: var(--mut);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 0.35rem;
+    line-height: 1;
+    border-radius: 0.4rem;
+    font-family: inherit;
+    transition: 0.15s;
+}
+.finance-modal-card header button:hover { color: var(--bad); background: rgba(239, 68, 68, 0.1); }
+
+.finance-modal-form { padding: 1.15rem; }
+.finance-modal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+.finance-modal-grid > div { display: flex; flex-direction: column; gap: 0.35rem; }
+.finance-modal-grid label { color: var(--mut); font-size: 0.76rem; font-weight: 900; margin: 0; }
+.finance-modal-grid input,
+.finance-modal-grid select,
+.finance-modal-grid textarea {
+    min-height: 2.75rem;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid var(--line);
+    border-radius: 0.6rem;
+    background: var(--panel2);
+    color: var(--txt);
+    font-family: inherit;
+    font-size: 0.85rem;
+}
+body.light .finance-modal-grid input,
+body.light .finance-modal-grid select,
+body.light .finance-modal-grid textarea { background: #ffffff; }
+.finance-modal-grid textarea { min-height: 5rem; line-height: 1.9; }
+.finance-modal-wide { grid-column: 1 / -1; }
+
+.finance-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.65rem;
+    padding-top: 0.85rem;
+    border-top: 1px dashed var(--line);
+    flex-wrap: wrap;
+}
+.finance-notice-card { max-width: 32rem; }
+
+/* ==================== واکنش‌گرا ==================== */
+@media (max-width: 78rem) {
+    .finance-hero { grid-template-columns: 1fr; }
+    .finance-score { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .finance-grid { grid-template-columns: 1fr; }
+    .finance-settings-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .finance-modal-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 52rem) {
+    .finance-score { grid-template-columns: 1fr; }
+    .finance-settings-form { grid-template-columns: 1fr; }
+    .finance-guide-row,
+    .finance-row,
+    .finance-invoice-row { grid-template-columns: auto minmax(0, 1fr); }
+    .finance-row-actions {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-top: 0.35rem;
+    }
+    .finance-modal { padding: 0.75rem; }
+}

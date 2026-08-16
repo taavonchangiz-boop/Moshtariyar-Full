@@ -1,0 +1,564 @@
+/* مرکز کمپین‌های هوشمند - همسان با سبک workflows/users-board */
+
+.campaign-page { width: 100%; max-width: 100%; overflow: hidden; }
+
+/* ==================== هدر اصلی (Hero) ==================== */
+.campaign-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.72fr) minmax(12rem, 0.52fr);
+    gap: 0.75rem;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.35rem;
+    background:
+        radial-gradient(circle at 8% 0, rgba(37, 99, 235, 0.12), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(16, 185, 129, 0.12), transparent 34%),
+        linear-gradient(135deg, var(--panel), var(--panel2));
+    box-shadow: var(--shadow-sm);
+}
+body.light .campaign-hero {
+    background:
+        radial-gradient(circle at 8% 0, rgba(37, 99, 235, 0.08), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(16, 185, 129, 0.08), transparent 34%),
+        #ffffff;
+}
+
+.campaign-eyebrow,
+.campaign-card header span:not(.campaign-link):not(.campaign-pill) {
+    display: inline-flex;
+    width: fit-content;
+    color: #0284c7;
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    border-radius: 999px;
+    padding: 0.2rem 0.72rem;
+    font-size: 0.76rem;
+    line-height: 1.55;
+    font-weight: 1000;
+}
+.campaign-hero h2 {
+    margin: 0.55rem 0 0;
+    color: var(--txt);
+    font-size: clamp(1.15rem, 1.9vw, 1.72rem);
+    line-height: 1.65;
+    letter-spacing: -0.02rem;
+    font-weight: 1000;
+}
+.campaign-hero p { margin: 0.42rem 0 0; color: var(--mut); font-size: 0.9rem; line-height: 2; max-width: 54rem; }
+.campaign-hero-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1rem; }
+
+.campaign-score { display: grid; gap: 0.42rem; }
+.campaign-score > a {
+    min-height: 3.75rem;
+    display: grid; align-content: center; gap: 0.04rem;
+    padding: 0.42rem 0.75rem 0.42rem 0.62rem;
+    border: 1px solid var(--line); border-radius: 0.9rem;
+    background: var(--panel);
+    position: relative;
+    text-decoration: none; color: var(--txt);
+    transition: 0.2s;
+}
+body.light .campaign-score > a { background: #f8fafc; }
+.campaign-score > a:hover { border-color: rgba(56, 189, 248, 0.35); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+.campaign-score > a:before {
+    content: ''; position: absolute;
+    top: 0.62rem; bottom: 0.62rem; right: 0.32rem;
+    width: 0.22rem; border-radius: 999px;
+    background: var(--metric-color, var(--acc));
+}
+.campaign-score span, .campaign-score small { color: var(--mut); font-size: 0.74rem; line-height: 1.65; font-weight: 800; }
+.campaign-score b { color: var(--acc); font-size: 1.08rem; line-height: 1.45; font-weight: 1000; }
+
+/* ==================== نوار ابزار (فیلترها) ==================== */
+.campaign-toolbar {
+    display: grid;
+    grid-template-columns: minmax(12rem, 1.3fr) minmax(8rem, 0.85fr) minmax(8rem, 0.85fr) minmax(8rem, 0.85fr) minmax(8rem, 0.85fr) auto auto;
+    gap: 0.75rem;
+    align-items: end;
+    margin-bottom: 1rem;
+    padding: 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+}
+body.light .campaign-toolbar { background: #f8fafc; }
+.campaign-toolbar label { display: block; color: var(--mut); font-size: 0.76rem; font-weight: 900; margin-bottom: 0.35rem; }
+.campaign-toolbar-check {
+    display: flex; align-items: center; gap: 0.55rem;
+    padding: 0.72rem 0.85rem;
+    border: 1px solid var(--line); border-radius: 0.75rem;
+    background: var(--panel);
+    min-height: 2.75rem;
+    line-height: 1;
+    font-size: 0.78rem; color: var(--txt); font-weight: 900;
+    cursor: pointer;
+}
+body.light .campaign-toolbar-check { background: #ffffff; }
+.campaign-toolbar-check input { width: auto; min-height: auto; }
+.campaign-toolbar-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-self: end; }
+.campaign-toolbar-actions .btn { min-height: 2.75rem; white-space: nowrap; }
+
+/* ==================== نوار خلاصه ==================== */
+.campaign-insight {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+.campaign-insight > div {
+    display: flex; align-items: center; gap: 0.65rem;
+    padding: 0.85rem;
+    border: 1px solid var(--line); border-radius: 1rem;
+    background: var(--panel2);
+}
+body.light .campaign-insight > div { background: #f8fafc; }
+.campaign-insight b { color: var(--txt); font-size: 1rem; font-weight: 1000; line-height: 1.4; }
+.campaign-insight small { color: var(--mut); font-size: 0.78rem; line-height: 1.65; }
+.campaign-dot { width: 0.7rem; height: 0.7rem; border-radius: 999px; flex: 0 0 auto; }
+.campaign-dot.is-blue { background: #2563eb; }
+.campaign-dot.is-warn { background: #f59e0b; }
+.campaign-dot.is-ok   { background: #10b981; }
+.campaign-dot.is-purple { background: #8b5cf6; }
+
+/* ==================== لایه اصلی: تک ستونی، بورد بالا و کارت‌ها زیر آن ==================== */
+.campaign-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.campaign-main { min-width: 0; display: grid; gap: 1rem; }
+
+/* بخش زیرین: پیشنهاد دستیار در سمت راست، فرم ساخت در سمت چپ */
+.campaign-below {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+}
+.campaign-below > article { min-width: 0; }
+
+.campaign-card {
+    min-width: 0; overflow: hidden;
+    padding: 1rem;
+    border: 1px solid var(--line); border-radius: 1.25rem;
+    background: var(--panel);
+    box-shadow: var(--shadow-sm);
+}
+body.light .campaign-card { background: #ffffff; border-color: #e5edf7; }
+.campaign-card.is-accent { position: relative; padding-right: 1.25rem; }
+.campaign-card.is-accent:before {
+    content: ''; position: absolute;
+    top: 1rem; bottom: 1rem; right: 0.65rem;
+    width: 0.28rem; border-radius: 999px;
+    background: var(--card-color, var(--acc));
+}
+.campaign-card header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 0.9rem; padding-bottom: 0.95rem; margin-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+}
+.campaign-card header > div { display: grid; gap: 0.42rem; min-width: 0; }
+.campaign-card h2 { margin: 0; color: var(--txt); font-weight: 1000; line-height: 1.78; font-size: 1rem; }
+.campaign-card p { margin: 0.25rem 0 0; color: var(--mut); line-height: 2; }
+
+.campaign-link {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.42rem 0.85rem; border-radius: 999px;
+    color: var(--acc); background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    font-size: 0.76rem; line-height: 1.6; font-weight: 1000;
+    text-decoration: none; transition: 0.2s;
+}
+.campaign-link:hover { background: rgba(14, 165, 233, 0.2); transform: translateY(-1px); }
+
+/* ==================== بورد کمپین‌ها ==================== */
+.campaign-board { display: grid; gap: 1rem; }
+.campaign-group {
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    overflow: hidden;
+    background: var(--panel2);
+}
+body.light .campaign-group { background: #ffffff; }
+.campaign-group.is-collapsed .campaign-table-wrap,
+.campaign-group.is-collapsed .campaign-group-add { display: none; }
+
+.campaign-group-title {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto minmax(0, 1fr) auto auto auto;
+    align-items: center; gap: 0.65rem;
+    padding: 0.75rem 0.85rem;
+    border: 0; border-right: 0.32rem solid var(--group-color);
+    background: var(--panel);
+    color: var(--txt);
+    font-family: inherit;
+    cursor: pointer; text-align: right;
+    transition: background 0.15s ease;
+}
+body.light .campaign-group-title { background: #ffffff; }
+.campaign-group-title:hover { background: var(--panel2); }
+body.light .campaign-group-title:hover { background: #f8fafc; }
+.campaign-group-title .cg-caret { transition: transform 0.18s ease; color: var(--group-color); font-size: 0.85rem; }
+.campaign-group.is-open .cg-caret { transform: rotate(-90deg); }
+.campaign-group-title .cg-mark { width: 0.75rem; height: 0.75rem; border-radius: 0.28rem; background: var(--group-color); flex: 0 0 auto; }
+.campaign-group-title > .cg-title-block { min-width: 0; display: grid; gap: 0.1rem; }
+.campaign-group-title b { line-height: 1.55; color: var(--group-color); font-weight: 1000; font-size: 0.9rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.campaign-group-title small { color: var(--mut); font-size: 0.74rem; line-height: 1.65; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.campaign-group-title .cg-count {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 1.85rem; height: 1.55rem;
+    padding: 0 0.55rem; border-radius: 999px;
+    background: var(--group-color); color: #ffffff;
+    font-size: 0.76rem; font-weight: 1000; line-height: 1;
+}
+.campaign-group-title .cg-progress {
+    width: 5.5rem; height: 0.45rem; border-radius: 999px;
+    background: rgba(148, 163, 184, 0.18);
+    overflow: hidden; position: relative;
+}
+.campaign-group-title .cg-progress:after {
+    content: ''; position: absolute; top: 0; right: 0; bottom: 0;
+    width: var(--group-ratio, 0%);
+    background: var(--group-color); border-radius: 999px;
+}
+.campaign-group-title .cg-ratio { color: var(--mut); font-size: 0.74rem; font-weight: 900; line-height: 1.6; white-space: nowrap; min-width: 2.5rem; text-align: left; }
+
+.campaign-table-wrap { overflow-x: auto; }
+.campaign-table { min-width: 78rem; }
+
+.campaign-thead,
+.campaign-row-head {
+    display: grid;
+    grid-template-columns: 1.6fr 0.9fr 1.1fr 1.15fr 0.9fr 1fr 0.9fr 1.2fr;
+    align-items: center;
+}
+.campaign-thead {
+    color: var(--mut);
+    font-size: 0.74rem;
+    font-weight: 900;
+    border-bottom: 1px solid var(--line);
+    background: var(--panel2);
+}
+body.light .campaign-thead { background: #f8fafc; }
+.campaign-thead > div,
+.campaign-cell {
+    padding: 0.7rem 0.75rem;
+    border-left: 1px solid var(--line);
+    min-width: 0;
+}
+.campaign-thead > div:last-child,
+.campaign-cell:last-child { border-left: 0; }
+
+.campaign-row {
+    border-bottom: 1px solid var(--line);
+    background: var(--panel);
+}
+body.light .campaign-row { background: #ffffff; }
+.campaign-row:last-of-type { border-bottom: 0; }
+.campaign-row > summary {
+    display: grid;
+    grid-template-columns: 1.6fr 0.9fr 1.1fr 1.15fr 0.9fr 1fr 0.9fr 1.2fr;
+    align-items: center;
+    list-style: none;
+    cursor: pointer;
+    transition: background 0.12s ease;
+}
+.campaign-row > summary::-webkit-details-marker { display: none; }
+.campaign-row > summary:hover { background: rgba(14, 165, 233, 0.04); }
+.campaign-row[open] > summary { background: rgba(14, 165, 233, 0.06); border-bottom: 1px solid var(--line); }
+
+.campaign-cell { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 1.75; font-size: 0.84rem; }
+
+.campaign-cell-name { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+.campaign-cell-name b {
+    color: var(--txt); font-weight: 900; font-size: 0.86rem; line-height: 1.55;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.campaign-cell-name small {
+    color: var(--mut); font-size: 0.74rem; line-height: 1.65;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+/* پیل رنگی وضعیت‌ها و مقادیر */
+.campaign-pill {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 1.65rem; border-radius: 0.42rem;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.73rem; font-weight: 900; line-height: 1.5;
+    color: #ffffff; background: #64748b;
+    max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.campaign-pill.is-draft    { background: #94a3b8; }
+.campaign-pill.is-ready    { background: #0ea5e9; }
+.campaign-pill.is-queued   { background: #f59e0b; }
+.campaign-pill.is-sending  { background: #f59e0b; }
+.campaign-pill.is-sent     { background: #00c875; }
+.campaign-pill.is-optimize { background: #ef4444; }
+.campaign-pill.is-channel  { background: #2563eb; }
+.campaign-pill.is-segment  { background: #8b5cf6; }
+.campaign-pill.is-rfm      { background: #0284c7; }
+.campaign-pill.is-empty    { background: transparent; color: var(--mut); border: 1px dashed var(--line); font-weight: 700; }
+
+/* پروگرس بار ارسال */
+.campaign-progress-bar {
+    height: 0.42rem;
+    background: rgba(148, 163, 184, 0.16);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 0.35rem;
+}
+.campaign-progress-bar > span {
+    display: block; height: 100%;
+    background: linear-gradient(90deg, #0ea5e9, #2563eb);
+    border-radius: 999px;
+}
+.campaign-progress-label { font-size: 0.7rem; color: var(--mut); line-height: 1.65; font-weight: 900; display: block; }
+
+/* لینک رفرال با دکمه کپی */
+.campaign-referral {
+    display: flex; align-items: center; gap: 0.35rem;
+    padding: 0.32rem 0.42rem;
+    border: 1px solid var(--line); border-radius: 0.55rem;
+    background: var(--panel2);
+    font-size: 0.72rem; direction: ltr;
+    max-width: 100%; overflow: hidden;
+}
+body.light .campaign-referral { background: #f8fafc; }
+.campaign-referral code {
+    flex: 1 1 auto;
+    color: var(--txt); font-family: inherit; font-weight: 900;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.campaign-referral button {
+    flex: 0 0 auto;
+    border: 0; background: transparent;
+    color: var(--acc); font-size: 0.72rem; font-weight: 900;
+    cursor: pointer; padding: 0.15rem 0.4rem;
+    border-radius: 0.35rem;
+    transition: 0.15s;
+}
+.campaign-referral button:hover { background: rgba(14, 165, 233, 0.12); }
+
+/* عملیات ستون */
+.campaign-cell-actions { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.campaign-cell-actions a,
+.campaign-cell-actions button {
+    min-height: 2rem;
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0 0.7rem;
+    border: 1px solid var(--line); border-radius: 0.55rem;
+    background: var(--panel2); color: var(--txt);
+    font-family: inherit; font-size: 0.74rem; font-weight: 900; line-height: 1;
+    cursor: pointer; text-decoration: none;
+    transition: 0.15s;
+}
+body.light .campaign-cell-actions a,
+body.light .campaign-cell-actions button { background: #f8fafc; }
+.campaign-cell-actions a:hover,
+.campaign-cell-actions button:hover { border-color: rgba(14, 165, 233, 0.35); color: var(--acc); }
+.campaign-cell-actions .is-primary { background: rgba(16, 185, 129, 0.12); color: #047857; border-color: rgba(16, 185, 129, 0.28); }
+.campaign-cell-actions .is-primary:hover { background: rgba(16, 185, 129, 0.2); color: #065f46; }
+.campaign-cell-actions .is-danger { color: var(--bad); border-color: rgba(239, 68, 68, 0.28); background: rgba(239, 68, 68, 0.08); }
+.campaign-cell-actions .is-danger:hover { background: rgba(239, 68, 68, 0.14); }
+.campaign-cell-actions form { margin: 0; display: inline-flex; }
+
+/* پنل کشویی جزئیات هر کمپین (ماموریت‌ها + پاداش‌ها + پیام) */
+.campaign-detail-panel {
+    padding: 1rem;
+    background: var(--panel2);
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 1rem;
+    align-items: start;
+}
+body.light .campaign-detail-panel { background: #f8fafc; }
+.campaign-detail-block {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 0.9rem;
+    padding: 0.85rem;
+}
+body.light .campaign-detail-block { background: #ffffff; }
+.campaign-detail-block h4 {
+    margin: 0 0 0.6rem;
+    color: var(--txt);
+    font-size: 0.86rem;
+    font-weight: 1000;
+    line-height: 1.55;
+    display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+}
+.campaign-detail-block h4 span {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.14rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(14, 165, 233, 0.12);
+    color: #0284c7;
+    font-size: 0.7rem; font-weight: 1000;
+}
+.campaign-detail-block p, .campaign-detail-block .campaign-message {
+    margin: 0;
+    color: var(--mut);
+    font-size: 0.82rem; line-height: 1.9;
+    white-space: pre-wrap; word-break: break-word;
+}
+.campaign-detail-block .campaign-message {
+    padding: 0.7rem; border: 1px dashed var(--line); border-radius: 0.65rem;
+    background: var(--panel2); color: var(--txt);
+}
+body.light .campaign-detail-block .campaign-message { background: #f8fafc; }
+
+/* لیست ماموریت‌ها */
+.campaign-missions { display: grid; gap: 0.5rem; }
+.campaign-mission {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    align-items: center; gap: 0.6rem;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid var(--line); border-radius: 0.65rem;
+    background: var(--panel2);
+}
+body.light .campaign-mission { background: #f8fafc; }
+.campaign-mission-icon {
+    width: 2rem; height: 2rem;
+    display: grid; place-items: center;
+    border-radius: 0.55rem;
+    background: rgba(14, 165, 233, 0.14);
+    color: var(--acc); font-weight: 1000; font-size: 0.85rem;
+}
+.campaign-mission b { color: var(--txt); font-weight: 900; font-size: 0.82rem; line-height: 1.6; display: block; }
+.campaign-mission small { color: var(--mut); font-size: 0.72rem; line-height: 1.6; display: block; }
+.campaign-mission-reward {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    padding: 0.24rem 0.55rem; border-radius: 999px;
+    background: rgba(245, 158, 11, 0.14); color: #b45309;
+    font-size: 0.72rem; font-weight: 1000;
+}
+.campaign-mission-status {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 1.5rem; height: 1.5rem;
+    border-radius: 999px; font-size: 0.72rem; font-weight: 1000;
+    background: #10b981; color: #ffffff;
+}
+.campaign-mission-status.is-off { background: #94a3b8; }
+
+.campaign-mission-empty {
+    padding: 0.75rem;
+    text-align: center;
+    color: var(--mut);
+    border: 1px dashed var(--line);
+    border-radius: 0.6rem;
+    background: var(--panel2);
+    font-size: 0.78rem;
+    line-height: 1.85;
+}
+body.light .campaign-mission-empty { background: #f8fafc; }
+
+/* جدول پاداش کوچک */
+.campaign-reward-table { display: grid; gap: 0.4rem; }
+.campaign-reward-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid var(--line); border-radius: 0.6rem;
+    background: var(--panel2);
+    font-size: 0.78rem;
+}
+body.light .campaign-reward-row { background: #f8fafc; }
+.campaign-reward-row b { color: var(--txt); font-weight: 900; line-height: 1.55; }
+.campaign-reward-row small { color: var(--mut); font-size: 0.72rem; line-height: 1.55; display: block; }
+.campaign-reward-value {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    padding: 0.28rem 0.6rem; border-radius: 999px;
+    background: rgba(16, 185, 129, 0.15);
+    color: #047857;
+    font-weight: 1000; font-size: 0.76rem;
+    white-space: nowrap;
+}
+.campaign-reward-value.is-coin { background: rgba(245, 158, 11, 0.15); color: #b45309; }
+.campaign-reward-value.is-disc { background: rgba(139, 92, 246, 0.15); color: #6d28d9; }
+
+/* آمار کمپین */
+.campaign-mini-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.4rem; margin-top: 0.6rem; }
+.campaign-mini-stats > div {
+    display: grid; gap: 0.05rem;
+    padding: 0.55rem;
+    border: 1px solid var(--line); border-radius: 0.6rem;
+    background: var(--panel2);
+    text-align: center;
+}
+body.light .campaign-mini-stats > div { background: #f8fafc; }
+.campaign-mini-stats span { color: var(--mut); font-size: 0.7rem; line-height: 1.55; font-weight: 900; }
+.campaign-mini-stats b { color: var(--acc); font-size: 0.95rem; line-height: 1.55; font-weight: 1000; }
+
+.campaign-group-empty {
+    padding: 1.2rem 1rem;
+    color: var(--mut);
+    text-align: center;
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+    font-size: 0.82rem;
+    line-height: 1.85;
+}
+body.light .campaign-group-empty { background: #ffffff; }
+
+.campaign-group-add {
+    display: flex; align-items: center; gap: 0.4rem;
+    padding: 0.65rem 0.85rem;
+    color: var(--mut); font-size: 0.76rem; font-weight: 900;
+    cursor: pointer; text-decoration: none;
+    border-top: 1px solid var(--line);
+    background: var(--panel2);
+    transition: 0.15s;
+}
+body.light .campaign-group-add { background: #f8fafc; }
+.campaign-group-add:hover { color: var(--acc); background: rgba(14, 165, 233, 0.06); }
+
+/* ==================== کناره: پیشنهادها و فرم ==================== */
+.campaign-suggest-list { display: grid; gap: 0.65rem; }
+.campaign-suggest-list button {
+    text-align: right; border: 1px solid var(--line); border-radius: 1rem;
+    background: var(--panel2); padding: 0.85rem;
+    font-family: inherit; cursor: pointer; transition: 0.2s;
+}
+body.light .campaign-suggest-list button { background: #f8fafc; }
+.campaign-suggest-list button:hover { border-color: rgba(14, 165, 233, 0.35); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+.campaign-suggest-list b { display: block; color: var(--txt); line-height: 1.75; font-weight: 1000; font-size: 0.86rem; }
+.campaign-suggest-list small { display: block; color: var(--mut); line-height: 1.85; margin-top: 0.15rem; font-size: 0.76rem; }
+
+.campaign-create-form { display: grid; gap: 0.75rem; }
+.campaign-create-form label { display: block; color: var(--mut); font-size: 0.78rem; font-weight: 900; margin-bottom: 0.35rem; line-height: 1.7; }
+.campaign-create-form input, .campaign-create-form select, .campaign-create-form textarea { min-height: 2.75rem; line-height: 1.8; }
+.campaign-create-form small { display: block; margin-top: 0.35rem; color: var(--mut); font-size: 0.74rem; line-height: 1.75; }
+
+.campaign-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.65rem; }
+.campaign-form-wide { grid-column: 1 / -1; }
+
+/* ==================== واکنش‌گرا ==================== */
+@media (max-width: 96rem) {
+    .campaign-toolbar { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 78rem) {
+    .campaign-insight { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .campaign-hero { grid-template-columns: 1fr; }
+    .campaign-score { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .campaign-toolbar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .campaign-detail-panel { grid-template-columns: 1fr; }
+    .campaign-below { grid-template-columns: 1fr; }
+}
+@media (max-width: 52rem) {
+    .campaign-hero, .campaign-toolbar, .campaign-insight { grid-template-columns: 1fr; }
+    .campaign-score { grid-template-columns: 1fr; }
+    .campaign-group-title { grid-template-columns: auto auto minmax(0, 1fr) auto auto; }
+    .campaign-group-title .cg-progress { display: none; }
+    .campaign-table { min-width: 65rem; }
+    .campaign-form-grid { grid-template-columns: 1fr; }
+    .campaign-mini-stats { grid-template-columns: 1fr; }
+}

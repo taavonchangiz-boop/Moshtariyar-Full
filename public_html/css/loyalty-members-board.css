@@ -1,0 +1,549 @@
+/* مرکز باشگاه مشتریان و جدول پاداش - همسان با campaigns/workflows/users */
+
+.loyalty-page { width: 100%; max-width: 100%; overflow: hidden; }
+
+/* ==================== هدر اصلی (Hero) ==================== */
+.loyalty-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.72fr) minmax(12rem, 0.52fr);
+    gap: 0.75rem;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.35rem;
+    background:
+        radial-gradient(circle at 8% 0, rgba(245, 158, 11, 0.12), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(139, 92, 246, 0.12), transparent 34%),
+        linear-gradient(135deg, var(--panel), var(--panel2));
+    box-shadow: var(--shadow-sm);
+}
+body.light .loyalty-hero {
+    background:
+        radial-gradient(circle at 8% 0, rgba(245, 158, 11, 0.08), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(139, 92, 246, 0.08), transparent 34%),
+        #ffffff;
+}
+
+.loyalty-eyebrow,
+.loyalty-card header span:not(.loyalty-link):not(.loyalty-pill) {
+    display: inline-flex;
+    width: fit-content;
+    color: #b45309;
+    background: rgba(245, 158, 11, 0.14);
+    border: 1px solid rgba(245, 158, 11, 0.24);
+    border-radius: 999px;
+    padding: 0.2rem 0.72rem;
+    font-size: 0.76rem;
+    line-height: 1.55;
+    font-weight: 1000;
+}
+.loyalty-hero h2 {
+    margin: 0.55rem 0 0;
+    color: var(--txt);
+    font-size: clamp(1.15rem, 1.9vw, 1.72rem);
+    line-height: 1.65;
+    letter-spacing: -0.02rem;
+    font-weight: 1000;
+}
+.loyalty-hero p { margin: 0.42rem 0 0; color: var(--mut); font-size: 0.9rem; line-height: 2; max-width: 54rem; }
+.loyalty-hero-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1rem; }
+
+.loyalty-score { display: grid; gap: 0.42rem; }
+.loyalty-score > a,
+.loyalty-score > div {
+    min-height: 3.75rem;
+    display: grid; align-content: center; gap: 0.04rem;
+    padding: 0.42rem 0.75rem 0.42rem 0.62rem;
+    border: 1px solid var(--line); border-radius: 0.9rem;
+    background: var(--panel);
+    position: relative;
+    text-decoration: none; color: var(--txt);
+    transition: 0.2s;
+}
+body.light .loyalty-score > a,
+body.light .loyalty-score > div { background: #f8fafc; }
+.loyalty-score > a:hover { border-color: rgba(245, 158, 11, 0.35); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+.loyalty-score > a:before,
+.loyalty-score > div:before {
+    content: ''; position: absolute;
+    top: 0.62rem; bottom: 0.62rem; right: 0.32rem;
+    width: 0.22rem; border-radius: 999px;
+    background: var(--metric-color, var(--acc));
+}
+.loyalty-score span, .loyalty-score small { color: var(--mut); font-size: 0.74rem; line-height: 1.65; font-weight: 800; }
+.loyalty-score b { color: var(--acc); font-size: 1.08rem; line-height: 1.45; font-weight: 1000; }
+
+/* ==================== نوار ابزار (فیلترها) ==================== */
+.loyalty-toolbar {
+    display: grid;
+    grid-template-columns: minmax(12rem, 1.4fr) minmax(9rem, 1fr) minmax(9rem, 1fr) auto auto auto auto;
+    gap: 0.75rem;
+    align-items: end;
+    margin-bottom: 1rem;
+    padding: 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+}
+body.light .loyalty-toolbar { background: #f8fafc; }
+.loyalty-toolbar label { display: block; color: var(--mut); font-size: 0.76rem; font-weight: 900; margin-bottom: 0.35rem; }
+.loyalty-toolbar-check {
+    display: flex; align-items: center; gap: 0.55rem;
+    padding: 0.72rem 0.85rem;
+    border: 1px solid var(--line); border-radius: 0.75rem;
+    background: var(--panel); min-height: 2.75rem;
+    line-height: 1; font-size: 0.78rem; color: var(--txt); font-weight: 900;
+    cursor: pointer;
+    white-space: nowrap;
+}
+body.light .loyalty-toolbar-check { background: #ffffff; }
+.loyalty-toolbar-check input { width: auto; min-height: auto; }
+.loyalty-toolbar-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-self: end; }
+.loyalty-toolbar-actions .btn { min-height: 2.75rem; white-space: nowrap; }
+
+/* ==================== نوار خلاصه ==================== */
+.loyalty-insight {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem; margin-bottom: 1rem;
+}
+.loyalty-insight > div {
+    display: flex; align-items: center; gap: 0.65rem;
+    padding: 0.85rem;
+    border: 1px solid var(--line); border-radius: 1rem;
+    background: var(--panel2);
+}
+body.light .loyalty-insight > div { background: #f8fafc; }
+.loyalty-insight b { color: var(--txt); font-size: 1rem; font-weight: 1000; line-height: 1.4; }
+.loyalty-insight small { color: var(--mut); font-size: 0.78rem; line-height: 1.65; }
+.loyalty-dot { width: 0.7rem; height: 0.7rem; border-radius: 999px; flex: 0 0 auto; }
+.loyalty-dot.is-gold   { background: #f59e0b; }
+.loyalty-dot.is-ok     { background: #10b981; }
+.loyalty-dot.is-blue   { background: #3b82f6; }
+.loyalty-dot.is-red    { background: #ef4444; }
+
+/* ==================== لایه اصلی ==================== */
+.loyalty-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.loyalty-main { min-width: 0; display: grid; gap: 1rem; }
+.loyalty-below {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+}
+.loyalty-below > article { min-width: 0; }
+
+/* کارت پایه */
+.loyalty-card {
+    min-width: 0; overflow: hidden;
+    padding: 1rem;
+    border: 1px solid var(--line); border-radius: 1.25rem;
+    background: var(--panel);
+    box-shadow: var(--shadow-sm);
+}
+body.light .loyalty-card { background: #ffffff; border-color: #e5edf7; }
+.loyalty-card.is-accent { position: relative; padding-right: 1.25rem; }
+.loyalty-card.is-accent:before {
+    content: ''; position: absolute;
+    top: 1rem; bottom: 1rem; right: 0.65rem;
+    width: 0.28rem; border-radius: 999px;
+    background: var(--card-color, var(--acc));
+}
+.loyalty-card header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 0.9rem; padding-bottom: 0.95rem; margin-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+}
+.loyalty-card header > div { display: grid; gap: 0.42rem; min-width: 0; }
+.loyalty-card h2 { margin: 0; color: var(--txt); font-weight: 1000; line-height: 1.78; font-size: 1rem; }
+.loyalty-card p { margin: 0.25rem 0 0; color: var(--mut); line-height: 2; }
+
+.loyalty-link {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.42rem 0.85rem; border-radius: 999px;
+    color: #b45309; background: rgba(245, 158, 11, 0.14);
+    border: 1px solid rgba(245, 158, 11, 0.24);
+    font-size: 0.76rem; line-height: 1.6; font-weight: 1000;
+    text-decoration: none; transition: 0.2s;
+}
+.loyalty-link:hover { background: rgba(245, 158, 11, 0.22); transform: translateY(-1px); }
+
+/* ==================== بورد اعضا ==================== */
+.loyalty-board { display: grid; gap: 1rem; }
+.loyalty-group {
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    overflow: hidden;
+    background: var(--panel2);
+}
+body.light .loyalty-group { background: #ffffff; }
+.loyalty-group.is-collapsed .loyalty-table-wrap,
+.loyalty-group.is-collapsed .loyalty-group-add,
+.loyalty-group.is-collapsed .loyalty-group-summary { display: none; }
+
+.loyalty-group-title {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto minmax(0, 1fr) auto auto auto;
+    align-items: center; gap: 0.65rem;
+    padding: 0.75rem 0.85rem;
+    border: 0; border-right: 0.32rem solid var(--group-color);
+    background: var(--panel);
+    color: var(--txt);
+    font-family: inherit;
+    cursor: pointer; text-align: right;
+    transition: background 0.15s ease;
+}
+body.light .loyalty-group-title { background: #ffffff; }
+.loyalty-group-title:hover { background: var(--panel2); }
+body.light .loyalty-group-title:hover { background: #f8fafc; }
+
+.loyalty-group-title .lg-caret { transition: transform 0.18s ease; color: var(--group-color); font-size: 0.85rem; }
+.loyalty-group.is-open .lg-caret { transform: rotate(-90deg); }
+.loyalty-group-title .lg-mark { width: 0.75rem; height: 0.75rem; border-radius: 0.28rem; background: var(--group-color); flex: 0 0 auto; }
+.loyalty-group-title > .lg-title-block { min-width: 0; display: grid; gap: 0.1rem; }
+.loyalty-group-title b { line-height: 1.55; color: var(--group-color); font-weight: 1000; font-size: 0.9rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.loyalty-group-title small { color: var(--mut); font-size: 0.74rem; line-height: 1.65; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.loyalty-group-title .lg-count {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 1.85rem; height: 1.55rem;
+    padding: 0 0.55rem; border-radius: 999px;
+    background: var(--group-color); color: #ffffff;
+    font-size: 0.76rem; font-weight: 1000; line-height: 1;
+}
+.loyalty-group-title .lg-progress {
+    width: 5.5rem; height: 0.45rem; border-radius: 999px;
+    background: rgba(148, 163, 184, 0.18);
+    overflow: hidden; position: relative;
+}
+.loyalty-group-title .lg-progress:after {
+    content: ''; position: absolute; top: 0; right: 0; bottom: 0;
+    width: var(--group-ratio, 0%);
+    background: var(--group-color); border-radius: 999px;
+}
+.loyalty-group-title .lg-ratio { color: var(--mut); font-size: 0.74rem; font-weight: 900; line-height: 1.6; white-space: nowrap; min-width: 2.5rem; text-align: left; }
+
+/* خلاصه گروه (امتیاز و کیف پول جمع) */
+.loyalty-group-summary {
+    display: flex; flex-wrap: wrap; gap: 0.65rem;
+    padding: 0.5rem 0.85rem;
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+    font-size: 0.76rem; color: var(--mut);
+    font-weight: 900;
+}
+body.light .loyalty-group-summary { background: #ffffff; }
+.loyalty-group-summary b { color: var(--txt); font-weight: 1000; }
+.loyalty-group-summary > span {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.28rem 0.65rem;
+    border-radius: 999px;
+    background: var(--panel2);
+    border: 1px solid var(--line);
+}
+body.light .loyalty-group-summary > span { background: #f8fafc; }
+
+.loyalty-table-wrap { overflow-x: auto; }
+.loyalty-table { min-width: 78rem; }
+
+.loyalty-thead {
+    display: grid;
+    grid-template-columns: 1.7fr 1.1fr 0.9fr 0.9fr 0.85fr 0.9fr 1fr 1.15fr;
+    align-items: center;
+    color: var(--mut); font-size: 0.74rem; font-weight: 900;
+    border-bottom: 1px solid var(--line);
+    background: var(--panel2);
+}
+body.light .loyalty-thead { background: #f8fafc; }
+.loyalty-thead > div,
+.loyalty-cell {
+    padding: 0.7rem 0.75rem;
+    border-left: 1px solid var(--line);
+    min-width: 0;
+}
+.loyalty-thead > div:last-child,
+.loyalty-cell:last-child { border-left: 0; }
+
+.loyalty-row {
+    border-bottom: 1px solid var(--line);
+    background: var(--panel);
+}
+body.light .loyalty-row { background: #ffffff; }
+.loyalty-row:last-of-type { border-bottom: 0; }
+.loyalty-row > summary {
+    display: grid;
+    grid-template-columns: 1.7fr 1.1fr 0.9fr 0.9fr 0.85fr 0.9fr 1fr 1.15fr;
+    align-items: center;
+    list-style: none;
+    cursor: pointer;
+    transition: background 0.12s ease;
+}
+.loyalty-row > summary::-webkit-details-marker { display: none; }
+.loyalty-row > summary:hover { background: rgba(245, 158, 11, 0.04); }
+.loyalty-row[open] > summary { background: rgba(245, 158, 11, 0.07); border-bottom: 1px solid var(--line); }
+
+.loyalty-cell { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 1.75; font-size: 0.84rem; }
+
+/* سلول شخص با آواتار */
+.loyalty-cell-person {
+    display: flex; align-items: center; gap: 0.6rem;
+    min-width: 0;
+}
+.loyalty-avatar {
+    flex: 0 0 auto;
+    width: 2.4rem; height: 2.4rem;
+    display: grid; place-items: center;
+    border-radius: 0.7rem;
+    background: color-mix(in srgb, var(--tier-color, var(--acc)) 15%, transparent);
+    color: var(--tier-color, var(--acc));
+    font-weight: 1000;
+    font-size: 0.95rem;
+}
+.loyalty-cell-person > div { min-width: 0; display: flex; flex-direction: column; gap: 0.1rem; }
+.loyalty-cell-person b {
+    color: var(--txt); font-weight: 900; font-size: 0.84rem; line-height: 1.5;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.loyalty-cell-person small {
+    color: var(--mut); font-size: 0.72rem; line-height: 1.55;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    direction: ltr;
+}
+
+/* پیل ها */
+.loyalty-pill {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 1.65rem; border-radius: 0.42rem;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.73rem; font-weight: 900; line-height: 1.5;
+    color: #ffffff; background: #64748b;
+    max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    gap: 0.25rem;
+}
+.loyalty-pill.is-tier     { background: var(--tier-color, #f59e0b); }
+.loyalty-pill.is-notier   { background: transparent; color: #dc2626; border: 1px dashed rgba(220, 38, 38, 0.3); font-weight: 700; }
+.loyalty-pill.is-point    { background: #f59e0b; }
+.loyalty-pill.is-wallet   { background: #10b981; }
+.loyalty-pill.is-refcode  { background: transparent; color: var(--txt); border: 1px solid var(--line); font-family: inherit; direction: ltr; font-weight: 900; }
+.loyalty-pill.is-noref    { background: transparent; color: #dc2626; border: 1px dashed rgba(220, 38, 38, 0.3); font-weight: 700; }
+.loyalty-pill.is-complete { background: #10b981; }
+.loyalty-pill.is-partial  { background: #f59e0b; }
+.loyalty-pill.is-empty    { background: transparent; color: var(--mut); border: 1px dashed var(--line); font-weight: 700; }
+
+/* عملیات سلول */
+.loyalty-cell-actions { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.loyalty-cell-actions a,
+.loyalty-cell-actions button {
+    min-height: 2rem;
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0 0.7rem;
+    border: 1px solid var(--line); border-radius: 0.55rem;
+    background: var(--panel2); color: var(--txt);
+    font-family: inherit; font-size: 0.74rem; font-weight: 900; line-height: 1;
+    cursor: pointer; text-decoration: none;
+    transition: 0.15s;
+}
+body.light .loyalty-cell-actions a,
+body.light .loyalty-cell-actions button { background: #f8fafc; }
+.loyalty-cell-actions a:hover,
+.loyalty-cell-actions button:hover { border-color: rgba(245, 158, 11, 0.35); color: #b45309; }
+.loyalty-cell-actions .is-primary { background: rgba(16, 185, 129, 0.12); color: #047857; border-color: rgba(16, 185, 129, 0.28); }
+.loyalty-cell-actions .is-primary:hover { background: rgba(16, 185, 129, 0.2); color: #065f46; }
+
+/* پنل جزئیات کشویی هر عضو */
+.loyalty-detail-panel {
+    padding: 1rem;
+    background: var(--panel2);
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+}
+body.light .loyalty-detail-panel { background: #f8fafc; }
+.loyalty-detail-block {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 0.9rem;
+    padding: 0.85rem;
+}
+body.light .loyalty-detail-block { background: #ffffff; }
+.loyalty-detail-block h4 {
+    margin: 0 0 0.7rem;
+    color: var(--txt);
+    font-size: 0.86rem;
+    font-weight: 1000;
+    line-height: 1.55;
+    display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+}
+.loyalty-detail-block h4 span {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.14rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(245, 158, 11, 0.14);
+    color: #b45309;
+    font-size: 0.7rem; font-weight: 1000;
+}
+
+/* شبکه اطلاعات پاداش */
+.loyalty-reward-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-bottom: 0.85rem;
+}
+.loyalty-reward-grid > div {
+    display: grid; gap: 0.15rem;
+    padding: 0.55rem 0.65rem;
+    border: 1px solid var(--line); border-radius: 0.65rem;
+    background: var(--panel2);
+    text-align: center;
+}
+body.light .loyalty-reward-grid > div { background: #f8fafc; }
+.loyalty-reward-grid span { color: var(--mut); font-size: 0.7rem; line-height: 1.55; font-weight: 900; }
+.loyalty-reward-grid b { color: var(--txt); font-size: 0.95rem; line-height: 1.5; font-weight: 1000; }
+.loyalty-reward-grid > div.is-point b { color: #b45309; }
+.loyalty-reward-grid > div.is-wallet b { color: #047857; }
+.loyalty-reward-grid > div.is-coin b { color: #b45309; }
+.loyalty-reward-grid > div.is-discount b { color: #6d28d9; }
+
+/* لیست تاریخچه تراکنش پاداش */
+.loyalty-history { display: grid; gap: 0.4rem; }
+.loyalty-history-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center; gap: 0.6rem;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid var(--line); border-radius: 0.6rem;
+    background: var(--panel2);
+    font-size: 0.78rem;
+}
+body.light .loyalty-history-row { background: #f8fafc; }
+.loyalty-history-row .lh-icon {
+    width: 1.85rem; height: 1.85rem;
+    display: grid; place-items: center;
+    border-radius: 999px;
+    background: rgba(245, 158, 11, 0.14);
+    color: #b45309;
+    font-weight: 1000; font-size: 0.85rem;
+}
+.loyalty-history-row .lh-icon.is-plus  { background: rgba(16, 185, 129, 0.14); color: #047857; }
+.loyalty-history-row .lh-icon.is-minus { background: rgba(239, 68, 68, 0.14); color: #b91c1c; }
+.loyalty-history-row b { color: var(--txt); font-weight: 900; line-height: 1.5; }
+.loyalty-history-row small { color: var(--mut); font-size: 0.72rem; line-height: 1.5; display: block; }
+.loyalty-history-row .lh-value {
+    display: inline-flex; align-items: center;
+    padding: 0.26rem 0.6rem; border-radius: 999px;
+    background: rgba(245, 158, 11, 0.14);
+    color: #b45309; font-weight: 1000; font-size: 0.76rem;
+    white-space: nowrap;
+}
+.loyalty-history-row .lh-value.is-plus  { background: rgba(16, 185, 129, 0.14); color: #047857; }
+.loyalty-history-row .lh-value.is-minus { background: rgba(239, 68, 68, 0.14); color: #b91c1c; }
+
+.loyalty-history-empty,
+.loyalty-detail-empty {
+    padding: 0.9rem 0.75rem;
+    color: var(--mut);
+    border: 1px dashed var(--line);
+    border-radius: 0.65rem;
+    background: var(--panel2);
+    text-align: center;
+    font-size: 0.78rem;
+    line-height: 1.85;
+}
+body.light .loyalty-history-empty,
+body.light .loyalty-detail-empty { background: #f8fafc; }
+
+/* دکمه‌های سریع پرداخت پاداش */
+.loyalty-detail-actions {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    margin-top: 0.7rem;
+}
+.loyalty-detail-actions button,
+.loyalty-detail-actions a {
+    min-height: 2.1rem;
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0 0.75rem;
+    border: 1px solid var(--line); border-radius: 0.6rem;
+    background: var(--panel2); color: var(--txt);
+    font-family: inherit; font-size: 0.74rem; font-weight: 900;
+    cursor: pointer; text-decoration: none;
+    transition: 0.15s;
+}
+body.light .loyalty-detail-actions button,
+body.light .loyalty-detail-actions a { background: #f8fafc; }
+.loyalty-detail-actions button:hover,
+.loyalty-detail-actions a:hover { border-color: rgba(245, 158, 11, 0.35); color: #b45309; }
+.loyalty-detail-actions .is-primary { background: rgba(16, 185, 129, 0.12); color: #047857; border-color: rgba(16, 185, 129, 0.28); }
+.loyalty-detail-actions .is-primary:hover { background: rgba(16, 185, 129, 0.2); color: #065f46; }
+
+.loyalty-group-empty {
+    padding: 1.2rem 1rem;
+    color: var(--mut);
+    text-align: center;
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+    font-size: 0.82rem;
+    line-height: 1.85;
+}
+body.light .loyalty-group-empty { background: #ffffff; }
+
+.loyalty-group-add {
+    display: flex; align-items: center; gap: 0.4rem;
+    padding: 0.65rem 0.85rem;
+    color: var(--mut); font-size: 0.76rem; font-weight: 900;
+    cursor: pointer; text-decoration: none;
+    border-top: 1px solid var(--line);
+    background: var(--panel2);
+    transition: 0.15s;
+}
+body.light .loyalty-group-add { background: #f8fafc; }
+.loyalty-group-add:hover { color: #b45309; background: rgba(245, 158, 11, 0.08); }
+
+/* ==================== پیشنهاد دستیار و فرم پاداش ==================== */
+.loyalty-suggest-list { display: grid; gap: 0.65rem; }
+.loyalty-suggest-list button {
+    text-align: right; border: 1px solid var(--line); border-radius: 1rem;
+    background: var(--panel2); padding: 0.85rem;
+    font-family: inherit; cursor: pointer; transition: 0.2s;
+}
+body.light .loyalty-suggest-list button { background: #f8fafc; }
+.loyalty-suggest-list button:hover { border-color: rgba(245, 158, 11, 0.35); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+.loyalty-suggest-list b { display: block; color: var(--txt); line-height: 1.75; font-weight: 1000; font-size: 0.86rem; }
+.loyalty-suggest-list small { display: block; color: var(--mut); line-height: 1.85; margin-top: 0.15rem; font-size: 0.76rem; }
+
+.loyalty-quick-form { display: grid; gap: 0.75rem; }
+.loyalty-quick-form label { display: block; color: var(--mut); font-size: 0.78rem; font-weight: 900; margin-bottom: 0.35rem; line-height: 1.7; }
+.loyalty-quick-form input, .loyalty-quick-form select { min-height: 2.75rem; line-height: 1.8; }
+.loyalty-quick-form small { display: block; margin-top: 0.35rem; color: var(--mut); font-size: 0.74rem; line-height: 1.75; }
+.loyalty-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.65rem; }
+.loyalty-form-wide { grid-column: 1 / -1; }
+
+/* ==================== واکنش‌گرا ==================== */
+@media (max-width: 96rem) {
+    .loyalty-toolbar { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .loyalty-reward-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 78rem) {
+    .loyalty-insight { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .loyalty-hero { grid-template-columns: 1fr; }
+    .loyalty-score { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .loyalty-toolbar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .loyalty-detail-panel { grid-template-columns: 1fr; }
+    .loyalty-below { grid-template-columns: 1fr; }
+}
+@media (max-width: 52rem) {
+    .loyalty-hero, .loyalty-toolbar, .loyalty-insight { grid-template-columns: 1fr; }
+    .loyalty-score { grid-template-columns: 1fr; }
+    .loyalty-group-title { grid-template-columns: auto auto minmax(0, 1fr) auto auto; }
+    .loyalty-group-title .lg-progress { display: none; }
+    .loyalty-table { min-width: 65rem; }
+    .loyalty-form-grid { grid-template-columns: 1fr; }
+    .loyalty-reward-grid { grid-template-columns: 1fr; }
+}

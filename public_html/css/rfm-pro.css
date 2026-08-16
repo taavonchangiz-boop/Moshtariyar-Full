@@ -1,0 +1,282 @@
+/* ظاهر حرفه‌ای تحلیل رفتار مشتریان */
+.rfm-pro-page {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* سکشن معرفی بالای تحلیل */
+.rfm-pro-page > div:first-child {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.72fr) auto !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    padding: 1rem !important;
+    margin-bottom: 1rem !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 1.35rem !important;
+    background:
+        radial-gradient(circle at 8% 0, rgba(14, 165, 233, 0.12), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(16, 185, 129, 0.10), transparent 34%),
+        linear-gradient(135deg, var(--panel), var(--panel2)) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+body.light .rfm-pro-page > div:first-child {
+    background:
+        radial-gradient(circle at 8% 0, rgba(14, 165, 233, 0.08), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(16, 185, 129, 0.07), transparent 34%),
+        #ffffff !important;
+}
+
+.rfm-pro-page > div:first-child h2 {
+    margin: 0 0 0.35rem !important;
+    color: var(--txt) !important;
+    font-size: clamp(1.35rem, 2.4vw, 2.12rem) !important;
+    line-height: 1.65 !important;
+    letter-spacing: -0.02rem !important;
+}
+
+.rfm-pro-page > div:first-child p {
+    margin: 0 !important;
+    color: var(--mut) !important;
+    font-size: 0.9rem !important;
+    line-height: 2 !important;
+    max-width: 54rem !important;
+}
+
+.rfm-pro-page > div:first-child .btn {
+    min-height: 2.55rem !important;
+    border-radius: 0.9rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* کارت‌های آماری بالا */
+.rfm-stats-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    gap: 0.65rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.rfm-stat {
+    min-height: 5rem !important;
+    display: grid !important;
+    align-content: center !important;
+    gap: 0.1rem !important;
+    padding: 0.7rem 0.75rem !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 1rem !important;
+    background: var(--panel) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+body.light .rfm-stat {
+    background: #ffffff !important;
+    border-color: #e5edf7 !important;
+}
+
+.rfm-stat > div:first-child {
+    font-size: 1.35rem !important;
+    margin: 0 !important;
+    line-height: 1.25 !important;
+}
+
+.rfm-stat > div:nth-child(2) {
+    font-size: 1.08rem !important;
+    line-height: 1.45 !important;
+    margin: 0 !important;
+}
+
+.rfm-stat .muted,
+.rfm-stat > div:last-child {
+    font-size: 0.74rem !important;
+    line-height: 1.65 !important;
+    margin: 0 !important;
+}
+
+/* نمودارها */
+.rfm-charts {
+    gap: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.rfm-charts > .card,
+.rfm-pro-page > .card {
+    border-radius: 1.2rem !important;
+    padding: 1rem !important;
+    background: var(--panel) !important;
+    border-color: var(--line) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+body.light .rfm-charts > .card,
+body.light .rfm-pro-page > .card {
+    background: #ffffff !important;
+    border-color: #e5edf7 !important;
+}
+
+.rfm-charts h3,
+.rfm-pro-page .card h3 {
+    line-height: 1.78 !important;
+    margin-top: 0 !important;
+}
+
+.rfm-charts p,
+.rfm-pro-page .card p,
+.rfm-pro-page .muted {
+    line-height: 1.95 !important;
+}
+
+/* نقشه درختی */
+.rfm-treemap {
+    gap: 0.65rem !important;
+    min-height: 18rem !important;
+}
+
+.rfm-tm-block {
+    border-radius: 1rem !important;
+    padding: 1rem !important;
+    min-height: 6rem !important;
+    line-height: 1.75 !important;
+}
+
+.rfm-tm-block > div:first-child {
+    font-size: 1.35rem !important;
+    line-height: 1.4 !important;
+}
+
+.rfm-tm-block > div:nth-child(2) {
+    font-size: 0.9rem !important;
+    line-height: 1.75 !important;
+}
+
+.rfm-tm-block > div:nth-child(3) {
+    font-size: 0.74rem !important;
+    line-height: 1.85 !important;
+}
+
+/* راهنمای نمودار دایره‌ای */
+.rfm-legend > div {
+    padding: 0.45rem 0 !important;
+    line-height: 1.75 !important;
+}
+
+/* گزارش مهاجرت */
+.rfm-mig-grid {
+    gap: 0.65rem !important;
+}
+
+.rfm-mig-grid > div {
+    min-height: 5rem !important;
+    display: grid !important;
+    align-content: center !important;
+    padding: 0.75rem !important;
+    border-radius: 1rem !important;
+}
+
+/* دکمه‌های گروه‌ها */
+.rfm-seg-grid {
+    gap: 0.65rem !important;
+}
+
+.rfm-seg-btn {
+    min-height: 3.35rem !important;
+    padding: 0.7rem 0.85rem !important;
+    border-radius: 1rem !important;
+    line-height: 1.75 !important;
+}
+
+.rfm-seg-btn.active {
+    border-color: var(--acc) !important;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.10) !important;
+}
+
+/* ردیف مشتریان */
+.rfm-list {
+    gap: 0.8rem !important;
+}
+
+.rfm-row {
+    position: relative !important;
+    padding: 1rem 1.2rem 1rem 1rem !important;
+    border-radius: 1.15rem !important;
+    border: 1px solid var(--line) !important;
+    border-right-width: 0.32rem !important;
+    background: var(--panel2) !important;
+}
+
+body.light .rfm-row {
+    background: #f8fafc !important;
+}
+
+.rfm-row a.customer-link,
+.rfm-row a[style*="font-weight:900"] {
+    line-height: 1.78 !important;
+    font-size: 1rem !important;
+}
+
+.rfm-meta {
+    gap: 0.6rem !important;
+    line-height: 1.9 !important;
+    font-size: 0.82rem !important;
+}
+
+.rfm-bars {
+    gap: 0.55rem !important;
+    margin-bottom: 0.8rem !important;
+}
+
+.rfm-bars > div {
+    padding: 0.65rem !important;
+    border-radius: 0.9rem !important;
+}
+
+.rfm-bars span,
+.rfm-bars small {
+    line-height: 1.75 !important;
+}
+
+.rfm-row .card {
+    border-radius: 0.9rem !important;
+    line-height: 1.95 !important;
+}
+
+/* موبایل و تبلت */
+@media (max-width: 92rem) {
+    .rfm-stats-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+}
+
+@media (max-width: 72rem) {
+    .rfm-pro-page > div:first-child,
+    .rfm-charts {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 48rem) {
+    .rfm-pro-page > div:first-child,
+    .rfm-charts > .card,
+    .rfm-pro-page > .card {
+        border-radius: 1rem !important;
+        padding: 0.85rem !important;
+    }
+
+    .rfm-stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .rfm-stat {
+        min-height: 4.6rem !important;
+    }
+
+    .rfm-mig-grid,
+    .rfm-meta,
+    .rfm-bars,
+    .rfm-seg-grid {
+        grid-template-columns: 1fr !important;
+    }
+}

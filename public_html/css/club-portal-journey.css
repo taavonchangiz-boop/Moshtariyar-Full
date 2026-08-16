@@ -1,0 +1,416 @@
+/* ظاهر حرفه‌ای سفر مشتری در باشگاه */
+.club-journey-page {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.club-journey-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
+    gap: 1rem;
+    align-items: stretch;
+    padding: 1.15rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.4rem;
+    background:
+        radial-gradient(circle at 8% 0, rgba(16, 185, 129, 0.14), transparent 30%),
+        radial-gradient(circle at 94% 0, rgba(124, 58, 237, 0.14), transparent 34%),
+        linear-gradient(135deg, var(--panel), var(--panel2));
+    box-shadow: 0 1.2rem 3.4rem rgba(15, 23, 42, 0.10);
+    overflow: hidden;
+}
+
+body.light .club-journey-hero {
+    background:
+        radial-gradient(circle at 8% 0, rgba(16, 185, 129, 0.09), transparent 30%),
+        radial-gradient(circle at 94% 0, rgba(124, 58, 237, 0.09), transparent 34%),
+        #ffffff;
+}
+
+.club-journey-hero:after {
+    content: '';
+    position: absolute;
+    left: -5rem;
+    bottom: -7rem;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(16, 185, 129, 0.13));
+    pointer-events: none;
+}
+
+.club-journey-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+.club-journey-eyebrow,
+.club-journey-card header span,
+.club-journey-chip {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    gap: 0.35rem;
+    color: #0284c7;
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    border-radius: 999px;
+    padding: 0.18rem 0.7rem;
+    font-size: 0.74rem;
+    font-weight: 1000;
+}
+
+.club-journey-hero h1 {
+    margin: 0.55rem 0 0.25rem;
+    color: var(--txt);
+    font-size: clamp(1.35rem, 4vw, 2.35rem);
+    line-height: 1.45;
+    letter-spacing: -0.03rem;
+}
+
+.club-journey-hero p {
+    margin: 0.4rem 0 0;
+    color: var(--mut);
+    max-width: 45rem;
+    line-height: 1.95;
+}
+
+.club-journey-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1rem;
+}
+
+.club-journey-actions .btn,
+.club-journey-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.club-journey-score-grid {
+    display: grid;
+    gap: 0.7rem;
+}
+
+.club-journey-score-grid > div {
+    padding: 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel);
+}
+
+body.light .club-journey-score-grid > div {
+    background: #f8fafc;
+}
+
+.club-journey-score-grid span,
+.club-journey-score-grid small {
+    display: block;
+    color: var(--mut);
+    font-size: 0.74rem;
+    font-weight: 800;
+}
+
+.club-journey-score-grid b {
+    display: block;
+    margin-top: 0.15rem;
+    color: var(--acc);
+    font-size: 1.25rem;
+    line-height: 1.55;
+    font-weight: 1000;
+}
+
+.club-journey-lanes {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.club-journey-lane {
+    position: relative;
+    overflow: hidden;
+    min-width: 0;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.2rem;
+    background: var(--glass);
+    box-shadow: 0 1rem 2.5rem rgba(15, 23, 42, 0.08);
+}
+
+body.light .club-journey-lane {
+    background: #ffffff;
+}
+
+.club-journey-lane:before {
+    content: '';
+    position: absolute;
+    top: 0.9rem;
+    bottom: 0.9rem;
+    right: 0.55rem;
+    width: 0.25rem;
+    border-radius: 999px;
+    background: var(--lane-color, var(--acc));
+}
+
+.club-journey-lane i {
+    width: 2.8rem;
+    height: 2.8rem;
+    display: grid;
+    place-items: center;
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--lane-color, var(--acc)) 14%, transparent);
+    color: var(--lane-color, var(--acc));
+    font-style: normal;
+    font-size: 1.25rem;
+}
+
+.club-journey-lane h3 {
+    margin: 0.65rem 0 0;
+    color: var(--txt);
+    line-height: 1.55;
+}
+
+.club-journey-lane p {
+    margin: 0.25rem 0 0;
+    color: var(--mut);
+    font-size: 0.78rem;
+    line-height: 1.75;
+}
+
+.club-journey-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.78fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.club-journey-card {
+    min-width: 0;
+    overflow: hidden;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    background: var(--glass);
+    box-shadow: 0 1rem 2.8rem rgba(15, 23, 42, 0.08);
+}
+
+body.light .club-journey-card {
+    background: #ffffff;
+}
+
+.club-journey-card.is-accent {
+    position: relative;
+    padding-right: 1.25rem;
+}
+
+.club-journey-card.is-accent:before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    bottom: 1rem;
+    right: 0.65rem;
+    width: 0.28rem;
+    border-radius: 999px;
+    background: var(--journey-card-color, var(--acc));
+}
+
+.club-journey-card header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.8rem;
+    padding-bottom: 0.8rem;
+    margin-bottom: 0.85rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.club-journey-card h2,
+.club-journey-card h3 {
+    margin: 0;
+    color: var(--txt);
+    line-height: 1.55;
+}
+
+.club-journey-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    min-width: fit-content;
+    padding: 0.28rem 0.7rem;
+    border-radius: 999px;
+    color: var(--acc);
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    font-size: 0.76rem;
+    font-weight: 1000;
+    white-space: nowrap;
+}
+
+.club-journey-timeline {
+    position: relative;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.club-journey-timeline:before {
+    content: '';
+    position: absolute;
+    top: 0.6rem;
+    bottom: 0.6rem;
+    right: 1.52rem;
+    width: 0.18rem;
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(14,165,233,.45), rgba(16,185,129,.25));
+}
+
+.club-journey-event {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.85rem;
+    padding-right: 0.7rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+    min-width: 0;
+    z-index: 1;
+}
+
+body.light .club-journey-event {
+    background: #f8fafc;
+}
+
+.club-journey-event-icon {
+    width: 3.15rem;
+    height: 3.15rem;
+    display: grid;
+    place-items: center;
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--event-color, var(--acc)) 15%, #ffffff);
+    color: var(--event-color, var(--acc));
+    border: 1px solid color-mix(in srgb, var(--event-color, var(--acc)) 24%, transparent);
+    font-size: 1.35rem;
+    font-weight: 1000;
+}
+
+.club-journey-event h3 {
+    margin: 0;
+    color: var(--txt);
+    font-size: 0.94rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+
+.club-journey-event p,
+.club-journey-event small {
+    display: block;
+    margin: 0.13rem 0 0;
+    color: var(--mut);
+    font-size: 0.78rem;
+    line-height: 1.75;
+}
+
+.club-journey-next-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.club-journey-next-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.75rem;
+    padding: 0.85rem;
+    border: 1px solid color-mix(in srgb, var(--next-color, var(--acc)) 24%, var(--line));
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--next-color, var(--acc)) 8%, transparent);
+}
+
+.club-journey-next-card i {
+    width: 2.8rem;
+    height: 2.8rem;
+    display: grid;
+    place-items: center;
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--next-color, var(--acc)) 14%, transparent);
+    color: var(--next-color, var(--acc));
+    font-style: normal;
+    font-size: 1.25rem;
+}
+
+.club-journey-next-card h3 {
+    margin: 0;
+    color: var(--txt);
+    font-size: 0.94rem;
+}
+
+.club-journey-next-card p {
+    margin: 0.25rem 0 0;
+    color: var(--mut);
+    font-size: 0.78rem;
+    line-height: 1.75;
+}
+
+.club-journey-empty {
+    display: grid;
+    place-items: center;
+    min-height: 8rem;
+    padding: 1rem;
+    color: var(--mut);
+    text-align: center;
+    border: 1px dashed var(--line);
+    border-radius: 1rem;
+}
+
+@media (max-width: 72rem) {
+    .club-journey-hero,
+    .club-journey-grid,
+    .club-journey-lanes {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 44rem) {
+    .club-journey-hero,
+    .club-journey-card,
+    .club-journey-lane {
+        border-radius: 1rem;
+        padding: 0.85rem;
+    }
+
+    .club-journey-card.is-accent {
+        padding-right: 1.05rem;
+    }
+
+    .club-journey-card.is-accent:before,
+    .club-journey-lane:before {
+        right: 0.45rem;
+        top: 0.8rem;
+        bottom: 0.8rem;
+    }
+
+    .club-journey-actions .btn,
+    .club-journey-actions a {
+        width: 100%;
+    }
+
+    .club-journey-event {
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .club-journey-event > a,
+    .club-journey-badge {
+        grid-column: 1 / -1;
+        width: 100%;
+        justify-content: center;
+    }
+}

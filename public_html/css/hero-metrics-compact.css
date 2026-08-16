@@ -1,0 +1,685 @@
+/* استانداردسازی کارت‌های آماری بالای صفحات پنل مدیریت و باشگاه مشتریان */
+
+/* چیدمان کلی سکشن‌های معرفی بالای صفحه */
+:is(
+    .segments-hero,
+    .customers-hero,
+    .orders-hero,
+    .pipeline-hero,
+    .products-hero,
+    .reminders-hero,
+    .tickets-hero,
+    .woocommerce-hero,
+    .sync-logs-hero,
+    .campaigns-hero,
+    .loyalty-wheel-hero,
+    .loyalty-report-hero,
+    .loyalty-settings-hero,
+    .club-dashboard-hero,
+    .club-orders-hero,
+    .club-transactions-hero,
+    .club-journey-hero,
+    .club-profile-hero,
+    .club-reward-hero,
+    .club-growth-hero,
+    .support-hero
+) {
+    align-items: center !important;
+    gap: 0.85rem !important;
+    padding: 0.85rem 1rem !important;
+    min-height: auto !important;
+}
+
+/* ستون متن معرفی صفحه */
+:is(
+    .segments-hero-main,
+    .customers-hero-main,
+    .orders-hero-main,
+    .pipeline-hero-main,
+    .products-hero-main,
+    .reminders-hero-main,
+    .tickets-hero-main,
+    .woocommerce-hero-main,
+    .sync-logs-hero-main,
+    .campaigns-hero-main,
+    .loyalty-wheel-hero-main,
+    .loyalty-report-hero-main,
+    .loyalty-settings-hero-main,
+    .club-dashboard-hero-main,
+    .support-hero > div:first-child,
+    .club-orders-hero > div:first-child,
+    .club-transactions-hero > div:first-child,
+    .club-journey-hero > div:first-child,
+    .club-profile-identity,
+    .club-reward-hero > div:first-child,
+    .club-growth-hero > div:first-child
+) {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* عنوان‌های سکشن معرفی */
+:is(
+    .segments-hero,
+    .customers-hero,
+    .orders-hero,
+    .pipeline-hero,
+    .products-hero,
+    .reminders-hero,
+    .tickets-hero,
+    .woocommerce-hero,
+    .sync-logs-hero,
+    .campaigns-hero,
+    .loyalty-wheel-hero,
+    .loyalty-report-hero,
+    .loyalty-settings-hero,
+    .club-dashboard-hero,
+    .club-orders-hero,
+    .club-transactions-hero,
+    .club-journey-hero,
+    .club-profile-hero,
+    .club-reward-hero,
+    .club-growth-hero,
+    .support-hero
+) :is(h1, h2) {
+    font-size: clamp(1.12rem, 1.45vw, 1.55rem) !important;
+    line-height: 1.45 !important;
+    margin-top: 0.35rem !important;
+    margin-bottom: 0 !important;
+}
+
+/* توضیح کوتاه زیر عنوان */
+:is(
+    .segments-hero,
+    .customers-hero,
+    .orders-hero,
+    .pipeline-hero,
+    .products-hero,
+    .reminders-hero,
+    .tickets-hero,
+    .woocommerce-hero,
+    .sync-logs-hero,
+    .campaigns-hero,
+    .loyalty-wheel-hero,
+    .loyalty-report-hero,
+    .loyalty-settings-hero,
+    .club-dashboard-hero,
+    .club-orders-hero,
+    .club-transactions-hero,
+    .club-journey-hero,
+    .club-profile-hero,
+    .club-reward-hero,
+    .club-growth-hero,
+    .support-hero
+) p {
+    font-size: 0.8rem !important;
+    line-height: 1.75 !important;
+    margin-top: 0.35rem !important;
+    max-width: 52rem !important;
+}
+
+/* نشان کوچک بالای عنوان */
+:is(
+    .segments-eyebrow,
+    .customers-eyebrow,
+    .orders-eyebrow,
+    .pipeline-eyebrow,
+    .products-eyebrow,
+    .reminders-eyebrow,
+    .tickets-eyebrow,
+    .woocommerce-eyebrow,
+    .sync-logs-eyebrow,
+    .campaigns-eyebrow,
+    .loyalty-wheel-hero-main > span,
+    .loyalty-report-hero-main > span,
+    .loyalty-settings-hero-main > span,
+    .club-dashboard-eyebrow,
+    .club-orders-eyebrow,
+    .club-transactions-eyebrow,
+    .club-journey-eyebrow,
+    .club-profile-eyebrow,
+    .club-reward-eyebrow,
+    .club-growth-eyebrow,
+    .support-eyebrow
+) {
+    padding: 0.14rem 0.58rem !important;
+    font-size: 0.68rem !important;
+    margin-bottom: 0.35rem !important;
+}
+
+/* شبکه کارت‌های آماری سمت چپ سکشن معرفی */
+:is(
+    .segments-hero-metrics,
+    .customers-hero-metrics,
+    .orders-hero-metrics,
+    .pipeline-hero-metrics,
+    .products-hero-metrics,
+    .reminders-hero-metrics,
+    .tickets-hero-metrics,
+    .woocommerce-hero-metrics,
+    .sync-logs-hero-metrics,
+    .campaigns-hero-metrics,
+    .loyalty-wheel-metrics,
+    .loyalty-report-hero-metrics,
+    .loyalty-settings-hero-metrics,
+    .club-orders-score-grid,
+    .club-transactions-score-grid,
+    .club-journey-score-grid,
+    .club-profile-score,
+    .club-reward-score,
+    .club-growth-score,
+    .support-score-grid
+) {
+    align-content: center !important;
+    gap: 0.5rem !important;
+}
+
+/* کارت‌های آماری داخل سکشن معرفی */
+:is(
+    .segments-metric-card,
+    .customers-metric-card,
+    .orders-metric-card,
+    .pipeline-metric-card,
+    .products-metric-card,
+    .reminders-metric-card,
+    .tickets-metric-card,
+    .woocommerce-metric-card,
+    .sync-logs-metric-card,
+    .campaigns-metric-card,
+    .loyalty-wheel-metrics > div,
+    .loyalty-report-hero-metrics > div,
+    .loyalty-settings-hero-metrics > div,
+    .club-orders-score-grid > div,
+    .club-transactions-score-grid > div,
+    .club-journey-score-grid > div,
+    .club-profile-score > div,
+    .club-reward-score > div,
+    .club-growth-score > div,
+    .support-score-grid > div
+) {
+    min-height: 4.15rem !important;
+    padding: 0.55rem 0.65rem !important;
+    border-radius: 0.85rem !important;
+    display: grid !important;
+    align-content: center !important;
+    gap: 0.1rem !important;
+}
+
+/* متن‌های کارت‌های آماری */
+:is(
+    .segments-metric-card,
+    .customers-metric-card,
+    .orders-metric-card,
+    .pipeline-metric-card,
+    .products-metric-card,
+    .reminders-metric-card,
+    .tickets-metric-card,
+    .woocommerce-metric-card,
+    .sync-logs-metric-card,
+    .campaigns-metric-card,
+    .loyalty-wheel-metrics > div,
+    .loyalty-report-hero-metrics > div,
+    .loyalty-settings-hero-metrics > div,
+    .club-orders-score-grid > div,
+    .club-transactions-score-grid > div,
+    .club-journey-score-grid > div,
+    .club-profile-score > div,
+    .club-reward-score > div,
+    .club-growth-score > div,
+    .support-score-grid > div
+) :is(span, small) {
+    font-size: 0.66rem !important;
+    line-height: 1.45 !important;
+    font-weight: 800 !important;
+    margin: 0 !important;
+}
+
+:is(
+    .segments-metric-card,
+    .customers-metric-card,
+    .orders-metric-card,
+    .pipeline-metric-card,
+    .products-metric-card,
+    .reminders-metric-card,
+    .tickets-metric-card,
+    .woocommerce-metric-card,
+    .sync-logs-metric-card,
+    .campaigns-metric-card,
+    .loyalty-wheel-metrics > div,
+    .loyalty-report-hero-metrics > div,
+    .loyalty-settings-hero-metrics > div,
+    .club-orders-score-grid > div,
+    .club-transactions-score-grid > div,
+    .club-journey-score-grid > div,
+    .club-profile-score > div,
+    .club-reward-score > div,
+    .club-growth-score > div,
+    .support-score-grid > div
+) :is(b, strong) {
+    font-size: clamp(0.92rem, 1.15vw, 1.08rem) !important;
+    line-height: 1.35 !important;
+    margin-top: 0.08rem !important;
+    margin-bottom: 0 !important;
+}
+
+/* کارت سطح در پیشخوان باشگاه */
+.club-dashboard-level-card {
+    min-height: auto !important;
+    padding: 0.7rem 0.8rem !important;
+    gap: 0.35rem !important;
+    align-content: center !important;
+}
+
+.club-dashboard-level-card strong {
+    font-size: 0.95rem !important;
+    line-height: 1.4 !important;
+}
+
+.club-dashboard-level-card b {
+    font-size: 1.05rem !important;
+    line-height: 1.35 !important;
+}
+
+.club-dashboard-level-card span,
+.club-dashboard-level-card small {
+    font-size: 0.66rem !important;
+    line-height: 1.45 !important;
+}
+
+.club-dashboard-progress,
+.club-journey-progress,
+.club-orders-progress {
+    height: 0.45rem !important;
+}
+
+/* کارت‌های آماری جدا از هرو، کمی جمع‌وجورتر */
+:is(
+    .club-dashboard-metric,
+    .club-transactions-metric,
+    .club-order-summary-grid > div,
+    .loyalty-report-metrics article,
+    .loyalty-member-metrics article,
+    .product-detail-metrics > div,
+    .customer360-stat-card
+) {
+    padding: 0.72rem 0.85rem !important;
+    min-height: 4.4rem !important;
+    align-content: center !important;
+}
+
+:is(
+    .club-dashboard-metric,
+    .club-transactions-metric,
+    .club-order-summary-grid > div,
+    .loyalty-report-metrics article,
+    .loyalty-member-metrics article,
+    .product-detail-metrics > div,
+    .customer360-stat-card
+) :is(span, small) {
+    font-size: 0.68rem !important;
+    line-height: 1.45 !important;
+}
+
+:is(
+    .club-dashboard-metric,
+    .club-transactions-metric,
+    .club-order-summary-grid > div,
+    .loyalty-report-metrics article,
+    .loyalty-member-metrics article,
+    .product-detail-metrics > div,
+    .customer360-stat-card
+) :is(b, strong, .num) {
+    font-size: clamp(0.98rem, 1.2vw, 1.18rem) !important;
+    line-height: 1.35 !important;
+}
+
+/* جلوگیری از بزرگ شدن بیش از حد هرو در دسکتاپ */
+@media (min-width: 72rem) {
+    :is(
+        .segments-hero,
+        .customers-hero,
+        .orders-hero,
+        .pipeline-hero,
+        .products-hero,
+        .reminders-hero,
+        .tickets-hero,
+        .woocommerce-hero,
+        .sync-logs-hero,
+        .campaigns-hero,
+        .loyalty-wheel-hero,
+        .loyalty-report-hero,
+        .loyalty-settings-hero,
+        .club-dashboard-hero,
+        .club-orders-hero,
+        .club-transactions-hero,
+        .club-journey-hero,
+        .club-profile-hero,
+        .club-reward-hero,
+        .club-growth-hero,
+        .support-hero
+    ) {
+        grid-template-columns: minmax(0, 1.45fr) minmax(15rem, 24rem) !important;
+    }
+}
+
+/* موبایل همچنان خوانا بماند */
+@media (max-width: 48rem) {
+    :is(
+        .segments-hero,
+        .customers-hero,
+        .orders-hero,
+        .pipeline-hero,
+        .products-hero,
+        .reminders-hero,
+        .tickets-hero,
+        .woocommerce-hero,
+        .sync-logs-hero,
+        .campaigns-hero,
+        .loyalty-wheel-hero,
+        .loyalty-report-hero,
+        .loyalty-settings-hero,
+        .club-dashboard-hero,
+        .club-orders-hero,
+        .club-transactions-hero,
+        .club-journey-hero,
+        .club-profile-hero,
+        .club-reward-hero,
+        .club-growth-hero,
+        .support-hero
+    ) {
+        padding: 0.85rem !important;
+        grid-template-columns: 1fr !important;
+    }
+
+    :is(
+        .segments-hero-metrics,
+        .customers-hero-metrics,
+        .orders-hero-metrics,
+        .pipeline-hero-metrics,
+        .products-hero-metrics,
+        .reminders-hero-metrics,
+        .tickets-hero-metrics,
+        .woocommerce-hero-metrics,
+        .sync-logs-hero-metrics,
+        .campaigns-hero-metrics,
+        .loyalty-wheel-metrics,
+        .loyalty-report-hero-metrics,
+        .loyalty-settings-hero-metrics,
+        .club-orders-score-grid,
+        .club-transactions-score-grid,
+        .club-journey-score-grid,
+        .club-profile-score,
+        .club-reward-score,
+        .club-growth-score,
+        .support-score-grid
+    ) {
+        grid-template-columns: 1fr 1fr !important;
+    }
+}
+
+@media (max-width: 26rem) {
+    :is(
+        .segments-hero-metrics,
+        .customers-hero-metrics,
+        .orders-hero-metrics,
+        .pipeline-hero-metrics,
+        .products-hero-metrics,
+        .reminders-hero-metrics,
+        .tickets-hero-metrics,
+        .woocommerce-hero-metrics,
+        .sync-logs-hero-metrics,
+        .campaigns-hero-metrics,
+        .loyalty-wheel-metrics,
+        .loyalty-report-hero-metrics,
+        .loyalty-settings-hero-metrics,
+        .club-orders-score-grid,
+        .club-transactions-score-grid,
+        .club-journey-score-grid,
+        .club-profile-score,
+        .club-reward-score,
+        .club-growth-score,
+        .support-score-grid
+    ) {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* تنظیم نهایی خوانایی: کمی بزرگ‌تر شدن متن‌ها بدون برگشت ارتفاع زیاد */
+:is(
+    .segments-hero,
+    .customers-hero,
+    .orders-hero,
+    .pipeline-hero,
+    .products-hero,
+    .reminders-hero,
+    .tickets-hero,
+    .woocommerce-hero,
+    .sync-logs-hero,
+    .campaigns-hero,
+    .loyalty-wheel-hero,
+    .loyalty-report-hero,
+    .loyalty-settings-hero,
+    .club-dashboard-hero,
+    .club-orders-hero,
+    .club-transactions-hero,
+    .club-journey-hero,
+    .club-profile-hero,
+    .club-reward-hero,
+    .club-growth-hero,
+    .support-hero
+) :is(h1, h2) {
+    font-size: clamp(1.2rem, 1.55vw, 1.68rem) !important;
+    line-height: 1.55 !important;
+}
+
+:is(
+    .segments-hero,
+    .customers-hero,
+    .orders-hero,
+    .pipeline-hero,
+    .products-hero,
+    .reminders-hero,
+    .tickets-hero,
+    .woocommerce-hero,
+    .sync-logs-hero,
+    .campaigns-hero,
+    .loyalty-wheel-hero,
+    .loyalty-report-hero,
+    .loyalty-settings-hero,
+    .club-dashboard-hero,
+    .club-orders-hero,
+    .club-transactions-hero,
+    .club-journey-hero,
+    .club-profile-hero,
+    .club-reward-hero,
+    .club-growth-hero,
+    .support-hero
+) p {
+    font-size: 0.86rem !important;
+    line-height: 1.95 !important;
+}
+
+:is(
+    .segments-eyebrow,
+    .customers-eyebrow,
+    .orders-eyebrow,
+    .pipeline-eyebrow,
+    .products-eyebrow,
+    .reminders-eyebrow,
+    .tickets-eyebrow,
+    .woocommerce-eyebrow,
+    .sync-logs-eyebrow,
+    .campaigns-eyebrow,
+    .loyalty-wheel-hero-main > span,
+    .loyalty-report-hero-main > span,
+    .loyalty-settings-hero-main > span,
+    .club-dashboard-eyebrow,
+    .club-orders-eyebrow,
+    .club-transactions-eyebrow,
+    .club-journey-eyebrow,
+    .club-profile-eyebrow,
+    .club-reward-eyebrow,
+    .club-growth-eyebrow,
+    .support-eyebrow
+) {
+    font-size: 0.72rem !important;
+    line-height: 1.45 !important;
+}
+
+:is(
+    .segments-metric-card,
+    .customers-metric-card,
+    .orders-metric-card,
+    .pipeline-metric-card,
+    .products-metric-card,
+    .reminders-metric-card,
+    .tickets-metric-card,
+    .woocommerce-metric-card,
+    .sync-logs-metric-card,
+    .campaigns-metric-card,
+    .loyalty-wheel-metrics > div,
+    .loyalty-report-hero-metrics > div,
+    .loyalty-settings-hero-metrics > div,
+    .club-orders-score-grid > div,
+    .club-transactions-score-grid > div,
+    .club-journey-score-grid > div,
+    .club-profile-score > div,
+    .club-reward-score > div,
+    .club-growth-score > div,
+    .support-score-grid > div
+) {
+    min-height: 4.45rem !important;
+    padding: 0.62rem 0.72rem !important;
+    gap: 0.16rem !important;
+}
+
+:is(
+    .segments-metric-card,
+    .customers-metric-card,
+    .orders-metric-card,
+    .pipeline-metric-card,
+    .products-metric-card,
+    .reminders-metric-card,
+    .tickets-metric-card,
+    .woocommerce-metric-card,
+    .sync-logs-metric-card,
+    .campaigns-metric-card,
+    .loyalty-wheel-metrics > div,
+    .loyalty-report-hero-metrics > div,
+    .loyalty-settings-hero-metrics > div,
+    .club-orders-score-grid > div,
+    .club-transactions-score-grid > div,
+    .club-journey-score-grid > div,
+    .club-profile-score > div,
+    .club-reward-score > div,
+    .club-growth-score > div,
+    .support-score-grid > div
+) :is(span, small) {
+    font-size: 0.72rem !important;
+    line-height: 1.62 !important;
+}
+
+:is(
+    .segments-metric-card,
+    .customers-metric-card,
+    .orders-metric-card,
+    .pipeline-metric-card,
+    .products-metric-card,
+    .reminders-metric-card,
+    .tickets-metric-card,
+    .woocommerce-metric-card,
+    .sync-logs-metric-card,
+    .campaigns-metric-card,
+    .loyalty-wheel-metrics > div,
+    .loyalty-report-hero-metrics > div,
+    .loyalty-settings-hero-metrics > div,
+    .club-orders-score-grid > div,
+    .club-transactions-score-grid > div,
+    .club-journey-score-grid > div,
+    .club-profile-score > div,
+    .club-reward-score > div,
+    .club-growth-score > div,
+    .support-score-grid > div
+) :is(b, strong) {
+    font-size: clamp(1.02rem, 1.22vw, 1.18rem) !important;
+    line-height: 1.42 !important;
+}
+
+.club-dashboard-level-card strong {
+    font-size: 1.02rem !important;
+    line-height: 1.55 !important;
+}
+
+.club-dashboard-level-card b {
+    font-size: 1.14rem !important;
+    line-height: 1.45 !important;
+}
+
+.club-dashboard-level-card span,
+.club-dashboard-level-card small {
+    font-size: 0.72rem !important;
+    line-height: 1.62 !important;
+}
+
+:is(
+    .club-dashboard-metric,
+    .club-transactions-metric,
+    .club-order-summary-grid > div,
+    .loyalty-report-metrics article,
+    .loyalty-member-metrics article,
+    .product-detail-metrics > div,
+    .customer360-stat-card
+) :is(span, small) {
+    font-size: 0.72rem !important;
+    line-height: 1.62 !important;
+}
+
+:is(
+    .club-dashboard-metric,
+    .club-transactions-metric,
+    .club-order-summary-grid > div,
+    .loyalty-report-metrics article,
+    .loyalty-member-metrics article,
+    .product-detail-metrics > div,
+    .customer360-stat-card
+) :is(b, strong, .num) {
+    font-size: clamp(1.06rem, 1.25vw, 1.24rem) !important;
+    line-height: 1.42 !important;
+}
+
+/* فاصله خطوط در کارت‌های محتوایی که متن‌هایشان بیش از حد فشرده دیده می‌شد */
+:is(
+    .club-dashboard-row,
+    .club-reward-item,
+    .club-growth-row,
+    .club-order-row,
+    .club-order-item-row,
+    .club-transaction-row,
+    .club-journey-event,
+    .support-ticket-card,
+    .support-reply-card,
+    .customer360-favorite-row,
+    .customer360-transaction-pro-row,
+    .segment-card-body,
+    .customer-card-body
+) :is(p, small, span) {
+    line-height: 1.8 !important;
+}
+
+:is(
+    .club-dashboard-row,
+    .club-reward-item,
+    .club-growth-row,
+    .club-order-row,
+    .club-order-item-row,
+    .club-transaction-row,
+    .club-journey-event,
+    .support-ticket-card,
+    .support-reply-card,
+    .customer360-favorite-row,
+    .customer360-transaction-pro-row,
+    .segment-card-body,
+    .customer-card-body
+) h3 {
+    line-height: 1.65 !important;
+}

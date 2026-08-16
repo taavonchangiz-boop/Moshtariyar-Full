@@ -1,0 +1,491 @@
+/* ظاهر اختصاصی داشبورد تحلیلی باشگاه مشتریان */
+.loyalty-report-page {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.loyalty-report-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 34rem);
+    gap: 1rem;
+    align-items: stretch;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.4rem;
+    background:
+        radial-gradient(circle at top right, rgba(16, 185, 129, 0.14), transparent 34%),
+        var(--panel);
+    box-shadow: var(--shadow-sm);
+}
+
+body.light .loyalty-report-hero {
+    background:
+        radial-gradient(circle at top right, rgba(16, 185, 129, 0.10), transparent 34%),
+        #ffffff;
+    border-color: #e5edf7;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.loyalty-report-hero-main {
+    min-width: 0;
+}
+
+.loyalty-report-hero-main > span,
+.loyalty-report-table-card header > span {
+    display: inline-flex;
+    color: var(--ok);
+    background: rgba(16, 185, 129, 0.11);
+    border: 1px solid rgba(16, 185, 129, 0.18);
+    border-radius: 999px;
+    padding: 0.22rem 0.68rem;
+    font-size: 0.74rem;
+    font-weight: 900;
+}
+
+.loyalty-report-hero h2 {
+    margin: 0.55rem 0 0;
+    color: var(--txt);
+    font-size: clamp(1.25rem, 2.4vw, 2rem);
+    line-height: 1.55;
+    letter-spacing: -0.03rem;
+}
+
+.loyalty-report-hero p {
+    margin: 0.45rem 0 0;
+    color: var(--mut);
+    line-height: 1.9;
+    font-size: 0.86rem;
+    max-width: 58rem;
+}
+
+.loyalty-report-hero-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+}
+
+.loyalty-report-hero-metrics > div,
+.loyalty-report-metrics article,
+.loyalty-report-insight-card,
+.loyalty-report-column,
+.loyalty-report-table-card {
+    border: 1px solid var(--line);
+    border-radius: 1.1rem;
+    background: var(--panel);
+    box-shadow: var(--shadow-sm);
+    padding: 0.9rem;
+    min-width: 0;
+    overflow: hidden;
+}
+
+body.light .loyalty-report-hero-metrics > div,
+body.light .loyalty-report-metrics article,
+body.light .loyalty-report-insight-card,
+body.light .loyalty-report-column,
+body.light .loyalty-report-table-card {
+    background: #ffffff;
+    border-color: #e5edf7;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+.loyalty-report-hero-metrics span,
+.loyalty-report-metrics span,
+.loyalty-report-mini-grid span {
+    display: block;
+    color: var(--mut);
+    font-size: 0.7rem;
+    font-weight: 800;
+}
+
+.loyalty-report-hero-metrics b,
+.loyalty-report-metrics b,
+.loyalty-report-mini-grid b {
+    display: block;
+    color: var(--txt);
+    margin-top: 0.22rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.loyalty-report-hero-metrics small,
+.loyalty-report-metrics small {
+    display: block;
+    color: var(--mut);
+    font-size: 0.68rem;
+    margin-top: 0.15rem;
+    line-height: 1.7;
+}
+
+.loyalty-report-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.loyalty-report-metrics article b {
+    color: var(--acc);
+    font-size: 1.1rem;
+}
+
+.loyalty-report-insights {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.loyalty-report-insight-card {
+    position: relative;
+    padding: 1rem 1.7rem 1rem 0.95rem;
+}
+
+.loyalty-report-insight-card:before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    bottom: 1rem;
+    right: 0.72rem;
+    width: 0.38rem;
+    border-radius: 999px;
+    background: var(--insight-color, var(--acc));
+}
+
+.loyalty-report-insight-card.is-good { --insight-color: #10b981; }
+.loyalty-report-insight-card.is-warning { --insight-color: #f59e0b; }
+.loyalty-report-insight-card.is-danger { --insight-color: #ef4444; }
+
+.loyalty-report-insight-card span {
+    display: inline-flex;
+    color: var(--insight-color);
+    background: color-mix(in srgb, var(--insight-color) 10%, transparent);
+    border-radius: 999px;
+    padding: 0.16rem 0.55rem;
+    font-size: 0.7rem;
+    font-weight: 900;
+}
+
+.loyalty-report-insight-card b {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--txt);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.loyalty-report-insight-card p {
+    margin: 0.35rem 0 0;
+    color: var(--mut);
+    font-size: 0.78rem;
+    line-height: 1.9;
+}
+
+.loyalty-report-board-shell {
+    margin-bottom: 1rem;
+}
+
+.loyalty-report-board {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(14rem, 1fr));
+    gap: 0.85rem;
+    align-items: start;
+}
+
+.loyalty-report-column {
+    border-color: color-mix(in srgb, var(--report-color) 24%, var(--line));
+    background: var(--panel2);
+}
+
+body.light .loyalty-report-column {
+    background: #f8fafc;
+}
+
+.loyalty-report-column > header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding-bottom: 0.65rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.loyalty-report-column > header > div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+}
+
+.loyalty-report-column > header span {
+    width: 0.78rem;
+    height: 0.78rem;
+    border-radius: 999px;
+    background: var(--report-color);
+    box-shadow: 0 0 0 0.24rem color-mix(in srgb, var(--report-color) 15%, transparent);
+}
+
+.loyalty-report-column h3 {
+    margin: 0;
+    color: var(--txt);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+.loyalty-report-column > header b {
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 0.62rem;
+    background: color-mix(in srgb, var(--report-color) 14%, transparent);
+    color: var(--report-color);
+    font-size: 0.72rem;
+}
+
+.loyalty-report-column > p {
+    margin: 0.65rem 0;
+    color: var(--mut);
+    font-size: 0.74rem;
+    line-height: 1.8;
+}
+
+.loyalty-report-card-list {
+    display: grid;
+    gap: 0.65rem;
+    max-height: 35rem;
+    overflow-y: auto;
+    padding-left: 0.1rem;
+}
+
+.loyalty-report-mini-card {
+    border: 1px solid var(--line);
+    border-radius: 0.95rem;
+    background: var(--panel);
+    padding: 0;
+    min-width: 0;
+    overflow: hidden;
+}
+
+body.light .loyalty-report-mini-card {
+    background: #ffffff;
+}
+
+.loyalty-report-mini-card summary {
+    list-style: none;
+}
+
+.loyalty-report-mini-card summary::-webkit-details-marker {
+    display: none;
+}
+
+.loyalty-report-mini-summary {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem;
+    cursor: pointer;
+}
+
+.loyalty-report-arrow {
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 0.5rem;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    background: var(--panel2);
+    color: var(--mut);
+    transition: transform 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+body.light .loyalty-report-arrow {
+    background: #f8fafc;
+}
+
+.loyalty-report-mini-card[open] .loyalty-report-arrow {
+    transform: rotate(180deg);
+    color: var(--report-color);
+    border-color: color-mix(in srgb, var(--report-color) 28%, var(--line));
+}
+
+.loyalty-report-mini-title {
+    min-width: 0;
+    display: grid;
+    gap: 0.08rem;
+}
+
+.loyalty-report-mini-title h4 {
+    margin: 0;
+    color: var(--txt);
+    font-size: 0.84rem;
+    line-height: 1.55;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.loyalty-report-mini-title small {
+    color: var(--mut);
+    font-size: 0.68rem;
+    line-height: 1.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.loyalty-report-mini-summary strong {
+    color: var(--report-color);
+    direction: ltr;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.loyalty-report-mini-body {
+    border-top: 1px solid var(--line);
+    padding: 0.75rem;
+    background: color-mix(in srgb, var(--report-color) 4%, transparent);
+}
+
+body.light .loyalty-report-mini-body {
+    background: color-mix(in srgb, var(--report-color) 3%, #ffffff);
+}
+
+.loyalty-report-mini-body p {
+    margin: 0.55rem 0 0;
+    color: var(--mut);
+    font-size: 0.72rem;
+    line-height: 1.8;
+}
+
+.loyalty-report-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.45rem;
+}
+
+.loyalty-report-mini-grid > div {
+    border: 1px solid var(--line);
+    border-radius: 0.7rem;
+    background: var(--panel2);
+    padding: 0.5rem;
+    min-width: 0;
+}
+
+body.light .loyalty-report-mini-grid > div {
+    background: #f8fafc;
+}
+
+.loyalty-report-mini-card footer {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.6rem;
+}
+
+.loyalty-report-mini-card footer a,
+.loyalty-report-mini-card footer span {
+    display: inline-flex;
+    min-height: 1.9rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.65rem;
+    border: 1px solid color-mix(in srgb, var(--report-color) 22%, var(--line));
+    background: color-mix(in srgb, var(--report-color) 8%, transparent);
+    color: var(--report-color);
+    padding: 0.3rem 0.65rem;
+    font-size: 0.72rem;
+    font-weight: 900;
+}
+
+.loyalty-report-empty {
+    display: grid;
+    place-items: center;
+    min-height: 5rem;
+    border: 1px dashed var(--line);
+    border-radius: 0.9rem;
+    color: var(--mut);
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.78rem;
+    line-height: 1.8;
+}
+
+.loyalty-report-table-card {
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.loyalty-report-table-card header {
+    padding-bottom: 0.8rem;
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.loyalty-report-table-card header h3 {
+    margin: 0.45rem 0 0;
+    color: var(--txt);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 98rem) {
+    .loyalty-report-board {
+        grid-template-columns: repeat(2, minmax(14rem, 1fr));
+    }
+
+    .loyalty-report-metrics,
+    .loyalty-report-insights {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 72rem) {
+    .loyalty-report-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .loyalty-report-hero-metrics,
+    .loyalty-report-board,
+    .loyalty-report-metrics,
+    .loyalty-report-insights {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 48rem) {
+    .loyalty-report-hero,
+    .loyalty-report-column,
+    .loyalty-report-table-card,
+    .loyalty-report-mini-card,
+    .loyalty-report-metrics article,
+    .loyalty-report-insight-card {
+        border-radius: 1rem;
+        padding: 0.85rem;
+    }
+
+    .loyalty-report-mini-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .loyalty-report-mini-card footer a,
+    .loyalty-report-mini-card footer span {
+        width: 100%;
+    }
+
+    .loyalty-report-mini-summary {
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .loyalty-report-mini-summary strong {
+        grid-column: 1 / -1;
+        justify-self: start;
+        border-top: 1px solid var(--line);
+        padding-top: 0.45rem;
+        width: 100%;
+    }
+}

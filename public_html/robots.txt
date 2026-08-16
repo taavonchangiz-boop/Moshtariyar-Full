@@ -1,0 +1,38 @@
+# ──────────────────────────────────────────
+#  رهنمودهای خزنده‌های وب — مشتری‌یار
+#  آخرین به‌روزرسانی: ۱۴۰۵/۰۵/۰۲
+# ──────────────────────────────────────────
+
+User-agent: *
+Disallow: /app/
+Disallow: /admin/
+Disallow: /superadmin/
+Disallow: /login
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /api/
+Disallow: /storage/
+Disallow: /vendor/
+Disallow: /Modules/
+Allow: /
+
+# جلوگیری از نمایه‌سازی مسیرهای نصب و حساس
+Disallow: /install/
+Disallow: /.env
+Disallow: /composer.json
+Disallow: /composer.lock
+Disallow: /package.json
+
+# مسیرهای عمومی باشگاه مشتریان — مجاز
+Allow: /club/
+Allow: /club/login
+Allow: /club/register
+
+# نقشهٔ سایت
+Sitemap: https://your-domain.com/sitemap.xml
+
+# میزبان اصلی
+Host: your-domain.com
+
+# فاصلهٔ زمانی بین درخواست‌های خزنده (به ثانیه)
+Crawl-delay: 10

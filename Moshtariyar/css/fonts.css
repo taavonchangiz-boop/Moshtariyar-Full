@@ -1,0 +1,46 @@
+/* ============================================================
+   فونت‌های فارسی (self-hosted، سازگار با cPanel و آفلاین)
+   ترتیب اولویت: استعداد → وزیرمتن → ایران‌سنس/ایران‌یکان (در صورت نصب) → سیستمی
+   هر دو فونت «وریبل» هستند (وزن ۱۰۰ تا ۹۰۰) و فقط یک فایل دارند.
+   ============================================================ */
+
+@font-face {
+    font-family: 'Estedad';
+    src: url('../fonts/estedad/Estedad-VF.woff2') format('woff2-variations'),
+         url('../fonts/estedad/Estedad-VF.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url('../fonts/vazirmatn/Vazirmatn-VF.woff2') format('woff2-variations'),
+         url('../fonts/vazirmatn/Vazirmatn-VF.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* اگر فونت تجاری ایران‌سنس/ایران‌یکان روی سرور نصب شد،
+   فقط فایل‌ها را در public/fonts قرار دهید و این بلاک را از کامنت خارج کنید.
+@font-face {
+    font-family: 'IRANSans';
+    src: url('../fonts/iransans/IRANSansWeb.woff2') format('woff2');
+    font-weight: 100 900; font-style: normal; font-display: swap;
+}
+*/
+
+:root {
+    --font-fa: 'Estedad', 'Vazirmatn', 'IRANSansX', 'IRANSans', 'IRANYekanX',
+               'IRANYekan', Tahoma, 'Segoe UI', system-ui, sans-serif;
+}
+
+html, body, input, select, textarea, button {
+    font-family: var(--font-fa);
+}
+
+/* اعداد فارسی برای خوانایی بهتر در صفحات نمایشی (اختیاری) */
+.fa-nums {
+    font-feature-settings: "ss01";
+}

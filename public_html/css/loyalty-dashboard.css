@@ -1,0 +1,51 @@
+/* ══════════════════════════════════════════════════
+   CSS داشبورد باشگاه مشتریان — مشتری‌یار
+   طراحی‌شده برای دسکتاپ، تبلت و موبایل
+   ══════════════════════════════════════════════════ */
+
+.ly-kpi-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.65rem;
+    margin-bottom: 0.85rem;
+}
+.ly-kpi-card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 0.85rem;
+    padding: 0.75rem 0.85rem; display: flex; flex-direction: column; gap: 0.15rem;
+    position: relative; overflow: hidden; transition: 0.2s;
+}
+body.light .ly-kpi-card { background: #ffffff; }
+.ly-kpi-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--k-color, var(--acc));
+}
+.ly-kpi-card:hover { border-color: var(--k-color, var(--acc)); box-shadow: 0 3px 12px rgba(0,0,0,0.06); }
+.ly-kpi-card span { font-size: 0.68rem; color: var(--mut); font-weight: 700; }
+.ly-kpi-card b { font-size: 1.2rem; font-weight: 900; color: var(--k-color, var(--txt)); }
+.ly-kpi-card small { font-size: 0.65rem; color: var(--mut); font-weight: 600; }
+
+.ly-chart-section {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 1rem;
+    padding: 1rem; margin-bottom: 0.85rem;
+}
+body.light .ly-chart-section { background: #ffffff; }
+.ly-chart-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;
+}
+.ly-chart-header h3 { font-size: 0.9rem; font-weight: 900; margin: 0; }
+.ly-chart-header small { font-size: 0.7rem; color: var(--mut); font-weight: 600; }
+.ly-chart-body {
+    position: relative; min-height: 200px; max-height: 280px;
+    display: flex; align-items: center; justify-content: center;
+}
+.ly-chart-body canvas { max-width: 100%; max-height: 100%; }
+
+@media (max-width: 640px) {
+    .ly-kpi-row { grid-template-columns: 1fr 1fr; }
+    .ly-chart-body { min-height: 170px; max-height: 230px; }
+}
+@media (max-width: 400px) {
+    .ly-kpi-row { grid-template-columns: 1fr; }
+}
+
+body.dark .ly-kpi-card,
+body.dark .ly-chart-section { background: #1e293b; border-color: #334155; }

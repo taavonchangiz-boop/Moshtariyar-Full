@@ -1,0 +1,652 @@
+/* داشبورد فرماندهی هوشمند — همسان با سایر بخش‌های سایت */
+
+.command-page { width: 100%; max-width: 100%; overflow: hidden; }
+
+/* ==================== هدر اصلی (Hero) ==================== */
+.command-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(14rem, 0.55fr);
+    gap: 0.75rem;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.35rem;
+    background:
+        radial-gradient(circle at 8% 0, rgba(37, 99, 235, 0.12), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(139, 92, 246, 0.12), transparent 34%),
+        linear-gradient(135deg, var(--panel), var(--panel2));
+    box-shadow: var(--shadow-sm);
+}
+body.light .command-hero {
+    background:
+        radial-gradient(circle at 8% 0, rgba(37, 99, 235, 0.08), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(139, 92, 246, 0.08), transparent 34%),
+        #ffffff;
+}
+.command-hero-main { min-width: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+
+.command-eyebrow,
+.command-card header span:not(.command-link):not(.command-pill) {
+    display: inline-flex; width: fit-content;
+    color: #1d4ed8;
+    background: rgba(59, 130, 246, 0.14);
+    border: 1px solid rgba(59, 130, 246, 0.24);
+    border-radius: 999px;
+    padding: 0.2rem 0.72rem;
+    font-size: 0.76rem; line-height: 1.55; font-weight: 1000;
+}
+
+.command-hero h2 {
+    margin: 0.35rem 0 0;
+    color: var(--txt);
+    font-size: clamp(1.15rem, 1.9vw, 1.72rem);
+    line-height: 1.65;
+    letter-spacing: -0.02rem;
+    font-weight: 1000;
+}
+.command-hero p { margin: 0.35rem 0 0; color: var(--mut); font-size: 0.9rem; line-height: 2; max-width: 56rem; }
+.command-hero-actions { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 0.85rem; }
+
+/* کارت سلامت عملیات — ویجت رینگ */
+.command-health-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.85rem;
+    align-items: center;
+    padding: 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 1.05rem;
+    background: var(--panel);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+}
+body.light .command-health-card { background: #ffffff; }
+.command-health-card:before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 0.28rem;
+    background: linear-gradient(90deg, var(--health-color, #10b981), transparent);
+}
+.command-health-card.is-ok    { --health-color: #10b981; }
+.command-health-card.is-warn  { --health-color: #f59e0b; }
+.command-health-card.is-bad   { --health-color: #ef4444; }
+.command-health-card.is-info  { --health-color: #3b82f6; }
+
+.command-health-ring {
+    flex: 0 0 auto;
+    width: 4.5rem; height: 4.5rem;
+    display: grid; place-items: center;
+    border-radius: 999px;
+    background:
+        conic-gradient(var(--health-color, #10b981) 0deg calc(var(--score, 75) * 3.6deg), rgba(148, 163, 184, 0.18) 0deg);
+    position: relative;
+}
+.command-health-ring:before {
+    content: '';
+    position: absolute; inset: 0.35rem;
+    border-radius: 999px;
+    background: var(--panel);
+}
+body.light .command-health-ring:before { background: #ffffff; }
+.command-health-ring strong,
+.command-health-ring span {
+    position: relative; z-index: 1;
+    display: block; text-align: center;
+    line-height: 1;
+}
+.command-health-ring strong {
+    color: var(--health-color, #10b981);
+    font-size: 1.35rem; font-weight: 1000;
+}
+.command-health-ring span {
+    color: var(--mut);
+    font-size: 0.6rem;
+    font-weight: 900;
+    margin-top: 0.15rem;
+}
+.command-health-card > div:last-child { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+.command-health-card > div:last-child span {
+    color: var(--mut); font-size: 0.7rem; font-weight: 900; line-height: 1.6;
+}
+.command-health-card > div:last-child b {
+    color: var(--txt); font-size: 1rem; font-weight: 1000; line-height: 1.5;
+}
+.command-health-card > div:last-child small {
+    color: var(--mut); font-size: 0.7rem; line-height: 1.55;
+}
+
+/* ==================== شبکه متریک‌های اصلی ==================== */
+.command-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.65rem;
+    margin-bottom: 1rem;
+}
+.command-metric-card {
+    position: relative;
+    display: flex; flex-direction: column; gap: 0.15rem;
+    min-height: 5.5rem;
+    padding: 0.8rem 0.9rem 0.8rem 0.72rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel);
+    text-decoration: none;
+    color: var(--txt);
+    transition: 0.2s;
+}
+body.light .command-metric-card { background: #ffffff; }
+.command-metric-card:hover {
+    border-color: rgba(59, 130, 246, 0.35);
+    box-shadow: 0 0.5rem 1.5rem rgba(15, 23, 42, 0.08);
+    transform: translateY(-1.5px);
+}
+.command-metric-card:before {
+    content: '';
+    position: absolute;
+    top: 0.7rem; bottom: 0.7rem; right: 0.35rem;
+    width: 0.24rem; border-radius: 999px;
+    background: var(--metric-color, var(--acc));
+}
+.command-metric-card span {
+    color: var(--mut); font-size: 0.74rem; font-weight: 900; line-height: 1.55;
+}
+.command-metric-card strong {
+    color: var(--txt); font-size: 1.28rem; font-weight: 1000; line-height: 1.45;
+    margin-top: 0.1rem;
+    word-break: break-word;
+}
+.command-metric-card small {
+    color: var(--mut); font-size: 0.7rem; line-height: 1.7; font-weight: 800;
+    margin-top: 0.15rem;
+}
+
+/* ==================== لایه اصلی ==================== */
+.command-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(19rem, 0.5fr);
+    gap: 1rem;
+    align-items: start;
+    margin-bottom: 1rem;
+}
+.command-main-column,
+.command-side-column { min-width: 0; display: grid; gap: 1rem; }
+.command-side-column { position: sticky; top: 1rem; }
+
+/* کارت پایه */
+.command-card {
+    min-width: 0; overflow: hidden;
+    padding: 1rem;
+    border: 1px solid var(--line); border-radius: 1.25rem;
+    background: var(--panel);
+    box-shadow: var(--shadow-sm);
+}
+body.light .command-card { background: #ffffff; border-color: #e5edf7; }
+.command-card.is-accent { position: relative; padding-right: 1.25rem; }
+.command-card.is-accent:before {
+    content: '';
+    position: absolute;
+    top: 1rem; bottom: 1rem; right: 0.65rem;
+    width: 0.28rem; border-radius: 999px;
+    background: var(--card-color, var(--acc));
+}
+.command-card header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 0.9rem; padding-bottom: 0.85rem; margin-bottom: 0.9rem;
+    border-bottom: 1px solid var(--line);
+}
+.command-card header > div { display: grid; gap: 0.4rem; min-width: 0; }
+.command-card h2 { margin: 0; color: var(--txt); font-weight: 1000; line-height: 1.75; font-size: 1rem; }
+.command-card p { margin: 0.25rem 0 0; color: var(--mut); line-height: 2; font-size: 0.85rem; }
+
+.command-link {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.42rem 0.85rem; border-radius: 999px;
+    color: #1d4ed8; background: rgba(59, 130, 246, 0.14);
+    border: 1px solid rgba(59, 130, 246, 0.24);
+    font-size: 0.76rem; line-height: 1.6; font-weight: 1000;
+    text-decoration: none; transition: 0.2s;
+    white-space: nowrap;
+}
+.command-link:hover { background: rgba(59, 130, 246, 0.22); transform: translateY(-1px); }
+
+/* ==================== بورد اقدام امروز ==================== */
+.command-action-board { display: grid; gap: 0.65rem; }
+.command-action-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 0.85rem;
+    align-items: center;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid var(--line); border-radius: 0.85rem;
+    background: var(--panel2);
+    text-decoration: none;
+    color: var(--txt);
+    position: relative;
+    transition: 0.15s;
+}
+body.light .command-action-row { background: #f8fafc; }
+.command-action-row:before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; right: 0;
+    width: 0.24rem;
+    border-radius: 999px 0 0 999px;
+    background: var(--action-color, #3b82f6);
+}
+.command-action-row.is-blue    { --action-color: #3b82f6; }
+.command-action-row.is-green   { --action-color: #10b981; }
+.command-action-row.is-warn    { --action-color: #f59e0b; }
+.command-action-row.is-red     { --action-color: #ef4444; }
+.command-action-row.is-purple  { --action-color: #8b5cf6; }
+.command-action-row.is-cyan    { --action-color: #0ea5e9; }
+.command-action-row:hover {
+    border-color: var(--action-color, #3b82f6);
+    background: var(--panel);
+    box-shadow: 0 0.4rem 1.2rem rgba(15, 23, 42, 0.06);
+    transform: translateX(2px);
+}
+body.light .command-action-row:hover { background: #ffffff; }
+
+.command-action-status {
+    flex: 0 0 auto;
+    min-width: 3rem;
+    min-height: 3rem;
+    display: grid; place-items: center;
+    padding: 0.4rem 0.7rem;
+    border-radius: 0.75rem;
+    background: color-mix(in srgb, var(--action-color) 15%, transparent);
+    color: var(--action-color, #3b82f6);
+    font-weight: 1000;
+    font-size: 1.15rem;
+    line-height: 1;
+}
+.command-action-body { min-width: 0; display: flex; flex-direction: column; gap: 0.15rem; }
+.command-action-body small {
+    color: var(--mut); font-size: 0.72rem; font-weight: 900; line-height: 1.55;
+}
+.command-action-body h3 {
+    color: var(--txt); font-size: 0.9rem; font-weight: 1000; line-height: 1.55; margin: 0;
+}
+.command-action-body p {
+    color: var(--mut); font-size: 0.78rem; line-height: 1.85; margin: 0;
+}
+.command-action-row > span:last-child {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.55rem;
+    background: var(--panel); color: var(--action-color, #3b82f6);
+    font-weight: 900; font-size: 0.76rem;
+    border: 1px solid var(--line);
+    white-space: nowrap;
+}
+body.light .command-action-row > span:last-child { background: #ffffff; }
+
+/* ==================== دو ستون فرصت رشد + بینش‌ها ==================== */
+.command-two-columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1rem;
+}
+.command-two-columns > .command-card { margin: 0; }
+
+.command-growth-list { display: grid; gap: 0.55rem; }
+.command-growth-item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.75rem;
+    align-items: center;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid var(--line); border-radius: 0.75rem;
+    background: var(--panel2);
+    text-decoration: none;
+    color: var(--txt);
+    position: relative;
+    transition: 0.15s;
+}
+body.light .command-growth-item { background: #f8fafc; }
+.command-growth-item.is-blue    { --growth-color: #3b82f6; }
+.command-growth-item.is-green   { --growth-color: #10b981; }
+.command-growth-item.is-warn    { --growth-color: #f59e0b; }
+.command-growth-item.is-red     { --growth-color: #ef4444; }
+.command-growth-item.is-purple  { --growth-color: #8b5cf6; }
+.command-growth-item.is-cyan    { --growth-color: #0ea5e9; }
+.command-growth-item:hover {
+    border-color: var(--growth-color, #10b981);
+    background: var(--panel);
+    box-shadow: 0 0.4rem 1.1rem rgba(15, 23, 42, 0.06);
+    transform: translateY(-1px);
+}
+body.light .command-growth-item:hover { background: #ffffff; }
+.command-growth-item b {
+    flex: 0 0 auto;
+    min-width: 2.6rem;
+    display: grid; place-items: center;
+    padding: 0.35rem 0.5rem;
+    border-radius: 0.55rem;
+    background: color-mix(in srgb, var(--growth-color, #10b981) 15%, transparent);
+    color: var(--growth-color, #10b981);
+    font-weight: 1000; font-size: 1rem;
+}
+.command-growth-item > div { min-width: 0; }
+.command-growth-item h3 {
+    margin: 0; color: var(--txt);
+    font-size: 0.84rem; font-weight: 1000; line-height: 1.5;
+}
+.command-growth-item p {
+    margin: 0.1rem 0 0; color: var(--mut);
+    font-size: 0.74rem; line-height: 1.75;
+}
+
+.command-insight-list { display: grid; gap: 0.55rem; }
+.command-insight-item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.65rem;
+    align-items: flex-start;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid var(--line); border-radius: 0.75rem;
+    background: var(--panel2);
+}
+body.light .command-insight-item { background: #f8fafc; }
+.command-insight-item span {
+    flex: 0 0 auto;
+    width: 0.6rem; height: 0.6rem;
+    border-radius: 999px;
+    background: #3b82f6;
+    margin-top: 0.5rem;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+.command-insight-item p {
+    margin: 0; color: var(--txt);
+    font-size: 0.82rem; line-height: 1.95; font-weight: 500;
+}
+
+/* ==================== دستیار کناری ==================== */
+.command-assistant-card p {
+    margin: 0 0 0.75rem;
+    color: var(--mut); font-size: 0.82rem; line-height: 1.95;
+}
+.command-assistant-prompts {
+    display: flex; flex-wrap: wrap; gap: 0.35rem;
+    margin-bottom: 0.75rem;
+}
+.command-assistant-prompts button {
+    display: inline-flex; align-items: center;
+    padding: 0.38rem 0.7rem;
+    border: 1px solid var(--line); border-radius: 999px;
+    background: var(--panel2); color: var(--txt);
+    font-family: inherit; font-size: 0.72rem; font-weight: 900;
+    cursor: pointer; transition: 0.15s;
+}
+body.light .command-assistant-prompts button { background: #f8fafc; }
+.command-assistant-prompts button:hover {
+    border-color: rgba(139, 92, 246, 0.35);
+    color: #6d28d9;
+    background: rgba(139, 92, 246, 0.06);
+}
+
+.command-assistant-chat {
+    display: grid; gap: 0.55rem;
+    max-height: 15rem;
+    overflow-y: auto;
+    padding: 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: 0.75rem;
+    background: var(--panel2);
+    margin-bottom: 0.75rem;
+    scrollbar-width: thin;
+}
+body.light .command-assistant-chat { background: #f8fafc; }
+.command-bot-message,
+.command-user-message {
+    padding: 0.55rem 0.75rem;
+    border-radius: 0.6rem;
+    font-size: 0.82rem; line-height: 1.9;
+    max-width: 90%;
+    word-break: break-word;
+}
+.command-bot-message {
+    background: var(--panel); color: var(--txt);
+    border: 1px solid var(--line);
+    align-self: flex-start;
+    margin-inline-end: auto;
+}
+body.light .command-bot-message { background: #ffffff; }
+.command-user-message {
+    background: rgba(139, 92, 246, 0.15);
+    color: #6d28d9;
+    align-self: flex-end;
+    margin-inline-start: auto;
+    font-weight: 900;
+}
+.command-chat-link {
+    display: inline-block;
+    margin-top: 0.4rem;
+    padding: 0.28rem 0.55rem;
+    background: rgba(59, 130, 246, 0.14);
+    color: #1d4ed8;
+    border-radius: 0.4rem;
+    font-size: 0.72rem; font-weight: 900;
+    text-decoration: none;
+}
+.command-chat-link:hover { background: rgba(59, 130, 246, 0.22); }
+
+.command-assistant-form {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.45rem;
+}
+.command-assistant-form input {
+    min-height: 2.6rem;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid var(--line); border-radius: 0.6rem;
+    background: var(--panel2); color: var(--txt);
+    font-family: inherit; font-size: 0.85rem;
+}
+body.light .command-assistant-form input { background: #ffffff; }
+.command-assistant-form input:focus {
+    border-color: var(--acc);
+    box-shadow: 0 0 0 0.15rem rgba(59, 130, 246, 0.12);
+    outline: none;
+}
+.command-assistant-form .btn { min-height: 2.6rem; }
+
+/* پوشش دستیار */
+.command-scope-list { display: grid; gap: 0.5rem; }
+.command-scope-list a {
+    display: block;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid var(--line); border-radius: 0.7rem;
+    background: var(--panel2);
+    color: var(--txt);
+    text-decoration: none;
+    transition: 0.15s;
+}
+body.light .command-scope-list a { background: #f8fafc; }
+.command-scope-list a:hover {
+    border-color: rgba(14, 165, 233, 0.35);
+    background: var(--panel);
+    box-shadow: 0 0.35rem 0.85rem rgba(15, 23, 42, 0.05);
+    transform: translateX(2px);
+}
+body.light .command-scope-list a:hover { background: #ffffff; }
+.command-scope-list h3 {
+    margin: 0; color: var(--txt);
+    font-size: 0.85rem; font-weight: 1000; line-height: 1.55;
+}
+.command-scope-list p {
+    margin: 0.15rem 0 0; color: var(--mut);
+    font-size: 0.74rem; line-height: 1.8;
+}
+
+/* ==================== بخش پایین: مشتریان و سفارش‌ها ==================== */
+.command-bottom-section { margin-top: 0; }
+
+.command-compact-list { display: grid; gap: 0.45rem; }
+.command-compact-list a {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.75rem;
+    align-items: center;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--line); border-radius: 0.75rem;
+    background: var(--panel2);
+    color: var(--txt);
+    text-decoration: none;
+    transition: 0.15s;
+}
+body.light .command-compact-list a { background: #f8fafc; }
+.command-compact-list a:hover {
+    border-color: rgba(16, 185, 129, 0.35);
+    background: var(--panel);
+    box-shadow: 0 0.4rem 1rem rgba(15, 23, 42, 0.06);
+    transform: translateY(-1px);
+}
+body.light .command-compact-list a:hover { background: #ffffff; }
+.command-compact-list > a > div {
+    min-width: 0;
+    display: flex; flex-direction: column; gap: 0.15rem;
+}
+.command-compact-list b {
+    color: var(--txt); font-size: 0.85rem; font-weight: 1000; line-height: 1.5;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.command-compact-list small {
+    color: var(--mut); font-size: 0.72rem; line-height: 1.6;
+}
+.command-compact-list strong {
+    color: var(--acc); font-size: 0.9rem; font-weight: 1000;
+    white-space: nowrap;
+}
+
+/* حالت خالی */
+.command-empty {
+    padding: 1.25rem 1rem;
+    text-align: center;
+    color: var(--mut);
+    background: var(--panel2);
+    border: 1px dashed var(--line);
+    border-radius: 0.75rem;
+    font-size: 0.82rem; line-height: 1.9;
+}
+body.light .command-empty { background: #f8fafc; }
+
+/* ═══════════════ پنل شخصی‌سازی داشبورد ═══════════════ */
+
+.پنل-شخصی‌سازی {
+    margin-bottom: 1rem;
+}
+
+.کارت-شخصی‌سازی {
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    background: var(--panel);
+    box-shadow: var(--shadow-sm);
+    padding: 1rem;
+    overflow: hidden;
+}
+
+body.light .کارت-شخصی‌سازی {
+    background: #ffffff;
+    border-color: #e5edf7;
+}
+
+.سربرگ-شخصی‌سازی {
+    padding-bottom: 0.85rem;
+    margin-bottom: 0.9rem;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.سربرگ-شخصی‌سازی b {
+    color: var(--txt);
+    font-size: 1rem;
+    font-weight: 1000;
+    line-height: 1.55;
+}
+
+.سربرگ-شخصی‌سازی span {
+    color: var(--mut);
+    font-size: 0.8rem;
+    line-height: 1.8;
+}
+
+.فهرست-کلیدها {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.85rem;
+}
+
+.کلید-ویجت {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 0.65rem;
+    background: var(--panel2);
+    color: var(--txt);
+    font-size: 0.8rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.15s;
+    user-select: none;
+}
+
+body.light .کلید-ویجت {
+    background: #f8fafc;
+}
+
+.کلید-ویجت:hover {
+    border-color: var(--acc);
+    background: var(--panel);
+}
+
+.کلید-ویجت input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--acc);
+    cursor: pointer;
+}
+
+.عملیات-شخصی‌سازی {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding-top: 0.65rem;
+    border-top: 1px solid var(--line);
+}
+
+/* افکت محوشدگی برای ویجت‌های پنهان */
+.ویجت-داشبورد {
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+/* ==================== واکنش‌گرا ==================== */
+@media (max-width: 96rem) {
+    .command-metrics-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 78rem) {
+    .command-hero { grid-template-columns: 1fr; }
+    .command-metrics-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .command-layout { grid-template-columns: 1fr; }
+    .command-side-column { position: static; }
+    .command-two-columns { grid-template-columns: 1fr; }
+}
+@media (max-width: 52rem) {
+    .command-metrics-grid { grid-template-columns: 1fr; }
+    .command-action-row {
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+    .command-action-row > span:last-child {
+        grid-column: 1 / -1;
+        justify-self: end;
+    }
+    .command-health-card { grid-template-columns: 1fr; text-align: center; }
+    .command-health-ring { margin: 0 auto; }
+}

@@ -1,0 +1,608 @@
+/* مرکز اتوماسیون هوشمند - همسان با سبک users-board و layout اصلی سایت */
+
+.workflow-page {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* ==================== هدر اصلی (Hero) ==================== */
+.workflow-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.72fr) minmax(12rem, 0.52fr);
+    gap: 0.75rem;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.35rem;
+    background:
+        radial-gradient(circle at 8% 0, rgba(14, 165, 233, 0.12), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(139, 92, 246, 0.12), transparent 34%),
+        linear-gradient(135deg, var(--panel), var(--panel2));
+    box-shadow: var(--shadow-sm);
+}
+body.light .workflow-hero {
+    background:
+        radial-gradient(circle at 8% 0, rgba(14, 165, 233, 0.08), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(139, 92, 246, 0.08), transparent 34%),
+        #ffffff;
+}
+
+.workflow-eyebrow,
+.workflow-card header span:not(.workflow-badge):not(.workflow-link),
+.workflow-chip {
+    display: inline-flex;
+    width: fit-content;
+    color: #0284c7;
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    border-radius: 999px;
+    padding: 0.2rem 0.72rem;
+    font-size: 0.76rem;
+    line-height: 1.55;
+    font-weight: 1000;
+}
+
+.workflow-hero h2 {
+    margin: 0.55rem 0 0;
+    color: var(--txt);
+    font-size: clamp(1.15rem, 1.9vw, 1.72rem);
+    line-height: 1.65;
+    letter-spacing: -0.02rem;
+    font-weight: 1000;
+}
+.workflow-hero p {
+    margin: 0.42rem 0 0;
+    color: var(--mut);
+    font-size: 0.9rem;
+    line-height: 2;
+    max-width: 54rem;
+}
+.workflow-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1rem;
+}
+
+.workflow-score {
+    display: grid;
+    gap: 0.42rem;
+}
+.workflow-score > a,
+.workflow-score > div {
+    min-height: 3.75rem;
+    display: grid;
+    align-content: center;
+    gap: 0.04rem;
+    padding: 0.42rem 0.75rem 0.42rem 0.62rem;
+    border: 1px solid var(--line);
+    border-radius: 0.9rem;
+    background: var(--panel);
+    position: relative;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.workflow-score > a { color: var(--txt); }
+.workflow-score > a:hover {
+    border-color: rgba(56, 189, 248, 0.35);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-1px);
+}
+.workflow-score > a:before {
+    content: '';
+    position: absolute;
+    top: 0.62rem;
+    bottom: 0.62rem;
+    right: 0.32rem;
+    width: 0.22rem;
+    border-radius: 999px;
+    background: var(--metric-color, var(--acc));
+}
+body.light .workflow-score > a,
+body.light .workflow-score > div { background: #f8fafc; }
+.workflow-score span,
+.workflow-score small {
+    color: var(--mut);
+    font-size: 0.74rem;
+    line-height: 1.65;
+    font-weight: 800;
+}
+.workflow-score b {
+    color: var(--acc);
+    font-size: 1.08rem;
+    line-height: 1.45;
+    font-weight: 1000;
+}
+
+/* ==================== نوار ابزار (فیلترها) ==================== */
+.workflow-toolbar {
+    display: grid;
+    grid-template-columns: minmax(12rem, 1.4fr) minmax(9rem, 1fr) minmax(9rem, 1fr) minmax(8rem, 0.85fr) auto;
+    gap: 0.75rem;
+    align-items: end;
+    margin-bottom: 1rem;
+    padding: 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+}
+body.light .workflow-toolbar { background: #f8fafc; }
+.workflow-toolbar label {
+    display: block;
+    color: var(--mut);
+    font-size: 0.76rem;
+    font-weight: 900;
+    margin-bottom: 0.35rem;
+}
+.workflow-toolbar-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-self: end;
+}
+.workflow-toolbar-actions .btn { min-height: 2.75rem; white-space: nowrap; }
+
+/* ==================== نوار خلاصه ==================== */
+.workflow-insight {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+.workflow-insight > div {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+}
+body.light .workflow-insight > div { background: #f8fafc; }
+.workflow-insight b { color: var(--txt); font-size: 1rem; font-weight: 1000; line-height: 1.4; }
+.workflow-insight small { color: var(--mut); font-size: 0.78rem; line-height: 1.65; }
+.workflow-dot { width: 0.7rem; height: 0.7rem; border-radius: 999px; flex: 0 0 auto; }
+.workflow-dot.is-ok { background: #00c875; }
+.workflow-dot.is-warn { background: #f59e0b; }
+.workflow-dot.is-blue { background: #0ea5e9; }
+.workflow-dot.is-purple { background: #8b5cf6; }
+
+/* ==================== لایه اصلی: تک ستونی، بورد بالا و کارت‌ها زیر آن ==================== */
+.workflow-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+    margin-bottom: 1rem;
+}
+.workflow-main { min-width: 0; display: grid; gap: 1rem; }
+
+/* بخش زیرین: پیشنهاد دستیار در سمت راست، فرم ساخت در سمت چپ */
+.workflow-below {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+}
+.workflow-below > article { min-width: 0; }
+
+/* کارت پایه */
+.workflow-card {
+    min-width: 0;
+    overflow: hidden;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    background: var(--panel);
+    box-shadow: var(--shadow-sm);
+}
+body.light .workflow-card { background: #ffffff; border-color: #e5edf7; }
+
+.workflow-card.is-accent {
+    position: relative;
+    padding-right: 1.25rem;
+}
+.workflow-card.is-accent:before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    bottom: 1rem;
+    right: 0.65rem;
+    width: 0.28rem;
+    border-radius: 999px;
+    background: var(--card-color, var(--acc));
+}
+
+.workflow-card header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.9rem;
+    padding-bottom: 0.95rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+}
+.workflow-card header > div { display: grid; gap: 0.42rem; min-width: 0; }
+.workflow-card h2, .workflow-card h3 {
+    margin: 0;
+    color: var(--txt);
+    line-height: 1.78;
+    font-weight: 1000;
+}
+.workflow-card h2 { font-size: 1rem; }
+.workflow-card p { margin: 0.25rem 0 0; color: var(--mut); line-height: 2; }
+
+.workflow-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: fit-content;
+    padding: 0.42rem 0.85rem;
+    border-radius: 999px;
+    color: var(--acc);
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    font-size: 0.76rem;
+    line-height: 1.6;
+    font-weight: 1000;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.workflow-link:hover {
+    background: rgba(14, 165, 233, 0.2);
+    transform: translateY(-1px);
+}
+
+/* ==================== بورد اتوماسیون (شبیه users-monday-board) ==================== */
+.workflow-board-panel { padding: 1rem; }
+.workflow-board { display: grid; gap: 1rem; }
+
+.workflow-group {
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    overflow: hidden;
+    background: var(--panel2);
+}
+body.light .workflow-group { background: #ffffff; }
+
+.workflow-group-title {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto minmax(0, 1fr) auto auto auto;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.75rem 0.85rem;
+    border: 0;
+    border-right: 0.32rem solid var(--group-color);
+    background: var(--panel);
+    color: var(--txt);
+    font-family: inherit;
+    cursor: pointer;
+    text-align: right;
+    transition: background 0.15s ease;
+}
+body.light .workflow-group-title { background: #ffffff; }
+.workflow-group-title:hover { background: var(--panel2); }
+body.light .workflow-group-title:hover { background: #f8fafc; }
+
+.workflow-group-title .wf-caret {
+    transition: transform 0.18s ease;
+    color: var(--group-color);
+    font-size: 0.85rem;
+}
+.workflow-group.is-open .wf-caret { transform: rotate(-90deg); }
+
+.workflow-group-title .wf-mark {
+    width: 0.75rem; height: 0.75rem;
+    border-radius: 0.28rem;
+    background: var(--group-color);
+    flex: 0 0 auto;
+}
+.workflow-group-title > .wf-title-block { min-width: 0; display: grid; gap: 0.1rem; }
+.workflow-group-title b {
+    line-height: 1.55;
+    color: var(--group-color);
+    font-weight: 1000;
+    font-size: 0.9rem;
+    overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+}
+.workflow-group-title small {
+    color: var(--mut);
+    font-size: 0.74rem;
+    line-height: 1.65;
+    overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+}
+.workflow-group-title .wf-count {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 1.85rem; height: 1.55rem;
+    padding: 0 0.55rem;
+    border-radius: 999px;
+    background: var(--group-color);
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 1000;
+    line-height: 1;
+}
+.workflow-group-title .wf-progress {
+    width: 5.5rem;
+    height: 0.45rem;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.18);
+    overflow: hidden;
+    position: relative;
+}
+.workflow-group-title .wf-progress:after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: var(--group-ratio, 0%);
+    background: var(--group-color);
+    border-radius: 999px;
+}
+.workflow-group-title .wf-ratio {
+    color: var(--mut);
+    font-size: 0.74rem;
+    font-weight: 900;
+    line-height: 1.6;
+    white-space: nowrap;
+    min-width: 2.5rem;
+    text-align: left;
+}
+
+.workflow-group.is-collapsed .workflow-table { display: none; }
+
+/* جدول داخل هر گروه - شبیه users-monday-table */
+.workflow-table-wrap { overflow-x: auto; }
+.workflow-table { min-width: 62rem; }
+
+.workflow-thead,
+.workflow-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1.2fr 1.1fr 0.95fr 0.75fr 0.75fr 1fr;
+    align-items: center;
+    gap: 0;
+}
+.workflow-thead {
+    color: var(--mut);
+    font-size: 0.74rem;
+    font-weight: 900;
+    border-bottom: 1px solid var(--line);
+    background: var(--panel2);
+}
+body.light .workflow-thead { background: #f8fafc; }
+
+.workflow-thead > div,
+.workflow-cell {
+    padding: 0.7rem 0.75rem;
+    border-left: 1px solid var(--line);
+    min-width: 0;
+}
+.workflow-thead > div:last-child,
+.workflow-cell:last-child { border-left: 0; }
+
+.workflow-row {
+    border-bottom: 1px solid var(--line);
+    background: var(--panel);
+    transition: background 0.12s ease;
+}
+body.light .workflow-row { background: #ffffff; }
+.workflow-row:last-child { border-bottom: 0; }
+.workflow-row:hover { background: rgba(14, 165, 233, 0.04); }
+body.dark .workflow-row:hover { background: rgba(56, 189, 248, 0.06); }
+
+.workflow-cell {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.75;
+    font-size: 0.84rem;
+}
+.workflow-cell-name { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+.workflow-cell-name b {
+    color: var(--txt);
+    font-weight: 900;
+    font-size: 0.86rem;
+    line-height: 1.55;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.workflow-cell-name small {
+    color: var(--mut);
+    font-size: 0.74rem;
+    line-height: 1.65;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+/* پیل‌های وضعیت و مقدار - شبیه users-status-pill */
+.workflow-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 1.65rem;
+    border-radius: 0.42rem;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.73rem;
+    font-weight: 900;
+    line-height: 1.5;
+    color: #ffffff;
+    background: #64748b;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.workflow-pill.is-event    { background: #0ea5e9; }
+.workflow-pill.is-action   { background: #8b5cf6; }
+.workflow-pill.is-channel  { background: #2563eb; }
+.workflow-pill.is-delay-instant { background: transparent; color: var(--mut); border: 1px dashed var(--line); font-weight: 900; }
+.workflow-pill.is-delay-timed   { background: #f59e0b; color: #ffffff; }
+.workflow-pill.is-status-on    { background: #00c875; }
+.workflow-pill.is-status-off   { background: #94a3b8; }
+.workflow-pill.is-empty {
+    background: transparent;
+    color: var(--mut);
+    border: 1px dashed var(--line);
+    font-weight: 700;
+}
+
+.workflow-cell-actions { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: flex-start; }
+.workflow-cell-actions form { margin: 0; }
+.workflow-cell-actions button {
+    min-height: 2rem;
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0 0.7rem;
+    border: 1px solid var(--line);
+    border-radius: 0.55rem;
+    background: var(--panel2);
+    color: var(--txt);
+    font-family: inherit;
+    font-size: 0.74rem;
+    font-weight: 900;
+    line-height: 1;
+    cursor: pointer;
+    transition: 0.15s;
+}
+body.light .workflow-cell-actions button { background: #f8fafc; }
+.workflow-cell-actions button:hover {
+    border-color: rgba(14, 165, 233, 0.35);
+    color: var(--acc);
+}
+.workflow-cell-actions button.is-danger {
+    color: var(--bad);
+    border-color: rgba(239, 68, 68, 0.28);
+    background: rgba(239, 68, 68, 0.08);
+}
+.workflow-cell-actions button.is-danger:hover {
+    background: rgba(239, 68, 68, 0.14);
+}
+
+.workflow-group-empty {
+    padding: 1.2rem 1rem;
+    color: var(--mut);
+    text-align: center;
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+    font-size: 0.82rem;
+    line-height: 1.85;
+}
+body.light .workflow-group-empty { background: #ffffff; }
+
+.workflow-group-add {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.65rem 0.85rem;
+    color: var(--mut);
+    font-size: 0.76rem;
+    font-weight: 900;
+    cursor: pointer;
+    border-top: 1px solid var(--line);
+    background: var(--panel2);
+    text-decoration: none;
+    transition: 0.15s;
+}
+body.light .workflow-group-add { background: #f8fafc; }
+.workflow-group-add:hover { color: var(--acc); background: rgba(14, 165, 233, 0.06); }
+
+/* ==================== کناره: پیشنهادها و فرم ==================== */
+.workflow-suggest-list { display: grid; gap: 0.65rem; }
+.workflow-suggest-list button {
+    text-align: right;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+    padding: 0.85rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: 0.2s;
+}
+body.light .workflow-suggest-list button { background: #f8fafc; }
+.workflow-suggest-list button:hover {
+    border-color: rgba(14, 165, 233, 0.35);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-1px);
+}
+.workflow-suggest-list b {
+    display: block;
+    color: var(--txt);
+    line-height: 1.75;
+    font-weight: 1000;
+    font-size: 0.86rem;
+}
+.workflow-suggest-list small {
+    display: block;
+    color: var(--mut);
+    line-height: 1.85;
+    margin-top: 0.15rem;
+    font-size: 0.76rem;
+}
+
+.workflow-create-form { display: grid; gap: 0.75rem; }
+.workflow-create-form label {
+    display: block;
+    color: var(--mut);
+    font-size: 0.78rem;
+    font-weight: 900;
+    margin-bottom: 0.35rem;
+    line-height: 1.7;
+}
+.workflow-create-form input,
+.workflow-create-form select,
+.workflow-create-form textarea { min-height: 2.75rem; line-height: 1.8; }
+.workflow-create-form small {
+    display: block;
+    margin-top: 0.35rem;
+    color: var(--mut);
+    font-size: 0.74rem;
+    line-height: 1.75;
+}
+
+/* ==================== استایل‌های اختصاصی فرم و لیست ==================== */
+.workflow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+.workflow-card.is-disabled { opacity: 0.7; filter: grayscale(50%); }
+.workflow-card-header { padding: 20px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; background: #f8fafc; }
+.workflow-card-header h3 { margin: 0; font-size: 1.1rem; color: #1e293b; }
+.toggle-btn { padding: 6px 12px; border-radius: 20px; border: none; font-weight: 700; font-size: 0.8rem; cursor: pointer; transition: 0.2s; }
+.toggle-btn.on { background: #10b981; color: #fff; box-shadow: 0 0 10px rgba(16,185,129,0.3); }
+.toggle-btn.off { background: #cbd5e1; color: #475569; }
+.workflow-card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 16px; }
+.wf-trigger, .wf-action { background: #f1f5f9; padding: 12px; border-radius: 10px; border: 1px dashed #cbd5e1; }
+.wf-label { display: block; font-size: 0.8rem; color: #64748b; margin-bottom: 4px; }
+.workflow-card-footer { padding: 16px 20px; border-top: 1px solid #f1f5f9; display: flex; justify-content:flex-end; }
+.btn-ghost-danger { background: transparent; border: none; color: #ef4444; font-family: inherit; font-size: 0.9rem; cursor: pointer; padding: 8px; border-radius: 8px; }
+.btn-ghost-danger:hover { background: #fef2f2; }
+.workflow-empty { grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #fff; border-radius: 16px; border: 1px dashed #cbd5e1; }
+.workflow-empty-icon { font-size: 3rem; margin-bottom: 16px; }
+.workflow-empty h3 { color: #0f172a; margin-bottom: 8px; }
+.workflow-empty p { color: #64748b; margin-bottom: 24px; }
+
+/* ==================== واکنش‌گرا ==================== */
+@media (max-width: 90rem) {
+    .workflow-toolbar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .workflow-insight { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 78rem) {
+    .workflow-below { grid-template-columns: 1fr; }
+}
+@media (max-width: 68rem) {
+    .workflow-hero { grid-template-columns: 1fr; }
+    .workflow-score { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .workflow-score > a:before { top: 0.4rem; bottom: 0.4rem; }
+}
+@media (max-width: 52rem) {
+    .workflow-hero,
+    .workflow-toolbar,
+    .workflow-insight { grid-template-columns: 1fr; }
+    .workflow-score { grid-template-columns: 1fr; }
+    .workflow-card,
+    .workflow-hero { border-radius: 1rem; padding: 0.85rem; }
+    .workflow-card.is-accent { padding-right: 1.05rem; }
+    .workflow-card.is-accent:before { right: 0.45rem; top: 0.8rem; bottom: 0.8rem; }
+    .workflow-group-title { grid-template-columns: auto auto minmax(0, 1fr) auto auto; }
+    .workflow-group-title .wf-progress { display: none; }
+    .workflow-hero-actions .btn,
+    .workflow-toolbar-actions .btn { flex: 1 1 auto; }
+    .workflow-board-panel { padding: 0.75rem; }
+    .workflow-table { min-width: 52rem; }
+}

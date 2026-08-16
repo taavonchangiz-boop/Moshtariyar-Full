@@ -1,0 +1,568 @@
+/* ظاهر اختصاصی مرکز تنظیمات باشگاه مشتریان */
+.loyalty-settings-page {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.loyalty-settings-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 32rem);
+    gap: 1rem;
+    align-items: stretch;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.4rem;
+    background:
+        radial-gradient(circle at top right, rgba(245, 158, 11, 0.14), transparent 34%),
+        var(--panel);
+    box-shadow: var(--shadow-sm);
+}
+
+body.light .loyalty-settings-hero {
+    background:
+        radial-gradient(circle at top right, rgba(245, 158, 11, 0.10), transparent 34%),
+        #ffffff;
+    border-color: #e5edf7;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.loyalty-settings-hero-main {
+    min-width: 0;
+}
+
+.loyalty-settings-hero-main > span,
+.loyalty-settings-column > header > div > span {
+    display: inline-flex;
+    color: #d97706;
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.20);
+    border-radius: 999px;
+    padding: 0.2rem 0.66rem;
+    font-size: 0.74rem;
+    font-weight: 900;
+}
+
+.loyalty-settings-hero h2 {
+    margin: 0.55rem 0 0;
+    color: var(--txt);
+    font-size: clamp(1.25rem, 2.4vw, 2rem);
+    line-height: 1.55;
+    letter-spacing: -0.03rem;
+}
+
+.loyalty-settings-hero p {
+    margin: 0.45rem 0 0;
+    color: var(--mut);
+    line-height: 1.9;
+    font-size: 0.86rem;
+    max-width: 58rem;
+}
+
+.loyalty-settings-hero-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+}
+
+.loyalty-settings-hero-metrics > div,
+.loyalty-settings-insights article,
+.loyalty-settings-column {
+    border: 1px solid var(--line);
+    border-radius: 1.1rem;
+    background: var(--panel);
+    box-shadow: var(--shadow-sm);
+    padding: 0.9rem;
+    min-width: 0;
+    overflow: hidden;
+}
+
+body.light .loyalty-settings-hero-metrics > div,
+body.light .loyalty-settings-insights article,
+body.light .loyalty-settings-column {
+    background: #ffffff;
+    border-color: #e5edf7;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+.loyalty-settings-hero-metrics span,
+.loyalty-settings-insights small,
+.loyalty-settings-mini-grid span,
+.loyalty-rule-body span {
+    display: block;
+    color: var(--mut);
+    font-size: 0.7rem;
+    font-weight: 800;
+}
+
+.loyalty-settings-hero-metrics b,
+.loyalty-settings-insights b,
+.loyalty-settings-mini-grid b,
+.loyalty-rule-body b {
+    display: block;
+    color: var(--txt);
+    margin-top: 0.22rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.loyalty-settings-hero-metrics small {
+    display: block;
+    color: var(--mut);
+    margin-top: 0.16rem;
+    font-size: 0.68rem;
+    line-height: 1.7;
+}
+
+.loyalty-settings-insights {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.loyalty-settings-insights article {
+    position: relative;
+    padding: 1rem 2.25rem 1rem 1rem;
+}
+
+.loyalty-settings-insights article > span {
+    position: absolute;
+    top: 1rem;
+    bottom: 1rem;
+    right: 0.9rem;
+    width: 0.42rem;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #f59e0b, #8b5cf6);
+}
+
+.loyalty-settings-board {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.loyalty-settings-column {
+    border-color: color-mix(in srgb, var(--settings-color) 24%, var(--line));
+    background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--settings-color) 8%, transparent), transparent 34%),
+        var(--panel);
+}
+
+body.light .loyalty-settings-column {
+    background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--settings-color) 6%, transparent), transparent 34%),
+        #ffffff;
+}
+
+.loyalty-settings-column > header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding-bottom: 0.8rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.loyalty-settings-column > header > div {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-width: 0;
+}
+
+.loyalty-settings-column > header > div > span {
+    width: 0.85rem;
+    height: 0.85rem;
+    padding: 0;
+    border-radius: 999px;
+    background: var(--settings-color);
+    box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--settings-color) 15%, transparent);
+}
+
+.loyalty-settings-column h3 {
+    margin: 0;
+    color: var(--txt);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.loyalty-settings-column > header > b {
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 0.65rem;
+    background: color-mix(in srgb, var(--settings-color) 14%, transparent);
+    color: var(--settings-color);
+    font-size: 0.76rem;
+}
+
+.loyalty-settings-column > p {
+    margin: 0 0 0.85rem;
+    color: var(--mut);
+    font-size: 0.8rem;
+    line-height: 1.9;
+}
+
+.loyalty-settings-create-panel {
+    border: 1px solid var(--line);
+    border-radius: 0.95rem;
+    background: var(--panel2);
+    margin-bottom: 0.9rem;
+    overflow: hidden;
+}
+
+body.light .loyalty-settings-create-panel {
+    background: #f8fafc;
+}
+
+.loyalty-settings-create-panel > summary {
+    list-style: none;
+    cursor: pointer;
+    color: var(--txt);
+    font-weight: 900;
+    padding: 0.75rem;
+}
+
+.loyalty-settings-create-panel > summary::-webkit-details-marker {
+    display: none;
+}
+
+.loyalty-settings-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.85rem;
+    padding: 0 0.75rem 0.75rem;
+    align-items: end;
+}
+
+.loyalty-settings-form label {
+    font-size: 0.72rem;
+    font-weight: 900;
+}
+
+.loyalty-settings-wide {
+    grid-column: 1 / -1;
+}
+
+.loyalty-settings-form .btn {
+    grid-column: 1 / -1;
+    justify-self: end;
+    margin-top: 0.5rem;
+}
+
+.loyalty-tier-roadmap,
+.loyalty-rule-list,
+.loyalty-mission-list,
+.loyalty-badge-list,
+.loyalty-redemption-list,
+.loyalty-coupon-list {
+    display: grid;
+    gap: 0.65rem;
+    max-height: 32rem;
+    overflow-y: auto;
+    padding-left: 0.1rem;
+}
+
+.loyalty-tier-card,
+.loyalty-rule-card,
+.loyalty-mission-card,
+.loyalty-badge-card,
+.loyalty-redemption-card,
+.loyalty-coupon-card {
+    border: 1px solid var(--line);
+    border-radius: 0.95rem;
+    background: var(--panel);
+    padding: 0.75rem;
+    min-width: 0;
+    overflow: hidden;
+}
+
+body.light .loyalty-tier-card,
+body.light .loyalty-rule-card,
+body.light .loyalty-mission-card,
+body.light .loyalty-badge-card,
+body.light .loyalty-redemption-card,
+body.light .loyalty-coupon-card {
+    background: #ffffff;
+}
+
+.loyalty-tier-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    gap: 0.65rem;
+    align-items: center;
+    border-color: color-mix(in srgb, var(--tier-color) 25%, var(--line));
+}
+
+.loyalty-tier-dot {
+    width: 0.9rem;
+    height: 0.9rem;
+    border-radius: 999px;
+    background: var(--tier-color);
+    box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--tier-color) 15%, transparent);
+}
+
+.loyalty-tier-card h4,
+.loyalty-rule-card h4,
+.loyalty-mission-card h4,
+.loyalty-badge-card h4,
+.loyalty-redemption-card h4,
+.loyalty-coupon-card h4 {
+    margin: 0;
+    color: var(--txt);
+    font-size: 0.86rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.loyalty-tier-card span,
+.loyalty-tier-card small,
+.loyalty-mission-card p,
+.loyalty-badge-card span,
+.loyalty-coupon-card span {
+    color: var(--mut);
+    font-size: 0.7rem;
+    line-height: 1.7;
+}
+
+.loyalty-tier-card b,
+.loyalty-coupon-card b {
+    display: block;
+    color: var(--settings-color, var(--acc));
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.loyalty-rule-card,
+.loyalty-redemption-card {
+    padding: 0;
+}
+
+.loyalty-rule-card summary,
+.loyalty-redemption-card summary {
+    list-style: none;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 0.55rem;
+    align-items: center;
+    padding: 0.75rem;
+    cursor: pointer;
+}
+
+.loyalty-rule-card summary::-webkit-details-marker,
+.loyalty-redemption-card summary::-webkit-details-marker {
+    display: none;
+}
+
+.loyalty-settings-arrow {
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 0.5rem;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    background: var(--panel2);
+    color: var(--mut);
+    transition: transform 0.18s ease;
+}
+
+.loyalty-rule-card[open] .loyalty-settings-arrow,
+.loyalty-redemption-card[open] .loyalty-settings-arrow {
+    transform: rotate(180deg);
+    color: var(--settings-color);
+}
+
+.loyalty-rule-card summary small,
+.loyalty-redemption-card summary small {
+    color: var(--mut);
+    font-size: 0.7rem;
+}
+
+.loyalty-rule-card summary > b,
+.loyalty-redemption-card summary > b,
+.loyalty-mission-card header span {
+    display: inline-flex;
+    border-radius: 999px;
+    padding: 0.18rem 0.55rem;
+    color: var(--settings-color);
+    background: color-mix(in srgb, var(--settings-color) 10%, transparent);
+    font-size: 0.68rem;
+    font-weight: 900;
+}
+
+.loyalty-rule-card.is-inactive,
+.loyalty-redemption-card.is-inactive,
+.loyalty-mission-card.is-inactive {
+    opacity: 0.72;
+}
+
+.loyalty-rule-body {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.55rem;
+    border-top: 1px solid var(--line);
+    padding: 0.75rem;
+    background: color-mix(in srgb, var(--settings-color) 4%, transparent);
+}
+
+.loyalty-rule-body > div {
+    border: 1px solid var(--line);
+    border-radius: 0.75rem;
+    background: var(--panel2);
+    padding: 0.55rem;
+}
+
+body.light .loyalty-rule-body > div {
+    background: #f8fafc;
+}
+
+.loyalty-rule-body form {
+    margin: 0;
+}
+
+.loyalty-rule-body form .btn {
+    width: 100%;
+    min-height: 2.35rem;
+}
+
+.loyalty-mission-card header {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.loyalty-mission-card p {
+    margin: 0.5rem 0 0;
+}
+
+.loyalty-settings-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-top: 0.65rem;
+}
+
+.loyalty-settings-mini-grid > div {
+    border: 1px solid var(--line);
+    border-radius: 0.75rem;
+    background: var(--panel2);
+    padding: 0.55rem;
+}
+
+body.light .loyalty-settings-mini-grid > div {
+    background: #f8fafc;
+}
+
+.loyalty-badge-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 0.65rem;
+    align-items: center;
+    border-color: color-mix(in srgb, var(--badge-color) 25%, var(--line));
+}
+
+.loyalty-badge-card > div {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.85rem;
+    display: grid;
+    place-items: center;
+    background: color-mix(in srgb, var(--badge-color) 12%, transparent);
+    font-size: 1.25rem;
+}
+
+.loyalty-badge-card aside {
+    display: grid;
+    justify-items: end;
+}
+
+.loyalty-badge-card aside b {
+    color: var(--badge-color);
+    font-size: 0.72rem;
+}
+
+.loyalty-badge-card aside small {
+    color: var(--mut);
+    font-size: 0.7rem;
+}
+
+.loyalty-settings-export {
+    width: fit-content;
+    display: inline-flex;
+    margin: 0.2rem 0 1.25rem;
+}
+
+.loyalty-settings-export + .loyalty-settings-create-panel {
+    margin-top: 0;
+}
+
+.loyalty-coupon-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.55rem;
+    align-items: center;
+}
+
+.loyalty-coupon-card h4 {
+    grid-column: 1 / -1;
+}
+
+.loyalty-settings-empty {
+    display: grid;
+    place-items: center;
+    min-height: 5rem;
+    border: 1px dashed var(--line);
+    border-radius: 0.9rem;
+    color: var(--mut);
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.8rem;
+    line-height: 1.8;
+}
+
+@media (max-width: 88rem) {
+    .loyalty-settings-board,
+    .loyalty-settings-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .loyalty-settings-insights {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 56rem) {
+    .loyalty-settings-hero-metrics,
+    .loyalty-settings-insights,
+    .loyalty-rule-body,
+    .loyalty-settings-mini-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .loyalty-tier-card,
+    .loyalty-badge-card,
+    .loyalty-coupon-card {
+        grid-template-columns: 1fr;
+    }
+
+    .loyalty-badge-card aside {
+        justify-items: start;
+    }
+
+    .loyalty-settings-column,
+    .loyalty-settings-hero {
+        border-radius: 1rem;
+        padding: 0.85rem;
+    }
+
+    .loyalty-settings-wide {
+        grid-column: auto;
+    }
+}

@@ -1,0 +1,283 @@
+/* ظاهر حرفه‌ای مأموریت‌های باشگاه و دریافت پاداش */
+.club-missions-page {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.club-missions-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.75fr);
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.35rem;
+    background:
+        radial-gradient(circle at 8% 0, rgba(16,185,129,.14), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(14,165,233,.16), transparent 34%),
+        linear-gradient(135deg, var(--panel), var(--panel2));
+    box-shadow: 0 1rem 2.8rem rgba(15,23,42,.08);
+}
+
+body.light .club-missions-hero {
+    background:
+        radial-gradient(circle at 8% 0, rgba(16,185,129,.09), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(14,165,233,.10), transparent 34%),
+        #ffffff;
+}
+
+.club-missions-eyebrow,
+.club-mission-card header span,
+.club-mission-chip {
+    display: inline-flex;
+    width: fit-content;
+    color: #0284c7;
+    background: rgba(14,165,233,.12);
+    border: 1px solid rgba(14,165,233,.22);
+    border-radius: 999px;
+    padding: .2rem .72rem;
+    font-size: .76rem;
+    line-height: 1.55;
+    font-weight: 1000;
+}
+
+.club-missions-hero h1 {
+    margin: .55rem 0 0;
+    color: var(--txt);
+    font-size: clamp(1.35rem, 2.5vw, 2.15rem);
+    line-height: 1.65;
+    letter-spacing: -.02rem;
+}
+
+.club-missions-hero p {
+    margin: .42rem 0 0;
+    color: var(--mut);
+    font-size: .9rem;
+    line-height: 2;
+    max-width: 52rem;
+}
+
+.club-missions-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .65rem;
+    margin-top: 1rem;
+}
+
+.club-missions-score {
+    display: grid;
+    gap: .65rem;
+}
+
+.club-missions-score > div {
+    min-height: 4.75rem;
+    display: grid;
+    align-content: center;
+    gap: .16rem;
+    padding: .72rem .85rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel);
+}
+
+body.light .club-missions-score > div { background: #f8fafc; }
+
+.club-missions-score span,
+.club-missions-score small {
+    color: var(--mut);
+    font-size: .76rem;
+    line-height: 1.75;
+    font-weight: 800;
+}
+
+.club-missions-score b {
+    color: var(--acc);
+    font-size: 1.18rem;
+    line-height: 1.5;
+    font-weight: 1000;
+}
+
+.club-missions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.club-mission-card {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    padding: 1rem 1.25rem 1rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    background: var(--glass);
+    box-shadow: 0 1rem 2.8rem rgba(15,23,42,.08);
+}
+
+body.light .club-mission-card { background: #ffffff; }
+
+.club-mission-card:before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    bottom: 1rem;
+    right: .65rem;
+    width: .28rem;
+    border-radius: 999px;
+    background: var(--mission-color, var(--acc));
+}
+
+.club-mission-card header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: .9rem;
+    padding-bottom: .95rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.club-mission-card header > div {
+    display: grid;
+    gap: .42rem;
+}
+
+.club-mission-card h2,
+.club-mission-card h3 {
+    margin: 0;
+    color: var(--txt);
+    line-height: 1.78;
+}
+
+.club-mission-card p {
+    margin: .25rem 0 0;
+    color: var(--mut);
+    line-height: 2;
+}
+
+.club-mission-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: fit-content;
+    padding: .28rem .7rem;
+    border-radius: 999px;
+    color: var(--mission-color, var(--acc));
+    background: color-mix(in srgb, var(--mission-color, var(--acc)) 11%, transparent);
+    border: 1px solid color-mix(in srgb, var(--mission-color, var(--acc)) 22%, transparent);
+    font-size: .76rem;
+    line-height: 1.6;
+    font-weight: 1000;
+}
+
+.club-mission-body {
+    display: grid;
+    gap: .75rem;
+}
+
+.club-mission-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: .8rem;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+}
+
+body.light .club-mission-row { background: #f8fafc; }
+
+.club-mission-icon {
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--mission-color, var(--acc)) 15%, transparent);
+    color: var(--mission-color, var(--acc));
+    font-size: 1.25rem;
+}
+
+.club-mission-row h3 {
+    margin: 0;
+    color: var(--txt);
+    font-size: .94rem;
+    line-height: 1.78;
+}
+
+.club-mission-row p,
+.club-mission-row small {
+    margin: .1rem 0 0;
+    color: var(--mut);
+    line-height: 1.95;
+    font-size: .78rem;
+}
+
+.club-mission-progress-wrap {
+    display: grid;
+    gap: .45rem;
+}
+
+.club-mission-progress-top {
+    display: flex;
+    justify-content: space-between;
+    gap: .75rem;
+    color: var(--mut);
+    font-size: .78rem;
+    line-height: 1.8;
+    font-weight: 900;
+}
+
+.club-mission-progress {
+    height: .62rem;
+    border-radius: 999px;
+    background: rgba(148,163,184,.18);
+    overflow: hidden;
+}
+
+.club-mission-progress span {
+    display: block;
+    width: var(--progress, 0%);
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--mission-color, var(--acc)), var(--ok));
+}
+
+.club-mission-footer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .65rem;
+    margin-top: .9rem;
+}
+
+.club-missions-empty {
+    display: grid;
+    place-items: center;
+    min-height: 8rem;
+    padding: 1rem;
+    color: var(--mut);
+    text-align: center;
+    border: 1px dashed var(--line);
+    border-radius: 1rem;
+}
+
+@media (max-width: 78rem) {
+    .club-missions-hero,
+    .club-missions-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 44rem) {
+    .club-missions-hero,
+    .club-mission-card { border-radius: 1rem; padding: .85rem; }
+    .club-mission-card { padding-right: 1.05rem; }
+    .club-mission-card:before { right: .45rem; top: .8rem; bottom: .8rem; }
+    .club-mission-card header,
+    .club-mission-row { grid-template-columns: 1fr; display: grid; }
+    .club-mission-status,
+    .club-mission-footer .btn,
+    .club-mission-footer a { width: 100%; }
+}

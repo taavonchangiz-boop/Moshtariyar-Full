@@ -1,0 +1,471 @@
+/* ظاهر حرفه‌ای گردونه شانس مشتری */
+.club-wheel-page {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    --wheel-size: min(29rem, 78vw);
+}
+
+.club-wheel-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.72fr) minmax(12rem, 0.52fr);
+    gap: 0.75rem;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.35rem;
+    background:
+        radial-gradient(circle at 8% 0, rgba(245, 158, 11, 0.14), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(14, 165, 233, 0.15), transparent 34%),
+        linear-gradient(135deg, var(--panel), var(--panel2));
+    box-shadow: 0 1rem 2.8rem rgba(15, 23, 42, 0.08);
+}
+
+body.light .club-wheel-hero {
+    background:
+        radial-gradient(circle at 8% 0, rgba(245, 158, 11, 0.09), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(14, 165, 233, 0.09), transparent 34%),
+        #ffffff;
+}
+
+.club-wheel-eyebrow,
+.club-wheel-card header span,
+.club-wheel-chip {
+    display: inline-flex;
+    width: fit-content;
+    color: #0284c7;
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    border-radius: 999px;
+    padding: 0.2rem 0.72rem;
+    font-size: 0.76rem;
+    line-height: 1.55;
+    font-weight: 1000;
+}
+
+.club-wheel-hero h1 {
+    margin: 0.55rem 0 0;
+    color: var(--txt);
+    font-size: clamp(1.35rem, 2.4vw, 2.12rem);
+    line-height: 1.65;
+    letter-spacing: -0.02rem;
+}
+
+.club-wheel-hero p {
+    margin: 0.42rem 0 0;
+    color: var(--mut);
+    font-size: 0.9rem;
+    line-height: 2;
+    max-width: 54rem;
+}
+
+.club-wheel-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1rem;
+}
+
+.club-wheel-score {
+    display: grid;
+    gap: 0.42rem;
+}
+
+.club-wheel-score > div {
+    min-height: 3.75rem;
+    display: grid;
+    align-content: center;
+    gap: 0.04rem;
+    padding: 0.42rem 0.62rem;
+    border: 1px solid var(--line);
+    border-radius: 0.9rem;
+    background: var(--panel);
+}
+
+body.light .club-wheel-score > div {
+    background: #f8fafc;
+}
+
+.club-wheel-score span,
+.club-wheel-score small {
+    color: var(--mut);
+    font-size: 0.74rem;
+    line-height: 1.65;
+    font-weight: 800;
+}
+
+.club-wheel-score b {
+    color: var(--acc);
+    font-size: 1.08rem;
+    line-height: 1.45;
+    font-weight: 1000;
+}
+
+.club-wheel-grid,
+.club-wheel-grid-reverse {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.club-wheel-grid {
+    grid-template-columns: minmax(23rem, 0.9fr) minmax(0, 1.1fr);
+}
+
+.club-wheel-grid-reverse {
+    grid-template-columns: minmax(18rem, 0.78fr) minmax(0, 1fr);
+}
+
+.club-wheel-card {
+    min-width: 0;
+    overflow: hidden;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    background: var(--glass);
+    box-shadow: 0 1rem 2.8rem rgba(15, 23, 42, 0.08);
+}
+
+body.light .club-wheel-card {
+    background: #ffffff;
+}
+
+.club-wheel-card.is-accent {
+    position: relative;
+    padding-right: 1.25rem;
+}
+
+.club-wheel-card.is-accent:before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    bottom: 1rem;
+    right: 0.65rem;
+    width: 0.28rem;
+    border-radius: 999px;
+    background: var(--wheel-card-color, var(--acc));
+}
+
+.club-wheel-card header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.9rem;
+    padding-bottom: 0.95rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.club-wheel-card header > div {
+    display: grid;
+    gap: 0.42rem;
+}
+
+.club-wheel-card h2,
+.club-wheel-card h3 {
+    margin: 0;
+    color: var(--txt);
+    line-height: 1.78;
+}
+
+.club-wheel-stage {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: calc(var(--wheel-size) + 2rem);
+    border-radius: 1.4rem;
+    background:
+        radial-gradient(circle at center, rgba(14, 165, 233, 0.10), transparent 42%),
+        linear-gradient(135deg, rgba(14, 165, 233, 0.06), rgba(245, 158, 11, 0.06));
+    overflow: hidden;
+}
+
+.club-wheel-wrap-pro {
+    position: relative;
+    width: var(--wheel-size);
+    height: var(--wheel-size);
+    margin: 0 auto;
+}
+
+.club-wheel-circle-pro {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--wheel-gradient);
+    border: 0.75rem solid var(--panel2);
+    box-shadow: 0 0 0 0.25rem #0ea5e9, 0 1.4rem 3.8rem rgba(15, 23, 42, 0.24);
+    transition: transform 4.2s cubic-bezier(.12,.72,.12,1);
+}
+
+body.light .club-wheel-circle-pro {
+    border-color: #f8fafc;
+}
+
+.club-wheel-circle-pro:after {
+    content: '';
+    position: absolute;
+    inset: 29%;
+    border-radius: 50%;
+    background: var(--panel);
+    border: 0.22rem solid #0ea5e9;
+    box-shadow: inset 0 0 1.2rem rgba(15, 23, 42, 0.14);
+}
+
+.club-wheel-pointer-pro {
+    position: absolute;
+    top: -0.55rem;
+    left: 50%;
+    z-index: 8;
+    transform: translateX(-50%);
+    width: 3.2rem;
+    height: 3.2rem;
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    border-radius: 1rem;
+    box-shadow: 0 0.8rem 1.8rem rgba(245, 158, 11, 0.28);
+    font-size: 1.25rem;
+}
+
+.club-wheel-center-pro {
+    position: absolute;
+    inset: 0;
+    z-index: 7;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+}
+
+.club-wheel-center-pro span {
+    display: grid;
+    place-items: center;
+    width: 6.2rem;
+    height: 6.2rem;
+    border-radius: 50%;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--acc2), var(--ok));
+    box-shadow: 0 0.9rem 2rem rgba(14, 165, 233, 0.25);
+    font-weight: 1000;
+}
+
+.club-wheel-marker-layer-pro {
+    position: absolute;
+    inset: 0;
+    z-index: 6;
+    pointer-events: none;
+}
+
+.club-wheel-marker-pro {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2.55rem;
+    height: 2.55rem;
+    border-radius: 0.95rem;
+    display: grid;
+    place-items: center;
+    background: color-mix(in srgb, var(--marker-color) 18%, #ffffff);
+    border: 2px solid color-mix(in srgb, var(--marker-color) 62%, #ffffff);
+    box-shadow: 0 0.55rem 1.2rem rgba(15, 23, 42, 0.20);
+    transform: translate(-50%, -50%) rotate(var(--marker-angle)) translateY(calc(var(--wheel-size) * -0.33)) rotate(calc(-1 * var(--marker-angle)));
+    overflow: hidden;
+}
+
+.club-wheel-marker-pro img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.club-wheel-marker-pro span {
+    font-size: 1.2rem;
+}
+
+.club-wheel-spin-pro {
+    transform: rotate(1845deg);
+}
+
+.club-prize-chip-list-pro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.85rem;
+}
+
+.club-prize-chip-list-pro span {
+    display: inline-flex;
+    padding: 0.28rem 0.72rem;
+    border-radius: 999px;
+    color: var(--chip-color);
+    background: color-mix(in srgb, var(--chip-color) 11%, transparent);
+    border: 1px solid color-mix(in srgb, var(--chip-color) 22%, transparent);
+    font-size: 0.76rem;
+    line-height: 1.6;
+    font-weight: 900;
+}
+
+.club-wheel-result-card {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.club-wheel-result-box,
+.club-wheel-tip-row,
+.club-wheel-spin-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+}
+
+body.light .club-wheel-result-box,
+body.light .club-wheel-tip-row,
+body.light .club-wheel-spin-row {
+    background: #f8fafc;
+}
+
+.club-wheel-icon {
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--row-color, var(--acc)) 15%, transparent);
+    color: var(--row-color, var(--acc));
+    font-size: 1.25rem;
+    overflow: hidden;
+}
+
+.club-wheel-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.club-wheel-result-box h3,
+.club-wheel-tip-row h3,
+.club-wheel-spin-row h3 {
+    margin: 0;
+    color: var(--txt);
+    font-size: 0.95rem;
+    line-height: 1.78;
+}
+
+.club-wheel-result-box p,
+.club-wheel-result-box small,
+.club-wheel-tip-row p,
+.club-wheel-tip-row small,
+.club-wheel-spin-row p,
+.club-wheel-spin-row small {
+    display: block;
+    margin: 0.1rem 0 0;
+    color: var(--mut);
+    line-height: 1.95;
+    font-size: 0.78rem;
+}
+
+.club-wheel-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: fit-content;
+    padding: 0.28rem 0.7rem;
+    border-radius: 999px;
+    color: var(--acc);
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    font-size: 0.76rem;
+    line-height: 1.6;
+    font-weight: 1000;
+}
+
+.club-wheel-badge.is-ok { color: var(--ok); background: rgba(16, 185, 129, 0.13); border-color: rgba(16, 185, 129, 0.24); }
+.club-wheel-badge.is-warn { color: var(--warn); background: rgba(245, 158, 11, 0.13); border-color: rgba(245, 158, 11, 0.24); }
+.club-wheel-badge.is-muted { color: var(--mut); background: rgba(148, 163, 184, 0.12); border-color: rgba(148, 163, 184, 0.22); }
+
+.club-wheel-code-box {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 0.55rem;
+}
+
+.club-wheel-code-box input { direction: ltr; unicode-bidi: plaintext; font-weight: 1000; }
+
+.club-wheel-empty {
+    display: grid;
+    place-items: center;
+    min-height: 8rem;
+    padding: 1rem;
+    color: var(--mut);
+    text-align: center;
+    border: 1px dashed var(--line);
+    border-radius: 1rem;
+}
+
+@media (max-width: 82rem) {
+    .club-wheel-grid,
+    .club-wheel-grid-reverse,
+    .club-wheel-hero { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 44rem) {
+    .club-wheel-page { --wheel-size: min(23rem, 88vw); }
+    .club-wheel-hero,
+    .club-wheel-card { border-radius: 1rem; padding: 0.85rem; }
+    .club-wheel-card.is-accent { padding-right: 1.05rem; }
+    .club-wheel-card.is-accent:before { right: 0.45rem; top: 0.8rem; bottom: 0.8rem; }
+    .club-wheel-center-pro span { width: 5.1rem; height: 5.1rem; }
+    .club-wheel-marker-pro { width: 2.1rem; height: 2.1rem; }
+    .club-wheel-result-box,
+    .club-wheel-tip-row,
+    .club-wheel-spin-row,
+    .club-wheel-code-box { grid-template-columns: 1fr; display: grid; }
+    .club-wheel-badge,
+    .club-wheel-actions .btn,
+    .club-wheel-actions a,
+    .club-wheel-code-box .btn { width: 100%; }
+}
+/* پرداخت نهایی برای پایداری، دسترسی‌پذیری و نمایش حرفه‌ای */
+.club-wheel-circle-pro {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.club-wheel-circle-pro::after {
+    pointer-events: none;
+}
+
+.club-wheel-actions .btn:focus-visible,
+.club-wheel-actions a:focus-visible,
+.club-wheel-code-box .btn:focus-visible,
+.club-wheel-card a:focus-visible {
+    outline: 0.2rem solid rgba(14, 165, 233, 0.45);
+    outline-offset: 0.18rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .club-wheel-circle-pro {
+        transition: none;
+    }
+
+    .club-wheel-spin-pro {
+        transform: none;
+    }
+
+    .club-wheel-card,
+    .club-wheel-actions .btn,
+    .club-wheel-actions a {
+        transition: none;
+    }
+}

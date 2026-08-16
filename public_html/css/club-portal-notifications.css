@@ -1,0 +1,325 @@
+/* مرکز اعلان‌ها و پیام‌های باشگاه */
+.club-notifications-page {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.club-notifications-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.72fr) minmax(12rem, 0.52fr);
+    gap: 0.75rem;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.35rem;
+    background:
+        radial-gradient(circle at 8% 0, rgba(14, 165, 233, 0.14), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(245, 158, 11, 0.13), transparent 34%),
+        linear-gradient(135deg, var(--panel), var(--panel2));
+    box-shadow: 0 1rem 2.8rem rgba(15, 23, 42, 0.08);
+}
+
+body.light .club-notifications-hero {
+    background:
+        radial-gradient(circle at 8% 0, rgba(14, 165, 233, 0.09), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(245, 158, 11, 0.08), transparent 34%),
+        #ffffff;
+}
+
+.club-notifications-eyebrow,
+.club-notification-card header span,
+.club-notification-chip {
+    display: inline-flex;
+    width: fit-content;
+    color: #0284c7;
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    border-radius: 999px;
+    padding: 0.2rem 0.72rem;
+    font-size: 0.76rem;
+    line-height: 1.55;
+    font-weight: 1000;
+}
+
+.club-notifications-hero h1 {
+    margin: 0.55rem 0 0;
+    color: var(--txt);
+    font-size: clamp(1.35rem, 2.4vw, 2.12rem);
+    line-height: 1.65;
+    letter-spacing: -0.02rem;
+}
+
+.club-notifications-hero p {
+    margin: 0.42rem 0 0;
+    color: var(--mut);
+    font-size: 0.9rem;
+    line-height: 2;
+    max-width: 54rem;
+}
+
+.club-notifications-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1rem;
+}
+
+.club-notifications-score {
+    display: grid;
+    gap: 0.42rem;
+}
+
+.club-notifications-score > div {
+    min-height: 3.75rem;
+    display: grid;
+    align-content: center;
+    gap: 0.04rem;
+    padding: 0.42rem 0.62rem;
+    border: 1px solid var(--line);
+    border-radius: 0.9rem;
+    background: var(--panel);
+}
+
+body.light .club-notifications-score > div {
+    background: #f8fafc;
+}
+
+.club-notifications-score span,
+.club-notifications-score small {
+    color: var(--mut);
+    font-size: 0.74rem;
+    line-height: 1.65;
+    font-weight: 800;
+}
+
+.club-notifications-score b {
+    color: var(--acc);
+    font-size: 1.08rem;
+    line-height: 1.45;
+    font-weight: 1000;
+}
+
+.club-notifications-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.78fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.club-notification-card {
+    min-width: 0;
+    overflow: hidden;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    background: var(--glass);
+    box-shadow: 0 1rem 2.8rem rgba(15, 23, 42, 0.08);
+}
+
+body.light .club-notification-card {
+    background: #ffffff;
+}
+
+.club-notification-card.is-accent {
+    position: relative;
+    padding-right: 1.25rem;
+}
+
+.club-notification-card.is-accent:before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    bottom: 1rem;
+    right: 0.65rem;
+    width: 0.28rem;
+    border-radius: 999px;
+    background: var(--notification-color, var(--acc));
+}
+
+.club-notification-card header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.9rem;
+    padding-bottom: 0.95rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.club-notification-card header > div {
+    display: grid;
+    gap: 0.42rem;
+}
+
+.club-notification-card h2,
+.club-notification-card h3 {
+    margin: 0;
+    color: var(--txt);
+    line-height: 1.78;
+}
+
+.club-notification-filter {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) repeat(2, minmax(8rem, 0.35fr)) auto auto;
+    gap: 0.65rem;
+    align-items: end;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+}
+
+body.light .club-notification-filter {
+    background: #f8fafc;
+}
+
+.club-notification-list,
+.club-notification-type-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.club-notification-row,
+.club-notification-type-row,
+.club-notification-guide-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+}
+
+body.light .club-notification-row,
+body.light .club-notification-type-row,
+body.light .club-notification-guide-row {
+    background: #f8fafc;
+}
+
+.club-notification-row.is-unread {
+    border-color: rgba(14, 165, 233, 0.28);
+    background: rgba(14, 165, 233, 0.07);
+}
+
+.club-notification-icon {
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--row-color, var(--acc)) 15%, transparent);
+    color: var(--row-color, var(--acc));
+    font-size: 1.25rem;
+}
+
+.club-notification-row h3,
+.club-notification-type-row h3,
+.club-notification-guide-row h3 {
+    margin: 0;
+    color: var(--txt);
+    font-size: 0.95rem;
+    line-height: 1.78;
+}
+
+.club-notification-row p,
+.club-notification-row small,
+.club-notification-type-row p,
+.club-notification-type-row small,
+.club-notification-guide-row p,
+.club-notification-guide-row small {
+    display: block;
+    margin: 0.1rem 0 0;
+    color: var(--mut);
+    line-height: 1.95;
+    font-size: 0.78rem;
+}
+
+.club-notification-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: fit-content;
+    padding: 0.28rem 0.7rem;
+    border-radius: 999px;
+    color: var(--acc);
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    font-size: 0.76rem;
+    line-height: 1.6;
+    font-weight: 1000;
+}
+
+.club-notification-badge.is-ok {
+    color: var(--ok);
+    background: rgba(16, 185, 129, 0.13);
+    border-color: rgba(16, 185, 129, 0.24);
+}
+
+.club-notification-badge.is-warn {
+    color: var(--warn);
+    background: rgba(245, 158, 11, 0.13);
+    border-color: rgba(245, 158, 11, 0.24);
+}
+
+.club-notification-badge.is-muted {
+    color: var(--mut);
+    background: rgba(148, 163, 184, 0.12);
+    border-color: rgba(148, 163, 184, 0.22);
+}
+
+.club-notification-empty {
+    display: grid;
+    place-items: center;
+    min-height: 8rem;
+    padding: 1rem;
+    color: var(--mut);
+    text-align: center;
+    border: 1px dashed var(--line);
+    border-radius: 1rem;
+}
+
+@media (max-width: 78rem) {
+    .club-notifications-hero,
+    .club-notifications-grid,
+    .club-notification-filter {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 44rem) {
+    .club-notifications-hero,
+    .club-notification-card {
+        border-radius: 1rem;
+        padding: 0.85rem;
+    }
+
+    .club-notification-card.is-accent {
+        padding-right: 1.05rem;
+    }
+
+    .club-notification-card.is-accent:before {
+        right: 0.45rem;
+        top: 0.8rem;
+        bottom: 0.8rem;
+    }
+
+    .club-notification-card header,
+    .club-notification-row,
+    .club-notification-type-row,
+    .club-notification-guide-row {
+        grid-template-columns: 1fr;
+        display: grid;
+    }
+
+    .club-notification-badge,
+    .club-notifications-actions .btn,
+    .club-notifications-actions a,
+    .club-notification-filter .btn {
+        width: 100%;
+    }
+}

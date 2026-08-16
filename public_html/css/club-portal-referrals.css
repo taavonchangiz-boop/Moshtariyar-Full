@@ -1,0 +1,362 @@
+/* ظاهر حرفه‌ای مرکز معرفی دوستان باشگاه */
+.club-referral-page {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.club-referral-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.72fr) minmax(12rem, 0.52fr);
+    gap: 0.75rem;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.35rem;
+    background:
+        radial-gradient(circle at 8% 0, rgba(16, 185, 129, 0.14), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(14, 165, 233, 0.15), transparent 34%),
+        linear-gradient(135deg, var(--panel), var(--panel2));
+    box-shadow: 0 1rem 2.8rem rgba(15, 23, 42, 0.08);
+}
+
+body.light .club-referral-hero {
+    background:
+        radial-gradient(circle at 8% 0, rgba(16, 185, 129, 0.09), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(14, 165, 233, 0.09), transparent 34%),
+        #ffffff;
+}
+
+.club-referral-eyebrow,
+.club-referral-card header span,
+.club-referral-chip {
+    display: inline-flex;
+    width: fit-content;
+    color: #0284c7;
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    border-radius: 999px;
+    padding: 0.2rem 0.72rem;
+    font-size: 0.76rem;
+    line-height: 1.55;
+    font-weight: 1000;
+}
+
+.club-referral-hero h1 {
+    margin: 0.55rem 0 0;
+    color: var(--txt);
+    font-size: clamp(1.35rem, 2.4vw, 2.12rem);
+    line-height: 1.65;
+    letter-spacing: -0.02rem;
+}
+
+.club-referral-hero p {
+    margin: 0.42rem 0 0;
+    color: var(--mut);
+    font-size: 0.9rem;
+    line-height: 2;
+    max-width: 54rem;
+}
+
+.club-referral-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1rem;
+}
+
+.club-referral-score {
+    display: grid;
+    gap: 0.42rem;
+}
+
+.club-referral-score > div {
+    min-height: 3.75rem;
+    display: grid;
+    align-content: center;
+    gap: 0.04rem;
+    padding: 0.42rem 0.62rem;
+    border: 1px solid var(--line);
+    border-radius: 0.9rem;
+    background: var(--panel);
+}
+
+body.light .club-referral-score > div {
+    background: #f8fafc;
+}
+
+.club-referral-score span,
+.club-referral-score small {
+    color: var(--mut);
+    font-size: 0.74rem;
+    line-height: 1.65;
+    font-weight: 800;
+}
+
+.club-referral-score b {
+    color: var(--acc);
+    font-size: 1.08rem;
+    line-height: 1.45;
+    font-weight: 1000;
+}
+
+.club-referral-grid,
+.club-referral-grid-reverse {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.club-referral-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.78fr);
+}
+
+.club-referral-grid-reverse {
+    grid-template-columns: minmax(18rem, 0.78fr) minmax(0, 1fr);
+}
+
+.club-referral-card {
+    min-width: 0;
+    overflow: hidden;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    background: var(--glass);
+    box-shadow: 0 1rem 2.8rem rgba(15, 23, 42, 0.08);
+}
+
+body.light .club-referral-card {
+    background: #ffffff;
+}
+
+.club-referral-card.is-accent {
+    position: relative;
+    padding-right: 1.25rem;
+}
+
+.club-referral-card.is-accent:before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    bottom: 1rem;
+    right: 0.65rem;
+    width: 0.28rem;
+    border-radius: 999px;
+    background: var(--referral-color, var(--acc));
+}
+
+.club-referral-card header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.9rem;
+    padding-bottom: 0.95rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.club-referral-card header > div {
+    display: grid;
+    gap: 0.42rem;
+}
+
+.club-referral-card h2,
+.club-referral-card h3 {
+    margin: 0;
+    color: var(--txt);
+    line-height: 1.78;
+}
+
+.club-referral-card p {
+    margin: 0.25rem 0 0;
+    color: var(--mut);
+    line-height: 2;
+}
+
+.club-referral-copy-box {
+    display: grid;
+    gap: 0.55rem;
+    margin-top: 0.8rem;
+}
+
+.club-referral-copy-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.55rem;
+    align-items: center;
+}
+
+.club-referral-copy-row input {
+    direction: ltr;
+    unicode-bidi: plaintext;
+    font-weight: 900;
+}
+
+.club-referral-share-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.55rem;
+    margin-top: 0.9rem;
+}
+
+.club-referral-share-grid .btn {
+    width: 100%;
+    min-height: 2.55rem;
+}
+
+.club-referral-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.club-referral-row,
+.club-referral-campaign-row,
+.club-referral-tip-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+}
+
+body.light .club-referral-row,
+body.light .club-referral-campaign-row,
+body.light .club-referral-tip-row {
+    background: #f8fafc;
+}
+
+.club-referral-icon {
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--row-color, var(--acc)) 15%, transparent);
+    color: var(--row-color, var(--acc));
+    font-size: 1.25rem;
+}
+
+.club-referral-row h3,
+.club-referral-campaign-row h3,
+.club-referral-tip-row h3 {
+    margin: 0;
+    color: var(--txt);
+    font-size: 0.95rem;
+    line-height: 1.78;
+}
+
+.club-referral-row p,
+.club-referral-row small,
+.club-referral-campaign-row p,
+.club-referral-campaign-row small,
+.club-referral-tip-row p,
+.club-referral-tip-row small {
+    display: block;
+    margin: 0.1rem 0 0;
+    color: var(--mut);
+    line-height: 1.95;
+    font-size: 0.78rem;
+}
+
+.club-referral-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: fit-content;
+    padding: 0.28rem 0.7rem;
+    border-radius: 999px;
+    color: var(--acc);
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    font-size: 0.76rem;
+    line-height: 1.6;
+    font-weight: 1000;
+}
+
+.club-referral-badge.is-ok {
+    color: var(--ok);
+    background: rgba(16, 185, 129, 0.13);
+    border-color: rgba(16, 185, 129, 0.24);
+}
+
+.club-referral-badge.is-warn {
+    color: var(--warn);
+    background: rgba(245, 158, 11, 0.13);
+    border-color: rgba(245, 158, 11, 0.24);
+}
+
+.club-referral-badge.is-muted {
+    color: var(--mut);
+    background: rgba(148, 163, 184, 0.12);
+    border-color: rgba(148, 163, 184, 0.22);
+}
+
+.club-referral-campaign-links {
+    display: grid;
+    gap: 0.55rem;
+    margin-top: 0.75rem;
+}
+
+.club-referral-empty {
+    display: grid;
+    place-items: center;
+    min-height: 8rem;
+    padding: 1rem;
+    color: var(--mut);
+    text-align: center;
+    border: 1px dashed var(--line);
+    border-radius: 1rem;
+}
+
+@media (max-width: 78rem) {
+    .club-referral-hero,
+    .club-referral-grid,
+    .club-referral-grid-reverse {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 52rem) {
+    .club-referral-share-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 44rem) {
+    .club-referral-hero,
+    .club-referral-card {
+        border-radius: 1rem;
+        padding: 0.85rem;
+    }
+
+    .club-referral-card.is-accent {
+        padding-right: 1.05rem;
+    }
+
+    .club-referral-card.is-accent:before {
+        right: 0.45rem;
+        top: 0.8rem;
+        bottom: 0.8rem;
+    }
+
+    .club-referral-card header,
+    .club-referral-row,
+    .club-referral-campaign-row,
+    .club-referral-tip-row,
+    .club-referral-copy-row,
+    .club-referral-share-grid {
+        grid-template-columns: 1fr;
+        display: grid;
+    }
+
+    .club-referral-badge,
+    .club-referral-actions .btn,
+    .club-referral-actions a,
+    .club-referral-copy-row .btn {
+        width: 100%;
+    }
+}

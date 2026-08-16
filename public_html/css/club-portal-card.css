@@ -1,0 +1,586 @@
+/* کارت دیجیتال عضویت باشگاه مشتریان */
+.club-card-page {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.club-card-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.35rem;
+    background:
+        radial-gradient(circle at 10% 0, rgba(16, 185, 129, 0.14), transparent 32%),
+        radial-gradient(circle at 96% 0, rgba(14, 165, 233, 0.16), transparent 34%),
+        linear-gradient(135deg, var(--panel), var(--panel2));
+    box-shadow: 0 1rem 2.8rem rgba(15, 23, 42, 0.08);
+}
+
+body.light .club-card-hero {
+    background:
+        radial-gradient(circle at 10% 0, rgba(16, 185, 129, 0.09), transparent 32%),
+        radial-gradient(circle at 96% 0, rgba(14, 165, 233, 0.10), transparent 34%),
+        #ffffff;
+}
+
+.club-card-eyebrow,
+.club-card-panel header span,
+.club-card-chip {
+    display: inline-flex;
+    width: fit-content;
+    color: #0284c7;
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    border-radius: 999px;
+    padding: 0.2rem 0.72rem;
+    font-size: 0.76rem;
+    line-height: 1.55;
+    font-weight: 1000;
+}
+
+.club-card-hero h1 {
+    margin: 0.55rem 0 0;
+    color: var(--txt);
+    font-size: clamp(1.35rem, 2.5vw, 2.1rem);
+    line-height: 1.65;
+    letter-spacing: -0.02rem;
+}
+
+.club-card-hero p {
+    margin: 0.42rem 0 0;
+    color: var(--mut);
+    font-size: 0.9rem;
+    line-height: 2;
+    max-width: 52rem;
+}
+
+.club-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1rem;
+}
+
+.club-card-actions .btn,
+.club-card-actions a,
+.club-card-actions button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.club-card-score {
+    display: grid;
+    gap: 0.65rem;
+}
+
+.club-card-score > div {
+    min-height: 4.75rem;
+    display: grid;
+    align-content: center;
+    gap: 0.16rem;
+    padding: 0.72rem 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel);
+}
+
+body.light .club-card-score > div {
+    background: #f8fafc;
+}
+
+.club-card-score span,
+.club-card-score small {
+    color: var(--mut);
+    font-size: 0.76rem;
+    line-height: 1.75;
+    font-weight: 800;
+}
+
+.club-card-score b {
+    color: var(--acc);
+    font-size: 1.18rem;
+    line-height: 1.5;
+    font-weight: 1000;
+}
+
+.club-card-grid {
+    display: grid;
+    grid-template-columns: minmax(22rem, 0.86fr) minmax(0, 1.14fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.club-card-panel {
+    min-width: 0;
+    overflow: hidden;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    background: var(--glass);
+    box-shadow: 0 1rem 2.8rem rgba(15, 23, 42, 0.08);
+}
+
+body.light .club-card-panel {
+    background: #ffffff;
+}
+
+.club-card-panel.is-accent {
+    position: relative;
+    padding-right: 1.25rem;
+}
+
+.club-card-panel.is-accent:before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    bottom: 1rem;
+    right: 0.65rem;
+    width: 0.28rem;
+    border-radius: 999px;
+    background: var(--card-color, var(--acc));
+}
+
+.club-card-panel header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.9rem;
+    padding-bottom: 0.95rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.club-card-panel header > div {
+    display: grid;
+    gap: 0.42rem;
+}
+
+.club-card-panel h2,
+.club-card-panel h3 {
+    margin: 0;
+    color: var(--txt);
+    line-height: 1.78;
+}
+
+.club-card-visual {
+    position: relative;
+    min-height: 24rem;
+    display: grid;
+    align-content: space-between;
+    gap: 1rem;
+    padding: 1.2rem;
+    border-radius: 1.55rem;
+    color: #ffffff;
+    background:
+        radial-gradient(circle at 0 0, rgba(255,255,255,.28), transparent 32%),
+        radial-gradient(circle at 100% 100%, rgba(16,185,129,.35), transparent 36%),
+        linear-gradient(135deg, #0369a1, #7c3aed);
+    box-shadow: 0 1.4rem 3.5rem rgba(14, 165, 233, 0.22);
+    overflow: hidden;
+}
+
+.club-card-visual:after {
+    content: '';
+    position: absolute;
+    left: -3rem;
+    bottom: -4rem;
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    background: rgba(255,255,255,.13);
+}
+
+.club-card-top {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.club-card-member {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    min-width: 0;
+}
+
+.club-card-avatar {
+    width: 4.5rem;
+    height: 4.5rem;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 1.35rem;
+    background: rgba(255,255,255,.18);
+    border: 1px solid rgba(255,255,255,.28);
+    font-size: 1.6rem;
+    font-weight: 1000;
+}
+
+.club-card-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.club-card-member h2 {
+    margin: 0;
+    color: #ffffff;
+    line-height: 1.65;
+    font-size: 1.25rem;
+}
+
+.club-card-member p,
+.club-card-top span,
+.club-card-bottom small {
+    color: rgba(255,255,255,.78);
+    line-height: 1.85;
+    margin: 0;
+}
+
+.club-card-middle {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
+}
+
+.club-card-middle > div {
+    padding: 0.8rem;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 1rem;
+    background: rgba(255,255,255,.12);
+    backdrop-filter: blur(10px);
+}
+
+.club-card-middle span {
+    display: block;
+    color: rgba(255,255,255,.72);
+    font-size: 0.76rem;
+    line-height: 1.7;
+}
+
+.club-card-middle b {
+    display: block;
+    margin-top: 0.2rem;
+    color: #ffffff;
+    font-size: 1.08rem;
+    line-height: 1.55;
+    font-weight: 1000;
+}
+
+.club-card-bottom {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 0.6rem;
+}
+
+.club-card-barcode {
+    display: flex;
+    align-items: end;
+    gap: 0.18rem;
+    height: 3rem;
+    padding: 0.35rem;
+    border-radius: 0.9rem;
+    background: rgba(255,255,255,.88);
+    overflow: hidden;
+}
+
+.club-card-barcode i {
+    display: block;
+    width: 0.35rem;
+    background: #0f172a;
+    border-radius: 0.2rem;
+}
+
+.club-card-barcode i:nth-child(2n) { height: 70%; }
+.club-card-barcode i:nth-child(3n) { height: 90%; }
+.club-card-barcode i:nth-child(4n) { height: 55%; }
+.club-card-barcode i:nth-child(5n) { height: 82%; }
+
+.club-copy-box {
+    display: flex;
+    gap: 0.55rem;
+    align-items: center;
+    margin-top: 0.55rem;
+}
+
+.club-copy-box input {
+    direction: ltr;
+    unicode-bidi: plaintext;
+    font-weight: 900;
+}
+
+.club-card-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.club-card-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 0.8rem;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+}
+
+body.light .club-card-row {
+    background: #f8fafc;
+}
+
+.club-card-row-icon {
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--row-color, var(--acc)) 15%, transparent);
+    color: var(--row-color, var(--acc));
+    font-size: 1.25rem;
+}
+
+.club-card-row h3 {
+    margin: 0;
+    color: var(--txt);
+    line-height: 1.78;
+    font-size: 0.95rem;
+}
+
+.club-card-row p,
+.club-card-row small {
+    margin: 0.1rem 0 0;
+    color: var(--mut);
+    line-height: 1.95;
+    font-size: 0.78rem;
+}
+
+.club-card-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: fit-content;
+    padding: 0.28rem 0.7rem;
+    border-radius: 999px;
+    color: var(--acc);
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    font-size: 0.76rem;
+    line-height: 1.6;
+    font-weight: 1000;
+}
+
+.club-card-empty {
+    display: grid;
+    place-items: center;
+    min-height: 8rem;
+    padding: 1rem;
+    color: var(--mut);
+    text-align: center;
+    border: 1px dashed var(--line);
+    border-radius: 1rem;
+}
+
+@media (max-width: 78rem) {
+    .club-card-hero,
+    .club-card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 44rem) {
+    .club-card-hero,
+    .club-card-panel {
+        border-radius: 1rem;
+        padding: 0.85rem;
+    }
+
+    .club-card-panel.is-accent {
+        padding-right: 1.05rem;
+    }
+
+    .club-card-panel.is-accent:before {
+        right: 0.45rem;
+        top: 0.8rem;
+        bottom: 0.8rem;
+    }
+
+    .club-card-visual {
+        min-height: 25rem;
+        border-radius: 1.2rem;
+        padding: 1rem;
+    }
+
+    .club-card-top,
+    .club-card-member {
+        align-items: flex-start;
+    }
+
+    .club-card-middle,
+    .club-card-row {
+        grid-template-columns: 1fr;
+    }
+
+    .club-copy-box {
+        display: grid;
+    }
+
+    .club-card-actions .btn,
+    .club-card-actions a,
+    .club-card-actions button,
+    .club-copy-box button {
+        width: 100%;
+    }
+}
+
+/* اصلاح فشردگی کارت عضویت و حرفه‌ای‌تر شدن کارت دیجیتال */
+.club-card-hero {
+    grid-template-columns: minmax(0, 1.55fr) minmax(15rem, 0.62fr) !important;
+}
+
+.club-card-score {
+    gap: 0.5rem !important;
+}
+
+.club-card-score > div {
+    min-height: 4.25rem !important;
+    padding: 0.58rem 0.7rem !important;
+    border-radius: 0.9rem !important;
+}
+
+.club-card-score span,
+.club-card-score small {
+    font-size: 0.72rem !important;
+    line-height: 1.6 !important;
+}
+
+.club-card-score b {
+    font-size: 1.08rem !important;
+    line-height: 1.45 !important;
+}
+
+.club-card-visual {
+    background:
+        radial-gradient(circle at 12% 0, rgba(255,255,255,.30), transparent 30%),
+        radial-gradient(circle at 100% 18%, rgba(16,185,129,.34), transparent 32%),
+        radial-gradient(circle at 25% 100%, rgba(56,189,248,.26), transparent 34%),
+        linear-gradient(135deg, #075985 0%, #2563eb 48%, #7c3aed 100%) !important;
+    border: 1px solid rgba(255,255,255,.24);
+}
+
+.club-card-qr-wrap {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.7rem;
+    border-radius: 1rem;
+    background: rgba(255,255,255,.90);
+    color: #0f172a;
+}
+
+.club-card-qr-wrap b {
+    display: block;
+    color: #0f172a;
+    line-height: 1.7;
+}
+
+.club-card-qr-wrap small {
+    display: block;
+    color: #334155;
+    line-height: 1.7;
+    font-weight: 900;
+}
+
+.club-card-qr {
+    width: 5.2rem;
+    height: 5.2rem;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    gap: 0.12rem;
+    padding: 0.35rem;
+    border-radius: 0.75rem;
+    background: #ffffff;
+    box-shadow: inset 0 0 0 1px rgba(15,23,42,.12);
+}
+
+.club-card-qr i {
+    display: block;
+    border-radius: 0.08rem;
+    background: #e2e8f0;
+}
+
+.club-card-qr i:nth-child(2n),
+.club-card-qr i:nth-child(3n),
+.club-card-qr i:nth-child(5n),
+.club-card-qr i:nth-child(7n),
+.club-card-qr i:nth-child(11n) {
+    background: #0f172a;
+}
+
+.club-card-qr i:nth-child(1),
+.club-card-qr i:nth-child(2),
+.club-card-qr i:nth-child(3),
+.club-card-qr i:nth-child(10),
+.club-card-qr i:nth-child(12),
+.club-card-qr i:nth-child(19),
+.club-card-qr i:nth-child(20),
+.club-card-qr i:nth-child(21),
+.club-card-qr i:nth-child(7),
+.club-card-qr i:nth-child(8),
+.club-card-qr i:nth-child(9),
+.club-card-qr i:nth-child(16),
+.club-card-qr i:nth-child(18),
+.club-card-qr i:nth-child(25),
+.club-card-qr i:nth-child(26),
+.club-card-qr i:nth-child(27),
+.club-card-qr i:nth-child(55),
+.club-card-qr i:nth-child(56),
+.club-card-qr i:nth-child(57),
+.club-card-qr i:nth-child(64),
+.club-card-qr i:nth-child(66),
+.club-card-qr i:nth-child(73),
+.club-card-qr i:nth-child(74),
+.club-card-qr i:nth-child(75) {
+    background: #0f172a;
+}
+
+.club-card-share-actions {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.club-card-share-actions .btn {
+    width: 100%;
+}
+
+@media (max-width: 78rem) {
+    .club-card-hero {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 44rem) {
+    .club-card-share-actions {
+        grid-template-columns: 1fr !important;
+    }
+    .club-card-qr-wrap {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+    }
+}

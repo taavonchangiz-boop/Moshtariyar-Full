@@ -1,0 +1,80 @@
+{
+    "name": "hoomanweb/crm",
+    "type": "project",
+    "description": "CRM حرفه‌ای با اتصال عمیق به ووکامرس و بومی‌سازی ایران (Laravel، سازگار با cPanel)",
+    "keywords": [
+        "crm",
+        "woocommerce",
+        "laravel",
+        "iran"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^11.0",
+        "laravel/sanctum": "^4.0",
+        "laravel/tinker": "^2.9",
+        "guzzlehttp/guzzle": "^7.8",
+        "morilog/jalali": "^3.4",
+        "spatie/laravel-permission": "^6.0"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.23",
+        "laravel/pint": "^1.13",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.0",
+        "phpunit/phpunit": "^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/",
+            "Modules\\Core\\": "Modules/Core/",
+            "Modules\\WooBridge\\": "Modules/WooBridge/",
+            "Modules\\IranPack\\": "Modules/IranPack/",
+            "Modules\\Automation\\": "Modules/Automation/",
+            "Modules\\Loyalty\\": "Modules/Loyalty/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Core\\Providers\\CoreServiceProvider",
+                "Modules\\WooBridge\\Providers\\WooBridgeServiceProvider",
+                "Modules\\IranPack\\Providers\\IranPackServiceProvider",
+                "Modules\\Automation\\Providers\\AutomationServiceProvider",
+                "Modules\\Loyalty\\Providers\\LoyaltyServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        },
+        "audit": {
+            "block-insecure": false
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

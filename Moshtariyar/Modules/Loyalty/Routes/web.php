@@ -1,0 +1,90 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use Modules\Loyalty\Http\Controllers\LoyaltyController;
+use Modules\Loyalty\Http\Controllers\CustomerPortalController;
+use Modules\Core\Http\Controllers\KnowledgeBaseController;
+use Modules\Core\Http\Controllers\KbChatbotController;
+
+// پنل عمومی مشتریان باشگاه
+Route::middleware(['web'])->prefix('club')->name('club.')->group(function () {
+    Route::get('/r/{code}', function (string $code) {
+        return redirect()->route('club.register', ['ref' => strtoupper($code)]);
+    })->name('referral');
+    Route::get('/c/{campaign}/{channel}/{code}', [CustomerPortalController::class, 'campaignReferral'])->name('campaign.referral');
+    Route::get('/login', [CustomerPortalController::class, 'loginForm'])->name('login');
+    Route::post('/login', [CustomerPortalController::class, 'sendCode'])->name('login.send');
+    Route::post('/login/password', [CustomerPortalController::class, 'passwordLogin'])->name('login.password');
+    Route::get('/verify', [CustomerPortalController::class, 'verifyForm'])->name('verify.form');
+    Route::post('/verify', [CustomerPortalController::class, 'verify'])->name('verify');
+    Route::get('/register', [CustomerPortalController::class, 'registerForm'])->name('register');
+    Route::post('/register', [CustomerPortalController::class, 'register'])->name('register.store');
+    Route::get('/dashboard', [CustomerPortalController::class, 'dashboard'])->name('dashboard');
+    Route::get('/referrals', [CustomerPortalController::class, 'referrals'])->name('referrals');
+    Route::get('/search', [CustomerPortalController::class, 'search'])->name('search');
+    Route::get('/kb', [KnowledgeBaseController::class, 'portal'])->name('kb');
+    Route::get('/kb/search', [KnowledgeBaseController::class, 'ajax'])->name('kb.search');
+    Route::get('/kb/{article}', [KnowledgeBaseController::class, 'portalShow'])->name('kb.show');
+    Route::get('/assistant', [KbChatbotController::class, 'page'])->name('assistant');
+    Route::post('/assistant/ask', [KbChatbotController::class, 'ask'])->name('assistant.ask');
+    Route::get('/journey', [CustomerPortalController::class, 'journey'])->name('journey');
+    Route::get('/orders', [CustomerPortalController::class, 'orders'])->name('orders');
+    Route::get('/orders/{order}', [CustomerPortalController::class, 'showOrder'])->name('orders.show');
+    Route::get('/transactions', [CustomerPortalController::class, 'transactions'])->name('transactions');
+    Route::get('/profile', [CustomerPortalController::class, 'profile'])->name('profile');
+    Route::post('/profile', [CustomerPortalController::class, 'updateProfile'])->name('profile.update');
+    Route::get('/notifications', [CustomerPortalController::class, 'notifications'])->name('notifications');
+    Route::get('/card', [CustomerPortalController::class, 'card'])->name('card');
+    Route::get('/wheel', [CustomerPortalController::class, 'wheel'])->name('wheel');
+    Route::post('/wheel/spin', [CustomerPortalController::class, 'spinWheel'])->name('wheel.spin');
+    Route::get('/rewards', [CustomerPortalController::class, 'rewards'])->name('rewards');
+    Route::get('/missions', [CustomerPortalController::class, 'missions'])->name('missions');
+    Route::post('/missions/{mission}/claim', [CustomerPortalController::class, 'claimMission'])->name('missions.claim');
+    Route::get('/campaign-league', [CustomerPortalController::class, 'campaignLeague'])->name('campaign.league');
+    Route::get('/tickets', [CustomerPortalController::class, 'tickets'])->name('tickets');
+    Route::post('/tickets', [CustomerPortalController::class, 'storeTicket'])->name('tickets.store');
+    Route::get('/tickets/replies/{reply}/attachment', [CustomerPortalController::class, 'downloadAttachment'])->name('tickets.attachment');
+    Route::get('/tickets/{ticket}/modal', [CustomerPortalController::class, 'showTicketModal'])->name('tickets.modal');
+    Route::get('/tickets/{ticket}', [CustomerPortalController::class, 'showTicket'])->name('tickets.show');
+    Route::post('/tickets/{ticket}/reply', [CustomerPortalController::class, 'replyTicket'])->name('tickets.reply');
+    Route::get('/leaderboard', [CustomerPortalController::class, 'leaderboard'])->name('leaderboard');
+    Route::get('/badges', [CustomerPortalController::class, 'badges'])->name('badges');
+    Route::get('/coupons', [CustomerPortalController::class, 'coupons'])->name('coupons');
+    Route::post('/coupons/redeem/{rule}', [CustomerPortalController::class, 'redeemCoupon'])->name('coupons.redeem');
+    Route::post('/logout', [CustomerPortalController::class, 'logout'])->name('logout');
+});
+
+Route::middleware(['web', 'auth'])->prefix('app/loyalty')->group(function () {
+    Route::get('/', [LoyaltyController::class, 'index'])->middleware('can.do:customers.view');
+    Route::post('/quick-reward', [LoyaltyController::class, 'quickReward'])->middleware('can.do:loyalty.manage');
+    Route::get('/settings', [LoyaltyController::class, 'settings'])->middleware('can.do:loyalty.manage');
+    Route::get('/campaigns', [LoyaltyController::class, 'campaigns'])->middleware('can.do:customers.view');
+    Route::post('/campaigns', [LoyaltyController::class, 'storeCampaign'])->middleware('can.do:loyalty.manage');
+    Route::get('/campaigns/{campaign}/report', [LoyaltyController::class, 'campaignReport'])->middleware('can.do:customers.view');
+    Route::post('/campaigns/{campaign}/toggle', [LoyaltyController::class, 'toggleCampaign'])->middleware('can.do:loyalty.manage');
+    Route::post('/campaigns/{campaign}/reward-rules', [LoyaltyController::class, 'storeCampaignRewardRule'])->middleware('can.do:loyalty.manage');
+    Route::post('/campaign-reward-rules/{rule}/toggle', [LoyaltyController::class, 'toggleCampaignRewardRule'])->middleware('can.do:loyalty.manage');
+    Route::post('/campaign-rewards/release-due', [LoyaltyController::class, 'releaseDueCampaignRewards'])->middleware('can.do:loyalty.manage');
+    Route::post('/campaign-rewards/{reward}/release', [LoyaltyController::class, 'releaseCampaignReward'])->middleware('can.do:loyalty.manage');
+    Route::post('/campaign-rewards/{reward}/freeze', [LoyaltyController::class, 'freezeCampaignReward'])->middleware('can.do:loyalty.manage');
+    Route::post('/campaign-rewards/{reward}/cancel', [LoyaltyController::class, 'cancelCampaignReward'])->middleware('can.do:loyalty.manage');
+    Route::delete('/campaigns/{campaign}', [LoyaltyController::class, 'destroyCampaign'])->middleware('can.do:loyalty.manage');
+    Route::get('/wheel', [LoyaltyController::class, 'wheel'])->middleware('can.do:loyalty.manage');
+    Route::get('/reports', [LoyaltyController::class, 'reports'])->middleware('can.do:customers.view');
+    Route::post('/wheel/prizes', [LoyaltyController::class, 'storeWheelPrize'])->middleware('can.do:loyalty.manage');
+    Route::put('/wheel/prizes/{prize}', [LoyaltyController::class, 'updateWheelPrize'])->middleware('can.do:loyalty.manage');
+    Route::delete('/wheel/prizes/{prize}', [LoyaltyController::class, 'destroyWheelPrize'])->middleware('can.do:loyalty.manage');
+    Route::post('/wheel/{member}/spin', [LoyaltyController::class, 'spinWheel'])->middleware('can.do:loyalty.manage');
+    Route::post('/tiers', [LoyaltyController::class, 'storeTier'])->middleware('can.do:loyalty.manage');
+    Route::post('/rules', [LoyaltyController::class, 'storeRule'])->middleware('can.do:loyalty.manage');
+    Route::post('/rules/{rule}/toggle', [LoyaltyController::class, 'toggleRule'])->middleware('can.do:loyalty.manage');
+    Route::post('/missions', [LoyaltyController::class, 'storeMission'])->middleware('can.do:loyalty.manage');
+    Route::post('/badges', [LoyaltyController::class, 'storeBadge'])->middleware('can.do:loyalty.manage');
+    Route::get('/coupons/export', [LoyaltyController::class, 'exportCoupons'])->middleware('can.do:loyalty.manage');
+    Route::post('/coupons', [LoyaltyController::class, 'storeCoupon'])->middleware('can.do:loyalty.manage');
+    Route::post('/redemption-rules', [LoyaltyController::class, 'storeRedemptionRule'])->middleware('can.do:loyalty.manage');
+    Route::post('/redemption-rules/{rule}/toggle', [LoyaltyController::class, 'toggleRedemptionRule'])->middleware('can.do:loyalty.manage');
+    Route::get('/{member}', [LoyaltyController::class, 'show'])->middleware('can.do:customers.view');
+    Route::post('/{member}/adjust', [LoyaltyController::class, 'adjust'])->middleware('can.do:loyalty.manage');
+    Route::post('/{member}/convert', [LoyaltyController::class, 'convert'])->middleware('can.do:loyalty.manage');
+});

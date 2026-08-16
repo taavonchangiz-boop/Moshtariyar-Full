@@ -1,0 +1,1227 @@
+/* مرکز پشتیبانی و تیکت‌ها — استایل حرفه‌ای */
+
+.tickets-page { width: 100%; max-width: 100%; overflow: hidden; }
+
+/* ==================== هدر اصلی (Hero) ==================== */
+.tickets-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.72fr) minmax(12rem, 0.52fr);
+    gap: 0.75rem;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.35rem;
+    background:
+        radial-gradient(circle at 8% 0, rgba(239, 68, 68, 0.12), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(59, 130, 246, 0.12), transparent 34%),
+        linear-gradient(135deg, var(--panel), var(--panel2));
+    box-shadow: var(--shadow-sm);
+}
+body.light .tickets-hero {
+    background:
+        radial-gradient(circle at 8% 0, rgba(239, 68, 68, 0.08), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(59, 130, 246, 0.08), transparent 34%),
+        #ffffff;
+}
+
+.tickets-eyebrow,
+.tickets-card header span:not(.tickets-link):not(.tickets-pill):not(.tickets-badge) {
+    display: inline-flex;
+    width: fit-content;
+    color: #b91c1c;
+    background: rgba(239, 68, 68, 0.14);
+    border: 1px solid rgba(239, 68, 68, 0.24);
+    border-radius: 999px;
+    padding: 0.2rem 0.72rem;
+    font-size: 0.76rem;
+    line-height: 1.55;
+    font-weight: 1000;
+}
+.tickets-hero h2 {
+    margin: 0.55rem 0 0;
+    color: var(--txt);
+    font-size: clamp(1.15rem, 1.9vw, 1.72rem);
+    line-height: 1.65;
+    letter-spacing: -0.02rem;
+    font-weight: 1000;
+}
+.tickets-hero p { margin: 0.42rem 0 0; color: var(--mut); font-size: 0.9rem; line-height: 2; max-width: 54rem; }
+.tickets-hero-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1rem; }
+
+.tickets-score { display: grid; gap: 0.42rem; }
+.tickets-score > a,
+.tickets-score > div {
+    min-height: 3.75rem;
+    display: grid; align-content: center; gap: 0.04rem;
+    padding: 0.42rem 0.75rem 0.42rem 0.62rem;
+    border: 1px solid var(--line); border-radius: 0.9rem;
+    background: var(--panel);
+    position: relative;
+    text-decoration: none; color: var(--txt);
+    transition: 0.2s;
+}
+body.light .tickets-score > a,
+body.light .tickets-score > div { background: #f8fafc; }
+.tickets-score > a:hover { border-color: rgba(239, 68, 68, 0.35); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+.tickets-score > a:before,
+.tickets-score > div:before {
+    content: ''; position: absolute;
+    top: 0.62rem; bottom: 0.62rem; right: 0.32rem;
+    width: 0.22rem; border-radius: 999px;
+    background: var(--metric-color, var(--acc));
+}
+.tickets-score span, .tickets-score small { color: var(--mut); font-size: 0.74rem; line-height: 1.65; font-weight: 800; }
+.tickets-score b { color: var(--acc); font-size: 1.08rem; line-height: 1.45; font-weight: 1000; }
+
+/* ==================== نوار ابزار و فیلترهای سریع ==================== */
+.tickets-toolbar {
+    display: grid;
+    grid-template-columns: minmax(12rem, 1.4fr) minmax(9rem, 1fr) minmax(9rem, 1fr) minmax(9rem, 1fr) auto;
+    gap: 0.75rem;
+    align-items: end;
+    margin-bottom: 0.75rem;
+    padding: 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+}
+body.light .tickets-toolbar { background: #f8fafc; }
+.tickets-toolbar label { display: block; color: var(--mut); font-size: 0.76rem; font-weight: 900; margin-bottom: 0.35rem; }
+.tickets-toolbar-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-self: end; }
+.tickets-toolbar-actions .btn { min-height: 2.75rem; white-space: nowrap; }
+
+/* دکمه‌های فیلتر سریع */
+.tickets-quick-filters {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    margin-bottom: 1rem;
+}
+.tickets-quick-filters a,
+.tickets-quick-filters button {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.45rem 0.85rem;
+    border: 1px solid var(--line); border-radius: 999px;
+    background: var(--panel); color: var(--txt);
+    font-family: inherit; font-size: 0.76rem; font-weight: 900;
+    cursor: pointer; text-decoration: none;
+    transition: 0.15s;
+}
+body.light .tickets-quick-filters a,
+body.light .tickets-quick-filters button { background: #ffffff; }
+.tickets-quick-filters a:hover,
+.tickets-quick-filters button:hover { border-color: rgba(239, 68, 68, 0.35); color: #b91c1c; }
+.tickets-quick-filters .is-active {
+    background: rgba(239, 68, 68, 0.14);
+    color: #b91c1c;
+    border-color: rgba(239, 68, 68, 0.3);
+}
+.tickets-quick-filters .filter-count {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 1.35rem; height: 1.35rem;
+    padding: 0 0.4rem;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.25);
+    color: var(--txt);
+    font-size: 0.7rem; font-weight: 1000;
+}
+.tickets-quick-filters .is-active .filter-count {
+    background: rgba(239, 68, 68, 0.2);
+    color: #b91c1c;
+}
+
+/* ==================== نوار خلاصه ==================== */
+.tickets-insight {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem; margin-bottom: 1rem;
+}
+.tickets-insight > div {
+    display: flex; align-items: center; gap: 0.65rem;
+    padding: 0.85rem;
+    border: 1px solid var(--line); border-radius: 1rem;
+    background: var(--panel2);
+}
+body.light .tickets-insight > div { background: #f8fafc; }
+.tickets-insight b { color: var(--txt); font-size: 1rem; font-weight: 1000; line-height: 1.4; }
+.tickets-insight small { color: var(--mut); font-size: 0.78rem; line-height: 1.65; }
+.tickets-dot { width: 0.7rem; height: 0.7rem; border-radius: 999px; flex: 0 0 auto; }
+.tickets-dot.is-open      { background: #3b82f6; }
+.tickets-dot.is-pending   { background: #f59e0b; }
+.tickets-dot.is-answered  { background: #10b981; }
+.tickets-dot.is-urgent    { background: #ef4444; animation: tickets-pulse 1.8s ease-in-out infinite; }
+
+@keyframes tickets-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5); }
+    50%      { box-shadow: 0 0 0 0.4rem rgba(239, 68, 68, 0); }
+}
+
+/* ==================== لایه اصلی ==================== */
+.tickets-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.tickets-main { min-width: 0; display: grid; gap: 1rem; }
+.tickets-below {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+}
+.tickets-below > article { min-width: 0; }
+
+.tickets-card {
+    min-width: 0; overflow: hidden;
+    padding: 1rem;
+    border: 1px solid var(--line); border-radius: 1.25rem;
+    background: var(--panel);
+    box-shadow: var(--shadow-sm);
+}
+body.light .tickets-card { background: #ffffff; border-color: #e5edf7; }
+.tickets-card.is-accent { position: relative; padding-right: 1.25rem; }
+.tickets-card.is-accent:before {
+    content: ''; position: absolute;
+    top: 1rem; bottom: 1rem; right: 0.65rem;
+    width: 0.28rem; border-radius: 999px;
+    background: var(--card-color, var(--acc));
+}
+.tickets-card header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 0.9rem; padding-bottom: 0.95rem; margin-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+}
+.tickets-card header > div { display: grid; gap: 0.42rem; min-width: 0; }
+.tickets-card h2 { margin: 0; color: var(--txt); font-weight: 1000; line-height: 1.78; font-size: 1rem; }
+.tickets-card p { margin: 0.25rem 0 0; color: var(--mut); line-height: 2; }
+
+.tickets-link {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.42rem 0.85rem; border-radius: 999px;
+    color: #b91c1c; background: rgba(239, 68, 68, 0.14);
+    border: 1px solid rgba(239, 68, 68, 0.24);
+    font-size: 0.76rem; line-height: 1.6; font-weight: 1000;
+    text-decoration: none; transition: 0.2s;
+}
+.tickets-link:hover { background: rgba(239, 68, 68, 0.22); transform: translateY(-1px); }
+
+/* ==================== بورد تیکت‌ها ==================== */
+.tickets-board { display: grid; gap: 1rem; }
+.tickets-group {
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    overflow: hidden;
+    background: var(--panel2);
+}
+body.light .tickets-group { background: #ffffff; }
+.tickets-group.is-collapsed .tickets-table-wrap,
+.tickets-group.is-collapsed .tickets-group-add,
+.tickets-group.is-collapsed .tickets-group-summary { display: none; }
+
+.tickets-group-title {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto minmax(0, 1fr) auto auto auto;
+    align-items: center; gap: 0.65rem;
+    padding: 0.75rem 0.85rem;
+    border: 0; border-right: 0.32rem solid var(--group-color);
+    background: var(--panel);
+    color: var(--txt);
+    font-family: inherit;
+    cursor: pointer; text-align: right;
+    transition: background 0.15s ease;
+}
+body.light .tickets-group-title { background: #ffffff; }
+.tickets-group-title:hover { background: var(--panel2); }
+body.light .tickets-group-title:hover { background: #f8fafc; }
+.tickets-group-title .tg-caret { transition: transform 0.18s ease; color: var(--group-color); font-size: 0.85rem; }
+.tickets-group.is-open .tg-caret { transform: rotate(-90deg); }
+.tickets-group-title .tg-mark { width: 0.75rem; height: 0.75rem; border-radius: 0.28rem; background: var(--group-color); flex: 0 0 auto; }
+.tickets-group-title > .tg-title-block { min-width: 0; display: grid; gap: 0.1rem; }
+.tickets-group-title b { line-height: 1.55; color: var(--group-color); font-weight: 1000; font-size: 0.9rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.tickets-group-title small { color: var(--mut); font-size: 0.74rem; line-height: 1.65; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.tickets-group-title .tg-count {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 1.85rem; height: 1.55rem;
+    padding: 0 0.55rem; border-radius: 999px;
+    background: var(--group-color); color: #ffffff;
+    font-size: 0.76rem; font-weight: 1000; line-height: 1;
+}
+.tickets-group-title .tg-progress {
+    width: 5.5rem; height: 0.45rem; border-radius: 999px;
+    background: rgba(148, 163, 184, 0.18);
+    overflow: hidden; position: relative;
+}
+.tickets-group-title .tg-progress:after {
+    content: ''; position: absolute; top: 0; right: 0; bottom: 0;
+    width: var(--group-ratio, 0%);
+    background: var(--group-color); border-radius: 999px;
+}
+.tickets-group-title .tg-ratio { color: var(--mut); font-size: 0.74rem; font-weight: 900; line-height: 1.6; white-space: nowrap; min-width: 2.5rem; text-align: left; }
+
+.tickets-group-summary {
+    display: flex; flex-wrap: wrap; gap: 0.65rem;
+    padding: 0.5rem 0.85rem;
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+    font-size: 0.76rem; color: var(--mut);
+    font-weight: 900;
+}
+body.light .tickets-group-summary { background: #ffffff; }
+.tickets-group-summary b { color: var(--txt); font-weight: 1000; }
+.tickets-group-summary > span {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.28rem 0.65rem;
+    border-radius: 999px;
+    background: var(--panel2);
+    border: 1px solid var(--line);
+}
+body.light .tickets-group-summary > span { background: #f8fafc; }
+.tickets-group-summary .is-unread { color: #b91c1c; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.24); }
+.tickets-group-summary .is-overdue { color: #b45309; background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.28); }
+
+.tickets-table-wrap { overflow-x: auto; }
+.tickets-table { min-width: 84rem; }
+
+.tickets-thead {
+    display: grid;
+    grid-template-columns: auto 2fr 1.2fr 0.9fr 1.1fr 1.1fr 0.85fr 1.1fr;
+    align-items: center;
+    color: var(--mut); font-size: 0.74rem; font-weight: 900;
+    border-bottom: 1px solid var(--line);
+    background: var(--panel2);
+}
+body.light .tickets-thead { background: #f8fafc; }
+.tickets-thead > div,
+.tickets-cell {
+    padding: 0.7rem 0.75rem;
+    border-left: 1px solid var(--line);
+    min-width: 0;
+}
+.tickets-thead > div:last-child,
+.tickets-cell:last-child { border-left: 0; }
+
+.tickets-row {
+    border-bottom: 1px solid var(--line);
+    background: var(--panel);
+    position: relative;
+}
+body.light .tickets-row { background: #ffffff; }
+.tickets-row.is-unread {
+    background: rgba(59, 130, 246, 0.04);
+}
+body.light .tickets-row.is-unread { background: rgba(59, 130, 246, 0.03); }
+.tickets-row.is-overdue:before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; right: -1px;
+    width: 3px;
+    background: #ef4444;
+}
+.tickets-row:last-of-type { border-bottom: 0; }
+.tickets-row > summary {
+    display: grid;
+    grid-template-columns: auto 2fr 1.2fr 0.9fr 1.1fr 1.1fr 0.85fr 1.1fr;
+    align-items: center;
+    list-style: none;
+    cursor: pointer;
+    transition: background 0.12s ease;
+}
+.tickets-row > summary::-webkit-details-marker { display: none; }
+.tickets-row > summary:hover { background: rgba(239, 68, 68, 0.03); }
+.tickets-row[open] > summary { background: rgba(239, 68, 68, 0.06); border-bottom: 1px solid var(--line); }
+
+.tickets-cell { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 1.75; font-size: 0.84rem; }
+
+/* چک‌باکس انتخاب گروهی */
+.tickets-check {
+    display: grid; place-items: center;
+    padding: 0 0.65rem;
+}
+.tickets-check input {
+    width: 1.1rem; height: 1.1rem;
+    cursor: pointer;
+    accent-color: #ef4444;
+}
+
+/* Subject cell with unread indicator */
+.tickets-cell-subject {
+    display: flex; align-items: center; gap: 0.5rem;
+    min-width: 0;
+}
+.ticket-unread-dot {
+    width: 0.55rem; height: 0.55rem; flex: 0 0 auto;
+    border-radius: 999px;
+    background: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+.tickets-cell-subject > div { min-width: 0; display: flex; flex-direction: column; gap: 0.1rem; }
+.tickets-cell-subject b {
+    color: var(--txt); font-weight: 900; font-size: 0.86rem; line-height: 1.5;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.tickets-cell-subject small {
+    color: var(--mut); font-size: 0.72rem; line-height: 1.55;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    display: flex; align-items: center; gap: 0.4rem;
+}
+.tickets-cell-subject .ticket-num {
+    color: var(--mut); font-family: inherit;
+    background: rgba(148, 163, 184, 0.15);
+    padding: 0.08rem 0.4rem;
+    border-radius: 0.35rem;
+    font-weight: 900; font-size: 0.68rem;
+    direction: ltr;
+}
+.tickets-cell-subject .ticket-replies {
+    display: inline-flex; align-items: center; gap: 0.2rem;
+    color: var(--mut); font-size: 0.7rem; font-weight: 900;
+}
+.tickets-cell-subject .ticket-replies:before {
+    content: '💬';
+    font-size: 0.7rem;
+}
+
+/* Customer cell with avatar */
+.tickets-cell-customer {
+    display: flex; align-items: center; gap: 0.5rem;
+    min-width: 0;
+}
+.ticket-avatar {
+    flex: 0 0 auto;
+    width: 2rem; height: 2rem;
+    display: grid; place-items: center;
+    border-radius: 0.55rem;
+    background: rgba(139, 92, 246, 0.14);
+    color: #6d28d9;
+    font-weight: 1000; font-size: 0.78rem;
+}
+.tickets-cell-customer > div { min-width: 0; display: flex; flex-direction: column; gap: 0.05rem; }
+.tickets-cell-customer b {
+    color: var(--txt); font-weight: 900; font-size: 0.8rem; line-height: 1.5;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.tickets-cell-customer small {
+    color: var(--mut); font-size: 0.7rem; line-height: 1.5;
+    direction: ltr;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+/* ستون مسئول پیگیری */
+.tickets-cell-assignee {
+    display: flex; align-items: center; gap: 0.5rem;
+    min-width: 0;
+}
+.tickets-cell-assignee .assignee-avatar {
+    flex: 0 0 auto;
+    width: 1.85rem; height: 1.85rem;
+    display: grid; place-items: center;
+    border-radius: 999px;
+    background: rgba(16, 185, 129, 0.15);
+    color: #047857;
+    font-weight: 1000; font-size: 0.72rem;
+    border: 2px solid var(--panel);
+}
+body.light .tickets-cell-assignee .assignee-avatar { border-color: #ffffff; }
+.tickets-cell-assignee .assignee-unassigned {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 1.85rem; height: 1.85rem; border-radius: 999px;
+    border: 1px dashed var(--line);
+    color: var(--mut); font-size: 0.75rem;
+}
+.tickets-cell-assignee b {
+    color: var(--txt); font-weight: 900; font-size: 0.8rem; line-height: 1.5;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.tickets-cell-assignee small { color: var(--mut); font-size: 0.7rem; }
+
+/* پیل رنگی اولویت */
+.tickets-priority {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 0.3rem;
+    min-height: 1.65rem; border-radius: 0.42rem;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.73rem; font-weight: 1000; line-height: 1.5;
+    color: #ffffff;
+    max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.tickets-priority:before {
+    content: '';
+    width: 0.55rem; height: 0.55rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.85);
+}
+.tickets-priority.is-low     { background: #94a3b8; }
+.tickets-priority.is-normal  { background: #3b82f6; }
+.tickets-priority.is-high    { background: #f59e0b; }
+.tickets-priority.is-urgent  { background: #ef4444; animation: tickets-pulse 1.8s ease-in-out infinite; }
+
+/* Status pill - with icon */
+.tickets-pill {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 0.3rem;
+    min-height: 1.65rem; border-radius: 0.42rem;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.73rem; font-weight: 900; line-height: 1.5;
+    color: #ffffff; background: #64748b;
+    max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.tickets-pill.is-status-open      { background: #3b82f6; }
+.tickets-pill.is-status-pending   { background: #f59e0b; }
+.tickets-pill.is-status-answered  { background: #10b981; }
+.tickets-pill.is-status-closed    { background: #64748b; }
+.tickets-pill.is-dept             { background: rgba(148, 163, 184, 0.2); color: var(--txt); font-weight: 900; }
+.tickets-pill.is-empty            { background: transparent; color: var(--mut); border: 1px dashed var(--line); font-weight: 700; }
+
+/* تایمر مهلت پاسخ */
+.tickets-sla {
+    display: inline-flex; flex-direction: column; gap: 0.15rem;
+    align-items: center; justify-content: center;
+    min-width: 0;
+}
+.tickets-sla-time {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.24rem 0.55rem;
+    border-radius: 0.42rem;
+    font-family: inherit; font-size: 0.76rem; font-weight: 1000;
+    line-height: 1;
+    color: var(--txt);
+    background: rgba(16, 185, 129, 0.14);
+    border: 1px solid rgba(16, 185, 129, 0.24);
+    white-space: nowrap;
+}
+.tickets-sla-time.is-warn {
+    background: rgba(245, 158, 11, 0.14);
+    color: #b45309;
+    border-color: rgba(245, 158, 11, 0.28);
+}
+.tickets-sla-time.is-danger {
+    background: rgba(239, 68, 68, 0.15);
+    color: #b91c1c;
+    border-color: rgba(239, 68, 68, 0.3);
+    animation: tickets-pulse 1.8s ease-in-out infinite;
+}
+.tickets-sla-time.is-answered {
+    background: rgba(148, 163, 184, 0.2);
+    color: var(--mut);
+    border-color: var(--line);
+}
+.tickets-sla-bar {
+    width: 100%; max-width: 5rem;
+    height: 0.28rem;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.2);
+    overflow: hidden;
+    position: relative;
+}
+.tickets-sla-bar > span {
+    display: block; height: 100%;
+    width: var(--sla-percent, 0%);
+    background: var(--sla-color, #10b981);
+    border-radius: 999px;
+    transition: width 0.4s ease;
+}
+
+/* ستون عملیات سریع */
+.tickets-cell-actions { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+.tickets-cell-actions a,
+.tickets-cell-actions button {
+    min-height: 2rem;
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0 0.6rem;
+    border: 1px solid var(--line); border-radius: 0.5rem;
+    background: var(--panel2); color: var(--txt);
+    font-family: inherit; font-size: 0.72rem; font-weight: 900; line-height: 1;
+    cursor: pointer; text-decoration: none;
+    transition: 0.15s;
+}
+body.light .tickets-cell-actions a,
+body.light .tickets-cell-actions button { background: #f8fafc; }
+.tickets-cell-actions a:hover,
+.tickets-cell-actions button:hover { border-color: rgba(239, 68, 68, 0.35); color: #b91c1c; }
+.tickets-cell-actions .is-primary { background: rgba(239, 68, 68, 0.14); color: #b91c1c; border-color: rgba(239, 68, 68, 0.3); }
+.tickets-cell-actions .is-primary:hover { background: rgba(239, 68, 68, 0.22); }
+.tickets-cell-actions form { margin: 0; display: inline-flex; }
+
+/* ==================== پنل جزئیات (Ticket Drawer) ==================== */
+.tickets-detail-panel {
+    padding: 1rem;
+    background: var(--panel2);
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+    gap: 1rem;
+    align-items: start;
+}
+body.light .tickets-detail-panel { background: #f8fafc; }
+.tickets-detail-block {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 0.9rem;
+    padding: 0.85rem;
+}
+body.light .tickets-detail-block { background: #ffffff; }
+.tickets-detail-block h4 {
+    margin: 0 0 0.7rem;
+    color: var(--txt);
+    font-size: 0.86rem;
+    font-weight: 1000;
+    line-height: 1.55;
+    display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+}
+.tickets-detail-block h4 span {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.14rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(239, 68, 68, 0.14);
+    color: #b91c1c;
+    font-size: 0.7rem; font-weight: 1000;
+}
+
+/* Ticket message body */
+.ticket-message-box {
+    padding: 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 0.7rem;
+    background: var(--panel2);
+    color: var(--txt);
+    font-size: 0.85rem;
+    line-height: 2;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 12rem;
+    overflow-y: auto;
+    margin-bottom: 0.75rem;
+}
+body.light .ticket-message-box { background: #f8fafc; }
+
+/* Quick Reply form */
+.ticket-quick-reply { display: grid; gap: 0.55rem; }
+.ticket-quick-reply textarea {
+    min-height: 5.5rem;
+    line-height: 1.9;
+}
+.ticket-quick-reply-toolbar {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    align-items: center;
+}
+.ticket-quick-reply-toolbar .canned {
+    display: inline-flex; align-items: center;
+    padding: 0.35rem 0.6rem;
+    border: 1px dashed var(--line);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--mut);
+    font-family: inherit; font-size: 0.72rem; font-weight: 900;
+    cursor: pointer;
+    transition: 0.15s;
+}
+.ticket-quick-reply-toolbar .canned:hover {
+    color: #b91c1c;
+    border-color: rgba(239, 68, 68, 0.3);
+    background: rgba(239, 68, 68, 0.06);
+}
+
+/* Ticket info grid */
+.ticket-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+}
+.ticket-info-grid > div {
+    display: grid; gap: 0.15rem;
+    padding: 0.55rem 0.65rem;
+    border: 1px solid var(--line); border-radius: 0.6rem;
+    background: var(--panel2);
+}
+body.light .ticket-info-grid > div { background: #f8fafc; }
+.ticket-info-grid span { color: var(--mut); font-size: 0.7rem; line-height: 1.5; font-weight: 900; }
+.ticket-info-grid b { color: var(--txt); font-size: 0.82rem; line-height: 1.55; font-weight: 1000; }
+
+/* Assign / Change status form */
+.ticket-manage-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+    margin-bottom: 0.6rem;
+}
+.ticket-manage-form select {
+    min-height: 2.2rem; line-height: 1.5;
+    padding: 0 0.55rem; font-size: 0.78rem;
+}
+.ticket-manage-form button {
+    grid-column: 1 / -1;
+    min-height: 2.2rem;
+    padding: 0 0.85rem;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 0.55rem;
+    background: rgba(239, 68, 68, 0.14);
+    color: #b91c1c;
+    font-family: inherit; font-size: 0.76rem; font-weight: 900;
+    cursor: pointer;
+}
+.ticket-manage-form button:hover { background: rgba(239, 68, 68, 0.22); }
+
+/* Activity timeline */
+.ticket-timeline { display: grid; gap: 0.4rem; }
+.ticket-timeline-item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center; gap: 0.55rem;
+    padding: 0.5rem 0.65rem;
+    border: 1px solid var(--line); border-radius: 0.55rem;
+    background: var(--panel2);
+    position: relative;
+}
+body.light .ticket-timeline-item { background: #f8fafc; }
+.ticket-timeline-item .tt-icon {
+    width: 1.75rem; height: 1.75rem;
+    display: grid; place-items: center;
+    border-radius: 0.4rem;
+    background: rgba(239, 68, 68, 0.14);
+    color: #b91c1c;
+    font-size: 0.8rem;
+    font-weight: 1000;
+}
+.ticket-timeline-item .tt-icon.is-reply   { background: rgba(59, 130, 246, 0.14); color: #1d4ed8; }
+.ticket-timeline-item .tt-icon.is-status  { background: rgba(16, 185, 129, 0.14); color: #047857; }
+.ticket-timeline-item .tt-icon.is-assign  { background: rgba(245, 158, 11, 0.14); color: #b45309; }
+.ticket-timeline-item .tt-icon.is-close   { background: rgba(100, 116, 139, 0.2); color: var(--mut); }
+.ticket-timeline-item b { color: var(--txt); font-weight: 900; font-size: 0.78rem; line-height: 1.5; display: block; }
+.ticket-timeline-item small { color: var(--mut); font-size: 0.7rem; line-height: 1.5; display: block; }
+.ticket-timeline-item .tt-time {
+    color: var(--mut); font-size: 0.7rem; font-weight: 900; white-space: nowrap;
+}
+
+.ticket-timeline-empty {
+    padding: 0.9rem 0.75rem;
+    color: var(--mut);
+    border: 1px dashed var(--line);
+    border-radius: 0.6rem;
+    background: var(--panel2);
+    text-align: center;
+    font-size: 0.78rem;
+    line-height: 1.85;
+}
+body.light .ticket-timeline-empty { background: #f8fafc; }
+
+.tickets-group-empty {
+    padding: 1.2rem 1rem;
+    color: var(--mut);
+    text-align: center;
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+    font-size: 0.82rem;
+    line-height: 1.85;
+}
+body.light .tickets-group-empty { background: #ffffff; }
+
+.tickets-group-add {
+    display: flex; align-items: center; gap: 0.4rem;
+    padding: 0.65rem 0.85rem;
+    color: var(--mut); font-size: 0.76rem; font-weight: 900;
+    cursor: pointer; text-decoration: none;
+    border-top: 1px solid var(--line);
+    background: var(--panel2);
+    transition: 0.15s;
+}
+body.light .tickets-group-add { background: #f8fafc; }
+.tickets-group-add:hover { color: #b91c1c; background: rgba(239, 68, 68, 0.08); }
+
+/* ==================== نوار اقدام گروهی ==================== */
+.tickets-bulk-bar {
+    display: none;
+    position: sticky; top: 0.5rem;
+    z-index: 50;
+    padding: 0.6rem 0.85rem;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+    color: #ffffff;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(239, 68, 68, 0.3);
+    align-items: center; gap: 0.75rem;
+    flex-wrap: wrap;
+}
+.tickets-bulk-bar.is-visible { display: flex; }
+.tickets-bulk-bar b { font-weight: 1000; font-size: 0.88rem; }
+.tickets-bulk-bar select,
+.tickets-bulk-bar button {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.5rem;
+    padding: 0.42rem 0.85rem;
+    font-family: inherit; font-size: 0.78rem; font-weight: 900;
+    cursor: pointer;
+    min-height: 2.2rem;
+}
+.tickets-bulk-bar select option { color: var(--txt); }
+.tickets-bulk-bar button:hover { background: rgba(255, 255, 255, 0.28); }
+.tickets-bulk-bar .clear-btn {
+    margin-inline-start: auto;
+    background: transparent;
+    border: 0;
+    color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.4rem;
+}
+.tickets-bulk-bar .clear-btn:hover { background: rgba(255, 255, 255, 0.15); }
+
+/* ==================== پیشنهاد دستیار و فرم تیکت ==================== */
+.tickets-suggest-list { display: grid; gap: 0.65rem; }
+.tickets-suggest-list button {
+    text-align: right; border: 1px solid var(--line); border-radius: 1rem;
+    background: var(--panel2); padding: 0.85rem;
+    font-family: inherit; cursor: pointer; transition: 0.2s;
+}
+body.light .tickets-suggest-list button { background: #f8fafc; }
+.tickets-suggest-list button:hover { border-color: rgba(239, 68, 68, 0.35); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+.tickets-suggest-list b { display: block; color: var(--txt); line-height: 1.75; font-weight: 1000; font-size: 0.86rem; }
+.tickets-suggest-list small { display: block; color: var(--mut); line-height: 1.85; margin-top: 0.15rem; font-size: 0.76rem; }
+
+.tickets-quick-form { display: grid; gap: 0.75rem; }
+.tickets-quick-form label { display: block; color: var(--mut); font-size: 0.78rem; font-weight: 900; margin-bottom: 0.35rem; line-height: 1.7; }
+.tickets-quick-form input, .tickets-quick-form select, .tickets-quick-form textarea { min-height: 2.75rem; line-height: 1.8; }
+.tickets-quick-form small { display: block; margin-top: 0.35rem; color: var(--mut); font-size: 0.74rem; line-height: 1.75; }
+.tickets-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.65rem; }
+.tickets-form-wide { grid-column: 1 / -1; }
+
+/* ================================================================
+   کلاس‌های صفحه پیگیری تیکت (ticket_show) و صفحات فرعی
+   ================================================================ */
+
+/* گفتگوهای تیکت (Thread) */
+.ticket-thread { display: grid; gap: 0.75rem; }
+.ticket-message {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.75rem;
+    padding: 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 0.85rem;
+    background: var(--panel);
+    transition: 0.15s;
+}
+body.light .ticket-message { background: #ffffff; }
+.ticket-message:hover { border-color: rgba(139, 92, 246, 0.28); box-shadow: 0 0.3rem 0.9rem rgba(0, 0, 0, 0.04); }
+.ticket-message.is-customer { background: rgba(59, 130, 246, 0.05); border-color: rgba(59, 130, 246, 0.22); }
+body.light .ticket-message.is-customer { background: rgba(59, 130, 246, 0.04); }
+.ticket-message.is-staff { background: rgba(16, 185, 129, 0.06); border-color: rgba(16, 185, 129, 0.26); }
+body.light .ticket-message.is-staff { background: rgba(16, 185, 129, 0.04); }
+.ticket-message.is-internal { background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.3); border-style: dashed; }
+body.light .ticket-message.is-internal { background: rgba(245, 158, 11, 0.05); }
+
+.ticket-message-avatar {
+    flex: 0 0 auto;
+    width: 2.6rem; height: 2.6rem;
+    display: grid; place-items: center;
+    border-radius: 0.7rem;
+    background: rgba(139, 92, 246, 0.14);
+    color: #6d28d9;
+    font-weight: 1000;
+    font-size: 1rem;
+}
+.ticket-message-body { min-width: 0; }
+.ticket-message-head {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 0.5rem; margin-bottom: 0.55rem; flex-wrap: wrap;
+}
+.ticket-message-author { display: inline-flex; align-items: center; gap: 0.45rem; flex-wrap: wrap; }
+.ticket-message-author b { color: var(--txt); font-weight: 1000; font-size: 0.9rem; line-height: 1.55; }
+.ticket-message-head small { color: var(--mut); font-size: 0.74rem; font-weight: 700; white-space: nowrap; }
+
+/* متن پیام — واضح، خوانا و با کنتراست بالا */
+.ticket-message-text {
+    color: var(--txt);
+    font-size: 0.92rem;
+    line-height: 2.1;
+    font-weight: 500;
+    white-space: pre-wrap;
+    word-break: break-word;
+    padding: 0.65rem 0.75rem;
+    background: var(--panel);
+    border-radius: 0.55rem;
+    border: 1px solid var(--line);
+}
+body.light .ticket-message-text {
+    background: #ffffff;
+    color: #1e293b;
+    border-color: #e5edf7;
+}
+body.dark .ticket-message-text {
+    color: #f1f5f9;
+    background: rgba(15, 23, 42, 0.5);
+    border-color: rgba(148, 163, 184, 0.2);
+}
+
+.ticket-message-attach { margin-top: 0.55rem; }
+.ticket-message-attach a {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid var(--line); border-radius: 0.5rem;
+    background: var(--panel2); color: var(--txt);
+    font-size: 0.76rem; font-weight: 900; text-decoration: none;
+    transition: 0.15s;
+}
+body.light .ticket-message-attach a { background: #f8fafc; }
+.ticket-message-attach a:hover { border-color: rgba(139, 92, 246, 0.35); color: #6d28d9; }
+
+/* پروفایل مشتری در پنل جزئیات */
+.ticket-detail-profile {
+    display: grid; grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.85rem; align-items: center;
+    margin-bottom: 0.85rem;
+    padding: 0.85rem;
+    border: 1px solid var(--line); border-radius: 0.85rem;
+    background: var(--panel2);
+}
+body.light .ticket-detail-profile { background: #f8fafc; }
+.ticket-detail-avatar {
+    flex: 0 0 auto;
+    width: 3.2rem; height: 3.2rem;
+    display: grid; place-items: center;
+    border-radius: 0.8rem;
+    background: rgba(139, 92, 246, 0.14);
+    color: #6d28d9;
+    font-weight: 1000; font-size: 1.25rem;
+}
+.ticket-detail-profile > div:nth-child(2) { min-width: 0; }
+.ticket-detail-profile b {
+    display: block; color: var(--txt);
+    font-weight: 1000; font-size: 1rem; line-height: 1.6;
+    margin-bottom: 0.25rem;
+}
+.ticket-detail-profile small { display: block; color: var(--mut); font-size: 0.78rem; line-height: 1.75; }
+
+/* فرم داخل پنل جزئیات */
+.ticket-detail-reply-form { display: grid; gap: 0.7rem; }
+.ticket-detail-field { display: grid; gap: 0.35rem; }
+.ticket-detail-field label {
+    display: block; color: var(--mut);
+    font-size: 0.78rem; font-weight: 900; margin: 0; line-height: 1.7;
+}
+.ticket-detail-field input,
+.ticket-detail-field select,
+.ticket-detail-field textarea { min-height: 2.75rem; line-height: 1.9; }
+.ticket-detail-field textarea { min-height: 6rem; }
+.ticket-detail-field small {
+    display: block; margin-top: 0.25rem;
+    color: var(--mut); font-size: 0.72rem; line-height: 1.75;
+}
+
+.ticket-detail-check {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    padding: 0.62rem 0.8rem;
+    border: 1px dashed var(--line); border-radius: 0.6rem;
+    background: rgba(245, 158, 11, 0.06);
+    cursor: pointer;
+    font-size: 0.78rem; color: var(--txt); font-weight: 900; line-height: 1.7;
+}
+body.light .ticket-detail-check { background: rgba(245, 158, 11, 0.04); }
+.ticket-detail-check input { width: auto; min-height: auto; cursor: pointer; accent-color: #f59e0b; }
+
+.ticket-detail-warning {
+    margin-top: 0.85rem;
+    padding: 0.75rem 0.85rem;
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.28);
+    border-radius: 0.65rem;
+    color: #b91c1c;
+    font-size: 0.82rem; font-weight: 900; line-height: 1.85;
+}
+
+/* ================================================================
+   کلاس‌های صفحه پاسخ‌های آماده
+   ================================================================ */
+.response-list-wrap {
+    display: grid; gap: 0.5rem;
+    padding: 0.6rem 0.85rem 0.85rem;
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+}
+body.light .response-list-wrap { background: #ffffff; }
+
+.response-item {
+    border: 1px solid var(--line); border-radius: 0.65rem;
+    background: var(--panel2); overflow: hidden; transition: 0.15s;
+}
+body.light .response-item { background: #f8fafc; }
+.response-item:hover { border-color: rgba(139, 92, 246, 0.28); }
+.response-item.is-inactive { opacity: 0.6; }
+
+.response-item-head {
+    display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center; gap: 0.6rem;
+    padding: 0.65rem 0.8rem;
+    cursor: pointer; list-style: none; user-select: none;
+}
+.response-item-head::-webkit-details-marker { display: none; }
+.response-item-head:hover { background: rgba(139, 92, 246, 0.05); }
+
+.response-caret { color: var(--mut); font-size: 0.7rem; transition: transform 0.18s ease; }
+.response-item[open] .response-caret { transform: rotate(-90deg); }
+
+.response-item-title { min-width: 0; display: flex; flex-direction: column; gap: 0.15rem; }
+.response-item-title b {
+    color: var(--txt); font-weight: 1000; font-size: 0.86rem; line-height: 1.5;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.response-item-title small {
+    color: var(--mut); font-size: 0.74rem; line-height: 1.65;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+.response-item-body {
+    padding: 0.85rem;
+    border-top: 1px solid var(--line);
+    background: var(--panel);
+}
+body.light .response-item-body { background: #ffffff; }
+
+.response-full-text {
+    padding: 0.7rem 0.85rem;
+    background: var(--panel2);
+    border: 1px solid var(--line);
+    border-radius: 0.6rem;
+    color: var(--txt);
+    font-size: 0.86rem; line-height: 2.05;
+    white-space: pre-wrap; word-break: break-word;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+}
+body.light .response-full-text { background: #f8fafc; }
+
+.response-item-actions { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.response-item-actions form { margin: 0; }
+.response-item-actions button {
+    min-height: 2rem;
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0 0.7rem;
+    border: 1px solid var(--line); border-radius: 0.55rem;
+    background: var(--panel2); color: var(--txt);
+    font-family: inherit; font-size: 0.74rem; font-weight: 900;
+    cursor: pointer; transition: 0.15s;
+}
+body.light .response-item-actions button { background: #f8fafc; }
+.response-item-actions button:hover { border-color: rgba(139, 92, 246, 0.35); color: #6d28d9; }
+.response-item-actions button.is-danger {
+    color: var(--bad);
+    border-color: rgba(239, 68, 68, 0.28);
+    background: rgba(239, 68, 68, 0.08);
+}
+.response-item-actions button.is-danger:hover { background: rgba(239, 68, 68, 0.14); }
+
+/* راهنمای پاسخگویی (Guide items) */
+.response-guide-list { display: grid; gap: 0.6rem; }
+.response-guide-item {
+    display: grid; grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.75rem; align-items: flex-start;
+    padding: 0.75rem;
+    border: 1px solid var(--line); border-radius: 0.75rem;
+    background: var(--panel2);
+}
+body.light .response-guide-item { background: #f8fafc; }
+.response-guide-icon {
+    flex: 0 0 auto;
+    width: 2.4rem; height: 2.4rem;
+    display: grid; place-items: center;
+    border-radius: 0.65rem;
+    font-weight: 1000; font-size: 1rem;
+}
+.response-guide-item b {
+    display: block; color: var(--txt);
+    font-weight: 1000; font-size: 0.88rem; line-height: 1.55;
+    margin-bottom: 0.2rem;
+}
+.response-guide-item small {
+    display: block; color: var(--mut);
+    font-size: 0.78rem; line-height: 1.95;
+}
+
+/* ================================================================
+   کلاس‌های صفحه پشتیبانی
+   ================================================================ */
+.support-contact-list { display: grid; gap: 0.55rem; margin-bottom: 0.75rem; }
+.support-contact-item {
+    display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 0.75rem; align-items: center;
+    padding: 0.75rem;
+    border: 1px solid var(--line); border-radius: 0.75rem;
+    background: var(--panel2);
+    text-decoration: none; color: var(--txt);
+    transition: 0.15s;
+}
+body.light .support-contact-item { background: #f8fafc; }
+.support-contact-item:hover {
+    border-color: rgba(14, 165, 233, 0.35);
+    background: rgba(14, 165, 233, 0.05);
+    transform: translateY(-1px);
+    box-shadow: 0 0.35rem 1rem rgba(14, 165, 233, 0.08);
+}
+.support-contact-icon {
+    flex: 0 0 auto;
+    width: 2.6rem; height: 2.6rem;
+    display: grid; place-items: center;
+    border-radius: 0.7rem;
+    font-size: 1.05rem;
+}
+.support-contact-item b {
+    display: block; color: var(--txt);
+    font-weight: 1000; font-size: 0.86rem; line-height: 1.55;
+    margin-bottom: 0.15rem;
+}
+.support-contact-item small {
+    display: block; color: var(--mut);
+    font-size: 0.78rem; line-height: 1.65;
+}
+
+.support-brand-footer {
+    padding: 0.85rem;
+    border-top: 1px dashed var(--line);
+    text-align: center;
+    margin-top: 0.5rem;
+}
+.support-brand-footer b {
+    display: block; color: var(--txt);
+    font-weight: 1000; font-size: 0.86rem; line-height: 1.65;
+    margin-bottom: 0.35rem;
+}
+.support-brand-footer small {
+    display: block; color: var(--mut);
+    font-size: 0.74rem; line-height: 1.85;
+}
+
+/* ==================== پاپ‌آپ اختصاصی تیکت (Fallback Drawer) ==================== */
+.ticket-popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99998;
+}
+body.is-ticket-popup-open .ticket-popup {
+    display: block;
+}
+.ticket-popup .ticket-popup-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(3px);
+    animation: ticket-popup-fade 0.2s ease;
+}
+@keyframes ticket-popup-fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+.ticket-popup .ticket-popup-panel {
+    position: absolute;
+    top: 1rem; bottom: 1rem; left: 1rem;
+    width: min(52rem, calc(100vw - 2rem));
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: ticket-popup-slide 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+body.light .ticket-popup .ticket-popup-panel {
+    background: #ffffff;
+}
+@keyframes ticket-popup-slide {
+    from { transform: translateX(-2rem); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+}
+.ticket-popup .ticket-popup-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--panel2);
+    flex: 0 0 auto;
+}
+body.light .ticket-popup .ticket-popup-head {
+    background: #f8fafc;
+}
+.ticket-popup .ticket-popup-head b {
+    color: var(--txt);
+    font-weight: 1000;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    min-width: 0;
+}
+.ticket-popup .ticket-popup-head button {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 0.55rem;
+    background: var(--panel);
+    color: var(--txt);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 900;
+    cursor: pointer;
+    transition: 0.15s;
+    flex: 0 0 auto;
+}
+body.light .ticket-popup .ticket-popup-head button {
+    background: #ffffff;
+}
+.ticket-popup .ticket-popup-head button:hover {
+    border-color: rgba(239, 68, 68, 0.35);
+    color: #b91c1c;
+    background: rgba(239, 68, 68, 0.08);
+}
+.ticket-popup iframe {
+    flex: 1;
+    width: 100%;
+    border: 0;
+    background: var(--panel);
+    min-height: 0;
+}
+body.light .ticket-popup iframe {
+    background: #ffffff;
+}
+
+@media (max-width: 52rem) {
+    .ticket-popup .ticket-popup-panel {
+        top: 0.5rem; bottom: 0.5rem;
+        left: 0.5rem; right: 0.5rem;
+        width: auto;
+        border-radius: 0.85rem;
+    }
+}
+
+/* ==================== واکنش‌گرا ==================== */
+@media (max-width: 96rem) {
+    .tickets-toolbar { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 78rem) {
+    .tickets-insight { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tickets-hero { grid-template-columns: 1fr; }
+    .tickets-score { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tickets-toolbar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tickets-detail-panel { grid-template-columns: 1fr; }
+    .tickets-below { grid-template-columns: 1fr; }
+}
+@media (max-width: 52rem) {
+    .tickets-hero, .tickets-toolbar, .tickets-insight { grid-template-columns: 1fr; }
+    .tickets-score { grid-template-columns: 1fr; }
+    .tickets-group-title { grid-template-columns: auto auto minmax(0, 1fr) auto auto; }
+    .tickets-group-title .tg-progress { display: none; }
+    .tickets-table { min-width: 70rem; }
+    .tickets-form-grid { grid-template-columns: 1fr; }
+    .ticket-info-grid { grid-template-columns: 1fr; }
+    .ticket-manage-form { grid-template-columns: 1fr; }
+}

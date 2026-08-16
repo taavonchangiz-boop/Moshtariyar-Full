@@ -1,0 +1,140 @@
+/*
+ * ═══════════════════════════════════════════════════════
+ *  شیوه‌نامهٔ دکمه‌های شناور و پنل دستیار هوشمند
+ *  مشتری‌یار — آخرین به‌روزرسانی: ۱۴۰۵/۰۵/۰۲
+ * ═══════════════════════════════════════════════════════
+ */
+
+/* ─────────── دکمه‌های شناور (دستیار + پرش به بالا) ─────────── */
+
+#adminAssistantFloat,
+#btnScrollToTop {
+    position: fixed;
+    bottom: 2rem;
+    z-index: 9998;
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 0;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* دکمهٔ دستیار هوشمند — چپ */
+#adminAssistantFloat {
+    left: 2rem;
+    background: linear-gradient(135deg, var(--acc2), var(--ok));
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.25);
+}
+
+/* دکمهٔ پرش به بالا — راست */
+#btnScrollToTop {
+    right: 2rem;
+    background: linear-gradient(135deg, var(--acc2), var(--acc));
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+#adminAssistantFloat:hover,
+#btnScrollToTop.is-visible:hover {
+    transform: scale(1.08) translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+#btnScrollToTop.is-visible {
+    transform: translateY(0);
+}
+
+/* ─────────── پس‌زمینهٔ محو پنل دستیار ─────────── */
+
+#adminAssistantBackdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9997;
+    background: rgba(15, 23, 42, 0.42);
+    backdrop-filter: blur(3px);
+}
+
+body.admin-assistant-open #adminAssistantBackdrop {
+    display: block;
+}
+
+/* ─────────── پنل دستیار هوشمند ─────────── */
+
+#adminAssistantPanel {
+    display: none;
+    position: fixed;
+    left: 2rem;
+    bottom: 6.5rem;
+    z-index: 9999;
+    width: min(28rem, calc(100vw - 4rem));
+    height: min(40rem, calc(100vh - 8.5rem));
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 1.375rem;
+    overflow: hidden;
+    box-shadow: 0 1.5rem 5rem rgba(0, 0, 0, 0.45);
+}
+
+body.admin-assistant-open #adminAssistantPanel {
+    display: block;
+}
+
+#adminAssistantPanel .assist-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--panel2);
+}
+
+#adminAssistantPanel .assist-head button {
+    background: transparent;
+    border: 0;
+    color: var(--txt);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#adminAssistantPanel iframe {
+    width: 100%;
+    height: calc(100% - 3.5rem);
+    border: 0;
+}
+
+/* ─────────── واکنش‌گرایی (تا ۷۲۰px) ─────────── */
+
+@media (max-width: 720px) {
+    #adminAssistantFloat,
+    #btnScrollToTop {
+        bottom: 1.5rem !important;
+        width: 3.25rem !important;
+        height: 3.25rem !important;
+    }
+
+    #adminAssistantFloat {
+        left: 1.5rem !important;
+    }
+
+    #btnScrollToTop {
+        right: 1.5rem !important;
+    }
+
+    #adminAssistantPanel {
+        left: 1.5rem !important;
+        right: 1.5rem !important;
+        bottom: 5.5rem !important;
+        width: auto !important;
+        height: 72vh !important;
+        border-radius: 1.5rem !important;
+    }
+}

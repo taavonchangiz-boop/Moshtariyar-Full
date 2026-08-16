@@ -1,0 +1,414 @@
+/* ظاهر حرفه‌ای جدول برترین‌های باشگاه */
+.club-leaderboard-page {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.club-leaderboard-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.75fr);
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.35rem;
+    background:
+        radial-gradient(circle at 8% 0, rgba(245, 158, 11, 0.14), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(124, 58, 237, 0.16), transparent 34%),
+        linear-gradient(135deg, var(--panel), var(--panel2));
+    box-shadow: 0 1rem 2.8rem rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+}
+
+body.light .club-leaderboard-hero {
+    background:
+        radial-gradient(circle at 8% 0, rgba(245, 158, 11, 0.09), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(124, 58, 237, 0.10), transparent 34%),
+        #ffffff;
+}
+
+.club-leaderboard-eyebrow,
+.club-leaderboard-card header span,
+.club-leaderboard-chip {
+    display: inline-flex;
+    width: fit-content;
+    color: #7c3aed;
+    background: rgba(139, 92, 246, 0.12);
+    border: 1px solid rgba(139, 92, 246, 0.22);
+    border-radius: 999px;
+    padding: 0.2rem 0.72rem;
+    font-size: 0.76rem;
+    line-height: 1.55;
+    font-weight: 1000;
+}
+
+.club-leaderboard-hero h1 {
+    margin: 0.55rem 0 0;
+    color: var(--txt);
+    font-size: clamp(1.35rem, 2.5vw, 2.15rem);
+    line-height: 1.65;
+    letter-spacing: -0.02rem;
+}
+
+.club-leaderboard-hero p {
+    margin: 0.42rem 0 0;
+    color: var(--mut);
+    font-size: 0.9rem;
+    line-height: 2;
+    max-width: 52rem;
+}
+
+.club-leaderboard-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1rem;
+}
+
+.club-leaderboard-actions .btn,
+.club-leaderboard-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.club-leaderboard-score {
+    display: grid;
+    gap: 0.65rem;
+}
+
+.club-leaderboard-score > div {
+    min-height: 4.75rem;
+    display: grid;
+    align-content: center;
+    gap: 0.16rem;
+    padding: 0.72rem 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel);
+}
+
+body.light .club-leaderboard-score > div {
+    background: #f8fafc;
+}
+
+.club-leaderboard-score span,
+.club-leaderboard-score small {
+    color: var(--mut);
+    font-size: 0.76rem;
+    line-height: 1.75;
+    font-weight: 800;
+}
+
+.club-leaderboard-score b {
+    color: var(--acc);
+    font-size: 1.18rem;
+    line-height: 1.5;
+    font-weight: 1000;
+}
+
+.club-leaderboard-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.78fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.club-leaderboard-card {
+    min-width: 0;
+    overflow: hidden;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    background: var(--glass);
+    box-shadow: 0 1rem 2.8rem rgba(15, 23, 42, 0.08);
+}
+
+body.light .club-leaderboard-card {
+    background: #ffffff;
+}
+
+.club-leaderboard-card.is-accent {
+    position: relative;
+    padding-right: 1.25rem;
+}
+
+.club-leaderboard-card.is-accent:before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    bottom: 1rem;
+    right: 0.65rem;
+    width: 0.28rem;
+    border-radius: 999px;
+    background: var(--board-color, var(--acc));
+}
+
+.club-leaderboard-card header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.9rem;
+    padding-bottom: 0.95rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.club-leaderboard-card header > div {
+    display: grid;
+    gap: 0.42rem;
+}
+
+.club-leaderboard-card h2,
+.club-leaderboard-card h3 {
+    margin: 0;
+    color: var(--txt);
+    line-height: 1.78;
+}
+
+.club-leaderboard-podium {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    align-items: end;
+    margin-bottom: 1rem;
+}
+
+.club-leaderboard-podium-card {
+    position: relative;
+    min-width: 0;
+    display: grid;
+    justify-items: center;
+    gap: 0.45rem;
+    padding: 1rem 0.8rem;
+    border: 1px solid color-mix(in srgb, var(--podium-color) 28%, var(--line));
+    border-radius: 1.2rem;
+    background: color-mix(in srgb, var(--podium-color) 9%, var(--panel));
+    text-align: center;
+}
+
+.club-leaderboard-podium-card.is-first {
+    padding-top: 1.45rem;
+    min-height: 15rem;
+}
+
+.club-leaderboard-podium-rank {
+    position: absolute;
+    top: 0.65rem;
+    right: 0.65rem;
+    display: grid;
+    place-items: center;
+    min-width: 2rem;
+    height: 2rem;
+    border-radius: 0.75rem;
+    color: #ffffff;
+    background: var(--podium-color);
+    font-weight: 1000;
+}
+
+.club-leaderboard-avatar {
+    width: 4.3rem;
+    height: 4.3rem;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 1.25rem;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--podium-color), var(--acc));
+    font-size: 1.45rem;
+    font-weight: 1000;
+    box-shadow: 0 0.9rem 1.8rem rgba(15, 23, 42, 0.14);
+}
+
+.club-leaderboard-avatar img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.club-leaderboard-podium-card h3 {
+    font-size: 0.95rem;
+    line-height: 1.78;
+}
+
+.club-leaderboard-podium-card p,
+.club-leaderboard-podium-card small {
+    margin: 0;
+    color: var(--mut);
+    line-height: 1.9;
+    font-size: 0.78rem;
+}
+
+.club-leaderboard-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.club-leaderboard-row {
+    display: grid;
+    grid-template-columns: auto auto minmax(0, 1fr) auto;
+    gap: 0.8rem;
+    align-items: center;
+    padding: 0.95rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+    min-width: 0;
+}
+
+body.light .club-leaderboard-row {
+    background: #f8fafc;
+}
+
+.club-leaderboard-row.is-me {
+    border-color: rgba(14, 165, 233, 0.36);
+    background: rgba(14, 165, 233, 0.08);
+}
+
+.club-leaderboard-rank {
+    width: 2.65rem;
+    height: 2.65rem;
+    display: grid;
+    place-items: center;
+    border-radius: 0.9rem;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--acc2), var(--vio));
+    font-weight: 1000;
+}
+
+.club-leaderboard-row h3 {
+    margin: 0;
+    color: var(--txt);
+    font-size: 0.95rem;
+    line-height: 1.78;
+    overflow-wrap: anywhere;
+}
+
+.club-leaderboard-row p,
+.club-leaderboard-row small {
+    display: block;
+    margin: 0.1rem 0 0;
+    color: var(--mut);
+    line-height: 1.95;
+    font-size: 0.78rem;
+}
+
+.club-leaderboard-points {
+    display: grid;
+    justify-items: end;
+    gap: 0.2rem;
+    white-space: nowrap;
+}
+
+.club-leaderboard-points b {
+    color: var(--acc);
+    font-size: 1rem;
+}
+
+.club-leaderboard-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: fit-content;
+    padding: 0.28rem 0.7rem;
+    border-radius: 999px;
+    color: var(--acc);
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    font-size: 0.76rem;
+    line-height: 1.6;
+    font-weight: 1000;
+}
+
+.club-leaderboard-next {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.club-leaderboard-next-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.75rem;
+    padding: 0.95rem;
+    border: 1px solid color-mix(in srgb, var(--next-color, var(--acc)) 24%, var(--line));
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--next-color, var(--acc)) 8%, transparent);
+}
+
+.club-leaderboard-next-card i {
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--next-color, var(--acc)) 14%, transparent);
+    color: var(--next-color, var(--acc));
+    font-style: normal;
+    font-size: 1.25rem;
+}
+
+.club-leaderboard-next-card h3 {
+    margin: 0;
+    color: var(--txt);
+    line-height: 1.78;
+}
+
+.club-leaderboard-next-card p {
+    margin: 0.15rem 0 0;
+    color: var(--mut);
+    line-height: 1.95;
+    font-size: 0.78rem;
+}
+
+@media (max-width: 78rem) {
+    .club-leaderboard-hero,
+    .club-leaderboard-grid,
+    .club-leaderboard-podium {
+        grid-template-columns: 1fr;
+    }
+
+    .club-leaderboard-podium-card.is-first {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 44rem) {
+    .club-leaderboard-hero,
+    .club-leaderboard-card {
+        border-radius: 1rem;
+        padding: 0.85rem;
+    }
+
+    .club-leaderboard-card.is-accent {
+        padding-right: 1.05rem;
+    }
+
+    .club-leaderboard-card.is-accent:before {
+        right: 0.45rem;
+        top: 0.8rem;
+        bottom: 0.8rem;
+    }
+
+    .club-leaderboard-row {
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .club-leaderboard-row .club-leaderboard-avatar,
+    .club-leaderboard-points,
+    .club-leaderboard-badge {
+        grid-column: 1 / -1;
+        justify-self: stretch;
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .club-leaderboard-actions .btn,
+    .club-leaderboard-actions a {
+        width: 100%;
+    }
+}

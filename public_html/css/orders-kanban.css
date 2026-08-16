@@ -1,0 +1,326 @@
+/*
+ * ═══════════════════════════════════════════════════════
+ *  نمای تخته‌ای (Kanban Board) سفارش‌ها — مشتری‌یار
+ *  الهام‌گرفته از Monday.com
+ *  آخرین به‌روزرسانی: ۱۴۰۵/۰۵/۰۲
+ * ═══════════════════════════════════════════════════════
+ */
+
+/* ═══════════════ بستر تخته‌ای — اسکرول افقی ═══════════════ */
+
+.کانبان-بستر {
+    display: flex;
+    flex-direction: row;
+    gap: 0.85rem;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding: 0.35rem 0.15rem 0.85rem 0.15rem;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
+    min-height: 22rem;
+}
+
+.کانبان-بستر::-webkit-scrollbar { height: 6px; }
+.کانبان-بستر::-webkit-scrollbar-track { background: transparent; }
+.کانبان-بستر::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; }
+
+/* ═══════════════ ستون تخته ═══════════════ */
+
+.کانبان-ستون {
+    flex: 0 0 20rem;
+    min-width: 19rem;
+    max-width: 26rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: var(--panel2);
+    border: 1px solid var(--line);
+    border-radius: 1.15rem;
+    padding: 0.75rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.light .کانبان-ستون { background: #f8fafc; }
+
+.کانبان-ستون:hover {
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ═══════════════ سربرگ ستون ═══════════════ */
+
+.کانبان-سرستون {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.35rem 0.25rem 0.6rem 0.25rem;
+    border-bottom: 2px solid var(--ستون-رنگ, var(--line));
+    margin-bottom: 0.25rem;
+}
+
+.کانبان-نقطه {
+    width: 0.7rem; height: 0.7rem; border-radius: 50%;
+    background: var(--ستون-رنگ, var(--acc)); flex-shrink: 0;
+}
+
+.کانبان-نام-ستون {
+    font-weight: 900; font-size: 0.88rem; color: var(--txt);
+    line-height: 1.55; flex: 1; min-width: 0;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+.کانبان-شمار {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 1.75rem; height: 1.45rem; padding: 0 0.45rem;
+    border-radius: 999px; background: var(--ستون-رنگ, var(--acc));
+    color: #ffffff; font-size: 0.72rem; font-weight: 1000; line-height: 1;
+}
+
+.کانبان-جمع-ستون {
+    font-size: 0.7rem; color: var(--mut); font-weight: 700;
+    white-space: nowrap; padding-right: 0.1rem;
+}
+
+/* ═══════════════ کارت‌های درون ستون ═══════════════ */
+
+.کانبان-کارت‌ها {
+    display: flex; flex-direction: column; gap: 0.45rem; flex: 1;
+    overflow-y: auto; overflow-x: hidden; min-height: 3rem;
+    max-height: 55vh; padding: 0.15rem 0;
+}
+
+.کانبان-کارت‌ها::-webkit-scrollbar { width: 3px; }
+.کانبان-کارت‌ها::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; }
+
+/* کارت سفارش — فشرده و بازشونده */
+.کانبان-کارت {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 0.85rem; cursor: pointer;
+    transition: all 0.18s ease; position: relative;
+    display: flex; flex-direction: column;
+}
+
+body.light .کانبان-کارت { background: #ffffff; }
+
+.کانبان-کارت:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.کانبان-کارت.در-حال-کشیدن { opacity: 0.45; transform: scale(0.96); border-style: dashed; }
+.کانبان-ستون.مقصد-کشیدن { border-color: var(--acc); box-shadow: var(--glow-acc); }
+
+/* ردیف ۱: شماره + مبلغ + فلش */
+.کانبان-سرکارت {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 0.5rem; padding: 0.6rem 0.7rem;
+}
+
+.کانبان-شماره-سفارش {
+    font-weight: 1000; font-size: 0.82rem; color: var(--txt);
+    direction: ltr; display: flex; align-items: center; gap: 0.25rem;
+}
+.کانبان-شماره-سفارش::before { content: '#'; color: var(--mut); font-weight: 700; font-size: 0.75rem; }
+
+.کانبان-مبلغ {
+    font-weight: 1000; font-size: 0.82rem; color: var(--ok);
+    white-space: nowrap; direction: rtl;
+}
+
+/* ردیف ۲: مشتری + فلش */
+.کانبان-مشتری {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0 0.7rem 0.6rem 0.7rem;
+}
+
+.کانبان-آواتار {
+    width: 1.65rem; height: 1.65rem; border-radius: 0.45rem;
+    display: grid; place-items: center;
+    background: var(--ستون-رنگ, var(--acc)); color: #ffffff;
+    font-weight: 1000; font-size: 0.7rem; flex-shrink: 0;
+}
+
+.کانبان-نام-مشتری {
+    font-weight: 700; font-size: 0.76rem; color: var(--txt);
+    line-height: 1.5; overflow: hidden; text-overflow: ellipsis;
+    white-space: nowrap; flex: 1; min-width: 0;
+}
+
+.کانبان-فلش-بازشدن {
+    flex-shrink: 0; color: var(--mut); font-size: 0.65rem;
+    transition: transform 0.2s ease; width: 1.2rem; text-align: center;
+}
+.کانبان-کارت.باز .کانبان-فلش-بازشدن { transform: rotate(180deg); }
+
+/* بخش پنهان: نشان‌ها + عملیات */
+.کانبان-بخش-جزئیات {
+    display: none; flex-direction: column; gap: 0.35rem;
+    padding: 0 0.7rem 0.6rem 0.7rem;
+    border-top: 1px solid var(--line); padding-top: 0.5rem;
+}
+.کانبان-کارت.باز .کانبان-بخش-جزئیات { display: flex; }
+
+/* ردیف ۳: نشان‌ها */
+.کانبان-نشان‌ها { display: flex; flex-wrap: wrap; gap: 0.32rem; align-items: center; }
+
+.کانبان-نشان {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.12rem 0.45rem; border-radius: 0.28rem;
+    font-size: 0.68rem; font-weight: 800; line-height: 1.5;
+    white-space: nowrap; color: #ffffff;
+}
+
+.کانبان-نشان.منبع-فروشگاه { background: #7f54b3; }
+.کانبان-نشان.منبع-وب       { background: #0ea5e9; }
+.کانبان-نشان.منبع-دستی     { background: #6366f1; }
+.کانبان-نشان.منبع-سرنخ     { background: #f59e0b; }
+.کانبان-نشان.اقلام         { background: rgba(37, 99, 235, 0.14); color: #1d4ed8; }
+.کانبان-نشان.تاریخ         { background: transparent; color: var(--mut); border: 1px solid var(--line); font-size: 0.67rem; font-weight: 700; }
+
+/* ردیف ۴: عملیات سریع */
+.کانبان-عملیات { display: flex; gap: 0.32rem; flex-wrap: wrap; }
+
+.کانبان-دکمه {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 0.2rem; min-height: 1.75rem; padding: 0 0.55rem;
+    border: 1px solid var(--line); border-radius: 0.45rem;
+    background: var(--panel2); color: var(--txt);
+    font-family: inherit; font-size: 0.68rem; font-weight: 800;
+    cursor: pointer; text-decoration: none; transition: 0.15s; white-space: nowrap;
+}
+
+body.light .کانبان-دکمه { background: #f8fafc; }
+.کانبان-دکمه:hover { border-color: rgba(16, 185, 129, 0.35); color: #047857; }
+.کانبان-دکمه.اصلی { background: rgba(16, 185, 129, 0.14); color: #047857; border-color: rgba(16, 185, 129, 0.3); }
+.کانبان-دکمه.اصلی:hover { background: rgba(16, 185, 129, 0.22); color: #065f46; }
+
+/* تغییر وضعیت سریع */
+.کانبان-تغییر-وضعیت { display: flex; gap: 0.32rem; align-items: center; }
+.کانبان-تغییر-وضعیت select {
+    flex: 1; min-height: 1.75rem; padding: 0 0.4rem; font-size: 0.68rem;
+    font-family: inherit; border: 1px solid var(--line); border-radius: 0.45rem;
+    background: var(--panel2); color: var(--txt);
+}
+.کانبان-تغییر-وضعیت button {
+    min-height: 1.75rem; padding: 0 0.65rem;
+    border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 0.45rem;
+    background: rgba(16, 185, 129, 0.14); color: #047857;
+    font-family: inherit; font-size: 0.68rem; font-weight: 800;
+    cursor: pointer; white-space: nowrap;
+}
+
+/* دکمهٔ افزودن */
+.کانبان-افزودن {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0.35rem; padding: 0.55rem; border: 1px dashed var(--line);
+    border-radius: 0.75rem; color: var(--mut); font-family: inherit;
+    font-size: 0.76rem; font-weight: 800; background: transparent;
+    cursor: pointer; transition: 0.2s; margin-top: auto;
+}
+.کانبان-افزودن:hover { border-color: var(--acc); color: var(--acc); background: rgba(56, 189, 248, 0.05); }
+
+/* حالت خالی ستون */
+.کانبان-خالی {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; gap: 0.35rem; padding: 1.5rem 1rem;
+    color: var(--mut); text-align: center; font-size: 0.78rem;
+    line-height: 1.85; flex: 1; min-height: 5rem;
+}
+.کانبان-خالی-آیکن { font-size: 1.8rem; opacity: 0.5; }
+
+/* ═══════════════ نوار ابزار تغییر نما ═══════════════ */
+
+.کانبان-نوار-نما {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.کانبان-تب-نما {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 0.65rem;
+    background: var(--panel2);
+    color: var(--mut);
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+body.light .کانبان-تب-نما { background: #f8fafc; }
+
+/*
+ * ═══════════ دکمهٔ فعال — خوانایی تضمین‌شده در هر دو تم ═══════════
+ *
+ * روشن:  پس‌زمینهٔ #2563eb (آبی) + متن #ffffff (سفید) = تضاد ۸.۶:۱ ✅
+ * تاریک: پس‌زمینهٔ #0369a1 (آبی نفتی) + متن #ffffff (سفید) = تضاد ۶.۲:۱ ✅
+ */
+.کانبان-تب-نما.فعال {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #2563eb;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+}
+
+body.dark .کانبان-تب-نما.فعال {
+    background: #0369a1;
+    color: #ffffff;
+    border-color: #0ea5e9;
+    box-shadow: 0 2px 12px rgba(14, 165, 233, 0.35);
+}
+
+.کانبان-تب-نما:hover:not(.فعال) {
+    border-color: var(--acc);
+    color: var(--acc);
+}
+
+/* متن راهنمای نوار نما — دسکتاپ کنار دکمه‌ها، موبایل زیر دکمه‌ها */
+.راهنمای-نما {
+    color: var(--mut);
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.8;
+    flex-basis: 100%;
+}
+
+@media (min-width: 641px) {
+    .راهنمای-نما {
+        flex-basis: auto;
+        margin-right: auto;
+    }
+}
+
+/* ═══════════════ واکنش‌گرایی ═══════════════ */
+
+@media (max-width: 75rem) {
+    .کانبان-ستون { flex: 0 0 17rem; min-width: 16rem; max-width: 22rem; }
+}
+
+@media (max-width: 52rem) {
+    .کانبان-بستر { flex-direction: column; overflow-x: hidden; overflow-y: visible; }
+    .کانبان-ستون { flex: 1 1 auto; min-width: 0; max-width: none; }
+    .کانبان-کارت‌ها { max-height: none; flex-direction: row; flex-wrap: wrap; gap: 0.5rem; overflow-y: visible; }
+    .کانبان-کارت { flex: 0 0 auto; width: calc(50% - 0.25rem); min-width: 14rem; }
+}
+
+@media (max-width: 36rem) {
+    .کانبان-کارت { width: 100%; min-width: 0; }
+}
+
+/* ═══════════════ پنهان‌سازی نماها ═══════════════ */
+
+.نمای-جدولی { display: block; }
+.نمای-تخته‌ای { display: none; }
+body.نمای-کانبان .نمای-جدولی { display: none; }
+body.نمای-کانبان .نمای-تخته‌ای { display: block; }

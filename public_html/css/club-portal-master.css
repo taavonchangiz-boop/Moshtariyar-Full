@@ -1,0 +1,456 @@
+/* ظاهر مادر باشگاه مشتریان؛ الهام از بوردهای کاری، بازی‌وارسازی و باشگاه وفاداری */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    background:
+        radial-gradient(circle at 8% -6%, rgba(16, 185, 129, 0.18), transparent 28rem),
+        radial-gradient(circle at 92% -8%, rgba(14, 165, 233, 0.22), transparent 32rem),
+        radial-gradient(circle at 50% 105%, rgba(167, 139, 250, 0.16), transparent 30rem),
+        var(--bg) !important;
+}
+
+body.light {
+    background:
+        radial-gradient(circle at 8% -6%, rgba(16, 185, 129, 0.11), transparent 28rem),
+        radial-gradient(circle at 92% -8%, rgba(14, 165, 233, 0.13), transparent 32rem),
+        radial-gradient(circle at 50% 105%, rgba(124, 58, 237, 0.08), transparent 30rem),
+        var(--bg) !important;
+}
+
+.wrap {
+    max-width: 1280px !important;
+}
+
+.top {
+    isolation: isolate;
+    position: sticky !important;
+    top: 0.8rem !important;
+    border-radius: 1.35rem !important;
+    border-color: color-mix(in srgb, var(--acc) 18%, var(--line)) !important;
+    background:
+        linear-gradient(135deg, color-mix(in srgb, var(--panel) 88%, transparent), color-mix(in srgb, var(--panel2) 78%, transparent)) !important;
+    box-shadow: 0 1.2rem 3.4rem rgba(0, 0, 0, 0.16), inset 0 0 0 1px rgba(255, 255, 255, 0.035) !important;
+}
+
+body.light .top {
+    background: rgba(255, 255, 255, 0.88) !important;
+    box-shadow: 0 1rem 2.6rem rgba(15, 23, 42, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.64) !important;
+}
+
+.top:before {
+    content: '';
+    position: absolute;
+    inset: 0.45rem;
+    border-radius: 1rem;
+    background:
+        radial-gradient(circle at 8% 0, rgba(16, 185, 129, 0.10), transparent 38%),
+        radial-gradient(circle at 100% 20%, rgba(14, 165, 233, 0.11), transparent 40%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.brand {
+    color: var(--txt) !important;
+    letter-spacing: -0.02rem;
+}
+
+.brand:before {
+    width: 2.45rem !important;
+    height: 2.45rem !important;
+    border-radius: 1rem !important;
+    background: conic-gradient(from 180deg, var(--acc), var(--ok), var(--vio), var(--acc)) !important;
+    box-shadow: 0 0.9rem 1.8rem rgba(14, 165, 233, 0.22);
+}
+
+.nav {
+    gap: 0.55rem !important;
+}
+
+.nav a,
+.nav button,
+.icon-btn {
+    position: relative;
+    min-height: 2.55rem;
+    border-radius: 0.95rem !important;
+    background: color-mix(in srgb, var(--panel2) 84%, transparent) !important;
+    border-color: color-mix(in srgb, var(--line) 80%, var(--acc)) !important;
+    transition: transform 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.nav a:hover,
+.nav button:hover,
+.icon-btn:hover,
+.portal-group.is-active > button {
+    transform: translateY(-0.08rem);
+    border-color: var(--acc) !important;
+    color: var(--acc) !important;
+    box-shadow: 0 0.7rem 1.5rem rgba(14, 165, 233, 0.14) !important;
+}
+
+.portal-group > button:after {
+    content: '';
+    position: absolute;
+    right: 0.8rem;
+    left: 0.8rem;
+    bottom: -0.28rem;
+    height: 0.18rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--acc), var(--ok));
+    opacity: 0;
+    transform: scaleX(0.4);
+    transition: 0.18s ease;
+}
+
+.portal-group.is-active > button:after,
+.portal-group.open > button:after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.portal-menu {
+    top: 3.1rem !important;
+    min-width: 13.5rem !important;
+    padding: 0.35rem !important;
+    border-radius: 1.1rem !important;
+    background:
+        linear-gradient(135deg, color-mix(in srgb, var(--panel) 94%, transparent), color-mix(in srgb, var(--panel2) 90%, transparent)) !important;
+    border-color: color-mix(in srgb, var(--acc) 16%, var(--line)) !important;
+    box-shadow: 0 1.4rem 3.8rem rgba(0, 0, 0, 0.26) !important;
+}
+
+body.light .portal-menu {
+    background: rgba(255, 255, 255, 0.96) !important;
+    box-shadow: 0 1.2rem 3rem rgba(15, 23, 42, 0.12) !important;
+}
+
+.portal-menu a,
+.portal-menu form button {
+    border: 0 !important;
+    border-radius: 0.85rem !important;
+    margin: 0.1rem 0 !important;
+    padding: 0.72rem 0.8rem !important;
+    transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.portal-menu a:hover,
+.portal-menu form button:hover {
+    background: color-mix(in srgb, var(--acc) 10%, transparent) !important;
+    color: var(--acc) !important;
+    transform: translateX(-0.1rem);
+}
+
+.searchbox input {
+    min-height: 2.6rem;
+    border-radius: 1rem !important;
+    background: color-mix(in srgb, var(--panel2) 84%, transparent) !important;
+}
+
+.searchbox input:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 0;
+    border-color: var(--acc) !important;
+    box-shadow: 0 0 0 0.22rem rgba(14, 165, 233, 0.12) !important;
+}
+
+.search-results,
+.drop-panel {
+    border-radius: 1.1rem !important;
+    background: var(--panel) !important;
+    border-color: color-mix(in srgb, var(--acc) 16%, var(--line)) !important;
+    box-shadow: 0 1.2rem 3.4rem rgba(0, 0, 0, 0.26) !important;
+}
+
+body.light .search-results,
+body.light .drop-panel {
+    background: #ffffff !important;
+    box-shadow: 0 1.2rem 2.8rem rgba(15, 23, 42, 0.10) !important;
+}
+
+.clock {
+    border-radius: 1rem !important;
+    background: linear-gradient(135deg, var(--clock1), var(--vio)) !important;
+    box-shadow: 0 0.8rem 1.8rem rgba(14, 165, 233, 0.20) !important;
+}
+
+.card {
+    position: relative;
+    border-radius: 1.25rem !important;
+    border-color: color-mix(in srgb, var(--line) 86%, var(--acc)) !important;
+    background:
+        linear-gradient(135deg, color-mix(in srgb, var(--glass) 96%, transparent), color-mix(in srgb, var(--panel) 86%, transparent)) !important;
+    box-shadow: 0 1rem 2.8rem rgba(0, 0, 0, 0.11), inset 0 0 0 1px rgba(255, 255, 255, 0.025) !important;
+}
+
+body.light .card {
+    background: rgba(255, 255, 255, 0.92) !important;
+    box-shadow: 0 0.9rem 2.2rem rgba(15, 23, 42, 0.06), inset 0 0 0 1px rgba(255, 255, 255, 0.72) !important;
+}
+
+.card.hero,
+.hero {
+    overflow: hidden;
+    border-color: color-mix(in srgb, var(--acc) 24%, var(--line)) !important;
+    background:
+        radial-gradient(circle at 8% 4%, rgba(16, 185, 129, 0.16), transparent 30%),
+        radial-gradient(circle at 92% 0, rgba(14, 165, 233, 0.18), transparent 34%),
+        linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(167, 139, 250, 0.10)),
+        var(--panel) !important;
+}
+
+body.light .card.hero,
+body.light .hero {
+    background:
+        radial-gradient(circle at 8% 4%, rgba(16, 185, 129, 0.10), transparent 30%),
+        radial-gradient(circle at 92% 0, rgba(14, 165, 233, 0.12), transparent 34%),
+        #ffffff !important;
+}
+
+.card.hero:after,
+.hero:after {
+    content: '';
+    position: absolute;
+    width: 12rem;
+    height: 12rem;
+    left: -5rem;
+    bottom: -7rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.16), rgba(16, 185, 129, 0.13));
+    pointer-events: none;
+}
+
+.btn {
+    border-radius: 0.95rem !important;
+    background: linear-gradient(135deg, var(--acc2), var(--acc)) !important;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.btn:hover {
+    transform: translateY(-0.08rem);
+    filter: saturate(1.08);
+    box-shadow: 0 0.9rem 2rem rgba(14, 165, 233, 0.25) !important;
+}
+
+.btn-ghost {
+    background: color-mix(in srgb, var(--panel2) 84%, transparent) !important;
+    color: var(--txt) !important;
+    border-color: var(--line) !important;
+}
+
+.btn-ghost:hover {
+    color: var(--acc) !important;
+    border-color: var(--acc) !important;
+}
+
+.badge {
+    border: 1px solid rgba(128, 128, 128, 0.14);
+    font-weight: 900;
+}
+
+.table-wrap {
+    border-radius: 1rem;
+}
+
+table {
+    border-collapse: separate !important;
+    border-spacing: 0 0.45rem !important;
+}
+
+th {
+    border-bottom: 0 !important;
+}
+
+td {
+    background: color-mix(in srgb, var(--panel2) 82%, transparent);
+    border-bottom: 0 !important;
+}
+
+tr td:first-child {
+    border-radius: 0 0.9rem 0.9rem 0;
+}
+
+tr td:last-child {
+    border-radius: 0.9rem 0 0 0.9rem;
+}
+
+body.light td {
+    background: #f8fafc;
+}
+
+input,
+select,
+textarea {
+    border-radius: 0.95rem !important;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+.alert {
+    color: var(--ok) !important;
+    border-color: rgba(16, 185, 129, 0.28) !important;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), color-mix(in srgb, var(--panel) 84%, transparent)) !important;
+}
+
+.err {
+    border-color: rgba(239, 68, 68, 0.30) !important;
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.12), color-mix(in srgb, var(--panel) 84%, transparent)) !important;
+}
+
+#clubAssistantFloat {
+    border-radius: 1.25rem !important;
+    background: conic-gradient(from 180deg, var(--acc), var(--ok), var(--vio), var(--acc)) !important;
+    box-shadow: 0 1.1rem 2.8rem rgba(14, 165, 233, 0.30) !important;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+#clubAssistantFloat:hover {
+    transform: translateY(-0.18rem) scale(1.03);
+}
+
+#clubAssistantPanel {
+    border-radius: 1.35rem !important;
+    border-color: color-mix(in srgb, var(--acc) 18%, var(--line)) !important;
+}
+
+.club-growth-card,
+.club-reward-item,
+.club-dashboard-card,
+.club-dashboard-metric,
+.club-card-pro {
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.club-growth-card:hover,
+.club-reward-item:hover,
+.club-dashboard-card:hover,
+.club-dashboard-metric:hover,
+.club-card-pro:hover {
+    transform: translateY(-0.08rem);
+    border-color: color-mix(in srgb, var(--acc) 38%, var(--line)) !important;
+}
+
+@media (max-width: 720px) {
+    .top {
+        top: 0 !important;
+        border-radius: 1rem !important;
+    }
+
+    .nav a,
+    .nav button,
+    .icon-btn {
+        min-height: 2.5rem;
+        justify-content: center;
+    }
+
+    .portal-menu {
+        top: 2.75rem !important;
+        max-width: min(92vw, 20rem);
+    }
+
+    .card.hero:after,
+    .hero:after {
+        display: none;
+    }
+
+    table {
+        border-spacing: 0 !important;
+    }
+
+    td,
+    tr td:first-child,
+    tr td:last-child {
+        border-radius: 0 !important;
+        background: transparent !important;
+    }
+}
+
+/* نسخه سایدبار باشگاه؛ هماهنگ با پنل مدیریت و تمام‌عرض دسکتاپ */
+.wrap.portal-shell {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+}
+
+.portal-main,
+.portal-content {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+.portal-sidebar {
+    scrollbar-width: thin;
+}
+
+.portal-sidebar::-webkit-scrollbar {
+    width: 0.45rem;
+}
+
+.portal-sidebar::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--acc) 35%, var(--line));
+    border-radius: 999px;
+}
+
+.portal-side-link.is-active {
+    box-shadow: inset -0.22rem 0 0 var(--acc), 0 0.7rem 1.6rem rgba(14, 165, 233, 0.10);
+}
+
+.portal-topbar .btn,
+.portal-main .btn,
+.portal-sidebar .btn,
+.modal .btn {
+    color: #ffffff !important;
+}
+
+.portal-topbar .btn-ghost,
+.portal-main .btn-ghost,
+.portal-sidebar .btn-ghost,
+.modal .btn-ghost {
+    color: var(--txt) !important;
+    background: var(--panel2) !important;
+}
+
+.portal-topbar .btn-ghost:hover,
+.portal-main .btn-ghost:hover,
+.portal-sidebar .btn-ghost:hover,
+.modal .btn-ghost:hover {
+    color: var(--acc) !important;
+    border-color: var(--acc) !important;
+}
+
+body.light .portal-topbar,
+body.light .portal-sidebar,
+body.light .card,
+body.light .modal-box {
+    color: var(--txt) !important;
+}
+
+body.light input,
+body.light select,
+body.light textarea {
+    background: #ffffff !important;
+    color: var(--txt) !important;
+}
+
+body.light .portal-sidebar input,
+body.light .portal-topbar input {
+    background: #f8fafc !important;
+}
+
+@media (min-width: 981px) {
+    .portal-shell {
+        grid-template-columns: 18.5rem minmax(0, 1fr) !important;
+    }
+
+    .portal-main > .club-dashboard-page,
+    .portal-main > .club-growth-page,
+    .portal-main > .club-reward-page,
+    .portal-main > .support-page,
+    .portal-main > .support-kb-page,
+    .portal-main > .support-assistant-page {
+        max-width: none !important;
+        width: 100% !important;
+    }
+}

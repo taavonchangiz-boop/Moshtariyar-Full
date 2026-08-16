@@ -1,0 +1,90 @@
+# ============================================================
+# فایل چشم‌پوشی گیت — مشتری‌یار
+# این فایل از ورود تصادفی اطلاعات حساس به مخزن گیت جلوگیری می‌کند
+# آخرین به‌روزرسانی: ۱۴۰۵/۰۵/۰۲
+# ============================================================
+
+# ─── پوشه vendor (بسته‌های composer) ───
+/vendor/
+
+# ─── تنظیمات حساس محیط اجرا ───
+.env
+.env.*
+!.env.example
+
+# ─── حافظه نهان (کش) لاراول ───
+/bootstrap/cache/*
+!/bootstrap/cache/.gitkeep
+/storage/framework/cache/data/*
+!/storage/framework/cache/data/.gitkeep
+/storage/framework/cache/*.php
+
+# ─── نشست‌های کاربران — حاوی اطلاعات حساس ───
+/storage/framework/sessions/*
+!/storage/framework/sessions/.gitkeep
+
+# ─── نماهای کامپایل‌شده — حاوی مسیرهای مطلق سرور ───
+/storage/framework/views/*
+!/storage/framework/views/.gitkeep
+
+# ─── لاگ‌های سیستم — ممکن است حاوی داده کاربران باشد ───
+/storage/logs/*
+!/storage/logs/.gitkeep
+
+# ─── فایل‌های آزمایشی و تست ───
+/storage/framework/testing/*
+!/storage/framework/testing/.gitkeep
+
+# ─── فایل‌های موقت و بک‌آپ ───
+*.swp
+*~
+*.bak
+*.backup
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# ─── فایل‌های آپلود کاربران (مدیریت توسط برنامه) ───
+/storage/app/public/*
+!/storage/app/public/.gitkeep
+/storage/app/uploads/*
+!/storage/app/uploads/.gitkeep
+
+# ─── فایل‌های حساس اختصاصی پروژه ───
+/storage/installed.lock
+package-info.php
+reset-admin.php
+check-users.php
+fix-admin.php
+
+# ─── پوشه‌های نصب محلی (node) ───
+node_modules/
+
+# ─── فایل‌های پیکربندی IDE ───
+.idea/
+.vscode/
+*.sublime-*
+
+# ─── فایل‌های گزارش تست و پوشش کد ───
+.phpunit.result.cache
+coverage/
+.php-cs-fixer.cache
+
+# ─── گواهی‌نامه‌ها و کلیدهای خصوصی ───
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+storage/keys/
+
+# ─── پوشه سرویس ورکر عمومی (متعلق به public_html است) ───
+/sw.js
+/manifest.webmanifest
+
+# ─── خروجی‌های ساخت و بسته‌بندی ───
+/build/
+/dist/
+/public/build/
+/public/hot/

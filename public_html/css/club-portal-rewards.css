@@ -1,0 +1,416 @@
+/* ظاهر اختصاصی گردونه و جایزه‌های مشتری */
+.club-reward-page {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.club-reward-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(15rem, 25rem);
+    gap: 1rem;
+    align-items: stretch;
+    padding: 1.2rem;
+    border: 1px solid var(--line);
+    border-radius: 1.4rem;
+    background:
+        radial-gradient(circle at 20% 0, rgba(56, 189, 248, 0.22), transparent 34%),
+        radial-gradient(circle at 100% 10%, rgba(167, 139, 250, 0.18), transparent 32%),
+        var(--glass);
+    box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.14);
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+body.light .club-reward-hero {
+    background:
+        radial-gradient(circle at 20% 0, rgba(14, 165, 233, 0.14), transparent 34%),
+        radial-gradient(circle at 100% 10%, rgba(124, 58, 237, 0.10), transparent 32%),
+        #ffffff;
+    box-shadow: 0 1rem 2.5rem rgba(15, 23, 42, 0.08);
+}
+
+.club-reward-eyebrow {
+    display: inline-flex;
+    width: fit-content;
+    color: #0284c7;
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    border-radius: 999px;
+    padding: 0.18rem 0.7rem;
+    font-size: 0.74rem;
+    font-weight: 1000;
+}
+
+.club-reward-hero h1 {
+    margin: 0.55rem 0 0.2rem;
+    font-size: clamp(1.45rem, 4vw, 2.45rem);
+    line-height: 1.45;
+    letter-spacing: -0.04rem;
+}
+
+.club-reward-hero p {
+    margin: 0.4rem 0 0;
+    color: var(--mut);
+    max-width: 45rem;
+}
+
+.club-reward-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 1rem;
+}
+
+.club-reward-actions .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.club-reward-score {
+    display: grid;
+    gap: 0.7rem;
+}
+
+.club-reward-score > div {
+    padding: 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel);
+}
+
+.club-reward-score span,
+.club-reward-score small {
+    display: block;
+    color: var(--mut);
+    font-size: 0.75rem;
+    font-weight: 800;
+}
+
+.club-reward-score b {
+    display: block;
+    margin-top: 0.2rem;
+    color: var(--acc);
+    font-size: 1.25rem;
+    font-weight: 1000;
+}
+
+.club-wheel-grid,
+.club-reward-grid {
+    display: grid;
+    grid-template-columns: minmax(18rem, 28rem) minmax(0, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.club-card-pro {
+    border: 1px solid var(--line);
+    border-radius: 1.35rem;
+    background: var(--glass);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.12);
+    padding: 1rem;
+    min-width: 0;
+    overflow: hidden;
+}
+
+body.light .club-card-pro {
+    background: #ffffff;
+    box-shadow: 0 0.9rem 2.4rem rgba(15, 23, 42, 0.06);
+}
+
+.club-card-pro header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.8rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.club-card-pro h2,
+.club-card-pro h3 {
+    margin: 0;
+    color: var(--txt);
+    line-height: 1.55;
+}
+
+.club-wheel-wrap {
+    position: relative;
+    width: min(22rem, 82vw);
+    height: min(22rem, 82vw);
+    margin: 0.75rem auto;
+}
+
+.club-wheel-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--wheel-gradient);
+    border: 0.7rem solid var(--panel2);
+    box-shadow: 0 0 0 0.22rem var(--acc), 0 1.5rem 4rem rgba(15, 23, 42, 0.24);
+    transition: transform 4s cubic-bezier(.12,.72,.12,1);
+}
+
+body.light .club-wheel-circle {
+    border-color: #f8fafc;
+}
+
+.club-wheel-circle:after {
+    content: '';
+    position: absolute;
+    inset: 29%;
+    border-radius: 50%;
+    background: var(--panel);
+    border: 0.22rem solid var(--acc);
+}
+
+.club-wheel-pointer {
+    position: absolute;
+    top: -0.42rem;
+    left: 50%;
+    z-index: 4;
+    transform: translateX(-50%);
+    color: var(--warn);
+    font-size: 2.35rem;
+    text-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.24);
+}
+
+.club-wheel-center {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+}
+
+.club-wheel-center span {
+    display: inline-grid;
+    place-items: center;
+    min-width: 5.4rem;
+    min-height: 5.4rem;
+    padding: 0.55rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--acc2), var(--ok));
+    color: #ffffff;
+    box-shadow: 0 0.9rem 2rem rgba(14, 165, 233, 0.25);
+    font-weight: 1000;
+}
+
+.club-wheel-marker-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 6;
+    pointer-events: none;
+}
+
+.club-wheel-marker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2.35rem;
+    height: 2.35rem;
+    border-radius: 0.85rem;
+    display: grid;
+    place-items: center;
+    background: color-mix(in srgb, var(--marker-color) 18%, #ffffff);
+    border: 2px solid color-mix(in srgb, var(--marker-color) 62%, #ffffff);
+    box-shadow: 0 0.55rem 1.2rem rgba(15, 23, 42, 0.20);
+    transform: translate(-50%, -50%) rotate(var(--marker-angle)) translateY(-7rem) rotate(calc(-1 * var(--marker-angle)));
+    overflow: hidden;
+}
+
+.club-wheel-marker img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.club-wheel-marker span {
+    font-size: 1.15rem;
+}
+
+.club-wheel-spin {
+    transform: rotate(1665deg);
+}
+
+.club-prize-chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.45rem;
+    margin-top: 0.8rem;
+}
+
+.club-prize-chip-list span {
+    display: inline-flex;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    color: var(--chip-color);
+    background: color-mix(in srgb, var(--chip-color) 11%, transparent);
+    border: 1px solid color-mix(in srgb, var(--chip-color) 20%, transparent);
+    font-size: 0.75rem;
+    font-weight: 900;
+}
+
+.club-reward-list {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.club-reward-item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+    min-width: 0;
+}
+
+body.light .club-reward-item {
+    background: #f8fafc;
+}
+
+.club-reward-icon {
+    width: 3.3rem;
+    height: 3.3rem;
+    border-radius: 1rem;
+    display: grid;
+    place-items: center;
+    background: rgba(14, 165, 233, 0.13);
+    overflow: hidden;
+    font-size: 1.45rem;
+}
+
+.club-reward-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.club-reward-item h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    overflow-wrap: anywhere;
+}
+
+.club-reward-item p,
+.club-reward-item small {
+    margin: 0.15rem 0 0;
+    display: block;
+    color: var(--mut);
+    font-size: 0.78rem;
+}
+
+.club-reward-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 6.8rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(16, 185, 129, 0.12);
+    color: var(--ok);
+    font-size: 0.78rem;
+    font-weight: 1000;
+    text-align: center;
+}
+
+.club-code-box {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+    margin-top: 0.55rem;
+}
+
+.club-code-box input {
+    max-width: 15rem;
+    direction: ltr;
+    unicode-bidi: plaintext;
+    font-weight: 1000;
+    text-align: center;
+}
+
+.club-mini-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: 0.7rem;
+}
+
+.club-mini-stat {
+    padding: 0.8rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+}
+
+.club-mini-stat span,
+.club-mini-stat small {
+    display: block;
+    color: var(--mut);
+    font-size: 0.74rem;
+}
+
+.club-mini-stat b {
+    display: block;
+    margin-top: 0.15rem;
+    color: var(--acc);
+    font-size: 1.15rem;
+    font-weight: 1000;
+}
+
+.club-empty-state {
+    display: grid;
+    place-items: center;
+    min-height: 8rem;
+    text-align: center;
+    color: var(--mut);
+    border: 1px dashed var(--line);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+@media (max-width: 58rem) {
+    .club-reward-hero,
+    .club-wheel-grid,
+    .club-reward-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 42rem) {
+    .club-reward-hero,
+    .club-card-pro {
+        border-radius: 1rem;
+        padding: 0.85rem;
+    }
+
+    .club-reward-actions .btn,
+    .club-reward-actions a {
+        width: 100%;
+    }
+
+    .club-reward-item {
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .club-reward-status {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+
+    .club-wheel-marker {
+        width: 2rem;
+        height: 2rem;
+        transform: translate(-50%, -50%) rotate(var(--marker-angle)) translateY(-5.6rem) rotate(calc(-1 * var(--marker-angle)));
+    }
+}

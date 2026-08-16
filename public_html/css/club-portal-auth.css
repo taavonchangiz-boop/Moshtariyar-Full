@@ -1,0 +1,493 @@
+/* ظاهر فوق حرفه‌ای ورود، ثبت‌نام و تأیید باشگاه مشتریان */
+
+.portal-guest-card:has(.club-auth-page) {
+    width: min(100%, 82rem) !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.club-auth-page {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    animation: clubFadeIn .5s ease;
+}
+
+@keyframes clubFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.club-auth-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(24rem, 0.95fr);
+    gap: 1.2rem;
+    align-items: stretch;
+}
+
+.club-auth-hero,
+.club-auth-card,
+.club-auth-mini-card {
+    border: 1px solid var(--line);
+    border-radius: 1.5rem;
+    background: var(--panel);
+    box-shadow: 0 1.5rem 3.5rem rgba(15, 23, 42, 0.10);
+    min-width: 0;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+}
+
+body.dark .club-auth-hero,
+body.dark .club-auth-card,
+body.dark .club-auth-mini-card {
+    box-shadow: 0 1.5rem 3.5rem rgba(0, 0, 0, 0.30);
+    border-color: rgba(255,255,255,0.08);
+}
+
+.club-auth-hero {
+    position: relative;
+    display: grid;
+    align-content: center;
+    padding: 1.6rem;
+    background:
+        radial-gradient(circle at 10% 0, rgba(16, 185, 129, 0.18), transparent 32%),
+        radial-gradient(circle at 95% 15%, rgba(14, 165, 233, 0.22), transparent 38%),
+        radial-gradient(circle at 50% 100%, rgba(139, 92, 246, 0.14), transparent 40%),
+        linear-gradient(135deg, var(--panel), var(--panel2));
+}
+
+body.light .club-auth-hero {
+    background:
+        radial-gradient(circle at 10% 0, rgba(16, 185, 129, 0.12), transparent 32%),
+        radial-gradient(circle at 95% 15%, rgba(14, 165, 233, 0.14), transparent 38%),
+        radial-gradient(circle at 50% 100%, rgba(139, 92, 246, 0.08), transparent 40%),
+        #ffffff;
+}
+
+.club-auth-hero:after {
+    content: '';
+    position: absolute;
+    left: -4rem;
+    bottom: -5rem;
+    width: 18rem;
+    height: 18rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.18), rgba(124, 58, 237, 0.16));
+    filter: blur(12px);
+    pointer-events: none;
+}
+
+.club-auth-hero:before {
+    content: '';
+    position: absolute;
+    right: -3rem;
+    top: -3rem;
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.16), rgba(6, 182, 212, 0.12));
+    filter: blur(10px);
+    pointer-events: none;
+}
+
+.club-auth-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+.club-auth-eyebrow,
+.club-auth-card header span,
+.club-auth-chip {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    gap: 0.4rem;
+    color: #0284c7;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.14), rgba(6, 182, 212, 0.10));
+    border: 1px solid rgba(14, 165, 233, 0.26);
+    border-radius: 999px;
+    padding: 0.28rem 0.85rem;
+    font-size: 0.78rem;
+    line-height: 1.55;
+    font-weight: 900;
+    backdrop-filter: blur(6px);
+}
+
+.club-auth-hero h1 {
+    margin: 0.85rem 0 0.35rem;
+    color: var(--txt);
+    font-size: clamp(1.65rem, 3.6vw, 2.85rem);
+    line-height: 1.45;
+    letter-spacing: -0.04rem;
+    font-weight: 1000;
+    background: linear-gradient(135deg, var(--txt), color-mix(in srgb, var(--txt) 70%, var(--mut)));
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.club-auth-hero p {
+    margin: 0.65rem 0 0;
+    color: var(--mut);
+    font-size: 0.95rem;
+    line-height: 2.1;
+    max-width: 52rem;
+}
+
+.club-auth-benefits {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+    margin-top: 1.35rem;
+}
+
+.club-auth-mini-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.75rem;
+    align-items: center;
+    padding: 0.95rem;
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0.5rem 1.5rem rgba(15,23,42,0.06);
+    border: 1px solid rgba(255,255,255,0.5);
+    transition: .25s ease;
+    cursor: default;
+}
+
+.club-auth-mini-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.8rem 2rem rgba(15,23,42,0.10);
+    border-color: color-mix(in srgb, var(--mini-color) 24%, transparent);
+}
+
+body.light .club-auth-mini-card {
+    background: rgba(248,250,252,0.92);
+}
+
+body.dark .club-auth-mini-card {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.08);
+}
+
+.club-auth-mini-card i {
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    border-radius: 1.1rem;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--mini-color, var(--acc)) 22%, transparent), color-mix(in srgb, var(--mini-color) 12%, transparent));
+    color: var(--mini-color, var(--acc));
+    font-style: normal;
+    font-size: 1.35rem;
+    border: 1px solid color-mix(in srgb, var(--mini-color) 18%, transparent);
+    box-shadow: 0 0.35rem 0.9rem color-mix(in srgb, var(--mini-color) 18%, transparent);
+}
+
+.club-auth-mini-card b {
+    display: block;
+    color: var(--txt);
+    line-height: 1.7;
+    font-size: .92rem;
+    font-weight: 900;
+}
+
+.club-auth-mini-card small {
+    display: block;
+    color: var(--mut);
+    line-height: 1.8;
+    margin-top: 0.15rem;
+    font-size: .78rem;
+}
+
+.club-auth-card {
+    padding: 1.25rem;
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(16px);
+}
+
+body.dark .club-auth-card {
+    background: rgba(16,28,46,0.88);
+}
+
+.club-auth-card header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.9rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.club-auth-card header > div {
+    display: grid;
+    gap: 0.45rem;
+}
+
+.club-auth-card h2,
+.club-auth-card h3 {
+    margin: 0;
+    color: var(--txt);
+    line-height: 1.6;
+    font-weight: 900;
+    font-size: 1.15rem;
+}
+
+.club-auth-card p {
+    color: var(--mut);
+    margin: 0.3rem 0 0;
+    line-height: 1.9;
+    font-size: .86rem;
+}
+
+.club-auth-form {
+    display: grid;
+    gap: 0.95rem;
+}
+
+.club-auth-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+}
+
+.club-auth-wide {
+    grid-column: 1 / -1;
+}
+
+.club-auth-form label {
+    font-size: 0.84rem;
+    line-height: 1.6;
+    font-weight: 800;
+    color: var(--txt);
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.club-auth-form input,
+.club-auth-form select,
+.club-auth-form textarea {
+    min-height: 3rem;
+    line-height: 1.6;
+    border-radius: .85rem;
+    border: 1.5px solid var(--line);
+    background: var(--panel);
+    padding: 0 .9rem;
+    font-size: .9rem;
+    transition: .2s ease;
+    width: 100%;
+}
+
+.club-auth-form input:focus,
+.club-auth-form select:focus,
+.club-auth-form textarea:focus {
+    outline: none;
+    border-color: var(--acc);
+    box-shadow: 0 0 0 .2rem color-mix(in srgb, var(--acc) 18%, transparent);
+    background: var(--panel);
+}
+
+.club-auth-form .btn {
+    min-height: 3rem;
+    border-radius: 0.9rem;
+    font-weight: 800;
+    font-size: 0.92rem;
+    letter-spacing: -0.01rem;
+    background: var(--site-primary, #0f172a);
+    color: #ffffff;
+    border: 1px solid color-mix(in srgb, var(--site-primary, #0f172a) 84%, black 16%);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.08) inset, 0 4px 14px rgba(15,23,42,0.12);
+    transition: all 0.18s cubic-bezier(.16,1,.3,1);
+}
+
+.club-auth-form .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.12) inset, 0 8px 20px rgba(15,23,42,0.14);
+    filter: brightness(1.05);
+    background: color-mix(in srgb, var(--site-primary, #0f172a) 88%, black 12%);
+    color: #ffffff;
+}
+
+.club-auth-form .btn:active{
+    transform: translateY(0) scale(.985);
+    filter: brightness(.97);
+}
+
+.club-auth-form .btn-ghost {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    color: var(--txt);
+    box-shadow: 0 1px 2px rgba(15,23,42,0.04);
+    transition: all 0.18s cubic-bezier(.16,1,.3,1);
+}
+.club-auth-form .btn-ghost:hover{
+    background: var(--panel2);
+    border-color: color-mix(in srgb, var(--line) 60%, var(--acc) 40%);
+    color: var(--txt);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+}
+
+.club-auth-divider {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 0.9rem;
+    align-items: center;
+    color: var(--mut);
+    font-size: 0.8rem;
+    font-weight: 800;
+    margin: 1.1rem 0;
+}
+
+.club-auth-divider:before,
+.club-auth-divider:after {
+    content: '';
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--line), transparent);
+}
+
+.club-auth-link-row {
+    margin-top: 1rem;
+    color: var(--mut);
+    line-height: 1.8;
+    text-align: center;
+    font-size: .86rem;
+}
+
+.club-auth-link-row a {
+    color: var(--acc);
+    font-weight: 800;
+    text-decoration: none;
+    border-bottom: 1px dashed color-mix(in srgb, var(--acc) 40%, transparent);
+    padding-bottom: 1px;
+    transition: .2s;
+}
+
+.club-auth-link-row a:hover {
+    color: var(--acc);
+    border-bottom-style: solid;
+}
+
+.club-auth-security {
+    display: grid;
+    gap: 0.6rem;
+    margin-top: 1.1rem;
+    padding: 0.9rem;
+    border: 1px dashed var(--line);
+    border-radius: 1rem;
+    background: linear-gradient(135deg, var(--panel2), color-mix(in srgb, var(--panel2) 70%, transparent));
+    color: var(--mut);
+    line-height: 1.8;
+    font-size: .82rem;
+}
+
+body.light .club-auth-security {
+    background: #f8fafc;
+}
+
+.club-auth-security b {
+    color: var(--txt);
+    font-size: .85rem;
+}
+
+.club-auth-alert {
+    padding: .85rem .95rem;
+    border-radius: .9rem;
+    font-size: .86rem;
+    line-height: 1.8;
+    border: 1px solid;
+    margin-bottom: 1rem;
+    animation: clubAlertIn .35s ease;
+}
+
+@keyframes clubAlertIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.club-auth-alert.is-success {
+    background: linear-gradient(135deg, rgba(16,185,129,.12), rgba(16,185,129,.06));
+    border-color: rgba(16,185,129,.22);
+    color: #047857;
+}
+
+body.dark .club-auth-alert.is-success {
+    color: #6ee7b7;
+}
+
+.club-auth-alert.is-error {
+    background: linear-gradient(135deg, rgba(239,68,68,.12), rgba(239,68,68,.06));
+    border-color: rgba(239,68,68,.22);
+    color: #b91c1c;
+}
+
+body.dark .club-auth-alert.is-error {
+    color: #fca5a5;
+}
+
+.club-auth-verify-shell {
+    width: min(100%, 36rem);
+    margin: 0 auto;
+}
+
+.club-auth-code-input {
+    text-align: center;
+    font-size: 1.7rem !important;
+    font-weight: 1000;
+    letter-spacing: 0.55rem;
+    direction: ltr;
+    font-family: 'Estedad', monospace !important;
+}
+
+.club-auth-page .ltr {
+    direction: ltr;
+    text-align: left;
+    font-family: 'Estedad', monospace;
+}
+
+@media (max-width: 76rem) {
+    .club-auth-shell {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .club-auth-hero {
+        padding: 1.2rem;
+    }
+}
+
+@media (max-width: 44rem) {
+    .portal-guest-shell {
+        padding: 0.75rem !important;
+        align-items: start !important;
+    }
+
+    .club-auth-hero,
+    .club-auth-card {
+        border-radius: 1.2rem;
+        padding: 1rem;
+    }
+
+    .club-auth-benefits,
+    .club-auth-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .club-auth-wide {
+        grid-column: auto;
+    }
+
+    .club-auth-card header {
+        display: grid;
+    }
+
+    .club-auth-form .btn,
+    .club-auth-card .btn {
+        width: 100%;
+    }
+    
+    .club-auth-hero h1 {
+        font-size: 1.5rem;
+    }
+}

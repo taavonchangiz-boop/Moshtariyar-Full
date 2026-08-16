@@ -1,0 +1,392 @@
+/* ظاهر حرفه‌ای لیگ دعوت باشگاه */
+.club-league-page {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.club-league-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.72fr) minmax(12rem, 0.52fr);
+    gap: 0.75rem;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.35rem;
+    background:
+        radial-gradient(circle at 8% 0, rgba(245, 158, 11, 0.14), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(124, 58, 237, 0.14), transparent 34%),
+        linear-gradient(135deg, var(--panel), var(--panel2));
+    box-shadow: 0 1rem 2.8rem rgba(15, 23, 42, 0.08);
+}
+
+body.light .club-league-hero {
+    background:
+        radial-gradient(circle at 8% 0, rgba(245, 158, 11, 0.09), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(124, 58, 237, 0.08), transparent 34%),
+        #ffffff;
+}
+
+.club-league-eyebrow,
+.club-league-card header span,
+.club-league-chip {
+    display: inline-flex;
+    width: fit-content;
+    color: #7c3aed;
+    background: rgba(139, 92, 246, 0.12);
+    border: 1px solid rgba(139, 92, 246, 0.22);
+    border-radius: 999px;
+    padding: 0.2rem 0.72rem;
+    font-size: 0.76rem;
+    line-height: 1.55;
+    font-weight: 1000;
+}
+
+.club-league-hero h1 {
+    margin: 0.55rem 0 0;
+    color: var(--txt);
+    font-size: clamp(1.35rem, 2.4vw, 2.12rem);
+    line-height: 1.65;
+    letter-spacing: -0.02rem;
+}
+
+.club-league-hero p {
+    margin: 0.42rem 0 0;
+    color: var(--mut);
+    font-size: 0.9rem;
+    line-height: 2;
+    max-width: 54rem;
+}
+
+.club-league-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1rem;
+}
+
+.club-league-score {
+    display: grid;
+    gap: 0.42rem;
+}
+
+.club-league-score > div {
+    min-height: 3.75rem;
+    display: grid;
+    align-content: center;
+    gap: 0.04rem;
+    padding: 0.42rem 0.62rem;
+    border: 1px solid var(--line);
+    border-radius: 0.9rem;
+    background: var(--panel);
+}
+
+body.light .club-league-score > div {
+    background: #f8fafc;
+}
+
+.club-league-score span,
+.club-league-score small {
+    color: var(--mut);
+    font-size: 0.74rem;
+    line-height: 1.65;
+    font-weight: 800;
+}
+
+.club-league-score b {
+    color: var(--acc);
+    font-size: 1.08rem;
+    line-height: 1.45;
+    font-weight: 1000;
+}
+
+.club-league-grid,
+.club-league-grid-reverse {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.club-league-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.78fr);
+}
+
+.club-league-grid-reverse {
+    grid-template-columns: minmax(18rem, 0.78fr) minmax(0, 1fr);
+}
+
+.club-league-card {
+    min-width: 0;
+    overflow: hidden;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    background: var(--glass);
+    box-shadow: 0 1rem 2.8rem rgba(15, 23, 42, 0.08);
+}
+
+body.light .club-league-card {
+    background: #ffffff;
+}
+
+.club-league-card.is-accent {
+    position: relative;
+    padding-right: 1.25rem;
+}
+
+.club-league-card.is-accent:before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    bottom: 1rem;
+    right: 0.65rem;
+    width: 0.28rem;
+    border-radius: 999px;
+    background: var(--league-color, var(--acc));
+}
+
+.club-league-card header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.9rem;
+    padding-bottom: 0.95rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.club-league-card header > div {
+    display: grid;
+    gap: 0.42rem;
+}
+
+.club-league-card h2,
+.club-league-card h3 {
+    margin: 0;
+    color: var(--txt);
+    line-height: 1.78;
+}
+
+.club-league-card p {
+    margin: 0.25rem 0 0;
+    color: var(--mut);
+    line-height: 2;
+}
+
+.club-league-selector {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.7rem;
+    align-items: end;
+}
+
+.club-league-podium {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    align-items: end;
+    margin-bottom: 1rem;
+}
+
+.club-league-podium-card {
+    position: relative;
+    min-width: 0;
+    display: grid;
+    justify-items: center;
+    gap: 0.45rem;
+    padding: 1rem 0.8rem;
+    border: 1px solid color-mix(in srgb, var(--podium-color) 28%, var(--line));
+    border-radius: 1.2rem;
+    background: color-mix(in srgb, var(--podium-color) 9%, var(--panel));
+    text-align: center;
+}
+
+.club-league-podium-card.is-first {
+    padding-top: 1.45rem;
+    min-height: 14rem;
+}
+
+.club-league-podium-rank,
+.club-league-rank {
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--podium-color, var(--acc)), var(--vio));
+    font-weight: 1000;
+}
+
+.club-league-podium-rank {
+    position: absolute;
+    top: 0.65rem;
+    right: 0.65rem;
+    min-width: 2rem;
+    height: 2rem;
+    border-radius: 0.75rem;
+}
+
+.club-league-avatar {
+    width: 4.2rem;
+    height: 4.2rem;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 1.25rem;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--podium-color, var(--acc)), var(--acc));
+    font-size: 1.45rem;
+    font-weight: 1000;
+}
+
+.club-league-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.club-league-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.club-league-row,
+.club-league-channel-row,
+.club-league-tip-row {
+    display: grid;
+    grid-template-columns: auto auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+}
+
+body.light .club-league-row,
+body.light .club-league-channel-row,
+body.light .club-league-tip-row {
+    background: #f8fafc;
+}
+
+.club-league-row.is-me {
+    border-color: rgba(14, 165, 233, 0.32);
+    background: rgba(14, 165, 233, 0.08);
+}
+
+.club-league-rank {
+    width: 2.65rem;
+    height: 2.65rem;
+    border-radius: 0.9rem;
+}
+
+.club-league-icon {
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--row-color, var(--acc)) 15%, transparent);
+    color: var(--row-color, var(--acc));
+    font-size: 1.25rem;
+}
+
+.club-league-row h3,
+.club-league-channel-row h3,
+.club-league-tip-row h3 {
+    margin: 0;
+    color: var(--txt);
+    font-size: 0.95rem;
+    line-height: 1.78;
+}
+
+.club-league-row p,
+.club-league-row small,
+.club-league-channel-row p,
+.club-league-channel-row small,
+.club-league-tip-row p,
+.club-league-tip-row small {
+    display: block;
+    margin: 0.1rem 0 0;
+    color: var(--mut);
+    line-height: 1.95;
+    font-size: 0.78rem;
+}
+
+.club-league-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: fit-content;
+    padding: 0.28rem 0.7rem;
+    border-radius: 999px;
+    color: var(--acc);
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    font-size: 0.76rem;
+    line-height: 1.6;
+    font-weight: 1000;
+}
+
+.club-league-badge.is-ok {
+    color: var(--ok);
+    background: rgba(16, 185, 129, 0.13);
+    border-color: rgba(16, 185, 129, 0.24);
+}
+
+.club-league-badge.is-muted {
+    color: var(--mut);
+    background: rgba(148, 163, 184, 0.12);
+    border-color: rgba(148, 163, 184, 0.22);
+}
+
+.club-league-progress {
+    height: 0.6rem;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.18);
+    overflow: hidden;
+    margin-top: 0.55rem;
+}
+
+.club-league-progress span {
+    display: block;
+    width: var(--progress, 0%);
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--row-color, var(--acc)), var(--ok));
+}
+
+.club-league-empty {
+    display: grid;
+    place-items: center;
+    min-height: 8rem;
+    padding: 1rem;
+    color: var(--mut);
+    text-align: center;
+    border: 1px dashed var(--line);
+    border-radius: 1rem;
+}
+
+@media (max-width: 78rem) {
+    .club-league-hero,
+    .club-league-grid,
+    .club-league-grid-reverse,
+    .club-league-podium {
+        grid-template-columns: 1fr;
+    }
+    .club-league-podium-card.is-first { min-height: auto; }
+}
+
+@media (max-width: 44rem) {
+    .club-league-hero,
+    .club-league-card { border-radius: 1rem; padding: 0.85rem; }
+    .club-league-card.is-accent { padding-right: 1.05rem; }
+    .club-league-card.is-accent:before { right: 0.45rem; top: 0.8rem; bottom: 0.8rem; }
+    .club-league-selector,
+    .club-league-row,
+    .club-league-channel-row,
+    .club-league-tip-row { grid-template-columns: 1fr; }
+    .club-league-badge,
+    .club-league-actions .btn,
+    .club-league-actions a { width: 100%; }
+}

@@ -1,0 +1,432 @@
+/* ظاهر حرفه‌ای خریدها و سفارش‌های مشتری در باشگاه */
+.club-orders-page {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.club-orders-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
+    gap: 1rem;
+    align-items: stretch;
+    padding: 1.15rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.4rem;
+    background:
+        radial-gradient(circle at 8% 0, rgba(16, 185, 129, 0.14), transparent 30%),
+        radial-gradient(circle at 94% 0, rgba(14, 165, 233, 0.18), transparent 34%),
+        linear-gradient(135deg, var(--panel), var(--panel2));
+    box-shadow: 0 1.2rem 3.4rem rgba(15, 23, 42, 0.10);
+    overflow: hidden;
+}
+
+body.light .club-orders-hero {
+    background:
+        radial-gradient(circle at 8% 0, rgba(16, 185, 129, 0.09), transparent 30%),
+        radial-gradient(circle at 94% 0, rgba(14, 165, 233, 0.11), transparent 34%),
+        #ffffff;
+}
+
+.club-orders-hero:after {
+    content: '';
+    position: absolute;
+    left: -5rem;
+    bottom: -7rem;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(16, 185, 129, 0.13));
+    pointer-events: none;
+}
+
+.club-orders-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+.club-orders-eyebrow,
+.club-orders-card header span,
+.club-order-chip {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    gap: 0.35rem;
+    color: #0284c7;
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    border-radius: 999px;
+    padding: 0.18rem 0.7rem;
+    font-size: 0.74rem;
+    font-weight: 1000;
+}
+
+.club-orders-hero h1 {
+    margin: 0.55rem 0 0.25rem;
+    color: var(--txt);
+    font-size: clamp(1.35rem, 4vw, 2.35rem);
+    line-height: 1.45;
+    letter-spacing: -0.03rem;
+}
+
+.club-orders-hero p {
+    margin: 0.4rem 0 0;
+    color: var(--mut);
+    max-width: 45rem;
+    line-height: 1.95;
+}
+
+.club-orders-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1rem;
+}
+
+.club-orders-actions .btn,
+.club-orders-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.club-orders-score-grid {
+    display: grid;
+    gap: 0.7rem;
+}
+
+.club-orders-score-grid > div {
+    padding: 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel);
+}
+
+body.light .club-orders-score-grid > div {
+    background: #f8fafc;
+}
+
+.club-orders-score-grid span,
+.club-orders-score-grid small {
+    display: block;
+    color: var(--mut);
+    font-size: 0.74rem;
+    font-weight: 800;
+}
+
+.club-orders-score-grid b {
+    display: block;
+    margin-top: 0.15rem;
+    color: var(--acc);
+    font-size: 1.25rem;
+    line-height: 1.55;
+    font-weight: 1000;
+}
+
+.club-orders-grid,
+.club-orders-grid-reverse {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.club-orders-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.76fr);
+}
+
+.club-orders-grid-reverse {
+    grid-template-columns: minmax(18rem, 0.76fr) minmax(0, 1fr);
+}
+
+.club-orders-card {
+    min-width: 0;
+    overflow: hidden;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    background: var(--glass);
+    box-shadow: 0 1rem 2.8rem rgba(15, 23, 42, 0.08);
+}
+
+body.light .club-orders-card {
+    background: #ffffff;
+}
+
+.club-orders-card.is-accent {
+    position: relative;
+    padding-right: 1.25rem;
+}
+
+.club-orders-card.is-accent:before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    bottom: 1rem;
+    right: 0.65rem;
+    width: 0.28rem;
+    border-radius: 999px;
+    background: var(--orders-card-color, var(--acc));
+}
+
+.club-orders-card header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.8rem;
+    padding-bottom: 0.8rem;
+    margin-bottom: 0.85rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.club-orders-card h2,
+.club-orders-card h3 {
+    margin: 0;
+    color: var(--txt);
+    line-height: 1.55;
+}
+
+.club-orders-card p {
+    color: var(--mut);
+    margin: 0.35rem 0 0;
+    line-height: 1.9;
+}
+
+.club-orders-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    min-width: fit-content;
+    padding: 0.28rem 0.7rem;
+    border-radius: 999px;
+    color: var(--acc);
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    font-size: 0.76rem;
+    font-weight: 1000;
+    white-space: nowrap;
+}
+
+.club-orders-badge.is-ok {
+    color: var(--ok);
+    background: rgba(16, 185, 129, 0.13);
+    border-color: rgba(16, 185, 129, 0.24);
+}
+
+.club-orders-badge.is-warn {
+    color: var(--warn);
+    background: rgba(245, 158, 11, 0.13);
+    border-color: rgba(245, 158, 11, 0.24);
+}
+
+.club-orders-badge.is-bad {
+    color: var(--bad);
+    background: rgba(239, 68, 68, 0.13);
+    border-color: rgba(239, 68, 68, 0.24);
+}
+
+.club-orders-badge.is-muted {
+    color: var(--mut);
+    background: rgba(148, 163, 184, 0.12);
+    border-color: rgba(148, 163, 184, 0.22);
+}
+
+.club-orders-list,
+.club-order-items-list,
+.club-order-timeline {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.club-order-row,
+.club-order-item-row,
+.club-order-transaction-row,
+.club-favorite-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+    min-width: 0;
+}
+
+body.light .club-order-row,
+body.light .club-order-item-row,
+body.light .club-order-transaction-row,
+body.light .club-favorite-row {
+    background: #f8fafc;
+}
+
+.club-order-icon,
+.club-favorite-icon {
+    width: 3.15rem;
+    height: 3.15rem;
+    display: grid;
+    place-items: center;
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--order-color, var(--acc)) 15%, transparent);
+    color: var(--order-color, var(--acc));
+    font-size: 1.35rem;
+    font-weight: 1000;
+}
+
+.club-order-row h3,
+.club-order-item-row h3,
+.club-order-transaction-row h3,
+.club-favorite-row h3 {
+    margin: 0;
+    color: var(--txt);
+    font-size: 0.94rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+
+.club-order-row p,
+.club-order-row small,
+.club-order-item-row p,
+.club-order-item-row small,
+.club-order-transaction-row p,
+.club-order-transaction-row small,
+.club-favorite-row p,
+.club-favorite-row small {
+    display: block;
+    margin: 0.13rem 0 0;
+    color: var(--mut);
+    font-size: 0.78rem;
+    line-height: 1.75;
+}
+
+.club-order-side {
+    display: grid;
+    gap: 0.35rem;
+    justify-items: end;
+}
+
+.club-order-amount {
+    color: var(--txt);
+    font-size: 1rem;
+    font-weight: 1000;
+    white-space: nowrap;
+}
+
+.club-order-insight {
+    border: 1px solid color-mix(in srgb, var(--insight-color, var(--acc)) 24%, var(--line));
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--insight-color, var(--acc)) 8%, transparent);
+    padding: 0.9rem;
+}
+
+.club-order-insight h3 {
+    margin: 0;
+    color: var(--txt);
+}
+
+.club-order-insight p {
+    color: var(--mut);
+    margin: 0.4rem 0 0;
+}
+
+.club-order-empty {
+    display: grid;
+    place-items: center;
+    min-height: 8rem;
+    padding: 1rem;
+    color: var(--mut);
+    text-align: center;
+    border: 1px dashed var(--line);
+    border-radius: 1rem;
+}
+
+.club-order-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.club-order-summary-grid > div {
+    padding: 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+}
+
+body.light .club-order-summary-grid > div {
+    background: #f8fafc;
+}
+
+.club-order-summary-grid span,
+.club-order-summary-grid small {
+    display: block;
+    color: var(--mut);
+    font-size: 0.74rem;
+    font-weight: 800;
+}
+
+.club-order-summary-grid b {
+    display: block;
+    margin-top: 0.18rem;
+    color: var(--txt);
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 72rem) {
+    .club-orders-hero,
+    .club-orders-grid,
+    .club-orders-grid-reverse,
+    .club-order-summary-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 44rem) {
+    .club-orders-hero,
+    .club-orders-card {
+        border-radius: 1rem;
+        padding: 0.85rem;
+    }
+
+    .club-orders-card.is-accent {
+        padding-right: 1.05rem;
+    }
+
+    .club-orders-card.is-accent:before {
+        right: 0.45rem;
+        top: 0.8rem;
+        bottom: 0.8rem;
+    }
+
+    .club-orders-actions .btn,
+    .club-orders-actions a {
+        width: 100%;
+    }
+
+    .club-order-row,
+    .club-order-item-row,
+    .club-order-transaction-row,
+    .club-favorite-row {
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .club-order-side,
+    .club-order-row > a,
+    .club-order-row > form,
+    .club-orders-badge {
+        grid-column: 1 / -1;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .club-order-row > a.btn,
+    .club-order-row > form .btn,
+    .club-order-side .btn {
+        width: 100%;
+    }
+}

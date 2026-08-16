@@ -1,0 +1,743 @@
+/* ظاهر اختصاصی صفحه ویرایش محصول */
+.product-edit-page {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.product-edit-hero {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1.1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.4rem;
+    background:
+        radial-gradient(circle at top right, rgba(16, 185, 129, 0.14), transparent 34%),
+        var(--panel);
+    box-shadow: var(--shadow-sm);
+}
+
+body.light .product-edit-hero {
+    background:
+        radial-gradient(circle at top right, rgba(16, 185, 129, 0.10), transparent 34%),
+        #ffffff;
+    border-color: #e5edf7;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.product-edit-hero > div:first-child {
+    min-width: 0;
+}
+
+.product-edit-hero span {
+    display: inline-flex;
+    width: fit-content;
+    color: var(--ok);
+    background: rgba(16, 185, 129, 0.10);
+    border: 1px solid rgba(16, 185, 129, 0.18);
+    border-radius: 999px;
+    padding: 0.22rem 0.7rem;
+    font-size: 0.76rem;
+    font-weight: 900;
+}
+
+.product-edit-hero h2 {
+    margin: 0.55rem 0 0;
+    color: var(--txt);
+    font-size: clamp(1.25rem, 2.4vw, 2rem);
+    line-height: 1.55;
+    letter-spacing: -0.03rem;
+    overflow-wrap: anywhere;
+}
+
+.product-edit-hero p {
+    margin: 0.45rem 0 0;
+    color: var(--mut);
+    line-height: 1.9;
+    font-size: 0.86rem;
+    max-width: 58rem;
+}
+
+.product-edit-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.75rem;
+}
+
+.product-edit-tags b {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--panel2);
+    color: var(--txt);
+    padding: 0.24rem 0.66rem;
+    font-size: 0.72rem;
+    font-weight: 900;
+}
+
+body.light .product-edit-tags b {
+    background: #f8fafc;
+}
+
+.product-edit-hero-actions {
+    min-width: 14rem;
+    display: grid;
+    align-content: center;
+    gap: 0.6rem;
+}
+
+.product-edit-hero-actions .btn {
+    justify-content: center;
+    text-align: center;
+}
+
+.product-edit-alert,
+.product-edit-denied {
+    margin-bottom: 1rem;
+    border: 1px solid rgba(239, 68, 68, 0.22);
+    border-radius: 1.2rem;
+    background: rgba(239, 68, 68, 0.08);
+    padding: 1rem;
+    color: var(--txt);
+}
+
+.product-edit-alert h3,
+.product-edit-denied h3 {
+    margin: 0 0 0.5rem;
+    color: var(--bad);
+    font-size: 1rem;
+}
+
+.product-edit-alert ul {
+    margin: 0;
+    padding-right: 1.2rem;
+    color: var(--mut);
+    line-height: 1.9;
+}
+
+.product-edit-denied p {
+    margin: 0 0 0.75rem;
+    color: var(--mut);
+    line-height: 1.9;
+}
+
+.product-edit-layout {
+    display: grid;
+    grid-template-columns: minmax(16rem, 21rem) minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+}
+
+.product-edit-side {
+    display: grid;
+    gap: 1rem;
+    position: sticky;
+    top: 1rem;
+}
+
+.product-edit-image-card,
+.product-edit-summary-card,
+.product-edit-card,
+.product-edit-actions {
+    border: 1px solid var(--line);
+    border-radius: 1.2rem;
+    background: var(--panel);
+    box-shadow: var(--shadow-sm);
+    padding: 1rem;
+    overflow: hidden;
+}
+
+body.light .product-edit-image-card,
+body.light .product-edit-summary-card,
+body.light .product-edit-card,
+body.light .product-edit-actions {
+    background: #ffffff;
+    border-color: #e5edf7;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+.product-edit-image-card h3,
+.product-edit-summary-card h3,
+.product-edit-card h3 {
+    margin: 0;
+    color: var(--txt);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.product-edit-image-preview {
+    margin-top: 0.8rem;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--panel2);
+    display: grid;
+    place-items: center;
+}
+
+body.light .product-edit-image-preview {
+    background: #f8fafc;
+}
+
+.product-edit-image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.product-edit-image-preview span {
+    font-size: 3rem;
+}
+
+.product-edit-file {
+    margin-top: 0.75rem;
+    display: grid;
+    gap: 0.45rem;
+    border: 1px dashed var(--line);
+    border-radius: 1rem;
+    padding: 0.8rem;
+    background: var(--panel2);
+    cursor: pointer;
+}
+
+body.light .product-edit-file {
+    background: #f8fafc;
+}
+
+.product-edit-file span {
+    color: var(--txt);
+    font-weight: 900;
+    font-size: 0.82rem;
+}
+
+.product-edit-file input {
+    width: 100%;
+    font-size: 0.76rem;
+}
+
+.product-edit-file-wide {
+    margin-top: 1rem;
+}
+
+.product-edit-image-card small,
+.product-edit-field small {
+    display: block;
+    color: var(--mut);
+    font-size: 0.72rem;
+    line-height: 1.8;
+    margin-top: 0.35rem;
+}
+
+.product-edit-check {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 0.75rem;
+    color: var(--txt);
+    font-size: 0.78rem;
+    font-weight: 900;
+    line-height: 1.7;
+}
+
+.product-edit-check input {
+    width: auto;
+}
+
+.product-edit-check-large {
+    align-self: end;
+    min-height: 2.7rem;
+    border: 1px solid var(--line);
+    border-radius: 0.9rem;
+    background: var(--panel2);
+    padding: 0 0.75rem;
+}
+
+body.light .product-edit-check-large {
+    background: #f8fafc;
+}
+
+.product-edit-summary-card {
+    display: grid;
+    gap: 0.6rem;
+}
+
+.product-edit-summary-card > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: 0.85rem;
+    background: var(--panel2);
+    padding: 0.65rem;
+}
+
+body.light .product-edit-summary-card > div {
+    background: #f8fafc;
+}
+
+.product-edit-summary-card span {
+    color: var(--mut);
+    font-size: 0.72rem;
+    font-weight: 800;
+}
+
+.product-edit-summary-card b {
+    color: var(--txt);
+    font-size: 0.8rem;
+    overflow-wrap: anywhere;
+    text-align: left;
+}
+
+.product-edit-main {
+    display: grid;
+    gap: 1rem;
+    min-width: 0;
+}
+
+.product-edit-card header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    padding-bottom: 0.85rem;
+    margin-bottom: 0.85rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.product-edit-card header > span {
+    flex: 0 0 auto;
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 0.8rem;
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--ok), var(--acc));
+    font-weight: 900;
+}
+
+.product-edit-card header div {
+    min-width: 0;
+}
+
+.product-edit-card header p {
+    margin: 0.25rem 0 0;
+    color: var(--mut);
+    font-size: 0.78rem;
+    line-height: 1.8;
+}
+
+.product-edit-grid,
+.product-edit-dynamic-box {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.product-edit-field-wide,
+.product-edit-dynamic-title {
+    grid-column: 1 / -1;
+}
+
+.product-edit-grid label,
+.product-edit-dynamic-box label {
+    display: block;
+    color: var(--txt);
+    font-size: 0.76rem;
+    font-weight: 900;
+    margin-bottom: 0.35rem;
+}
+
+.product-edit-grid input,
+.product-edit-grid select,
+.product-edit-grid textarea,
+.product-edit-dynamic-box input,
+.product-edit-dynamic-box select,
+.product-edit-dynamic-box textarea {
+    width: 100%;
+    min-height: 2.65rem;
+    border-radius: 0.85rem;
+    border: 1px solid var(--line);
+    background: var(--panel2);
+    color: var(--txt);
+    padding: 0.55rem 0.75rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+body.light .product-edit-grid input,
+body.light .product-edit-grid select,
+body.light .product-edit-grid textarea,
+body.light .product-edit-dynamic-box input,
+body.light .product-edit-dynamic-box select,
+body.light .product-edit-dynamic-box textarea {
+    background: #f8fafc;
+}
+
+.product-edit-grid textarea,
+.product-edit-dynamic-box textarea {
+    resize: vertical;
+    line-height: 1.9;
+}
+
+.product-edit-grid input:focus,
+.product-edit-grid select:focus,
+.product-edit-grid textarea:focus,
+.product-edit-dynamic-box input:focus,
+.product-edit-dynamic-box select:focus,
+.product-edit-dynamic-box textarea:focus {
+    border-color: rgba(16, 185, 129, 0.48);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12);
+    background: var(--panel);
+}
+
+body.light .product-edit-grid input:focus,
+body.light .product-edit-grid select:focus,
+body.light .product-edit-grid textarea:focus,
+body.light .product-edit-dynamic-box input:focus,
+body.light .product-edit-dynamic-box select:focus,
+body.light .product-edit-dynamic-box textarea:focus {
+    background: #ffffff;
+}
+
+.product-edit-dynamic-box {
+    margin-top: 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+    padding: 0.85rem;
+}
+
+body.light .product-edit-dynamic-box {
+    background: #f8fafc;
+}
+
+.product-edit-dynamic-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.7rem;
+    margin-bottom: 0.15rem;
+}
+
+.product-edit-dynamic-title b {
+    color: var(--txt);
+    font-size: 0.9rem;
+}
+
+.product-edit-dynamic-title span {
+    color: var(--mut);
+    font-size: 0.74rem;
+    line-height: 1.8;
+}
+
+.product-edit-ready-fields {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.product-edit-ready-fields span {
+    display: inline-flex;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    color: var(--txt);
+    padding: 0.22rem 0.62rem;
+    font-size: 0.72rem;
+    font-weight: 900;
+}
+
+body.light .product-edit-ready-fields span {
+    background: #ffffff;
+}
+
+.product-edit-gallery-current {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+    gap: 0.75rem;
+}
+
+.product-edit-gallery-current label {
+    display: grid;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    overflow: hidden;
+    background: var(--panel2);
+}
+
+body.light .product-edit-gallery-current label {
+    background: #f8fafc;
+}
+
+.product-edit-gallery-current img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+}
+
+.product-edit-gallery-current span {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--txt);
+    padding: 0.55rem;
+    font-size: 0.72rem;
+    font-weight: 900;
+}
+
+.product-edit-gallery-current input {
+    width: auto;
+}
+
+.product-edit-empty {
+    display: grid;
+    place-items: center;
+    min-height: 5rem;
+    border: 1px dashed var(--line);
+    border-radius: 1rem;
+    color: var(--mut);
+    background: var(--panel2);
+    font-size: 0.82rem;
+    line-height: 1.8;
+}
+
+body.light .product-edit-empty {
+    background: #f8fafc;
+}
+
+.product-edit-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    position: sticky;
+    bottom: 0.75rem;
+    z-index: 2;
+}
+
+.product-edit-actions .btn {
+    min-height: 2.75rem;
+    padding-inline: 1.25rem;
+}
+
+@media (max-width: 78rem) {
+    .product-edit-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .product-edit-side {
+        position: static;
+        grid-template-columns: minmax(0, 18rem) minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 62rem) {
+    .product-edit-hero {
+        flex-direction: column;
+    }
+
+    .product-edit-hero-actions {
+        min-width: 0;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .product-edit-side,
+    .product-edit-grid,
+    .product-edit-dynamic-box {
+        grid-template-columns: 1fr;
+    }
+
+    .product-edit-field-wide,
+    .product-edit-dynamic-title {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 44rem) {
+    .product-edit-hero,
+    .product-edit-image-card,
+    .product-edit-summary-card,
+    .product-edit-card,
+    .product-edit-actions {
+        border-radius: 1rem;
+        padding: 0.85rem;
+    }
+
+    .product-edit-hero-actions,
+    .product-edit-actions {
+        grid-template-columns: 1fr;
+        display: grid;
+    }
+
+    .product-edit-actions .btn,
+    .product-edit-hero-actions .btn {
+        width: 100%;
+    }
+
+    .product-edit-dynamic-title {
+        display: grid;
+    }
+}
+
+/* تکمیل حرفه‌ای صفحه ویرایش محصول */
+.product-edit-hero-form {
+    margin: 0;
+    padding: 0;
+}
+
+.product-edit-hero-form .btn {
+    width: 100%;
+    justify-content: center;
+}
+
+.product-edit-woo-warning {
+    margin-bottom: 1rem;
+    border: 1px solid rgba(59, 130, 246, 0.22);
+    border-radius: 1.15rem;
+    background:
+        radial-gradient(circle at top right, rgba(59, 130, 246, 0.10), transparent 34%),
+        var(--panel);
+    padding: 0.9rem 1rem;
+    box-shadow: var(--shadow-sm);
+}
+
+body.light .product-edit-woo-warning {
+    background:
+        radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 34%),
+        #ffffff;
+    border-color: #dbeafe;
+}
+
+.product-edit-woo-warning div {
+    display: grid;
+    gap: 0.25rem;
+}
+
+.product-edit-woo-warning b {
+    color: var(--acc);
+    font-size: 0.9rem;
+}
+
+.product-edit-woo-warning span {
+    color: var(--mut);
+    line-height: 1.9;
+    font-size: 0.8rem;
+}
+
+.product-edit-connection-card {
+    border: 1px solid var(--line);
+    border-radius: 1.2rem;
+    background: var(--panel);
+    box-shadow: var(--shadow-sm);
+    padding: 1rem;
+    overflow: hidden;
+}
+
+body.light .product-edit-connection-card {
+    background: #ffffff;
+    border-color: #e5edf7;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+.product-edit-connection-card h3 {
+    margin: 0;
+    color: var(--txt);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.product-edit-connection-card p {
+    margin: 0.75rem 0 0;
+    color: var(--mut);
+    font-size: 0.8rem;
+    line-height: 1.9;
+}
+
+.product-edit-connection-badge {
+    width: fit-content;
+    margin-top: 0.7rem;
+    border-radius: 999px;
+    padding: 0.22rem 0.68rem;
+    font-size: 0.72rem;
+    font-weight: 900;
+}
+
+.product-edit-connection-card.is-connected .product-edit-connection-badge {
+    color: var(--ok);
+    background: rgba(16, 185, 129, 0.10);
+    border: 1px solid rgba(16, 185, 129, 0.18);
+}
+
+.product-edit-connection-card.is-manual .product-edit-connection-badge {
+    color: var(--warn);
+    background: rgba(245, 158, 11, 0.10);
+    border: 1px solid rgba(245, 158, 11, 0.18);
+}
+
+.product-edit-connection-list {
+    display: grid;
+    gap: 0.55rem;
+    margin-top: 0.75rem;
+}
+
+.product-edit-connection-list > div {
+    display: grid;
+    gap: 0.18rem;
+    border: 1px solid var(--line);
+    border-radius: 0.85rem;
+    background: var(--panel2);
+    padding: 0.62rem;
+}
+
+body.light .product-edit-connection-list > div {
+    background: #f8fafc;
+}
+
+.product-edit-connection-list span {
+    color: var(--mut);
+    font-size: 0.68rem;
+    font-weight: 800;
+}
+
+.product-edit-connection-list b {
+    color: var(--txt);
+    font-size: 0.78rem;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.product-edit-connection-error {
+    margin-top: 0.75rem;
+    border: 1px solid rgba(239, 68, 68, 0.22);
+    border-radius: 0.85rem;
+    background: rgba(239, 68, 68, 0.08);
+    color: var(--txt);
+    padding: 0.7rem;
+    font-size: 0.76rem;
+    line-height: 1.9;
+    overflow-wrap: anywhere;
+}
+
+.product-edit-push-submit {
+    background: linear-gradient(135deg, #2563eb, #38bdf8) !important;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.18) !important;
+}
+
+@media (max-width: 62rem) {
+    .product-edit-hero-form .btn {
+        width: 100%;
+    }
+}

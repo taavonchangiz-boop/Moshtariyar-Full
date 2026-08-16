@@ -1,0 +1,417 @@
+/* ظاهر حرفه‌ای دفتر امتیاز و کیف پول باشگاه */
+.club-transactions-page {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.club-transactions-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
+    gap: 1rem;
+    align-items: stretch;
+    padding: 1.15rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.4rem;
+    background:
+        radial-gradient(circle at 8% 0, rgba(16, 185, 129, 0.14), transparent 30%),
+        radial-gradient(circle at 94% 0, rgba(14, 165, 233, 0.18), transparent 34%),
+        linear-gradient(135deg, var(--panel), var(--panel2));
+    box-shadow: 0 1.2rem 3.4rem rgba(15, 23, 42, 0.10);
+    overflow: hidden;
+}
+
+body.light .club-transactions-hero {
+    background:
+        radial-gradient(circle at 8% 0, rgba(16, 185, 129, 0.09), transparent 30%),
+        radial-gradient(circle at 94% 0, rgba(14, 165, 233, 0.11), transparent 34%),
+        #ffffff;
+}
+
+.club-transactions-hero:after {
+    content: '';
+    position: absolute;
+    left: -5rem;
+    bottom: -7rem;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(16, 185, 129, 0.13));
+    pointer-events: none;
+}
+
+.club-transactions-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+.club-transactions-eyebrow,
+.club-transactions-card header span,
+.club-transactions-chip {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    gap: 0.35rem;
+    color: #0284c7;
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    border-radius: 999px;
+    padding: 0.18rem 0.7rem;
+    font-size: 0.74rem;
+    font-weight: 1000;
+}
+
+.club-transactions-hero h1 {
+    margin: 0.55rem 0 0.25rem;
+    color: var(--txt);
+    font-size: clamp(1.35rem, 4vw, 2.35rem);
+    line-height: 1.45;
+    letter-spacing: -0.03rem;
+}
+
+.club-transactions-hero p {
+    margin: 0.4rem 0 0;
+    color: var(--mut);
+    max-width: 45rem;
+    line-height: 1.95;
+}
+
+.club-transactions-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1rem;
+}
+
+.club-transactions-actions .btn,
+.club-transactions-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.club-transactions-score-grid {
+    display: grid;
+    gap: 0.7rem;
+}
+
+.club-transactions-score-grid > div {
+    padding: 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel);
+}
+
+body.light .club-transactions-score-grid > div {
+    background: #f8fafc;
+}
+
+.club-transactions-score-grid span,
+.club-transactions-score-grid small {
+    display: block;
+    color: var(--mut);
+    font-size: 0.74rem;
+    font-weight: 800;
+}
+
+.club-transactions-score-grid b {
+    display: block;
+    margin-top: 0.15rem;
+    color: var(--acc);
+    font-size: 1.25rem;
+    line-height: 1.55;
+    font-weight: 1000;
+}
+
+.club-transactions-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.club-transactions-metric {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    padding: 1rem 1.15rem 1rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.2rem;
+    background: var(--glass);
+    box-shadow: 0 1rem 2.4rem rgba(15, 23, 42, 0.08);
+}
+
+body.light .club-transactions-metric {
+    background: #ffffff;
+}
+
+.club-transactions-metric:before {
+    content: '';
+    position: absolute;
+    top: 0.9rem;
+    bottom: 0.9rem;
+    right: 0.55rem;
+    width: 0.26rem;
+    border-radius: 999px;
+    background: var(--metric-color, var(--acc));
+}
+
+.club-transactions-metric span,
+.club-transactions-metric small {
+    display: block;
+    color: var(--mut);
+    font-size: 0.74rem;
+    font-weight: 800;
+}
+
+.club-transactions-metric b {
+    display: block;
+    margin-top: 0.22rem;
+    color: var(--txt);
+    font-size: 1.25rem;
+    line-height: 1.55;
+    font-weight: 1000;
+    overflow-wrap: anywhere;
+}
+
+.club-transactions-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.75fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.club-transactions-card {
+    min-width: 0;
+    overflow: hidden;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    background: var(--glass);
+    box-shadow: 0 1rem 2.8rem rgba(15, 23, 42, 0.08);
+}
+
+body.light .club-transactions-card {
+    background: #ffffff;
+}
+
+.club-transactions-card.is-accent {
+    position: relative;
+    padding-right: 1.25rem;
+}
+
+.club-transactions-card.is-accent:before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    bottom: 1rem;
+    right: 0.65rem;
+    width: 0.28rem;
+    border-radius: 999px;
+    background: var(--transactions-card-color, var(--acc));
+}
+
+.club-transactions-card header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.8rem;
+    padding-bottom: 0.8rem;
+    margin-bottom: 0.85rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.club-transactions-card h2,
+.club-transactions-card h3 {
+    margin: 0;
+    color: var(--txt);
+    line-height: 1.55;
+}
+
+.club-transactions-filter {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) repeat(2, minmax(9rem, 0.45fr)) auto auto;
+    gap: 0.65rem;
+    align-items: end;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+}
+
+body.light .club-transactions-filter {
+    background: #f8fafc;
+}
+
+.club-transactions-list,
+.club-transactions-source-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.club-transaction-row,
+.club-transaction-source-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+    min-width: 0;
+}
+
+body.light .club-transaction-row,
+body.light .club-transaction-source-row {
+    background: #f8fafc;
+}
+
+.club-transaction-icon,
+.club-transaction-source-icon {
+    width: 3.15rem;
+    height: 3.15rem;
+    display: grid;
+    place-items: center;
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--transaction-color, var(--acc)) 15%, transparent);
+    color: var(--transaction-color, var(--acc));
+    font-size: 1.35rem;
+    font-weight: 1000;
+}
+
+.club-transaction-row h3,
+.club-transaction-source-row h3 {
+    margin: 0;
+    color: var(--txt);
+    font-size: 0.94rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+
+.club-transaction-row p,
+.club-transaction-row small,
+.club-transaction-source-row p,
+.club-transaction-source-row small {
+    display: block;
+    margin: 0.13rem 0 0;
+    color: var(--mut);
+    font-size: 0.78rem;
+    line-height: 1.75;
+}
+
+.club-transaction-amount {
+    display: grid;
+    gap: 0.35rem;
+    justify-items: end;
+}
+
+.club-transaction-amount strong {
+    direction: ltr;
+    white-space: nowrap;
+    font-size: 1rem;
+}
+
+.club-transaction-amount strong.is-credit {
+    color: var(--ok);
+}
+
+.club-transaction-amount strong.is-debit {
+    color: var(--bad);
+}
+
+.club-transactions-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    min-width: fit-content;
+    padding: 0.28rem 0.7rem;
+    border-radius: 999px;
+    color: var(--acc);
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    font-size: 0.76rem;
+    font-weight: 1000;
+    white-space: nowrap;
+}
+
+.club-transactions-badge.is-ok {
+    color: var(--ok);
+    background: rgba(16, 185, 129, 0.13);
+    border-color: rgba(16, 185, 129, 0.24);
+}
+
+.club-transactions-badge.is-bad {
+    color: var(--bad);
+    background: rgba(239, 68, 68, 0.13);
+    border-color: rgba(239, 68, 68, 0.24);
+}
+
+.club-transactions-badge.is-muted {
+    color: var(--mut);
+    background: rgba(148, 163, 184, 0.12);
+    border-color: rgba(148, 163, 184, 0.22);
+}
+
+.club-transactions-empty {
+    display: grid;
+    place-items: center;
+    min-height: 8rem;
+    padding: 1rem;
+    color: var(--mut);
+    text-align: center;
+    border: 1px dashed var(--line);
+    border-radius: 1rem;
+}
+
+@media (max-width: 76rem) {
+    .club-transactions-hero,
+    .club-transactions-grid,
+    .club-transactions-filter,
+    .club-transactions-metrics {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 44rem) {
+    .club-transactions-hero,
+    .club-transactions-card,
+    .club-transactions-metric {
+        border-radius: 1rem;
+        padding: 0.85rem;
+    }
+
+    .club-transactions-card.is-accent {
+        padding-right: 1.05rem;
+    }
+
+    .club-transactions-card.is-accent:before,
+    .club-transactions-metric:before {
+        right: 0.45rem;
+        top: 0.8rem;
+        bottom: 0.8rem;
+    }
+
+    .club-transactions-actions .btn,
+    .club-transactions-actions a,
+    .club-transactions-filter .btn {
+        width: 100%;
+    }
+
+    .club-transaction-row,
+    .club-transaction-source-row {
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .club-transaction-amount,
+    .club-transactions-badge {
+        grid-column: 1 / -1;
+        width: 100%;
+        justify-content: center;
+    }
+}

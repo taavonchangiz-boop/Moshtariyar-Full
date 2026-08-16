@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+    http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+    <!-- صفحهٔ اصلی -->
+    <url>
+        <loc>https://your-domain.com/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <lastmod>2026-07-24</lastmod>
+    </url>
+
+    <!-- ورود به سامانه -->
+    <url>
+        <loc>https://your-domain.com/login</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- بازیابی رمز عبور -->
+    <url>
+        <loc>https://your-domain.com/forgot-password</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.4</priority>
+    </url>
+
+    <!-- باشگاه مشتریان -->
+    <url>
+        <loc>https://your-domain.com/club/login</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- ثبت‌نام در باشگاه -->
+    <url>
+        <loc>https://your-domain.com/club/register</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- پایگاه دانش (عمومی) -->
+    <url>
+        <loc>https://your-domain.com/club/kb</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+</urlset>

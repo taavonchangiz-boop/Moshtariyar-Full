@@ -1,0 +1,210 @@
+/* هشدار هوشمند نجات مشتری در صندوق فروش سریع - فوق حرفه‌ای و ریسپانسیو */
+
+.pos-retention-alert{
+  display:none;
+  flex-direction:column;
+  gap:.65rem;
+  padding:.9rem 1rem;
+  border-radius:.9rem;
+  border:1px solid;
+  position:relative;
+  overflow:hidden;
+  animation: posRetentionIn .35s ease;
+}
+.pos-retention-alert.show{
+  display:flex;
+}
+@keyframes posRetentionIn{
+  from{ opacity:0; transform: translateY(-8px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+
+/* حالت‌های مختلف */
+.pos-retention-alert.is-valuable{
+  background: linear-gradient(135deg, rgba(251,191,36,.14), rgba(217,119,6,.10));
+  border-color: rgba(217,119,6,.28);
+  box-shadow: 0 .5rem 1.2rem rgba(217,119,6,.14);
+}
+.pos-retention-alert.is-at-risk{
+  background: linear-gradient(135deg, rgba(245,158,11,.14), rgba(249,115,22,.08));
+  border-color: rgba(245,158,11,.28);
+  box-shadow: 0 .5rem 1.2rem rgba(245,158,11,.12);
+}
+.pos-retention-alert.is-returning{
+  background: linear-gradient(135deg, rgba(16,185,129,.14), rgba(6,182,212,.10));
+  border-color: rgba(16,185,129,.28);
+  box-shadow: 0 .5rem 1.2rem rgba(16,185,129,.12);
+}
+.pos-retention-alert.is-champion{
+  background: linear-gradient(135deg, rgba(16,185,129,.08), rgba(59,130,246,.06));
+  border-color: rgba(16,185,129,.18);
+}
+
+.pos-retention-head{
+  display:flex;
+  gap:.6rem;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.pos-retention-icon{
+  width:2.2rem;
+  height:2.2rem;
+  min-width:2.2rem;
+  display:grid;
+  place-items:center;
+  border-radius:.7rem;
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  font-size:1.2rem;
+  box-shadow: 0 .25rem .6rem rgba(15,23,42,.08);
+}
+body.dark .pos-retention-icon{ background:#0f172a; }
+
+.pos-retention-title{
+  display:flex;
+  flex-direction:column;
+  gap:.15rem;
+  flex:1;
+  min-width:0;
+}
+.pos-retention-title b{
+  font-size:.92rem;
+  font-weight:900;
+  line-height:1.3;
+  color: var(--txt);
+}
+.pos-retention-title small{
+  font-size:.78rem;
+  line-height:1.4;
+  opacity:.8;
+  color: var(--mut);
+}
+
+.pos-retention-badges{
+  display:flex;
+  gap:.35rem;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.pos-retention-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:.25rem;
+  padding:.22rem .55rem;
+  border-radius:999px;
+  font-size:.72rem;
+  font-weight:800;
+  border:1px solid;
+  white-space:nowrap;
+}
+.pos-retention-badge.risk{
+  background: rgba(239,68,68,.12);
+  color:#b91c1c;
+  border-color: rgba(239,68,68,.22);
+}
+.pos-retention-badge.clv{
+  background: rgba(16,185,129,.12);
+  color:#047857;
+  border-color: rgba(16,185,129,.22);
+}
+.pos-retention-badge.days{
+  background: rgba(59,130,246,.12);
+  color:#1d4ed8;
+  border-color: rgba(59,130,246,.22);
+}
+
+.pos-retention-body{
+  display:grid;
+  gap:.5rem;
+}
+.pos-retention-message{
+  padding:.6rem .75rem;
+  border-radius:.6rem;
+  background: rgba(255,255,255,.7);
+  border:1px solid rgba(0,0,0,.06);
+  font-size:.82rem;
+  line-height:1.6;
+  font-weight:600;
+  color: var(--txt);
+}
+body.dark .pos-retention-message{
+  background: rgba(15,23,42,.5);
+}
+
+.pos-retention-stats{
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  gap:.4rem;
+}
+@media (max-width: 36rem){
+  .pos-retention-stats{ grid-template-columns: 1fr; }
+}
+.pos-retention-stat{
+  padding:.5rem .6rem;
+  border-radius:.6rem;
+  background: var(--panel2);
+  border:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  gap:.15rem;
+  text-align:center;
+}
+.pos-retention-stat span{
+  font-size:.70rem;
+  color: var(--mut);
+  font-weight:700;
+}
+.pos-retention-stat b{
+  font-size:.85rem;
+  font-weight:900;
+  color: var(--txt);
+}
+
+.pos-retention-actions{
+  display:flex;
+  gap:.4rem;
+  flex-wrap:wrap;
+}
+.pos-retention-actions .btn{
+  min-height:2.2rem;
+  padding:.4rem .7rem;
+  font-size:.78rem;
+  border-radius:.6rem;
+  font-weight:800;
+  flex:1;
+  min-width: fit-content;
+}
+.pos-retention-actions .btn-ghost{
+  background: var(--panel);
+  border:1px solid var(--line);
+}
+
+/* جستجوی مشتری - نمایش ریسک در لیست */
+.pos-customer-row.has-risk{
+  border-right:3px solid;
+  padding-right:.6rem;
+}
+.pos-customer-row.is-valuable{ border-right-color:#d97706; background: linear-gradient(90deg, rgba(251,191,36,.08), transparent); }
+.pos-customer-row.is-at-risk{ border-right-color:#f59e0b; background: linear-gradient(90deg, rgba(245,158,11,.08), transparent); }
+.pos-customer-row.is-returning{ border-right-color:#10b981; background: linear-gradient(90deg, rgba(16,185,129,.08), transparent); }
+
+.pos-customer-risk{
+  display:inline-flex;
+  gap:.25rem;
+  align-items:center;
+  margin-top:.2rem;
+  font-size:.68rem;
+  font-weight:800;
+}
+.pos-customer-risk span{
+  padding:.1rem .4rem;
+  border-radius:999px;
+  border:1px solid;
+}
+
+.pos-customer-suggest{
+  font-size:.70rem;
+  color: var(--mut);
+  margin-top:.15rem;
+  line-height:1.4;
+}

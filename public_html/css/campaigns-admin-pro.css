@@ -1,0 +1,211 @@
+/* اصلاح و حرفه‌ای‌سازی کمپین‌های پیشرفته در پنل مدیریت */
+.admin-campaigns-pro {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* سکشن معرفی و آمار بالای صفحه */
+.admin-campaigns-pro > div:first-of-type {
+    padding: 1rem !important;
+    margin-bottom: 1rem !important;
+    border-radius: 1.35rem !important;
+    background:
+        radial-gradient(circle at 8% 0, rgba(14, 165, 233, 0.12), transparent 30%),
+        radial-gradient(circle at 96% 0, rgba(16, 185, 129, 0.10), transparent 34%),
+        var(--panel) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.admin-campaigns-pro > div:first-of-type > div:first-child {
+    align-items: center !important;
+    gap: 1rem !important;
+}
+
+.admin-campaigns-pro > div:first-of-type h2 {
+    font-size: clamp(1.25rem, 1.65vw, 1.75rem) !important;
+    line-height: 1.65 !important;
+    margin-bottom: 0.35rem !important;
+}
+
+.admin-campaigns-pro > div:first-of-type p {
+    font-size: 0.88rem !important;
+    line-height: 2 !important;
+    max-width: 58rem !important;
+}
+
+.admin-campaigns-pro > div:first-of-type > div:nth-child(2) {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0.65rem !important;
+    margin-top: 1rem !important;
+    padding-top: 0.9rem !important;
+}
+
+.admin-campaigns-pro > div:first-of-type > div:nth-child(2) > div {
+    min-height: 4.65rem !important;
+    padding: 0.65rem 0.75rem !important;
+    border-radius: 1rem !important;
+    gap: 0.65rem !important;
+}
+
+.admin-campaigns-pro > div:first-of-type > div:nth-child(2) > div > div:first-child {
+    font-size: 1.35rem !important;
+    padding: 0.45rem !important;
+    border-radius: 0.9rem !important;
+}
+
+.admin-campaigns-pro > div:first-of-type > div:nth-child(2) .muted {
+    font-size: 0.76rem !important;
+    line-height: 1.75 !important;
+}
+
+.admin-campaigns-pro > div:first-of-type > div:nth-child(2) div[style*="font-size:1.35rem"] {
+    font-size: 1.12rem !important;
+    line-height: 1.5 !important;
+}
+
+/* تب‌ها */
+.admin-campaigns-pro .tabs-header {
+    gap: 0.55rem !important;
+    margin-bottom: 1rem !important;
+    padding-bottom: 0.7rem !important;
+}
+
+.admin-campaigns-pro .tab-btn {
+    min-height: 2.65rem !important;
+    padding: 0.55rem 0.9rem !important;
+    border-radius: 0.95rem !important;
+    line-height: 1.7 !important;
+}
+
+/* کارت‌ها و عنوان‌ها */
+.admin-campaigns-pro .card {
+    border-radius: 1.2rem !important;
+    padding: 1rem !important;
+}
+
+.admin-campaigns-pro .card h3,
+.admin-campaigns-pro .card h4,
+.admin-campaigns-pro .card b {
+    line-height: 1.8 !important;
+}
+
+.admin-campaigns-pro .card p,
+.admin-campaigns-pro .card span,
+.admin-campaigns-pro .card small,
+.admin-campaigns-pro .card div,
+.admin-campaigns-pro .card td,
+.admin-campaigns-pro .card th {
+    line-height: 1.9;
+}
+
+/* جدول کمپین‌ها، خواناتر و سبک‌تر */
+.admin-campaigns-pro table {
+    border-collapse: separate !important;
+    border-spacing: 0 0.65rem !important;
+}
+
+.admin-campaigns-pro thead th {
+    padding-bottom: 0.55rem !important;
+    font-size: 0.78rem !important;
+    font-weight: 900 !important;
+}
+
+.admin-campaigns-pro tbody tr {
+    box-shadow: 0 0.5rem 1.5rem rgba(15, 23, 42, 0.05) !important;
+}
+
+.admin-campaigns-pro tbody td {
+    padding: 0.85rem !important;
+    vertical-align: middle !important;
+}
+
+.admin-campaigns-pro tbody td:first-child {
+    border-radius: 0 1rem 1rem 0 !important;
+}
+
+.admin-campaigns-pro tbody td:last-child {
+    border-radius: 1rem 0 0 1rem !important;
+}
+
+.admin-campaigns-pro .badge {
+    line-height: 1.65 !important;
+    font-weight: 900 !important;
+}
+
+/* فرم ساخت کمپین */
+.admin-campaigns-pro #creatorTab .card {
+    max-width: none !important;
+}
+
+.admin-campaigns-pro #creatorTab h3,
+.admin-campaigns-pro #creatorTab h4 {
+    line-height: 1.85 !important;
+}
+
+.admin-campaigns-pro #creatorTab label {
+    line-height: 1.7 !important;
+    margin-bottom: 0.35rem !important;
+}
+
+.admin-campaigns-pro #creatorTab input,
+.admin-campaigns-pro #creatorTab select,
+.admin-campaigns-pro #creatorTab textarea {
+    min-height: 2.7rem !important;
+    line-height: 1.8 !important;
+    border-radius: 0.95rem !important;
+}
+
+.admin-campaigns-pro #creatorTab textarea {
+    min-height: 9rem !important;
+}
+
+.admin-campaigns-pro .placeholder-tag {
+    line-height: 1.6 !important;
+    border: 0 !important;
+}
+
+/* راهنما */
+.admin-campaigns-pro #guideTab .card {
+    max-width: none !important;
+}
+
+.admin-campaigns-pro #guideTab h3,
+.admin-campaigns-pro #guideTab h4 {
+    line-height: 1.85 !important;
+}
+
+.admin-campaigns-pro #guideTab p {
+    line-height: 2 !important;
+}
+
+@media (min-width: 76rem) {
+    .admin-campaigns-pro > div:first-of-type > div:first-child {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1.55fr) auto !important;
+    }
+}
+
+@media (max-width: 72rem) {
+    .admin-campaigns-pro > div:first-of-type > div:nth-child(2) {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 48rem) {
+    .admin-campaigns-pro > div:first-of-type,
+    .admin-campaigns-pro .card {
+        border-radius: 1rem !important;
+        padding: 0.85rem !important;
+    }
+
+    .admin-campaigns-pro table {
+        border-spacing: 0 !important;
+    }
+
+    .admin-campaigns-pro tbody td,
+    .admin-campaigns-pro tbody td:first-child,
+    .admin-campaigns-pro tbody td:last-child {
+        border-radius: 0 !important;
+    }
+}

@@ -1,0 +1,672 @@
+/* ظاهر اختصاصی پیشخوان باشگاه مشتریان */
+.club-dashboard-page {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    padding-bottom: 5rem; /* Space for mobile nav */
+}
+
+.club-dashboard-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(17rem, 0.75fr);
+    gap: 1rem;
+    align-items: stretch;
+    margin-bottom: 1rem;
+    padding: 1.15rem;
+    border: 1px solid var(--line);
+    border-radius: 1.45rem;
+    background:
+        radial-gradient(circle at 12% 8%, rgba(16, 185, 129, 0.18), transparent 30%),
+        radial-gradient(circle at 92% 0, rgba(14, 165, 233, 0.22), transparent 34%),
+        radial-gradient(circle at 55% 100%, rgba(167, 139, 250, 0.16), transparent 34%),
+        var(--glass);
+    box-shadow: 0 1.4rem 3.8rem rgba(0, 0, 0, 0.14);
+    overflow: hidden;
+}
+
+body.light .club-dashboard-hero {
+    background:
+        radial-gradient(circle at 12% 8%, rgba(16, 185, 129, 0.10), transparent 30%),
+        radial-gradient(circle at 92% 0, rgba(14, 165, 233, 0.13), transparent 34%),
+        radial-gradient(circle at 55% 100%, rgba(124, 58, 237, 0.09), transparent 34%),
+        #ffffff;
+    box-shadow: 0 1.1rem 2.8rem rgba(15, 23, 42, 0.08);
+}
+
+.club-dashboard-hero:after {
+    content: '';
+    position: absolute;
+    inset: auto -4rem -7rem auto;
+    width: 16rem;
+    height: 16rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.18), rgba(16, 185, 129, 0.12));
+    filter: blur(0.2rem);
+    pointer-events: none;
+}
+
+.club-dashboard-hero-main,
+.club-dashboard-hero-side {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+}
+
+.club-dashboard-eyebrow {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    gap: 0.35rem;
+    color: #0284c7;
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    border-radius: 999px;
+    padding: 0.18rem 0.7rem;
+    font-size: 0.74rem;
+    font-weight: 1000;
+}
+
+.club-dashboard-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-top: 0.8rem;
+}
+
+.club-dashboard-avatar {
+    flex: 0 0 auto;
+    width: 4.4rem;
+    height: 4.4rem;
+    display: grid;
+    place-items: center;
+    border-radius: 1.35rem;
+    background: linear-gradient(135deg, var(--acc2), var(--vio));
+    color: #ffffff;
+    font-size: 1.45rem;
+    font-weight: 1000;
+    box-shadow: 0 1rem 2.2rem rgba(14, 165, 233, 0.26);
+    overflow: hidden;
+}
+
+.club-dashboard-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.club-dashboard-hero h1 {
+    margin: 0;
+    font-size: clamp(1.35rem, 4vw, 2.35rem);
+    line-height: 1.45;
+    letter-spacing: -0.04rem;
+    color: var(--txt);
+}
+
+.club-dashboard-hero p {
+    margin: 0.55rem 0 0;
+    color: var(--mut);
+    max-width: 45rem;
+}
+
+.club-dashboard-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.club-dashboard-actions .btn,
+.club-dashboard-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.club-dashboard-level-card {
+    height: 100%;
+    display: grid;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.2rem;
+    background: color-mix(in srgb, var(--panel) 88%, transparent);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+body.light .club-dashboard-level-card {
+    background: #f8fafc;
+}
+
+.club-dashboard-level-card strong {
+    color: var(--txt);
+    font-size: 1.1rem;
+    line-height: 1.55;
+}
+
+.club-dashboard-level-card span,
+.club-dashboard-level-card small {
+    display: block;
+    color: var(--mut);
+    font-size: 0.76rem;
+    font-weight: 800;
+}
+
+.club-dashboard-level-card b {
+    color: var(--acc);
+    font-size: 1.55rem;
+    line-height: 1.5;
+    font-weight: 1000;
+}
+
+.club-dashboard-progress {
+    height: 0.65rem;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.18);
+    overflow: hidden;
+}
+
+.club-dashboard-progress span {
+    display: block;
+    width: var(--progress, 55%);
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--ok), var(--acc));
+}
+
+.club-dashboard-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.club-dashboard-metric {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    padding: 1rem 1.85rem 1rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.2rem;
+    background: var(--glass);
+    box-shadow: 0 1rem 2.4rem rgba(0, 0, 0, 0.11);
+}
+
+.club-dashboard-metric:before {
+    content: '';
+    position: absolute;
+    top: 0.85rem;
+    bottom: 0.85rem;
+    right: 0.75rem;
+    width: 0.26rem;
+    border-radius: 999px;
+    background: var(--metric-color, var(--acc));
+}
+
+body.light .club-dashboard-metric {
+    background: #ffffff;
+    box-shadow: 0 0.8rem 2rem rgba(15, 23, 42, 0.06);
+}
+
+.club-dashboard-metric span,
+.club-dashboard-metric small {
+    display: block;
+    color: var(--mut);
+    font-size: 0.74rem;
+    font-weight: 800;
+}
+
+.club-dashboard-metric b {
+    display: block;
+    margin-top: 0.22rem;
+    color: var(--txt);
+    font-size: 1.35rem;
+    line-height: 1.55;
+    font-weight: 1000;
+    overflow-wrap: anywhere;
+}
+
+.club-dashboard-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(19rem, 0.8fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.club-dashboard-grid-reverse {
+    display: grid;
+    grid-template-columns: minmax(19rem, 0.82fr) minmax(0, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.club-dashboard-card {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    background: var(--glass);
+    box-shadow: 0 1rem 2.7rem rgba(0, 0, 0, 0.11);
+}
+
+body.light .club-dashboard-card {
+    background: #ffffff;
+    box-shadow: 0 0.8rem 2rem rgba(15, 23, 42, 0.06);
+}
+
+.club-dashboard-card.is-accent {
+    padding-right: 1.25rem;
+}
+
+.club-dashboard-card.is-accent:before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    bottom: 1rem;
+    right: 0.65rem;
+    width: 0.28rem;
+    border-radius: 999px;
+    background: var(--card-color, var(--acc));
+}
+
+.club-dashboard-card header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.85rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.club-dashboard-card h2,
+.club-dashboard-card h3 {
+    margin: 0;
+    color: var(--txt);
+    line-height: 1.55;
+}
+
+.club-dashboard-card p {
+    margin: 0.35rem 0 0;
+    color: var(--mut);
+}
+
+.club-dashboard-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.28rem 0.68rem;
+    border-radius: 999px;
+    color: var(--acc);
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    font-size: 0.76rem;
+    font-weight: 1000;
+    white-space: nowrap;
+}
+
+.club-dashboard-badge.is-ok {
+    color: var(--ok);
+    background: rgba(16, 185, 129, 0.13);
+    border-color: rgba(16, 185, 129, 0.24);
+}
+
+.club-dashboard-badge.is-warn {
+    color: var(--warn);
+    background: rgba(245, 158, 11, 0.13);
+    border-color: rgba(245, 158, 11, 0.24);
+}
+
+.club-dashboard-badge.is-muted {
+    color: var(--mut);
+    background: rgba(148, 163, 184, 0.12);
+    border-color: rgba(148, 163, 184, 0.22);
+}
+
+.club-dashboard-shortcuts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.club-dashboard-shortcut {
+    position: relative;
+    min-width: 0;
+    display: grid;
+    gap: 0.45rem;
+    padding: 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+    color: var(--txt);
+    overflow: hidden;
+    transition: transform 0.18s ease, border-color 0.18s ease;
+}
+
+.club-dashboard-shortcut:hover {
+    transform: translateY(-0.12rem);
+    border-color: var(--shortcut-color, var(--acc));
+}
+
+body.light .club-dashboard-shortcut {
+    background: #f8fafc;
+}
+
+.club-dashboard-shortcut i {
+    width: 2.75rem;
+    height: 2.75rem;
+    display: grid;
+    place-items: center;
+    border-radius: 0.95rem;
+    background: color-mix(in srgb, var(--shortcut-color, var(--acc)) 15%, transparent);
+    color: var(--shortcut-color, var(--acc));
+    font-style: normal;
+    font-size: 1.28rem;
+}
+
+.club-dashboard-shortcut b {
+    color: var(--txt);
+    overflow-wrap: anywhere;
+}
+
+.club-dashboard-shortcut small {
+    color: var(--mut);
+    line-height: 1.75;
+}
+
+.club-dashboard-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.club-dashboard-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--panel2);
+    min-width: 0;
+}
+
+body.light .club-dashboard-row {
+    background: #f8fafc;
+}
+
+.club-dashboard-icon {
+    width: 3.05rem;
+    height: 3.05rem;
+    display: grid;
+    place-items: center;
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--icon-color, var(--acc)) 15%, transparent);
+    color: var(--icon-color, var(--acc));
+    font-size: 1.35rem;
+    font-weight: 1000;
+    overflow: hidden;
+}
+
+.club-dashboard-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.club-dashboard-row h3 {
+    margin: 0;
+    color: var(--txt);
+    font-size: 0.94rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+
+.club-dashboard-row p,
+.club-dashboard-row small {
+    display: block;
+    margin: 0.12rem 0 0;
+    color: var(--mut);
+    font-size: 0.78rem;
+}
+
+.club-dashboard-copy {
+    display: flex;
+    gap: 0.55rem;
+    align-items: center;
+    margin-top: 0.7rem;
+}
+
+.club-dashboard-copy input {
+    direction: ltr;
+    unicode-bidi: plaintext;
+    font-weight: 900;
+}
+
+.club-dashboard-empty {
+    display: grid;
+    place-items: center;
+    min-height: 7.5rem;
+    padding: 1rem;
+    color: var(--mut);
+    text-align: center;
+    border: 1px dashed var(--line);
+    border-radius: 1rem;
+}
+
+.club-dashboard-timeline {
+    display: grid;
+    gap: 0.65rem;
+}
+
+.club-dashboard-transaction {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.75rem;
+    align-items: center;
+    padding: 0.78rem 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 0.95rem;
+    background: var(--panel2);
+}
+
+body.light .club-dashboard-transaction {
+    background: #f8fafc;
+}
+
+.club-dashboard-transaction h3 {
+    margin: 0;
+    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+}
+
+.club-dashboard-transaction p {
+    margin: 0.12rem 0 0;
+    color: var(--mut);
+    font-size: 0.76rem;
+}
+
+.club-dashboard-transaction strong {
+    color: var(--acc);
+    white-space: nowrap;
+}
+
+/* ==================== استایل‌های موبایل و ریسپانسیو (درخواست کاربر) ==================== */
+.club-dashboard-mobile-nav {
+    display: none;
+}
+
+@media (max-width: 68rem) {
+    .club-dashboard-hero,
+    .club-dashboard-grid,
+    .club-dashboard-grid-reverse {
+        grid-template-columns: 1fr;
+    }
+
+    .club-dashboard-metrics,
+    .club-dashboard-shortcuts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 44rem) {
+    /* تغییرات اصلی برای گوشی موبایل */
+    .club-dashboard-page {
+        padding-bottom: 5.5rem; /* جا برای نوار پایین */
+    }
+
+    .club-dashboard-hero,
+    .club-dashboard-card,
+    .club-dashboard-metric {
+        border-radius: 1rem;
+        padding: 1rem;
+    }
+
+    /* کارت پروفایل در موبایل (هدر) */
+    .club-dashboard-title-row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .club-dashboard-avatar {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+    }
+
+    .club-dashboard-hero h1 {
+        font-size: 1.25rem;
+    }
+    
+    .club-dashboard-hero p {
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+
+    .club-dashboard-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .club-dashboard-actions .btn,
+    .club-dashboard-actions a {
+        width: 100%;
+        padding: 0.75rem;
+    }
+
+    .club-dashboard-level-card {
+        text-align: center;
+    }
+
+    /* آیکون‌ها و شورت‌کات‌ها در موبایل */
+    .club-dashboard-shortcuts {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .club-dashboard-shortcut {
+        padding: 0.75rem;
+        text-align: center;
+        justify-items: center;
+    }
+    
+    .club-dashboard-shortcut i {
+        margin: 0 auto;
+    }
+
+    /* استایل کارت‌های لیست دار (گردونه، تراکنش) */
+    .club-dashboard-row {
+        grid-template-columns: auto minmax(0, 1fr);
+        padding: 0.75rem;
+    }
+
+    .club-dashboard-row > .club-dashboard-badge,
+    .club-dashboard-row > a,
+    .club-dashboard-row > form {
+        grid-column: 1 / -1;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .club-dashboard-row > a.btn,
+    .club-dashboard-row > form .btn {
+        width: 100%;
+    }
+
+    /* باکس کپی کد */
+    .club-dashboard-copy {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .club-dashboard-copy .btn {
+        width: 100%;
+    }
+
+    .club-dashboard-transaction {
+        grid-template-columns: 1fr;
+        text-align: right;
+    }
+
+    .club-dashboard-transaction strong {
+        text-align: left;
+        margin-top: -1.5rem;
+    }
+
+    /* Bottom Navigation برای موبایل */
+    .club-dashboard-mobile-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--panel);
+        border-top: 1px solid var(--line);
+        padding: 0.5rem 0.5rem calc(0.5rem + env(safe-area-inset-bottom));
+        justify-content: space-around;
+        align-items: center;
+        z-index: 1000;
+        box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+    }
+
+    body.light .club-dashboard-mobile-nav {
+        background: #ffffff;
+    }
+
+    .club-dashboard-mobile-nav a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+        color: var(--mut);
+        text-decoration: none;
+        font-size: 0.7rem;
+        font-weight: 800;
+        padding: 0.5rem;
+        transition: 0.2s;
+    }
+
+    .club-dashboard-mobile-nav a.active {
+        color: var(--acc);
+    }
+
+    .club-dashboard-mobile-nav i {
+        font-style: normal;
+        font-size: 1.25rem;
+    }
+
+    .club-dashboard-mobile-nav a.active i {
+        transform: translateY(-2px);
+    }
+}

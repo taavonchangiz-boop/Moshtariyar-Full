@@ -1,0 +1,6 @@
+[24-Jul-2026 17:12:48 UTC] PHP Fatal error:  Uncaught RuntimeException: A facade root has not been set. in /home/ayarproi/moshtariyar/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:358
+Stack trace:
+#0 /home/ayarproi/moshtariyar/Modules/IranPack/Tax/MoadianClient.php(91): Illuminate\Support\Facades\Facade::__callStatic()
+#1 Command line code(6): Modules\IranPack\Tax\MoadianClient->getNonce()
+#2 {main}
+  thrown in /home/ayarproi/moshtariyar/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php on line 358

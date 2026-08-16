@@ -1,0 +1,438 @@
+/* پروفایل باشگاه مشتریان - نسخه ترمیم شده حرفه‌ای */
+.club-profile-page{
+  width:100%;
+  max-width:100%;
+  overflow:hidden;
+  display:grid;
+  gap:1.2rem;
+}
+
+/* هدر اصلی */
+.club-profile-hero{
+  display:grid;
+  grid-template-columns:minmax(0,1.2fr) minmax(280px,380px);
+  gap:1.5rem;
+  align-items:start;
+  padding:1.5rem;
+  background:radial-gradient(circle at 30% 0%, rgba(14,165,233,.14), transparent 42%), radial-gradient(circle at 90% 10%, rgba(139,92,246,.12), transparent 36%), var(--glass);
+  border:1px solid var(--line);
+  border-radius:1.6rem;
+  box-shadow:0 1.2rem 3rem rgba(15,23,42,.07);
+  position:relative;
+  overflow:hidden;
+}
+body.light .club-profile-hero{
+  background:radial-gradient(circle at 30% 0%, rgba(14,165,233,.08), transparent 42%), radial-gradient(circle at 90% 10%, rgba(139,92,246,.07), transparent 36%), #ffffff;
+}
+
+.club-profile-identity{
+  display:flex;
+  gap:1.2rem;
+  align-items:flex-start;
+  min-width:0;
+}
+.club-profile-avatar{
+  width:5.2rem;
+  height:5.2rem;
+  min-width:5.2rem;
+  border-radius:1.35rem;
+  background:linear-gradient(135deg, var(--acc), var(--vio, #8b5cf6));
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-size:2rem;
+  font-weight:1000;
+  overflow:hidden;
+  box-shadow:0 .6rem 1.6rem rgba(14,165,233,.28);
+  flex-shrink:0;
+}
+.club-profile-avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.club-profile-eyebrow{
+  display:inline-flex;
+  padding:.2rem .6rem;
+  border-radius:999px;
+  background:rgba(14,165,233,.12);
+  color:#0284c7;
+  border:1px solid rgba(14,165,233,.18);
+  font-size:.72rem;
+  font-weight:900;
+  margin-bottom:.45rem;
+}
+body.dark .club-profile-eyebrow{ color:#7dd3fc; }
+.club-profile-identity h1{
+  margin:0;
+  font-size:clamp(1.25rem, 2.4vw, 1.7rem);
+  font-weight:1000;
+  color:var(--txt);
+  line-height:1.4;
+}
+.club-profile-identity p{
+  margin:.35rem 0 0;
+  color:var(--mut);
+  font-size:.88rem;
+  line-height:1.9;
+  max-width:32rem;
+}
+.club-profile-actions{
+  display:flex;
+  gap:.6rem;
+  flex-wrap:wrap;
+  margin-top:.9rem;
+}
+
+/* باکس‌های امتیاز */
+.club-profile-score{
+  display:grid;
+  gap:.75rem;
+  align-content:start;
+}
+.club-profile-score > div{
+  background:var(--panel2);
+  border:1px solid var(--line);
+  border-radius:1.1rem;
+  padding:.9rem 1rem;
+  display:flex;
+  flex-direction:column;
+  gap:.22rem;
+  min-width:0;
+  box-shadow:0 .4rem 1rem rgba(15,23,42,.03);
+}
+body.light .club-profile-score > div{ background:#f8fafc; }
+.club-profile-score > div span{
+  display:block;
+  color:var(--mut);
+  font-size:.76rem;
+  font-weight:800;
+  line-height:1.6;
+}
+.club-profile-score > div b{
+  display:block;
+  color:var(--txt);
+  font-size:1.05rem;
+  font-weight:1000;
+  line-height:1.5;
+  overflow-wrap:anywhere;
+}
+.club-profile-score > div small{
+  display:block;
+  color:var(--mut);
+  font-size:.71rem;
+  font-weight:700;
+  line-height:1.7;
+  margin-top:.1rem;
+}
+
+/* گرید اطلاعات */
+.club-profile-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(300px,.52fr);
+  gap:1.2rem;
+  align-items:start;
+}
+.club-profile-card{
+  background:var(--glass);
+  border:1px solid var(--line);
+  border-radius:1.5rem;
+  padding:1.2rem;
+  box-shadow:0 .5rem 1.5rem rgba(0,0,0,.03);
+  overflow:hidden;
+}
+body.light .club-profile-card{ background:#fff; }
+.club-profile-card.is-accent{
+  border-right:4px solid var(--profile-card-color, var(--acc));
+}
+.club-profile-card header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:1rem;
+  padding-bottom:.9rem;
+  margin-bottom:1rem;
+  border-bottom:1px solid var(--line);
+}
+.club-profile-card header span{
+  display:block;
+  color:var(--mut);
+  font-size:.74rem;
+  font-weight:800;
+  margin-bottom:.15rem;
+}
+.club-profile-card header h2{
+  margin:0;
+  font-size:1.05rem;
+  font-weight:1000;
+  color:var(--txt);
+  line-height:1.5;
+}
+
+/* جدول اطلاعات */
+.club-profile-info-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:.9rem;
+}
+.club-profile-info-grid > div{
+  background:var(--panel2);
+  border:1px solid var(--line);
+  border-radius:.9rem;
+  padding:.75rem .9rem;
+  display:flex;
+  flex-direction:column;
+  gap:.2rem;
+  min-width:0;
+}
+body.light .club-profile-info-grid > div{ background:#f8fafc; }
+.club-profile-info-grid span{
+  color:var(--mut);
+  font-size:.72rem;
+  font-weight:800;
+}
+.club-profile-info-grid b{
+  color:var(--txt);
+  font-size:.88rem;
+  font-weight:900;
+  overflow-wrap:anywhere;
+  line-height:1.6;
+}
+.club-profile-wide{ grid-column:1 / -1; }
+
+/* تصویر بزرگ پروفایل - مشکل بزرگ بودن حل شد */
+.club-profile-avatar-large{
+  width:100%;
+  max-width:20rem;
+  aspect-ratio:1 / 1;
+  margin:0 auto 1rem;
+  border-radius:1.5rem;
+  overflow:hidden;
+  background:var(--panel2);
+  border:1px solid var(--line);
+  display:grid;
+  place-items:center;
+  box-shadow:0 .6rem 1.4rem rgba(15,23,42,.06);
+  position:relative;
+}
+.club-profile-avatar-large img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.club-profile-avatar-large span{
+  font-size:4rem;
+  font-weight:1000;
+  color:var(--acc);
+  line-height:1;
+}
+.muted{
+  color:var(--mut);
+  font-size:.82rem;
+  line-height:1.9;
+}
+
+/* فرم ویرایش */
+.club-profile-form-grid{
+  display:grid;
+  grid-template-columns:340px minmax(0,1fr);
+  gap:1.5rem;
+  align-items:start;
+}
+.club-profile-fields .grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:.9rem;
+}
+.club-profile-avatar-editor{
+  position:sticky;
+  top:1rem;
+  display:grid;
+  gap:.8rem;
+}
+.club-avatar-cropper{
+  width:100%;
+  max-width:340px;
+  aspect-ratio:1 / 1;
+  border-radius:1.3rem;
+  overflow:hidden;
+  background:var(--panel2);
+  border:1px dashed var(--line);
+  position:relative;
+  display:grid;
+  place-items:center;
+}
+.club-avatar-cropper img{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:100%;
+  height:auto;
+  transform:translate(-50%,-50%) scale(1);
+  max-width:none;
+}
+#avatarCropPlaceholder{
+  color:var(--mut);
+  font-weight:800;
+  font-size:.9rem;
+}
+.club-avatar-controls{
+  display:grid;
+  gap:.4rem;
+  background:var(--panel2);
+  border:1px solid var(--line);
+  border-radius:.9rem;
+  padding:.8rem;
+}
+body.light .club-avatar-controls{ background:#f8fafc; }
+.club-avatar-controls label{
+  font-size:.72rem;
+  font-weight:800;
+  color:var(--mut);
+}
+.club-avatar-controls input[type=range]{
+  width:100%;
+}
+
+/* کارت جایزه‌ها */
+.club-card-pro{
+  background:var(--glass);
+  border:1px solid var(--line);
+  border-radius:1.4rem;
+  padding:1.1rem;
+}
+body.light .club-card-pro{ background:#fff; }
+.club-card-pro header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1rem;
+  margin-bottom:1rem;
+}
+.club-reward-eyebrow{
+  display:inline-flex;
+  padding:.2rem .55rem;
+  border-radius:999px;
+  background:rgba(16,185,129,.12);
+  color:#047857;
+  font-size:.7rem;
+  font-weight:900;
+  margin-bottom:.25rem;
+}
+.club-reward-list{
+  display:grid;
+  gap:.7rem;
+}
+.club-reward-item{
+  display:flex;
+  gap:.8rem;
+  align-items:center;
+  padding:.8rem;
+  border:1px solid var(--line);
+  border-radius:1rem;
+  background:var(--panel2);
+}
+body.light .club-reward-item{ background:#f8fafc; }
+.club-reward-icon{
+  width:3rem;
+  height:3rem;
+  min-width:3rem;
+  border-radius:.9rem;
+  background:#fff;
+  border:1px solid var(--line);
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  font-size:1.3rem;
+}
+.club-reward-icon img{ width:100%; height:100%; object-fit:cover; }
+.club-reward-item h3{ margin:0; font-size:.9rem; font-weight:1000; color:var(--txt); }
+.club-reward-item p{ margin:.15rem 0 0; color:var(--mut); font-size:.75rem; }
+.club-code-box{
+  margin-top:.4rem;
+  display:flex;
+  gap:.4rem;
+  align-items:center;
+}
+.club-code-box input{
+  flex:1;
+  min-width:0;
+  direction:ltr;
+  text-align:left;
+  font-family:monospace;
+  font-size:.8rem;
+  min-height:2.2rem;
+  padding:.35rem .6rem;
+  border-radius:.6rem;
+}
+.club-code-box .btn{ min-height:2.2rem; padding:.35rem .7rem; font-size:.75rem; }
+.club-reward-status{
+  margin-right:auto;
+  padding:.2rem .55rem;
+  border-radius:999px;
+  background:rgba(14,165,233,.12);
+  color:#0369a1;
+  font-size:.68rem;
+  font-weight:900;
+  white-space:nowrap;
+}
+.club-empty-state{
+  text-align:center;
+  padding:2rem 1rem;
+  color:var(--mut);
+  border:1px dashed var(--line);
+  border-radius:1rem;
+  font-size:.88rem;
+}
+.club-reward-actions{
+  margin-top:1rem;
+  display:flex;
+  gap:.6rem;
+  flex-wrap:wrap;
+}
+
+@media (max-width: 980px){
+  .club-profile-hero{
+    grid-template-columns:1fr;
+  }
+  .club-profile-grid{
+    grid-template-columns:1fr;
+  }
+  .club-profile-form-grid{
+    grid-template-columns:1fr;
+  }
+  .club-profile-avatar-editor{
+    position:static;
+  }
+  .club-profile-fields .grid{
+    grid-template-columns:1fr;
+  }
+  .club-profile-info-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (max-width: 640px){
+  .club-profile-hero{
+    padding:1rem;
+  }
+  .club-profile-identity{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+  .club-profile-identity p{ text-align:center; }
+  .club-profile-actions{
+    justify-content:center;
+    width:100%;
+  }
+  .club-profile-actions .btn{ flex:1; justify-content:center; }
+  .club-profile-score{
+    grid-template-columns:1fr;
+  }
+  .club-profile-avatar-large{
+    max-width:100%;
+  }
+}
